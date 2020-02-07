@@ -19,7 +19,7 @@ const InfoPage = () => (
 
     <img src="https://live.staticflickr.com/8055/8116623060_4227d86ac2_b.jpg" alt="Barn Owl" />
 
-    <h1>hey... you're cute *smiley face*</h1>
+    <p>hey... you're cute *smiley face*</p>
   </div>
 );
 
