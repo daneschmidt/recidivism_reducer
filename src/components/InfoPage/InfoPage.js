@@ -18,6 +18,8 @@ const InfoPage = () => (
     <p>
       What did jay-z call Beyonce before they got married? ...fiance.
     </p>
+  
+    <p>hey... you're cute *smiley face*</p>
   </div>
 );
 
