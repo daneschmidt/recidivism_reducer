@@ -12,7 +12,6 @@ const InfoPage = () => (
     <p>
       Tyto project is getting kicked off.
     </p>
-<<<<<<< HEAD
     <table>
       <thead>
         <td>
@@ -20,14 +19,12 @@ const InfoPage = () => (
         </td>
       </thead>
     </table>
-=======
     
     <p>
       What did jay-z call Beyonce before they got married? ...fiance.
     </p>
 
     <img src="https://live.staticflickr.com/8055/8116623060_4227d86ac2_b.jpg" alt="Barn Owl" />
->>>>>>> develop
   </div>
 );
 
