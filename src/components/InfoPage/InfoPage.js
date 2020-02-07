@@ -14,6 +14,14 @@ const InfoPage = () => (
     <p>
       Tyto project is getting kicked off.
     </p>
+    <table>
+      <thead>
+        <td>
+          luke's changes
+        </td>
+      </thead>
+    </table>
+    
     <p>
       Change here
     </p>
