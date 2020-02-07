@@ -10,6 +10,13 @@ const InfoPage = () => (
     <p>
       The Info Page
     </p>
+    <table>
+      <thead>
+        <td>
+          luke's changes
+        </td>
+      </thead>
+    </table>
   </div>
 );
 
