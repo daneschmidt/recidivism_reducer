@@ -13,7 +13,7 @@ const UserPage = (props) => (
     </h1>
     <p>Your ID is: {props.store.user.id}</p>
     <LogOutButton className="log-in" />
-    <h1>Hello World!!!</h1>
+    <p>Hello World!!!</p>
   </div>
 );
 
