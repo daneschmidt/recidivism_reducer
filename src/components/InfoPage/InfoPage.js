@@ -8,7 +8,7 @@ import React from 'react';
 const InfoPage = () => (
   <div>
     <p>
-      The Info Page
+      What did jay-z call Beyonce before they got married? ...fiance.
     </p>
   </div>
 );
