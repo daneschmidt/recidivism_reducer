@@ -9,6 +9,8 @@ const InfoPage = () => (
   <div>
     <h1>The Info Page</h1>
     
+    <img src="https://live.staticflickr.com/8055/8116623060_4227d86ac2_b.jpg" alt="Barn Owl" />
+
     <p>
       Tyto project is getting kicked off.
     </p>
@@ -21,10 +23,17 @@ const InfoPage = () => (
     </table>
     
     <p>
+      Change here
+    </p>
+    <p>
       What did jay-z call Beyonce before they got married? ...fiance.
     </p>
 
-    <img src="https://live.staticflickr.com/8055/8116623060_4227d86ac2_b.jpg" alt="Barn Owl" />
+    <p>
+     You ever heard of updog? No, what is up dog? Nothing much what's up with you? HAHAHAHAHAHA!!!!
+    </p>
+  
+    <p>hey... you're cute *smiley face*</p>
   </div>
 );
 
