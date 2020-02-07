@@ -18,7 +18,7 @@ const InfoPage = () => (
     </p>
 
     <p>
-      You ever heard of updog? No, what is up dog? Nothing much what's up with you? HAHAHAHAHAHA!!!!
+     You ever heard of updog? No, what is up dog? Nothing much what's up with you? HAHAHAHAHAHA!!!!
     </p>
 
     <img src="https://live.staticflickr.com/8055/8116623060_4227d86ac2_b.jpg" alt="Barn Owl" />
