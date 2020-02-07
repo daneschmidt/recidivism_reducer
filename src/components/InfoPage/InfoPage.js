@@ -7,9 +7,13 @@ import React from 'react';
 
 const InfoPage = () => (
   <div>
+    <h1>The Info Page</h1>
+    
     <p>
-      The Info Page
+      Tyto project is getting kicked off.
     </p>
+
+    <img src="https://live.staticflickr.com/8055/8116623060_4227d86ac2_b.jpg" alt="Barn Owl" />
   </div>
 );
 
