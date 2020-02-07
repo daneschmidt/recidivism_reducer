@@ -12,7 +12,9 @@ const InfoPage = () => (
     <p>
       Tyto project is getting kicked off.
     </p>
-    
+    <p>
+      Change here
+    </p>
     <p>
       What did jay-z call Beyonce before they got married? ...fiance.
     </p>
