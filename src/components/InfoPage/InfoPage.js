@@ -8,6 +8,7 @@ import React from 'react';
 const InfoPage = () => (
   <div>
     <h1>The Info Page</h1>
+    <h1> HELLO WORLD ITS THE JOSH CALENDAR APP</h1>
     
     <p>
       Tyto project is getting kicked off.
