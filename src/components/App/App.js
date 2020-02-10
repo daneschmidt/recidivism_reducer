@@ -13,12 +13,16 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
-import AboutPage from '../AboutPage/AboutPage';
+import BeTheBoss from '../BeTheBoss/BeTheBoss';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import Calendar from '../Calendar/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Dashboard from '../Dashboard/Dashboard';
+import ClientPage from '../ClientPage/ClientPage';
+import Competition from '../CompetitionPage/CompetitionPage';
+import TaskPage from '../TaskPage/TaskPage';
 
 import './App.css';
 
@@ -34,13 +38,13 @@ class App extends Component {
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-            <Redirect exact from="/" to="/home" />
+            <Redirect exact from="/" to="/betheboss" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route
               exact
-              path="/about"
-              component={AboutPage}
+              path="/betheboss"
+              component={BeTheBoss}
             />
             <Route
               exact
@@ -53,28 +57,54 @@ class App extends Component {
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
             <ProtectedRoute
               exact
-              path="/admin"
+              path="/userpage"
               component={UserPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/calendar"
+              component={Calendar}
+            />
+            <ProtectedRoute
+              exact
+              path="/clientpage"
+              component={ClientPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/userpage"
+              component={UserPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/competition"
+              component={Competition}
+            />
+            <ProtectedRoute
+              exact
+              path="/taskpage"
+              component={TaskPage}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <ProtectedRoute
               exact
-              path="/info"
-              component={InfoPage}
+              path="/dashboard"
+              component={Dashboard}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will be redirected to the authRedirect path provided. */}
             <ProtectedRoute
               exact
               path="/login"
-              authRedirect="/admin"
+              authRedirect="/dashboard"
               component={LoginPage}
             />
+
             <ProtectedRoute
               exact
               path="/registration"
-              authRedirect="/admin"
+              authRedirect="/dashboard"
               component={RegisterPage}
             />
 
