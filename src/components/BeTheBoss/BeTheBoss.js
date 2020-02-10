@@ -9,7 +9,7 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        Be The Boss Survey Form!
       </p>
     </div>
   </div>
