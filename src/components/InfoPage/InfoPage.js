@@ -14,6 +14,14 @@ const InfoPage = () => (
     <p>
       Tyto project is getting kicked off.
     </p>
+    <table>
+      <thead>
+        <td>
+          luke's changes
+        </td>
+      </thead>
+    </table>
+    
     <p>
       Change here
     </p>
@@ -24,7 +32,10 @@ const InfoPage = () => (
     <p>
      You ever heard of updog? No, what is up dog? Nothing much what's up with you? HAHAHAHAHAHA!!!!
     </p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
   
     <p>hey... you're cute *smiley face*</p>
   </div>
