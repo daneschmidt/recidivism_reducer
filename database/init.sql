@@ -8,7 +8,7 @@ CREATE TABLE "user" (
   "lastName" varchar (20) NOT NULL,
   "password" varchar (20) NOT NULL,
   "securityLevel" int,
-  "phoneNumber" int,
+  "phoneNumber" bigint,
   "email" varchar (40) NOT NULL,
   "role" varchar,
   "isActive" boolean
@@ -19,16 +19,16 @@ CREATE TABLE "clients" (
   "firstName" varchar (40) NOT NULL,
   "lastName" varchar (40) NOT NULL,
   "gender" varchar,
-  "phoneNumber" numeric,
+  "phoneNumber" bigint,
   "email" varchar,
   "incarcerationLength" varchar,
-  "releaseDate" timestamp,
+  "releaseDate" date,
   "docNumber" varchar,
   "stateIncarcerated" varchar,
   "paroleOnRelease" boolean,
   "connections" boolean,
   "ifYesConnections" varchar,
-  "bussiness" varchar,
+  "business" varchar,
   "profilePic" varchar,
   "timeStamp" timestamp,
   "isActive" boolean
@@ -41,7 +41,7 @@ CREATE TABLE "address" (
   "city" varchar,
   "state" varchar,
   "zip" int,
-  "bussiness" boolean,
+  "business" boolean,
   "home" boolean,
   "current" boolean
 );
@@ -88,7 +88,7 @@ CREATE TABLE "notes" (
 
 CREATE TABLE "events" (
   "id" SERIAL PRIMARY KEY,
-  "eventDate" timestamp,
+  "eventDate" date,
   "startTime" timestamp,
   "endTime" time,
   "endEventDate" timestamp,
@@ -115,9 +115,9 @@ CREATE TABLE "messages_clients" (
 CREATE TABLE "survey" (
   "id" SERIAL PRIMARY KEY,
   "clients_id" int REFERENCES "clients",
-  "businessStarted" int,
+  "businessStarted" boolean,
   "revenue" numeric,
-  "date" timestamp
+  "date" date
 );
 
 CREATE TABLE "events_clients" (
