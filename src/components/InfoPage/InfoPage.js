@@ -30,6 +30,7 @@ const InfoPage = () => (
 		</p>
 
 		<p>hey... you're cute *smiley face*</p>
+
 	</div>
 );
 
