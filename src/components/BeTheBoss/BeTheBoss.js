@@ -16,21 +16,47 @@ class BeTheBoss extends Component {
 		});
 	};
 
-	submitForm = event => {
+	// submitForm = event => {
+	// 	event.preventDefault();
+	// 	if (!this.state.firstName) alert("Must enter first name.");
+	// 	else if (!this.state.lastName) alert("Must enter last name.");
+	// 	else if (!this.state.gender) alert("Must enter gender.");
+	// 	else if (!this.state.phoneNumber) alert("Must enter phone number.");
+	// 	else if (!this.state.email) alert("Must enter email.");
+	// };
+
+	addClientInfo = (event) => {
 		event.preventDefault();
-		if (!this.state.firstName) alert("Must enter first name.");
-		else if (!this.state.lastName) alert("Must enter last name.");
-		else if (!this.state.gender) alert("Must enter gender.");
-		else if (!this.state.phoneNumber) alert("Must enter phone number.");
-		else if (!this.state.email) alert("Must enter email.");
-	};
+	
+		if (this.state.firstName && 
+			this.state.lastName &&
+			this.state.gender &&
+			this.state.phoneNumber &&
+			this.state.email) {
+		  this.props.dispatch({
+			type: 'ADD_CLIENT',
+			payload: {
+			  username: this.state.firstName,
+			  password: this.state.lastName,
+			  gender: this.state.gender,
+			  phoneNumber: this.state.phoneNumber,
+			  email: this.state.email,
+			},
+		  });
+		} else {
+			if (!this.state.firstName) alert("Must enter first name.");
+			else if (!this.state.lastName) alert("Must enter last name.");
+			else if (!this.state.gender) alert("Must enter gender.");
+			else if (!this.state.phoneNumber) alert("Must enter phone number.");
+			else if (!this.state.email) alert("Must enter email.");
+		}
+	  }
 
 	render() {
 		return (
 			<div>
 				<h1>Be The Boss</h1>
-				<p>{this.state.firstName}</p>
-				<form onSubmit={this.submitForm}>
+				{/* <form onSubmit={this.submitForm}> */}
 					<input
 						type="text"
 						placeholder="First Name"
@@ -62,8 +88,8 @@ class BeTheBoss extends Component {
 						value={this.state.email}
 						onChange={event => this.changeField(event, "email")}
 					/>
-					<button onClick={this.submitForm}>Submit</button>
-				</form>
+					<button onClick={this.addClientInfo}>Submit</button>
+				{/* </form> */}
 			</div>
 		);
 	}

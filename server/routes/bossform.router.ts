@@ -16,7 +16,7 @@ router.post("/api/bossform", (req: Request, res: Response): void => {
 		.query(queryText, [firstName, lastName, gender, phoneNumber, email])
 		.then(() => res.sendStatus(201))
 		.catch(err => {
-			console.log(`Error saving user to database: ${err}`);
+			console.log(`Error saving Be The Boss form: ${err}`);
 			res.sendStatus(500);
 		});
 });
