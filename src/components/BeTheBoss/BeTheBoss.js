@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
-class TemplateClass extends Component {
+class BeTheBoss extends Component {
 	state = {
 		firstName: "",
 		lastName: "",
+		gender: "",
 		phoneNumber: "",
 		email: "",
 	};
@@ -19,14 +20,16 @@ class TemplateClass extends Component {
 		event.preventDefault();
 		if (!this.state.firstName) alert("Must enter first name.");
 		else if (!this.state.lastName) alert("Must enter last name.");
-		else if (!this.state.lastName) alert("Must enter phone number.");
-		else if (!this.state.lastName) alert("Must enter email.");
+		else if (!this.state.gender) alert("Must enter gender.");
+		else if (!this.state.phoneNumber) alert("Must enter phone number.");
+		else if (!this.state.email) alert("Must enter email.");
 	};
 
 	render() {
 		return (
 			<div>
 				<h1>Be The Boss</h1>
+				<p>{this.state.firstName}</p>
 				<form onSubmit={this.submitForm}>
 					<input
 						type="text"
@@ -40,6 +43,12 @@ class TemplateClass extends Component {
 						placeholder="Last Name"
 						value={this.state.lastName}
 						onChange={event => this.changeField(event, "lastName")}
+					/>
+					<input
+						type="text"
+						placeholder="Gender"
+						value={this.state.gender}
+						onChange={event => this.changeField(event, "gender")}
 					/>
 					<input
 						type="number"
@@ -60,4 +69,4 @@ class TemplateClass extends Component {
 	}
 }
 
-export default connect(mapStoreToProps)(TemplateClass);
+export default connect(mapStoreToProps)(BeTheBoss);
