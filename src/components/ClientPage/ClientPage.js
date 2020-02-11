@@ -5,7 +5,7 @@ class ClientPage extends Component {
         return(
             <div>                                   
                 <p>
-                Client Page!
+                    Client Page!
                 </p>                                                  
             </div>
         )

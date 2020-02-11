@@ -5,7 +5,7 @@ class TaskPage extends Component {
         return(
             <div>                                   
                 <p>
-                Task Page!
+                    Task Page!
                 </p>                                                  
             </div>
         )
