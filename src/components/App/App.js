@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -27,8 +27,8 @@ import TaskPage from '../TaskPage/TaskPage';
 import './App.css';
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' })
   }
 
   render() {
@@ -48,6 +48,11 @@ class App extends Component {
             />
             <Route
               exact
+              path="/clientpage"
+              component={ClientPage}
+            />
+            <Route
+              exact
               path="/home"
               component={LandingPage}
             />
@@ -64,11 +69,6 @@ class App extends Component {
               exact
               path="/calendar"
               component={Calendar}
-            />
-            <ProtectedRoute
-              exact
-              path="/clientpage"
-              component={ClientPage}
             />
             <ProtectedRoute
               exact
@@ -114,7 +114,8 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
-  )}
+    )
+  }
 }
 
 export default connect()(App);

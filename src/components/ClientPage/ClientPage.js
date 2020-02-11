@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from "react";
 
-import { makeStyles } from "node_modules/@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 import GridItem from "../Grid/GridItem";
 import GridContainer from "../Grid/GridContainer";
@@ -48,12 +48,12 @@ export default function TableList() {
         <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
                 <Card>
-                    <CardHeader color="primary">
-                        <h4 className={classes.cardTitleWhite}>Simple Table</h4>
+                    {/* <CardHeader color="primary">
+                        <h4 className={classes.cardTitleWhite}>Client List</h4>
                         <p className={classes.cardCategoryWhite}>
-                            Here is a subtitle for this table
+                            Below is a list of clients
                   </p>
-                    </CardHeader>
+                    </CardHeader> */}
                     <CardBody>
                         <Table
                             tableHeaderColor="primary"
