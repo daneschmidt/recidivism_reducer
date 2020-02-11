@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import EventModal from '../Calendar/EventModal';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
-const Calendar = () => (
-  <div>
-    <div>
-      <p>
-        Calendar Page!
-      </p>
-    </div>
-  </div>
-);
+// Material UI
+import Container from '@material-ui/core/Container';
 
-export default Calendar;
+
+
+class Calendar extends Component {
+
+  render() {
+    return (
+      <div>
+        <div className="calendar">
+          <EventModal />
+          <div>
+            <Container maxWidth="md" className="calendar-container">
+              <FullCalendar defaultView="dayGridMonth" plugins={[dayGridPlugin]} />
+            </Container>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+}
+
+export default connect(mapStoreToProps)(Calendar);
