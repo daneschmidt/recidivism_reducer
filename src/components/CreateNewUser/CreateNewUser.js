@@ -5,7 +5,7 @@ class CreateNewUser extends Component {
         return(
             <div>                                   
                 <p>
-                Create New User Modal!
+                    Create New User Modal!
                 </p>                                                  
             </div>
         )

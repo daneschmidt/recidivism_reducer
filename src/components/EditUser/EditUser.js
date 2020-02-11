@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class Dashboard extends Component {
+class EditUser extends Component {
     render() {
         return(
             <div>                                   
                 <p>
-                    Dashboard Page!
+                    Edit User Page!
                 </p>                                                  
             </div>
         )
     }
 }
 
-export default Dashboard;
+export default EditUser;

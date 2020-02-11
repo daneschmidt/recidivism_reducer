@@ -5,7 +5,7 @@ class CompetitionPage extends Component {
         return(
             <div>                                   
                 <p>
-                Competition Page!
+                    Competition Page!
                 </p>                                                  
             </div>
         )
