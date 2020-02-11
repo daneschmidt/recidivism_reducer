@@ -1,18 +1,63 @@
-import React from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import mapStoreToProps from "../../redux/mapStoreToProps";
+class TemplateClass extends Component {
+	state = {
+		firstName: "",
+		lastName: "",
+		phoneNumber: "",
+		email: "",
+	};
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+	changeField = (event, infoKey) => {
+		this.setState({
+			[infoKey]: event.target.value,
+		});
+	};
 
-const AboutPage = () => (
-  <div>
-    <div>
-      <p>
-        Be The Boss Survey Form!
-      </p>
-    </div>
-  </div>
-);
+	submitForm = event => {
+		event.preventDefault();
+		if (!this.state.firstName) alert("Must enter first name.");
+		else if (!this.state.lastName) alert("Must enter last name.");
+		else if (!this.state.lastName) alert("Must enter phone number.");
+		else if (!this.state.lastName) alert("Must enter email.");
+	};
 
-export default AboutPage;
+	render() {
+		return (
+			<div>
+				<h1>Be The Boss</h1>
+				<form onSubmit={this.submitForm}>
+					<input
+						type="text"
+						placeholder="First Name"
+						value={this.state.firstName}
+						onChange={event => this.changeField(event, "firstName")}
+						required
+					/>
+					<input
+						type="text"
+						placeholder="Last Name"
+						value={this.state.lastName}
+						onChange={event => this.changeField(event, "lastName")}
+					/>
+					<input
+						type="number"
+						placeholder="Phone Number"
+						value={this.state.phoneNumber}
+						onChange={event => this.changeField(event, "phoneNumber")}
+					/>
+					<input
+						type="text"
+						placeholder="Email"
+						value={this.state.email}
+						onChange={event => this.changeField(event, "email")}
+					/>
+					<button onClick={this.submitForm}>Submit</button>
+				</form>
+			</div>
+		);
+	}
+}
+
+export default connect(mapStoreToProps)(TemplateClass);
