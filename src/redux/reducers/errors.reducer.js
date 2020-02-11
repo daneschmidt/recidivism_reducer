@@ -32,10 +32,22 @@ const registrationMessage = (state = '', action) => {
   }
 };
 
+const bossFormMessage = (state = '', action) => {
+  switch (action.type) {
+    case 'CLEAR_BOSS_ERROR':
+      return '';
+    case 'CLIENT_REJECTED':
+      return 'Please enter info each text field!';
+    default:
+      return state;
+  }
+};
+
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  bossFormMessage,
 });

@@ -20,3 +20,5 @@ router.post("/api/bossform", (req: Request, res: Response): void => {
 			res.sendStatus(500);
 		});
 });
+
+export default router;

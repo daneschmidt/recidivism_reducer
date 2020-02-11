@@ -16,15 +16,6 @@ class BeTheBoss extends Component {
 		});
 	};
 
-	// submitForm = event => {
-	// 	event.preventDefault();
-	// 	if (!this.state.firstName) alert("Must enter first name.");
-	// 	else if (!this.state.lastName) alert("Must enter last name.");
-	// 	else if (!this.state.gender) alert("Must enter gender.");
-	// 	else if (!this.state.phoneNumber) alert("Must enter phone number.");
-	// 	else if (!this.state.email) alert("Must enter email.");
-	// };
-
 	addClientInfo = (event) => {
 		event.preventDefault();
 	
@@ -44,11 +35,13 @@ class BeTheBoss extends Component {
 			},
 		  });
 		} else {
-			if (!this.state.firstName) alert("Must enter first name.");
-			else if (!this.state.lastName) alert("Must enter last name.");
-			else if (!this.state.gender) alert("Must enter gender.");
-			else if (!this.state.phoneNumber) alert("Must enter phone number.");
-			else if (!this.state.email) alert("Must enter email.");
+			console.log('whoops');
+			this.props.dispatch({ type: 'CLIENT_REJECTED' });
+			// if (!this.state.firstName) alert("Must enter first name.");
+			// else if (!this.state.lastName) alert("Must enter last name.");
+			// else if (!this.state.gender) alert("Must enter gender.");
+			// else if (!this.state.phoneNumber) alert("Must enter phone number.");
+			// else if (!this.state.email) alert("Must enter email.");
 		}
 	  }
 
@@ -56,7 +49,6 @@ class BeTheBoss extends Component {
 		return (
 			<div>
 				<h1>Be The Boss</h1>
-				{/* <form onSubmit={this.submitForm}> */}
 					<input
 						type="text"
 						placeholder="First Name"
@@ -89,7 +81,6 @@ class BeTheBoss extends Component {
 						onChange={event => this.changeField(event, "email")}
 					/>
 					<button onClick={this.addClientInfo}>Submit</button>
-				{/* </form> */}
 			</div>
 		);
 	}
