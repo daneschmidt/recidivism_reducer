@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 
 class ClientPage extends Component {
     render() {
-        return(
-            <div>                                   
+        return (
+            <div>
                 <p>
                     Client Page!
-                </p>                                                  
+
+                    Drop Template HERE.
+                </p>
             </div>
         )
     }
