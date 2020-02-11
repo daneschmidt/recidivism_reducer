@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class Dashboard extends Component {
+class CreateNewUser extends Component {
     render() {
         return(
             <div>                                   
                 <p>
-                    Dashboard Page!
+                    Create New User Modal!
                 </p>                                                  
             </div>
         )
     }
 }
 
-export default Dashboard;
+export default CreateNewUser;
