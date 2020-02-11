@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class CompetitionPage extends Component {
+class CreateNewUser extends Component {
     render() {
         return(
             <div>                                   
                 <p>
-                Competition Page!
+                Create New User Modal!
                 </p>                                                  
             </div>
         )
     }
 }
 
-export default CompetitionPage;
+export default CreateNewUser;
