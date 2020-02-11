@@ -24,6 +24,7 @@ passport.deserializeUser((id: any, done: any): void => {
 });
 
 passport.use('local', new Strategy((username: string, password: string, done: Function): void => {
+  console.log(username)
   pool.query('SELECT * FROM "user" WHERE username = $1', [username])
     .then((result: any) => {
       const user = result && result.rows && result.rows[0];
