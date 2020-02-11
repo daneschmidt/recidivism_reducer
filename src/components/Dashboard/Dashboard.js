@@ -10,6 +10,20 @@ const Dashboard = () => (
         <div>
             <p>
                 DASHBOARD!
+                ITS THE DASH BOARRRRD
+                Love, exciting and new
+Come aboard, were expecting you
+Love, lifes sweetest reward
+Let it flow, it floats back to you
+Love Boat soon will be making another run
+The Love Boat promises something for everyone
+Set a course for adventure
+Your mind on a new romance
+Love wont hurt anymore
+Its an open smile on a friendly shore
+Yes love...
+Its love...
+
             </p>
         </div>
     </div>

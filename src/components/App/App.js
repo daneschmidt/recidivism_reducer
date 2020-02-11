@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -27,8 +27,8 @@ import TaskPage from '../TaskPage/TaskPage';
 import './App.css';
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' })
   }
 
   render() {
@@ -55,6 +55,12 @@ class App extends Component {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+            <Route
+              exact
+              path="/dashboard"
+              component={Dashboard}
+            />
+
             <ProtectedRoute
               exact
               path="/userpage"
@@ -89,13 +95,6 @@ class App extends Component {
             they will see the info page instead. */}
             <ProtectedRoute
               exact
-              path="/dashboard"
-              component={Dashboard}
-            />
-            {/* This works the same as the other protected route, except that if the user is logged in,
-            they will be redirected to the authRedirect path provided. */}
-            <ProtectedRoute
-              exact
               path="/login"
               authRedirect="/dashboard"
               component={LoginPage}
@@ -114,7 +113,8 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
-  )}
+    )
+  }
 }
 
 export default connect()(App);
