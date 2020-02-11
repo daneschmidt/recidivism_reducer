@@ -31,7 +31,7 @@ services:
     image: postgres:latest
     restart: always
     ports:
-      - ${DOCKER_DB_PORT}:${DOCKER_DB_PORT}
+      - 54320:${DOCKER_DB_PORT}
     environment:
       POSTGRES_USER: ${DOCKER_DB_USER}
       POSTGRES_PASSWORD: ${DOCKER_DB_PASS}

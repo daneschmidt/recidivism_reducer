@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import sessionMiddleware from './modules/session-middleware';
 import passport from './strategies/user.strategy';
-import userRouter from './routes/user.router';
+import userRouter from './routes/loginRouters/user.router';
 
 require('dotenv').config();
 
