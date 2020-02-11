@@ -14,7 +14,7 @@ router.put('/', rejectUnauthenticated, (req: Request, res: Response, next: expre
     const username: string | null = <string>req.body.username;
     const password: string | null = encryptPassword(req.body.password); 
   
-    const queryText = `UPDATE "user" SET "password" = $1
+    const queryText: string = `UPDATE "user" SET "password" = $1
     WHERE "user".username = $2;`;
     pool.query(queryText, [password, username])
       .then(() => res.sendStatus(201))
