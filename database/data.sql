@@ -1,8 +1,8 @@
 INSERT INTO "user"
-    ("firstName", "lastName", "password", "securityLevel", "phoneNumber", "email", "role", "isActive")
+    ("firstName", "lastName", "username", "password", "securityLevel", "phoneNumber", "email", "role")
 VALUES
-    ( 'Josh', 'Ma', '1234', 5, 8161234567, 'j.ma@gmail.com', 'Admin', True);
-
+    ( 'Josh', 'Ma', 'JoMa', '1234', 5, 8161234567, 'j.ma@gmail.com', 'Admin'),
+    ( 'Prime', 'Dev', 'PrimeDev', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 1111111111, 'email', 'Developer');
 INSERT INTO "clients"
     ("firstName", "lastName", "gender", "phoneNumber", "email",  "criminalRecord", "misdemOrFel", 
     "incarceratedYorN", "incarcerationLength", "releaseDate", "docNumber", "stateIncarcerated", 
