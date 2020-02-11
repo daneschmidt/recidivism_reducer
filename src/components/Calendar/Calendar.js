@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import FullCalendar from '@fullcalendar/react';
@@ -31,3 +32,19 @@ class Calendar extends Component {
 }
 
 export default connect(mapStoreToProps)(Calendar);
+=======
+
+class Calendar extends Component {
+    render() {
+        return(
+            <div>                                   
+                <p>
+                    Calendar Page!
+                </p>                                                  
+            </div>
+        )
+    }
+}
+
+export default Calendar;
+>>>>>>> develop

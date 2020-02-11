@@ -4,34 +4,43 @@
 -- Otherwise you will have errors!
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
-  "firstName" varchar (20) NOT NULL,
-  "lastName" varchar (20) NOT NULL,
-  "password" varchar (20) NOT NULL,
+  "firstName" varchar NOT NULL,
+  "lastName" varchar NOT NULL,
+  "username" varchar NOT NULL,
+  "password" varchar NOT NULL,
   "securityLevel" int,
   "phoneNumber" bigint,
-  "email" varchar (40) NOT NULL,
+  "email" varchar NOT NULL,
   "role" varchar,
-  "isActive" boolean
+  "isActive" boolean default True
 );
 
 CREATE TABLE "clients" (
   "id" SERIAL PRIMARY KEY,
-  "firstName" varchar (40) NOT NULL,
-  "lastName" varchar (40) NOT NULL,
+  "firstName" varchar NOT NULL,
+  "lastName" varchar NOT NULL,
   "gender" varchar,
   "phoneNumber" bigint,
   "email" varchar,
+  "criminalRecord" boolean,
+  "misdemOrFel" varchar,
+  "incarceratedYorN" boolean,
   "incarcerationLength" varchar,
   "releaseDate" date,
   "docNumber" varchar,
   "stateIncarcerated" varchar,
   "paroleOnRelease" boolean,
+  "agentName" varchar,
+  "agentPhone" bigint,
   "connections" boolean,
   "ifYesConnections" varchar,
   "business" varchar,
+  "businessStage" varchar,
+  "whyAtBeTheBoss" varchar,
+  "whatHopeToGain" varchar,
   "profilePic" varchar,
   "timeStamp" timestamp,
-  "isActive" boolean
+  "isActive" boolean default True
 );
 
 CREATE TABLE "address" (
@@ -43,7 +52,7 @@ CREATE TABLE "address" (
   "zip" int,
   "business" boolean,
   "home" boolean,
-  "current" boolean
+  "current" boolean default True
 );
 
 
