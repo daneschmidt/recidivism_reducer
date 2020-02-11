@@ -12,11 +12,17 @@ router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
 });
 
 router.post('/register', (req: Request, res: Response, next: express.NextFunction): void => {
-  const username: string | null = <string>req.body.username;
+  const firstName: string | null = <string>req.body.firstName;
+  const lastName: string | null = <string>req.body.lastName;
   const password: string | null = encryptPassword(req.body.password);
+  const securityLevel: number | null = <number>req.body.securityLevel;
+  const phoneNumber: number | null = <number>req.body.phoneNumber;
+  const email: string | null = <string>req.body.username;
+  const role: string | null = <string>req.body.role;
+  
 
-  const queryText: string = `INSERT INTO "user" (username, password) VALUES ($1, $2) RETURNING id`;
-  pool.query(queryText, [username, password])
+  const queryText: string = `INSERT INTO "user" (firstName, lastName, password, securityLevel, phoneNumber, email, role) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`;
+  pool.query(queryText, [firstName, lastName, password, securityLevel, phoneNumber, email, role])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log(`Error saving user to database: ${err}`);

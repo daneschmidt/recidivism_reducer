@@ -4,10 +4,15 @@ VALUES
     ( 'Josh', 'Ma', '1234', 5, 8161234567, 'j.ma@gmail.com', 'Admin', True);
 
 INSERT INTO "clients"
-    ("firstName", "lastName", "gender", "phoneNumber", "email", "incarcerationLength", "releaseDate", "docNumber", "stateIncarcerated", "paroleOnRelease", "connections", "ifYesConnections", "business", "profilePic", "timeStamp", "isActive")
+    ("firstName", "lastName", "gender", "phoneNumber", "email",  "criminalRecord", "misdemOrFel", 
+    "incarceratedYorN", "incarcerationLength", "releaseDate", "docNumber", "stateIncarcerated", 
+    "paroleOnRelease", "agentName", "agentPhone", "connections", "ifYesConnections", "business",
+    "businessStage", "whyAtBeTheBoss", "whatHopeToGain", "profilePic", "timeStamp", "isActive")
 VALUES
-    ('Dane', 'Pherigo', 'Male', 8162345678, 'd.pherigo@gmail.com', '2 years', '2020-02-10' , '22', 'Missouri', True, True, 'Yes I do', 'Dane Pherigo Coffee Shop', 'JoshBW.png', '2020-02-10
-04:05:06', True);
+    ('Dane', 'Pherigo', 'Male', 8162345678, 'd.pherigo@gmail.com', True, 'Felony', True,'2 years', 
+    '2020-02-10' , '22', 'Missouri', True, 'Tom Jones', 8085699854, True, 'Connections', 
+    'Dane Pherigo Coffee Shop', 'Starting Stage', 'Hope to gain info', 'info', 'JoshBW.png', 
+    '2020-02-10 04:05:06', True);
 
 INSERT INTO "address"
     ("clients_id", "street", "city", "state", "zip", "business", "home", "current")
