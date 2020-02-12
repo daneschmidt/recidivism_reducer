@@ -84,7 +84,8 @@ CREATE TABLE "tasks" (
   "task" varchar,
   "complete" boolean,
   "assignedOn" timestamp,
-  "dueBy" timestamp
+  "dueBy" timestamp,
+  "completedOn" timestamp
 );
 
 CREATE TABLE "notes" (

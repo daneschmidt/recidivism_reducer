@@ -5,6 +5,8 @@ import passport from './strategies/user.strategy';
 import userRouter from './routes/loginRouters/user.router';
 import changePassword from './routes/loginRouters/changePassword.router';
 import allClients from './routes/allClients.router';
+import tasksGet from './routes/tasksRouters/tasksGet.router';
+import tasksPut from './routes/tasksRouters/tasksPut.router';
 
 require('dotenv').config();
 
@@ -25,6 +27,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/user/change', changePassword);
 app.use('/api/clients/all', allClients);
+app.use('/api/tasks', tasksGet);
+app.use('/api/tasksPut', tasksPut);
 
 // Serve static files
 app.use(express.static('build'));
