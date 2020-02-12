@@ -45,31 +45,32 @@ const useStyles = makeStyles(styles);
 export default function TableList() {
     const classes = useStyles();
     return (
-        <GridContainer>
-            <GridItem xs={12} sm={12} md={12}>
+        <GridContainer justify="center" paddingTop={12}>
+            <GridItem xs={12} sm={12} md={10}>
                 <Card>
-                    {/* <CardHeader color="primary">
+                    <CardHeader color="warning">
                         <h4 className={classes.cardTitleWhite}>Client List</h4>
                         <p className={classes.cardCategoryWhite}>
-                            Below is a list of clients
-                  </p>
-                    </CardHeader> */}
+                            Clients as of 2-12-2020
+              </p>
+                    </CardHeader>
                     <CardBody>
                         <Table
-                            tableHeaderColor="secondary"
-                            tableHead={["Name", "Country", "City", "Salary"]}
+                            tableHeaderColor="warning"
+                            tableHead={["ID", "Name", "Salary", "Location"]}
                             tableData={[
-                                ["Duke Lucke", "Niger", "Oud-Turnhout", "$36,738"],
-                                ["Daddy Lackus", "Curaçao", "Sinaai-Waas", "$23,789"],
-                                ["Lone Wolf", "Netherlands", "Baileux", "$56,142"],
-                                ["Luke Ma", "Korea, South", "Overland Park", "$38,735"],
-                                ["Dane Schmidt", "Malawi", "Feldkirchen in Kärnten", "$63,542"],
-                                ["Grizzler Johnston", "Chile", "Gloucester", "$78,615"]
+                                ["1", "Dane Schmidt", "$136,738", "OP KS THO"],
+                                ["2", "Grizzler Johnston", "$123,789", "KC MO YO"],
+                                ["3", "Josh Wolf", "$156,142", "DOWN SOUTH"],
+                                ["4", "Dad Lackus", "$138,735", "The Coffee Shop"],
+                                ["5", "Luke YoMaMa", "$118,234", "In Front of the 16inch"],
+                                ["6", "DUKE LUKE", "$17", "Fixing the database"]
                             ]}
                         />
                     </CardBody>
                 </Card>
             </GridItem>
+
         </GridContainer>
     )
 }

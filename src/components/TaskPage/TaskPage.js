@@ -63,77 +63,6 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function Notifications() {
-    // const classes = useStyles();
-    // const [tl, setTL] = React.useState(false);
-    // const [tc, setTC] = React.useState(false);
-    // const [tr, setTR] = React.useState(false);
-    // const [bl, setBL] = React.useState(false);
-    // const [bc, setBC] = React.useState(false);
-    // const [br, setBR] = React.useState(false);
-    // React.useEffect(() => {
-    //     // Specify how to clean up after this effect:
-    //     return function cleanup() {
-    //         // to stop the warning of calling setState of unmounted component
-    //         var id = window.setTimeout(null, 0);
-    //         while (id--) {
-    //             window.clearTimeout(id);
-    //         }
-    //     };
-    // });
-    // const showNotification = place => {
-    //     switch (place) {
-    //         case "tl":
-    //             if (!tl) {
-    //                 setTL(true);
-    //                 setTimeout(function () {
-    //                     setTL(false);
-    //                 }, 6000);
-    //             }
-    //             break;
-    //         case "tc":
-    //             if (!tc) {
-    //                 setTC(true);
-    //                 setTimeout(function () {
-    //                     setTC(false);
-    //                 }, 6000);
-    //             }
-    //             break;
-    //         case "tr":
-    //             if (!tr) {
-    //                 setTR(true);
-    //                 setTimeout(function () {
-    //                     setTR(false);
-    //                 }, 6000);
-    //             }
-    //             break;
-    //         case "bl":
-    //             if (!bl) {
-    //                 setBL(true);
-    //                 setTimeout(function () {
-    //                     setBL(false);
-    //                 }, 6000);
-    //             }
-    //             break;
-    //         case "bc":
-    //             if (!bc) {
-    //                 setBC(true);
-    //                 setTimeout(function () {
-    //                     setBC(false);
-    //                 }, 6000);
-    //             }
-    //             break;
-    //         case "br":
-    //             if (!br) {
-    //                 setBR(true);
-    //                 setTimeout(function () {
-    //                     setBR(false);
-    //                 }, 6000);
-    //             }
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    // };
     return (
         <GridContainer justify="center" paddingTop={12}>
             <GridItem xs={12} sm={12} md={10}>
@@ -177,31 +106,7 @@ export default function Notifications() {
                     ]}
                 />
             </GridItem>
-            {/* <GridItem xs={12} sm={12} md={6}>
-                <Card>
-                    <CardHeader color="warning">
-                        <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
-                        <p className={classes.cardCategoryWhite}>
-                            New employees on 15th September, 2016
-              </p>
-                    </CardHeader>
-                    <CardBody>
-                        <Table
-                            tableHeaderColor="warning"
-                            tableHead={["ID", "Name", "Salary", "Country"]}
-                            tableData={[
-                                ["1", "Dakota Rice", "$36,738", "Niger"],
-                                ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                                ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                                ["4", "Philip Chaney", "$38,735", "Korea, South"]
-                            ]}
-                        />
-                    </CardBody>
-                </Card>
-            </GridItem> */}
         </GridContainer>
-
-
     );
 }
 
