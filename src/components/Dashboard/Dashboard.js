@@ -1,6 +1,8 @@
 /*eslint-disable*/
 import React from "react";
 // nodejs library to set properties for components
+// react plugin for creating charts
+import ChartistGraph from "react-chartist";
 // import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,8 +17,10 @@ import Snackbar from "../Snackbar/Snackbar";
 import Card from "../Card/Card.js";
 import CardHeader from "../Card/CardHeader.js";
 import CardBody from "../Card/CardBody.js";
+import CardFooter from "../Card/CardFooter.js";
 import Tasks from "../../components/Tasks/Tasks";
 import Table from "../../components/Table/Table.js";
+import AccessTime from "@material-ui/icons/AccessTime";
 
 import Code from "@material-ui/icons/Code";
 import Cloud from "@material-ui/icons/Cloud";
@@ -29,6 +33,12 @@ import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
 import { bugs, website, server } from "../../../src/variables/general";
 
+import {
+    dailySalesChart,
+    emailsSubscriptionChart,
+    completedTasksChart
+} from "../../variables/charts";
+
 import styles from "../../assets/jss/material-dashboard-react/views/dashboardStyle"
 
 const useStyles = makeStyles(styles);
@@ -36,7 +46,34 @@ const useStyles = makeStyles(styles);
 export default function DashboardPage() {
     const classes = useStyles();
     return (
-        <GridContainer justify="center" paddingTop={12}>
+        <GridContainer justify="center">
+            <GridItem xs={12} sm={12} md={2}>
+                <Card>
+                    <CardHeader color="primary">
+                        <h4 className={classes.cardTitleWhite}>Client List</h4>
+                        <p className={classes.cardCategoryWhite}>
+                            Clients as of 2-12-2020
+              </p>
+                    </CardHeader>
+                    <CardBody>
+                        <Table
+                            tableHeaderColor="primary"
+                            tableHead={["Name"]}
+                            tableData={[
+                                ["Dane Schmidt"],
+                                ["Grizzler Johnston"],
+                                ["Josh Wolf"],
+                                ["Dad Lackus"],
+                                ["Luke YoMaMa"],
+                                ["DUKE LUKE"],
+                                ["Scott"],
+                                ["Rachael"],
+                                ["Myron"]
+                            ]}
+                        />
+                    </CardBody>
+                </Card>
+            </GridItem>
             <GridItem xs={12} sm={12} md={5}>
                 <CustomTabs
                     title="Task List:"
@@ -78,28 +115,27 @@ export default function DashboardPage() {
                     ]}
                 />
             </GridItem>
-            <GridItem xs={12} sm={12} md={5}>
-                <Card>
-                    <CardHeader color="warning">
-                        <h4 className={classes.cardTitleWhite}>Client List</h4>
-                        <p className={classes.cardCategoryWhite}>
-                            Clients as of 2-12-2020
-              </p>
+            <GridItem xs={12} sm={12} md={4}>
+                <Card chart>
+                    <CardHeader color="primary">
+                        <ChartistGraph
+                            className="ct-chart"
+                            data={emailsSubscriptionChart.data}
+                            type="Bar"
+                            options={emailsSubscriptionChart.options}
+                            responsiveOptions={emailsSubscriptionChart.responsiveOptions}
+                            listener={emailsSubscriptionChart.animation}
+                        />
                     </CardHeader>
                     <CardBody>
-                        <Table
-                            tableHeaderColor="warning"
-                            tableHead={["ID", "Name", "Salary", "Location"]}
-                            tableData={[
-                                ["1", "Dane Schmidt", "$136,738", "OP KS THO"],
-                                ["2", "Grizzler Johnston", "$123,789", "KC MO YO"],
-                                ["3", "Josh Wolf", "$156,142", "DOWN SOUTH"],
-                                ["4", "Dad Lackus", "$138,735", "The Coffee Shop"],
-                                ["5", "Luke YoMaMa", "$118,234", "In Front of the 16inch"],
-                                ["6", "DUKE LUKE", "$17", "Fixing the database"]
-                            ]}
-                        />
+                        <h4 className={classes.cardTitle}>Email Subscriptions</h4>
+                        <p className={classes.cardCategory}>Last Campaign Performance</p>
                     </CardBody>
+                    <CardFooter chart>
+                        <div className={classes.stats}>
+                            <AccessTime /> campaign sent 2 days ago
+              </div>
+                    </CardFooter>
                 </Card>
             </GridItem>
         </GridContainer>
