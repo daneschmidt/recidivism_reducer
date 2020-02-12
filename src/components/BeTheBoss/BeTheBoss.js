@@ -27,8 +27,8 @@ class BeTheBoss extends Component {
 		  this.props.dispatch({
 			type: 'ADD_CLIENT',
 			payload: {
-			  username: this.state.firstName,
-			  password: this.state.lastName,
+			  firstName: this.state.firstName,
+			  lastName: this.state.lastName,
 			  gender: this.state.gender,
 			  phoneNumber: this.state.phoneNumber,
 			  email: this.state.email,

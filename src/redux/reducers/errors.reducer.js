@@ -37,7 +37,7 @@ const bossFormMessage = (state = '', action) => {
     case 'CLEAR_BOSS_ERROR':
       return '';
     case 'CLIENT_REJECTED':
-      return 'Please enter info each text field!';
+      return 'Please fill out the entire survey!';
     default:
       return state;
   }

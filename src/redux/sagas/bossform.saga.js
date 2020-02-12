@@ -1,11 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-// worker Saga: will be fired on "REGISTER" actions
 function* newClientInfo(action) {
   try {
 
     yield put({ type: 'CLEAR_BOSS_ERROR' });
+
     yield axios.post('api/clients', action.payload);
     
     yield put({type: 'SET_CLIENTS'});
