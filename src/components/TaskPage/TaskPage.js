@@ -138,7 +138,7 @@ export default function Notifications() {
         <GridContainer justify="center" paddingTop={12}>
             <GridItem xs={12} sm={12} md={10}>
                 <CustomTabs
-                    title="Kyle Tasks:"
+                    title="Task List:"
                     headerColor="primary"
                     tabs={[
                         {
