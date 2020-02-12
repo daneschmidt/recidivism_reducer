@@ -3,10 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import DatePicker from 'react-date-picker';
-//import moment from 'moment';
+import moment from 'moment';
 
 // Material UI
-//import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
@@ -14,18 +13,17 @@ import Grid from '@material-ui/core/Grid';
 
 
 // CSS
-import '../Calendar/Calendar.css'
-
+import '../Calendar/EventModal.css'
 
 class EventModal extends Component {
-    
+
     state = {
         setOpen: false,
         eventName: '',
         eventAddress: '',
-        eventTime: '',
-        eventDate: '',
         eventNotes: '',
+        eventTime: moment(),
+        eventDate: moment(),
     }
 
     handleInputField = infoKey => (event) => {
@@ -39,6 +37,7 @@ class EventModal extends Component {
             setOpen: true,
         })
     }
+
     closeNewEvent = (event) => {
         this.setState({
             setOpen: false,
@@ -47,6 +46,15 @@ class EventModal extends Component {
             eventTime: '',
             eventDate: '',
             eventNotes: '',
+        })
+    }
+
+    handleSubmit = (event, infoKey) => {
+        event.preventDefault();
+        this.props.handleSubmit({
+            [infoKey]: event.target.value,
+            eventTime: moment(),
+            eventDate: moment(), 
         })
     }
 
@@ -66,7 +74,7 @@ class EventModal extends Component {
                             <div className="modal-input">
                                 <h2>Create Event</h2>
                                 <form className="event-form">
-                                    <Grid container spacing={3}>
+                                    <Grid container spacing={2}>
                                         <Grid item xs={6}>
                                             <div className="text-input">
                                                 <TextField variant="outlined"
@@ -92,7 +100,7 @@ class EventModal extends Component {
                                         <Grid item xs={6}>
                                             <DatePicker
                                                 value={this.state.eventDate}
-                                                onChange={this.handleInputField('eventDate')}
+                                                
                                             />
                                         </Grid>
                                     </Grid>
@@ -109,7 +117,7 @@ class EventModal extends Component {
                                 </form>
                                 <button>
                                     OK
-                            </button>
+                                </button>
                             </div>
                         </Modal>
                     </div>
