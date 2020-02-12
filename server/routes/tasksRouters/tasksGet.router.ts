@@ -7,7 +7,7 @@ const router: express.Router = express.Router();
 
 //GET Request for top four tasks by client
 //Order by due date ascending
-router.get('/tasksByClients/:clientId/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
+router.get('/byClients/:clientId/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
     // const userSecurityLevel: number | null = <number>Number(req.params.userSecurityLevel);
     const clientId: number | null = <number>Number(req.params.clientId);
     const trueOrFalse: string | null =<string>(req.params.trueOrFalse); 
@@ -34,7 +34,7 @@ router.get('/tasksByClients/:clientId/:trueOrFalse', rejectUnauthenticated, (req
 
 //GET Request for top ten tasks by user
 //Order by due date ascending
-router.get('/tasksByUser/:userId/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
+router.get('/byUser/:userId/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
     const userId: number | null = <number>Number(req.params.userId);
     const trueOrFalse: string | null =<string>(req.params.trueOrFalse);
 
@@ -60,7 +60,7 @@ router.get('/tasksByUser/:userId/:trueOrFalse', rejectUnauthenticated, (req: Req
 
 //GET Request for top ten tasks by all
 //Order by due date ascending
-router.get('/tasksByAll/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
+router.get('/byAll/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
     const trueOrFalse: string | null =<string>(req.params.trueOrFalse); 
 
     const queryText: string = `SELECT "tasks".id AS "tasksId", "tasks"."dueBy",

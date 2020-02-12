@@ -82,7 +82,7 @@ CREATE TABLE "tasks" (
   "users_id" int REFERENCES "user",
   "clients_id" int REFERENCES "clients",
   "task" varchar,
-  "complete" boolean,
+  "complete" boolean default FALSE,
   "assignedOn" timestamp,
   "dueBy" timestamp,
   "completedOn" timestamp
