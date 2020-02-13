@@ -1,12 +1,14 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import sessionMiddleware from './modules/session-middleware';
-import passport from './strategies/user.strategy';
-import userRouter from './routes/loginRouters/user.router';
-import changePassword from './routes/loginRouters/changePassword.router';
-import allClients from './routes/allClients.router';
+import express from "express";
+import bodyParser from "body-parser";
+import sessionMiddleware from "./modules/session-middleware";
+import passport from "./strategies/user.strategy";
+import userRouter from "./routes/loginRouters/user.router";
+import changePassword from "./routes/loginRouters/changePassword.router";
+import allClients from "./routes/allClients.router";
+import profile from "./routes/profile.router";
+import editProfile from "./routes/editProfile.router";
 
-require('dotenv').config();
+require("dotenv").config();
 
 const app: any = express();
 
@@ -22,19 +24,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
-app.use('/api/user', userRouter);
-app.use('/api/user/change', changePassword);
-app.use('/api/clients/all', allClients);
-
+app.use("/api/user", userRouter);
+app.use("/api/user/change", changePassword);
+app.use("/api/clients/all", allClients);
+app.use("/api/profile", profile);
+app.use("/api/profile", editProfile);
 // Serve static files
-app.use(express.static('build'));
+app.use(express.static("build"));
 
 // App Set //
 const PORT: number | string = process.env.PORT || 5000;
 
 /** Listen * */
 app.listen(PORT, (): void => {
-  console.log(`So awesome. Much wow. Listening on port: ${PORT}`);
+	console.log(`So awesome. Much wow. Listening on port: ${PORT}`);
 });
 
 export default app;
