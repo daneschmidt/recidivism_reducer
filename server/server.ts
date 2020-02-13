@@ -7,6 +7,7 @@ import changePassword from "./routes/loginRouters/changePassword.router";
 import allClients from "./routes/allClients.router";
 import profile from "./routes/profile.router";
 import editProfile from "./routes/editProfile.router";
+import bossFormRouter from "./routes/bossform.router";
 
 require("dotenv").config();
 
@@ -29,6 +30,8 @@ app.use("/api/user/change", changePassword);
 app.use("/api/clients/all", allClients);
 app.use("/api/profile", profile);
 app.use("/api/profile", editProfile);
+app.use("/api/clients", bossFormRouter);
+
 // Serve static files
 app.use(express.static("build"));
 
