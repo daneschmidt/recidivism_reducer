@@ -10,13 +10,12 @@ class profilePage extends Component {
 	componentDidMount() {
 		this.props.dispatch({
 			type: "GET_PROFILE",
-			payload: this.props.store.user.id,
 		});
 	}
 
 	render() {
 		return;
-		<div>
+		<div className="container">
 			<p>First Name:{this.props.store.profile.firstName}</p>
 
 			<p>Last Name:{this.props.store.profile.lastName}</p>

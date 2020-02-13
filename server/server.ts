@@ -8,6 +8,8 @@ import allClients from "./routes/allClients.router";
 import profile from "./routes/profile.router";
 import editProfile from "./routes/editProfile.router";
 import bossFormRouter from "./routes/bossform.router";
+import tasksGet from "./routes/tasksRouters/tasksGet.router";
+import tasks from "./routes/tasksRouters/tasks.router";
 
 require("dotenv").config();
 
@@ -31,6 +33,8 @@ app.use("/api/clients/all", allClients);
 app.use("/api/profile", profile);
 app.use("/api/profile", editProfile);
 app.use("/api/clients", bossFormRouter);
+app.use("/api/tasksGet", tasksGet);
+app.use("/api/tasks", tasks);
 
 // Serve static files
 app.use(express.static("build"));
