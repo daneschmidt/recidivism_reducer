@@ -28,204 +28,67 @@ router.get(
  * Put routes for updating selected individual client profile
  */
 router.put(
-	"/firstname/:id",
+	"/edit/:id",
 	(req: Request, res: Response, next: express.NextFunction): void => {
 		const profileId = req.params.id;
 		const editFirstName = req.body.firstName;
-		const queryText: string = `UPDATE "clients" SET "firstName" = '${editFirstName}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/lastname/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editLastName = req.body.lastName;
-		const queryText: string = `UPDATE "clients" SET "lastName" = '${editLastName}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/phonenumber/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
+		const editGender = req.body.gender;
 		const editPhoneNumber = req.body.phoneNumber;
-		const queryText: string = `UPDATE "clients" SET "phoneNumber" = '${editPhoneNumber}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/email/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editEmail = req.body.email;
-		const queryText: string = `UPDATE "clients" SET "email" = '${editEmail}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/criminalRecord/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editCriminalRecord = req.body.criminalRecord;
-		const queryText: string = `UPDATE "clients" SET "criminalRecord" = '${editCriminalRecord}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/misdemOrFel/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editMisdemOrFel = req.body.misdemOrFel;
-		const queryText: string = `UPDATE "clients" SET "misdemOrFel" = '${editMisdemOrFel}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/incarceratedYorN/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editIncarceratedYorN = req.body.incarceratedYorN;
-		const queryText: string = `UPDATE "clients" SET "incarceratedYorN" = '${editIncarceratedYorN}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/incarcerationLength/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editIncarcerationLength = req.body.incarcerationLength;
-		const queryText: string = `UPDATE "clients" SET "incarcerationLength" = '${editIncarcerationLength}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/releaseDate/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editReleaseDate = req.body.releaseDate;
-		const queryText: string = `UPDATE "clients" SET "releaseDate" = '${editReleaseDate}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/docNumber/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editDocNumber = req.body.docNumber;
-		const queryText: string = `UPDATE "clients" SET "docNumber" = '${editDocNumber}'
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [profileId])
-			.then(response => {
-				res.sendStatus(201);
-			})
-			.catch(err => {
-				console.log(err);
-				res.sendStatus(500);
-			});
-	},
-);
-
-router.put(
-	"/stateIncarcerated/:id",
-	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const editStateIncarcerated = req.body.stateIncarcerated;
-		const queryText: string = `UPDATE "clients" SET "stateIncarcerated" = '${editStateIncarcerated}'
+		const editParoleOnRelease = req.body.paroleOnRelease;
+		const editAgentName = req.body.agentName;
+		const editAgentPhone = req.body.agentPhone;
+		const editConnections = req.body.connections;
+		const editIfYesConnection = req.body.ifYesConnections;
+		const editBusiness = req.body.business;
+		const editBusinessStage = req.body.businessStage;
+		const editWhyAtBeTheBoss = req.body.whyAtBeTheBoss;
+		const editWhatHopeToGain = req.body.whatHopeToGain;
+		const editProfilePic = req.body.profilePic;
+		const editTimeStamp = req.body.timeStamp;
+		const editIsActive = req.body.isActive;
+		const queryText: string = `UPDATE "clients" SET 
+        "firstName" = $2, "lastName" = $3, "gender" = $4, "phoneNumber" = $5, "email" = $6,  "criminalRecord" = $7, "misdemOrFel" = $8, 
+        "incarceratedYorN" = $9, "incarcerationLength" = $10, "releaseDate" = $11, "docNumber" = $12, "stateIncarcerated" = $13, 
+        "paroleOnRelease" = $14, "agentName" = $15, "agentPhone" = $16, "connections" = $17, "ifYesConnections" = $18, "business" = $19,
+        "businessStage" = $20, "whyAtBeTheBoss" = $21, "whatHopeToGain" = $22, "profilePic" = $23, "timeStamp" = $24, "isActive" = $25
         WHERE "id" = $1;`;
 		pool
-			.query(queryText, [profileId])
+			.query(queryText, [
+				profileId,
+				editFirstName,
+				editLastName,
+				editGender,
+				editPhoneNumber,
+				editEmail,
+				editCriminalRecord,
+				editMisdemOrFel,
+				editIncarceratedYorN,
+				editIncarcerationLength,
+				editReleaseDate,
+				editDocNumber,
+				editStateIncarcerated,
+				editParoleOnRelease,
+				editAgentName,
+				editAgentPhone,
+				editConnections,
+				editIfYesConnection,
+				editBusiness,
+				editBusinessStage,
+				editWhyAtBeTheBoss,
+				editWhatHopeToGain,
+				editProfilePic,
+				editTimeStamp,
+				editIsActive,
+			])
 			.then(response => {
 				res.sendStatus(201);
 			})

@@ -18,7 +18,7 @@ router.get(
 				res.send(response.rows[0]);
 			})
 			.catch(err => {
-				console.log(`Error retrieving client list ${err}`);
+				console.log(err);
 				res.sendStatus(500);
 			});
 	},
