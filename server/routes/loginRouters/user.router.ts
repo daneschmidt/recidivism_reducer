@@ -21,7 +21,8 @@ router.post('/add', (req: Request, res: Response, next: express.NextFunction): v
   const email: string | null = <string>req.body.email;
   const role: string | null = <string>req.body.role;
 
-  const queryText: string = `INSERT INTO "user" ("firstName", "lastName", "username", "password", "securityLevel", "phoneNumber", "email", "role") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id`;
+  const queryText: string = `INSERT INTO "user" ("firstName", "lastName", "username", "password", "securityLevel", "phoneNumber", "email", "role") 
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id`;
   pool.query(queryText, [firstName, lastName, username, password, securityLevel, phoneNumber, email, role])
     .then(() => res.sendStatus(201))
     .catch((err) => {
