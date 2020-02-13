@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import sessionMiddleware from './modules/session-middleware';
 import passport from './strategies/user.strategy';
 import userRouter from './routes/loginRouters/user.router';
+import bossFormRouter from './routes/bossform.router';
 import changePassword from './routes/loginRouters/changePassword.router';
 import allClients from './routes/allClients.router';
 
@@ -23,6 +24,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/clients', bossFormRouter);
 app.use('/api/user/change', changePassword);
 app.use('/api/clients/all', allClients);
 
