@@ -3,6 +3,7 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import bossFormSaga from './bossform.saga';
+import getAllClientsListSaga from './getAllClientsListSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -12,10 +13,12 @@ import bossFormSaga from './bossform.saga';
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
+  console.log('The Saga Continues')
   yield all([
     loginSaga(),
     registrationSaga(),
     userSaga(),
     bossFormSaga(),
+    getAllClientsListSaga(),
   ]);
 }

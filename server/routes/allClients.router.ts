@@ -8,7 +8,6 @@ const router: express.Router = express.Router();
 //Route to create a list of clients
 //includes id, firstName, lastName, timeStamp
 router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
-	// const queryText: string = `SELECT * FROM "clients"`;
 	const queryText: string = `SELECT "id", "firstName", "lastName", "timeStamp" FROM "clients"`;
 	pool.query(queryText)
 		.then((response) => {
