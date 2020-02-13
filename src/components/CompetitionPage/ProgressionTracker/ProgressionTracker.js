@@ -44,8 +44,8 @@ class ProgressionTracker extends React.Component {
     console.log(this.props.store.progress.lists);
 
     return (
-      <div>
-        <Card style={{ backgroundColor: 'steelblue' }}>
+      <div style={{ marginTop: '20px', width: '100%' }}>
+        <Card style={{ backgroundColor: 'black', color: 'white' }}>
           <CardContent>
             <h2 style={{ margin: '10px', display: 'inline-block' }}>
               Competition Progression Tracker
