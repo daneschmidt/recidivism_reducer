@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addTask } from '../../../redux/reducers/actions';
 
+import Button from '@material-ui/core/Button';
+
 class AddTask extends React.Component {
   add() {
     const id = this.props.tasks.length
@@ -13,12 +15,14 @@ class AddTask extends React.Component {
 
   render() {
     return (
-      <button
-        className='btn btn-block btn-secondary btn-sm'
+      <Button
+        variant='contained'
+        size='small'
+        color='primary'
         onClick={() => this.add()}
       >
         Add Participant
-      </button>
+      </Button>
     );
   }
 }

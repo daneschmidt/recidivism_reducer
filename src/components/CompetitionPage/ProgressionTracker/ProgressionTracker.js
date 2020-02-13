@@ -2,12 +2,15 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-// import List from '../components/List';
 import List from '../ProgressionList/ProgressionList';
-// import { moveTask } from '../redux/actions';
 import { moveTask } from '../../../redux/reducers/actions';
-// import AddTask from '../containers/AddTask';
 import AddTask from '../Task/AddTask';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
+
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 class ProgressionTracker extends React.Component {
   constructor(props) {
@@ -36,52 +39,51 @@ class ProgressionTracker extends React.Component {
   }
 
   render() {
-    const lists = this.props.lists;
-    const tasks = this.props.tasks;
+    const lists = this.props.store.progress.lists;
+    const tasks = this.props.store.progress.tasks;
+    console.log(this.props.store.progress.lists);
 
     return (
-      <div
-        className='card'
-        style={{
-          height: '500px',
-          margin: '10px',
-          backgroundColor: 'steelblue'
-        }}
-      >
-        <h2 style={{ margin: '10px' }}>Competition Progression Tracker</h2>
-        <span style={{ width: '20%', margin: '20px' }}>
-          <AddTask />
-        </span>
-
-        <div className='row mt-5'>
-          <DragDropContext onDragEnd={this.onDragEnd}>
-            {lists.map(list => (
-              <Droppable droppableId={list.id} key={list.id}>
-                {(provided, snapshot) => (
-                  <List
-                    list={list}
-                    tasks={this.getTasks(list, tasks)}
-                    innerRef={provided.innerRef}
-                    provided={provided}
-                  />
-                )}
-              </Droppable>
-            ))}
-          </DragDropContext>
-        </div>
+      <div>
+        <Card style={{ backgroundColor: 'steelblue' }}>
+          <CardContent>
+            <h2 style={{ margin: '10px', display: 'inline-block' }}>
+              Competition Progression Tracker
+            </h2>
+            <span style={{ margin: '10px', display: 'inline-block' }}>
+              <AddTask />
+            </span>
+            <Grid container spacing={3}>
+              <DragDropContext onDragEnd={this.onDragEnd}>
+                {lists.map(list => (
+                  <Droppable droppableId={list.id} key={list.id}>
+                    {(provided, snapshot) => (
+                      <Grid item xs={2}>
+                        <Paper style={{ margin: '10px', padding: '10px' }}>
+                          <List
+                            style={{ flex: '1' }}
+                            list={list}
+                            tasks={this.getTasks(list, tasks)}
+                            innerRef={provided.innerRef}
+                            provided={provided}
+                          />
+                        </Paper>
+                      </Grid>
+                    )}
+                  </Droppable>
+                ))}
+              </DragDropContext>
+            </Grid>
+          </CardContent>
+        </Card>
       </div>
     );
   }
 }
-
-const mapStateToProps = state => ({
-  lists: _.values(state.lists),
-  tasks: state.tasks
-});
 
 const mapDispatchToProps = dispatch => ({
   moveTask: (fromListId, toListId, id) =>
     dispatch(moveTask(fromListId, toListId, id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProgressionTracker);
+export default connect(mapStoreToProps, mapDispatchToProps)(ProgressionTracker);

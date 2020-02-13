@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import ContentEditable from 'react-contenteditable';
 import { editTask, deleteTask } from '../../../redux/reducers/actions';
 
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+
 class Task extends React.Component {
   handleChange(e) {
     this.props.editTask(this.props.task.id, e.target.value);
@@ -16,29 +20,29 @@ class Task extends React.Component {
     const { task, provided, innerRef } = this.props;
 
     return (
-      <div
-        className='card mb-3'
+      <Card
         ref={innerRef}
         {...provided.draggableProps}
         {...provided.dragHandleProps}
       >
-        <div className='card-body p-0'>
+        <CardContent>
           <ContentEditable
-            className='p-3'
             html={task.title}
             disabled={false}
             onChange={e => this.handleChange(e)}
           />
-          <div className='p-2 flex-shrink-1 bd-highlight'>
-            <button
-              className='btn btn-danger btn-sm'
-              onClick={e => this.delete(e)}
-            >
-              X
-            </button>
-          </div>
-        </div>
-      </div>
+        </CardContent>
+        <CardContent style={{ marginBottom: '10px', backgroundColor: '#555' }}>
+          <Button
+            variant='contained'
+            size='small'
+            color='secondary'
+            onClick={e => this.delete(e)}
+          >
+            X
+          </Button>
+        </CardContent>
+      </Card>
     );
   }
 }

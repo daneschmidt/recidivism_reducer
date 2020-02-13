@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Tracker from './ProgressionTracker/ProgressionTracker';
 
+import Container from '@material-ui/core/Container';
+
 class CompetitionPage extends Component {
   render() {
     return (
-      <div>
-        <Tracker />
-      </div>
+      <Container>
+        <Tracker></Tracker>
+      </Container>
     );
   }
 }
