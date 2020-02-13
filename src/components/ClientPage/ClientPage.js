@@ -48,7 +48,7 @@ export default function TableList() {
         <GridContainer justify="center" paddingTop={12}>
             <GridItem xs={12} sm={12} md={10}>
                 <Card>
-                    <CardHeader color="warning">
+                    <CardHeader color="primary">
                         <h4 className={classes.cardTitleWhite}>Client List</h4>
                         <p className={classes.cardCategoryWhite}>
                             Clients as of 2-12-2020
@@ -56,7 +56,7 @@ export default function TableList() {
                     </CardHeader>
                     <CardBody>
                         <Table
-                            tableHeaderColor="warning"
+                            tableHeaderColor="primary"
                             tableHead={["ID", "Name", "Salary", "Location"]}
                             tableData={[
                                 ["1", "Dane Schmidt", "$136,738", "OP KS THO"],

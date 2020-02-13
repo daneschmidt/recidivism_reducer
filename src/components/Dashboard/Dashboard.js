@@ -117,18 +117,17 @@ export default function DashboardPage() {
             </GridItem>
             <GridItem xs={12} sm={12} md={4}>
                 <Card chart>
-                    <CardHeader color="primary">
+                    <CardHeader color="secondary">
                         <ChartistGraph
                             className="ct-chart"
-                            data={emailsSubscriptionChart.data}
-                            type="Bar"
-                            options={emailsSubscriptionChart.options}
-                            responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                            listener={emailsSubscriptionChart.animation}
+                            data={completedTasksChart.data}
+                            type="Line"
+                            options={completedTasksChart.options}
+                            listener={completedTasksChart.animation}
                         />
                     </CardHeader>
                     <CardBody>
-                        <h4 className={classes.cardTitle}>Email Subscriptions</h4>
+                        <h4 className={classes.cardTitle}>Completed Tasks</h4>
                         <p className={classes.cardCategory}>Last Campaign Performance</p>
                     </CardBody>
                     <CardFooter chart>
