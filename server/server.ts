@@ -6,6 +6,8 @@ import userRouter from './routes/loginRouters/user.router';
 import bossFormRouter from './routes/bossform.router';
 import changePassword from './routes/loginRouters/changePassword.router';
 import allClients from './routes/allClients.router';
+import tasksGet from './routes/tasksRouters/tasksGet.router';
+import tasks from './routes/tasksRouters/tasks.router';
 
 require('dotenv').config();
 
@@ -27,6 +29,8 @@ app.use('/api/user', userRouter);
 app.use('/api/clients', bossFormRouter);
 app.use('/api/user/change', changePassword);
 app.use('/api/clients/all', allClients);
+app.use('/api/tasksGet', tasksGet);
+app.use('/api/tasks', tasks);
 
 // Serve static files
 app.use(express.static('build'));
