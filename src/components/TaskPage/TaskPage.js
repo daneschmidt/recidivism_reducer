@@ -136,7 +136,7 @@ class TaskPage extends Component {
                                         <Tasks
                                             checkedIndexes={[0, 3]}
                                             tasksIndexes={[0, 1, 2, 3, 4, 5]}
-                                            tasks={taskList}
+                                            tasks={bugs}
                                         />
                                     )
                                 },
