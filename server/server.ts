@@ -10,11 +10,8 @@ import editProfile from './routes/editProfile.router';
 import bossFormRouter from './routes/bossform.router';
 import tasksGet from './routes/tasksRouters/tasksGet.router';
 import tasks from './routes/tasksRouters/tasks.router';
-<<<<<<< HEAD
 import eventRouter from './routes/event.router';
-=======
 import competitions from './routes/competitions.router';
->>>>>>> develop
 
 require('dotenv').config();
 
@@ -38,13 +35,10 @@ app.use('/api/user/change', changePassword);
 app.use('/api/clients/all', allClients);
 app.use('/api/tasksGet', tasksGet);
 app.use('/api/tasks', tasks);
-<<<<<<< HEAD
 app.use('/api/events', eventRouter);
-=======
 app.use('/api/competitions', competitions);
 app.use('/api/profile', profile);
 app.use('/api/profile/edit', editProfile);
->>>>>>> develop
 
 // Serve static files
 app.use(express.static('build'));
