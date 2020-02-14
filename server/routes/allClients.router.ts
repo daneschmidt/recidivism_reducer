@@ -1,13 +1,13 @@
-import { Request, Response } from "express";
-import express from "express";
-import pool from "../modules/pool";
-import rejectUnauthenticated from "../modules/authentication-middleware";
+import { Request, Response } from 'express';
+import express from 'express';
+import pool from '../modules/pool';
+import rejectUnauthenticated from '../modules/authentication-middleware';
 
 const router: express.Router = express.Router();
 
 //Route to create a list of clients
 //includes id, firstName, lastName, email, phoneNumber, timeStamp
-router.get("/", rejectUnauthenticated, (req: Request, res: Response): void => {
+router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
 	const queryText:
 		| string
 		| null = `SELECT "id", "firstName", "lastName", "email", "phoneNumber", "timeStamp" FROM "clients"`;
