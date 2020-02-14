@@ -24,19 +24,17 @@ class clientPage extends Component {
 	};
 
 	render() {
-		const clientList = this.props.store.clientReducer.map((item, index) => {
+		const clientList = this.props.store.client.map((item, index) => {
 			return (
 				<div
 					key={index}
 					className="click-client"
 					onClick={event => this.goToProfile(item.id)}
 				>
-					<h3>
-						{item.firstName}
-						{item.lastName}
-						{item.email}
-						{item.phoneNumber}
-					</h3>
+					<span>{item.firstName}</span>
+					<span>{item.lastName}</span>
+					<span>{item.email}</span>
+					<span>{item.phoneNumber}</span>
 				</div>
 			);
 		});
