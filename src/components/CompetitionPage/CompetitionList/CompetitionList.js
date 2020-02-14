@@ -83,6 +83,7 @@ class CompetitionList extends Component {
             }}
             type='button'
             onClick={this.handleOpen}
+            size='small'
           >
             Add Event Results
           </Button>
