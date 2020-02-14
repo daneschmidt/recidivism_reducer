@@ -23,7 +23,7 @@ class Calendar extends Component {
   //calendarComponentRef = React.createRef();
 
   state = {
-    calendarEvents:[
+    calendarEvents: [
       {
         title: 'Be The Boss',
         start: '2020-02-21',
@@ -39,34 +39,33 @@ class Calendar extends Component {
     console.log('event:', calEvent);
     alert(calEvent.event.title);
   }
-  
 
-render() {
-  return (
-    <div>
-      <div className="calendar">
-        <EventModal />
-        <div>
-          <Container maxWidth="md" className="calendar-container">
-            <FullCalendar
-              defaultView="dayGridMonth"
-              header={{
-                left: "prev, next, today",
-                center: "title",
-                right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
-              }}
-              ref={this.calendarComponentRef}
-              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-              events={this.state.calendarEvents}
-              //dateClick={this.handleDateClick}
-              eventClick={this.handleEventClick}
-            />
-          </Container>
+  render() {
+    return (
+      <div>
+        <div className="calendar">
+          <EventModal />
+          <div>
+            <Container maxWidth="md" className="calendar-container">
+              <FullCalendar
+                defaultView="dayGridMonth"
+                header={{
+                  left: "prev, next, today",
+                  center: "title",
+                  right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+                }}
+                ref={this.calendarComponentRef}
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                events={this.state.calendarEvents}
+                //dateClick={this.handleDateClick}
+                eventClick={this.handleEventClick}
+              />
+            </Container>
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
 
 }
 
