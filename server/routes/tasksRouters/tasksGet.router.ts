@@ -1,16 +1,19 @@
 import { Request, Response } from "express";
-import express from 'express';
-import pool from '../../modules/pool';
-import rejectUnauthenticated from '../../modules/authentication-middleware';
+import express from "express";
+import pool from "../../modules/pool";
+import rejectUnauthenticated from "../../modules/authentication-middleware";
 
 const router: express.Router = express.Router();
 
 //GET Request for top four tasks by client
 //Order by due date ascending
-router.get('/byClients/:clientId/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
+router.get(
+  "/byClients/:clientId/:trueOrFalse",
+  rejectUnauthenticated,
+  (req: Request, res: Response, next: express.NextFunction): void => {
     // const userSecurityLevel: number | null = <number>Number(req.params.userSecurityLevel);
     const clientId: number | null = <number>Number(req.params.clientId);
-    const trueOrFalse: string | null =<string>(req.params.trueOrFalse); 
+    const trueOrFalse: string | null = <string>req.params.trueOrFalse;
 
     const queryText: string = `SELECT "tasks".id AS "tasksId", "tasks"."dueBy",
     "user".id AS "userId", 
@@ -22,21 +25,26 @@ router.get('/byClients/:clientId/:trueOrFalse', rejectUnauthenticated, (req: Req
     WHERE "clients".id = $1 AND "tasks".complete = $2
     ORDER BY "tasks"."dueBy" ASC
     LIMIT 4;`;
-    pool.query(queryText, [clientId, trueOrFalse])
-    .then((response) => {
-        res.send(response.rows)
-    })
-    .catch((err) => {
-        console.log(`error getting tasks ${err}`)
+    pool
+      .query(queryText, [clientId, trueOrFalse])
+      .then(response => {
+        res.send(response.rows);
+      })
+      .catch(err => {
+        console.log(`error getting tasks ${err}`);
         res.sendStatus(500);
-    })
-});
+      });
+  }
+);
 
 //GET Request for top ten tasks by user
 //Order by due date ascending
-router.get('/byUser/:userId/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
+router.get(
+  "/byUser/:userId/:trueOrFalse",
+  rejectUnauthenticated,
+  (req: Request, res: Response, next: express.NextFunction): void => {
     const userId: number | null = <number>Number(req.params.userId);
-    const trueOrFalse: string | null =<string>(req.params.trueOrFalse);
+    const trueOrFalse: string | null = <string>req.params.trueOrFalse;
 
     const queryText: string = `SELECT "tasks".id AS "tasksId", "tasks"."dueBy",
     "user".id AS "userId",  
@@ -48,20 +56,25 @@ router.get('/byUser/:userId/:trueOrFalse', rejectUnauthenticated, (req: Request,
     WHERE "user".id = $1 AND "tasks".complete = $2
     ORDER BY "tasks"."dueBy" ASC
     LIMIT 10;`;
-    pool.query(queryText, [userId, trueOrFalse])
-    .then((response) => {
-        res.send(response.rows)
-    })
-    .catch((err) => {
-        console.log(`error getting tasks ${err}`)
+    pool
+      .query(queryText, [userId, trueOrFalse])
+      .then(response => {
+        res.send(response.rows);
+      })
+      .catch(err => {
+        console.log(`error getting tasks ${err}`);
         res.sendStatus(500);
-    })
-});
+      });
+  }
+);
 
 //GET Request for top ten tasks by all
 //Order by due date ascending
-router.get('/byAll/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
-    const trueOrFalse: string | null =<string>(req.params.trueOrFalse); 
+router.get(
+  "/byAll/:trueOrFalse",
+  rejectUnauthenticated,
+  (req: Request, res: Response, next: express.NextFunction): void => {
+    const trueOrFalse: string | null = <string>req.params.trueOrFalse;
 
     const queryText: string = `SELECT "tasks".id AS "tasksId", "tasks"."dueBy",
     "user".id AS "userId",  
@@ -73,14 +86,16 @@ router.get('/byAll/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Res
     WHERE "tasks".complete = $1
     ORDER BY "tasks"."dueBy" ASC
     LIMIT 10;`;
-    pool.query(queryText, [trueOrFalse])
-    .then((response) => {
-        res.send(response.rows)
-    })
-    .catch((err) => {
-        console.log(`error getting tasks ${err}`)
+    pool
+      .query(queryText, [trueOrFalse])
+      .then(response => {
+        res.send(response.rows);
+      })
+      .catch(err => {
+        console.log(`error getting tasks ${err}`);
         res.sendStatus(500);
-    })
-});
+      });
+  }
+);
 
 export default router;
