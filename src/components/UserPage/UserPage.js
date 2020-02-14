@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+// import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 
@@ -9,51 +9,49 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Component } from "react";
 // nodejs library to set properties for components
 // react plugin for creating charts
-import ChartistGraph from "react-chartist";
+// import ChartistGraph from "react-chartist";
 // import PropTypes from "prop-types";
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 // @material-ui/icons
-import AddAlert from "@material-ui/icons/AddAlert";
+// import AddAlert from "@material-ui/icons/AddAlert";
 // core components
 import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
 import Button from "../CustomButtons/Button.js";
-import SnackbarContent from "../Snackbar/SnackbarContent";
-import Snackbar from "../Snackbar/Snackbar";
+// import SnackbarContent from "../Snackbar/SnackbarContent";
+// import Snackbar from "../Snackbar/Snackbar";
 import Card from "../Card/Card.js";
 import CardHeader from "../Card/CardHeader.js";
 import CardBody from "../Card/CardBody.js";
 import CardFooter from "../Card/CardFooter.js";
-import Tasks from "../../components/Tasks/Tasks";
-import Table from "../../components/Table/Table.js";
-import AccessTime from "@material-ui/icons/AccessTime";
+// import Tasks from "../../components/Tasks/Tasks";
+// import Table from "../../components/Table/Table.js";
+// import AccessTime from "@material-ui/icons/AccessTime";
 import CustomInput from "../../components/CustomInput/CustomInput.js";
 
-
-const styles = {
-  cardCategoryWhite: {
-    color: "rgba(255,255,255,.62)",
-    margin: "0",
-    fontSize: "14px",
-    marginTop: "0",
-    marginBottom: "0"
-  },
-  cardTitleWhite: {
-    color: "#FFFFFF",
-    marginTop: "0px",
-    minHeight: "auto",
-    fontWeight: "300",
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    marginBottom: "3px",
-    textDecoration: "none"
-  }
-};
+// const styles = {
+//   cardCategoryWhite: {
+//     color: "rgba(255,255,255,.62)",
+//     margin: "0",
+//     fontSize: "14px",
+//     marginTop: "0",
+//     marginBottom: "0"
+//   },
+//   cardTitleWhite: {
+//     color: "#FFFFFF",
+//     marginTop: "0px",
+//     minHeight: "auto",
+//     fontWeight: "300",
+//     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+//     marginBottom: "3px",
+//     textDecoration: "none"
+//   }
+// };
 
 // const useStyles = makeStyles(styles);
 // const classes = useStyles();
-
 
 
 class UserPage extends Component {
@@ -226,15 +224,6 @@ class UserPage extends Component {
 }
 
 export default connect(mapStoreToProps)(UserPage);
-
-
-
-
-
-
-
-
-
 
 
 //OLD PAGE STUFF 
