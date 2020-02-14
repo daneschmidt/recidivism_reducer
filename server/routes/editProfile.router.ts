@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import express from "express";
-import pool from "../modules/pool";
+import { Request, Response } from 'express';
+import express from 'express';
+import pool from '../modules/pool';
 
 const router: express.Router = express.Router();
 
@@ -8,7 +8,7 @@ const router: express.Router = express.Router();
  * GET route for selected individual client profile
  */
 router.get(
-	"/:id",
+	'/profile/:id',
 	(req: Request, res: Response, next: express.NextFunction): void => {
 		const profileId = req.params.id;
 		const queryText: string = `SELECT * FROM "clients" WHERE "id" = $1;`;
@@ -28,7 +28,7 @@ router.get(
  * Put routes for updating selected individual client profile
  */
 router.put(
-	"/edit/:id",
+	'/edit/:id',
 	(req: Request, res: Response, next: express.NextFunction): void => {
 		const profileId = req.params.id;
 		const editFirstName = req.body.firstName;
