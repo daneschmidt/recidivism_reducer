@@ -1,45 +1,45 @@
 import React from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 
-import GridItem from "../Grid/GridItem";
-import GridContainer from "../Grid/GridContainer";
-import Table from "../Table/Table";
-import Card from "../Card/Card";
-import CardHeader from "../Card/CardHeader";
-import CardBody from "../Card/CardBody";
+// import GridItem from "../Grid/GridItem";
+// import GridContainer from "../Grid/GridContainer";
+// import Table from "../Table/Table";
+// import Card from "../Card/Card";
+// import CardHeader from "../Card/CardHeader";
+// import CardBody from "../Card/CardBody";
 
-const styles = {
-    cardCategoryWhite: {
-        "&,& a,& a:hover,& a:focus": {
-            color: "rgba(255,255,255,.62)",
-            margin: "0",
-            fontSize: "14px",
-            marginTop: "0",
-            marginBottom: "0"
-        },
-        "& a,& a:hover,& a:focus": {
-            color: "#FFFFFF"
-        }
-    },
-    cardTitleWhite: {
-        color: "#FFFFFF",
-        marginTop: "0px",
-        minHeight: "auto",
-        fontWeight: "300",
-        fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-        marginBottom: "3px",
-        textDecoration: "none",
-        "& small": {
-            color: "#777",
-            fontSize: "65%",
-            fontWeight: "400",
-            lineHeight: "1"
-        }
-    }
-};
+// const styles = {
+//     cardCategoryWhite: {
+//         "&,& a,& a:hover,& a:focus": {
+//             color: "rgba(255,255,255,.62)",
+//             margin: "0",
+//             fontSize: "14px",
+//             marginTop: "0",
+//             marginBottom: "0"
+//         },
+//         "& a,& a:hover,& a:focus": {
+//             color: "#FFFFFF"
+//         }
+//     },
+//     cardTitleWhite: {
+//         color: "#FFFFFF",
+//         marginTop: "0px",
+//         minHeight: "auto",
+//         fontWeight: "300",
+//         fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+//         marginBottom: "3px",
+//         textDecoration: "none",
+//         "& small": {
+//             color: "#777",
+//             fontSize: "65%",
+//             fontWeight: "400",
+//             lineHeight: "1"
+//         }
+//     }
+// };
 
-const useStyles = makeStyles(styles);
+// const useStyles = makeStyles(styles);
 
 
 export default function TableList() {
@@ -75,3 +75,50 @@ export default function TableList() {
     )
 }
 
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import mapStoreToProps from "../../redux/mapStoreToProps";
+
+class clientPage extends Component {
+    state = {
+        // heading: "Class Component",
+    };
+    //Dispatches to client.saga to GET full list of clients
+    componentDidMount() {
+        this.props.dispatch({
+            type: "GET_CLIENTS",
+        });
+    }
+    //Dispatches selected client id to profile.saga
+    goToProfile = id => {
+        console.log(id);
+        this.props.dispatch({
+            type: "GET_PROFILE",
+            payload: id,
+        });
+        //Navigates to profile page, will give all information on selected client
+        this.props.history.push("/profile/");
+    };
+
+    render() {
+        const clientList = this.props.store.clientReducer.map((item, index) => {
+            return (
+                <div
+                    key={index}
+                    className="click-client"
+                    onClick={event => this.goToProfile(item.id)}
+                >
+                    <h3>
+                        {item.firstName}
+                        {item.lastName}
+                        {item.email}
+                        {item.phoneNumber}
+                    </h3>
+                </div>
+            );
+        });
+        return <div>{clientList}</div>;
+    }
+}
+
+export default connect(mapStoreToProps)(clientPage);
