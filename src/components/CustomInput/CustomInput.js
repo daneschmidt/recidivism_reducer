@@ -9,12 +9,11 @@ import Input from "@material-ui/core/Input";
 // @material-ui/icons
 import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
-// core components
-import styles from "assets/jss/material-dashboard-react/components/customInputStyle.js";
 
-const useStyles = makeStyles(styles);
 
-export default function CustomInput(props) {
+const useStyles = makeStyles();
+
+export default function CustomInput(props, ) {
   const classes = useStyles();
   const {
     formControlProps,
@@ -79,3 +78,4 @@ CustomInput.propTypes = {
   error: PropTypes.bool,
   success: PropTypes.bool
 };
+
