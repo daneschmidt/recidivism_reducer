@@ -24,7 +24,7 @@ export default function* rootSaga() {
     bossFormSaga(),
     getAllClientsListSaga(),
     getTasksSaga(),
-    getRecentCompsSaga()
+    getRecentCompsSaga(),
     calendar(),
   ]);
 }
