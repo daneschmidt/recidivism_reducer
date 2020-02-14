@@ -13,6 +13,18 @@ import Footer from "../Footer/Footer";
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
+<<<<<<< HEAD
+import BeTheBoss from '../BeTheBoss/BeTheBoss';
+import UserPage from '../UserPage/UserPage';
+import Calendar from '../Calendar/CalendarHome/Calendar';
+import LandingPage from '../LandingPage/LandingPage';
+import LoginPage from '../LoginPage/LoginPage';
+import RegisterPage from '../RegisterPage/RegisterPage';
+import Dashboard from '../Dashboard/Dashboard';
+import ClientPage from '../ClientPage/ClientPage';
+import Competition from '../CompetitionPage/CompetitionPage';
+import TaskPage from '../TaskPage/TaskPage';
+=======
 import BeTheBoss from "../BeTheBoss/BeTheBoss";
 import UserPage from "../UserPage/UserPage";
 import Calendar from "../Calendar/Calendar";
@@ -23,6 +35,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import ClientPage from "../ClientPage/ClientPage";
 import Competition from "../CompetitionPage/CompetitionPage";
 import TaskPage from "../TaskPage/TaskPage";
+>>>>>>> 366bc83141a3a8f34c5539b086809af379a67715
 
 import "./App.css";
 
