@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* getAllEvents() {
     try {
-        const response = yield axios.get('api/calendar');
+        const response = yield axios.get('api/events');
         console.log(response);
         yield put ({
             type: 'SET_CALENDAR',
@@ -19,7 +19,7 @@ function* addNewEvent(action) {
 
     yield put({ type: 'CLEAR_ADD_EVENT_ERROR' });
 
-    const response = yield axios.post('api/calendar/events', action.payload);
+    const response = yield axios.post('api/events', action.payload);
     console.log(response);
     yield put({type: 'SET_CALENDAR'});
     
