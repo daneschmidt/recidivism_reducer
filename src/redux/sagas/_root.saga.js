@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import getClientsSaga from './client.saga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
@@ -16,7 +17,6 @@ import calendar from './calendar.saga';
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-  console.log('The Saga Continues');
   yield all([
     loginSaga(),
     registrationSaga(),
