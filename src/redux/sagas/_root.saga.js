@@ -3,6 +3,8 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import bossFormSaga from './bossform.saga';
+import getAllClientsListSaga from './getAllClientsListSaga';
+import getTasksSaga from './getTasksSaga';
 import getRecentCompsSaga from './competitions.saga';
 import calendar from './calendar.saga'
 
@@ -14,11 +16,14 @@ import calendar from './calendar.saga'
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
+  console.log('The Saga Continues')
   yield all([
     loginSaga(),
     registrationSaga(),
     userSaga(),
     bossFormSaga(),
+    getAllClientsListSaga(),
+    getTasksSaga(),
     getRecentCompsSaga()
     calendar(),
   ]);
