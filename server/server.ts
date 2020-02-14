@@ -8,6 +8,7 @@ import changePassword from './routes/loginRouters/changePassword.router';
 import allClients from './routes/allClients.router';
 import tasksGet from './routes/tasksRouters/tasksGet.router';
 import tasks from './routes/tasksRouters/tasks.router';
+import eventRouter from './routes/event.router';
 
 require('dotenv').config();
 
@@ -31,6 +32,7 @@ app.use('/api/user/change', changePassword);
 app.use('/api/clients/all', allClients);
 app.use('/api/tasksGet', tasksGet);
 app.use('/api/tasks', tasks);
+app.use('/api/events', eventRouter);
 
 // Serve static files
 app.use(express.static('build'));
