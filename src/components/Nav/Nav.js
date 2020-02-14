@@ -7,20 +7,25 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 const Nav = (props) => {
   let loginLinkData = {
-    path: '/home',
-    text: 'Login / Register',
+    path: '/login',
+    text: 'Login',
   };
 
   if (props.store.user.id != null) {
-    loginLinkData.path = '/admin';
-    loginLinkData.text = 'Home';
+    loginLinkData.path = '/dashboard';
+    loginLinkData.text = 'Dashboard';
   }
 
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">Determination Inc. Community Tracker</h2>
       </Link>
+      <div className="nav-left">
+      <Link className="nav-link" to="/betheboss">
+          Be The Boss
+        </Link>
+      </div>
       <div className="nav-right">
         <Link className="nav-link" to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
@@ -31,16 +36,25 @@ const Nav = (props) => {
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (
           <>
-            <Link className="nav-link" to="/info">
-              Info Page
+            <Link className="nav-link" to="/clientpage">
+              Client Page
+            </Link>
+            <Link className="nav-link" to="/calendar">
+              Calendar
+            </Link>
+            <Link className="nav-link" to="/competition">
+              Competitions
+            </Link>
+            <Link className="nav-link" to="/taskpage">
+              Task Page
+            </Link>
+            <Link className="nav-link" to="/userpage">
+              User Page
             </Link>
             <LogOutButton className="nav-link"/>
           </>
         )}
         {/* Always show this link since the about page is not protected */}
-        <Link className="nav-link" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
