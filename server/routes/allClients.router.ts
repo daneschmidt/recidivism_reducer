@@ -14,7 +14,7 @@ router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
 		.then((response) => {
 			res.send(response.rows)
 		})
-		.catch(err => {
+		.catch((err) => {
 			console.log(`Error retrieving client list ${err}`);
 			res.sendStatus(500);
 		});
