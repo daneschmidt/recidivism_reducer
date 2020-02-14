@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import mapStoreToProps from "../../redux/mapStoreToProps";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class clientPage extends Component {
 	state = {
@@ -9,18 +9,18 @@ class clientPage extends Component {
 	//Dispatches to client.saga to GET full list of clients
 	componentDidMount() {
 		this.props.dispatch({
-			type: "GET_CLIENTS",
+			type: 'GET_CLIENTS',
 		});
 	}
 	//Dispatches selected client id to profile.saga
 	goToProfile = id => {
 		console.log(id);
 		this.props.dispatch({
-			type: "GET_PROFILE",
+			type: 'GET_PROFILE',
 			payload: id,
 		});
 		//Navigates to profile page, will give all information on selected client
-		this.props.history.push("/profile/");
+		this.props.history.push('/profile/');
 	};
 
 	render() {
@@ -28,7 +28,7 @@ class clientPage extends Component {
 			return (
 				<div
 					key={index}
-					className="click-client"
+					className='click-client'
 					onClick={event => this.goToProfile(item.id)}
 				>
 					<span>{item.firstName}</span>
