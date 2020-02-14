@@ -1,7 +1,9 @@
 // React
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
+
+// React Full Calendar
 import DatePicker from 'react-date-picker';
 import moment from 'moment';
 
@@ -11,24 +13,33 @@ import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
-
 // CSS
-import '../Calendar/EventModal.css'
+import '../../Calendar/AddEventModal/EventModal.css'
 
 class EventModal extends Component {
 
     state = {
         setOpen: false,
-        eventName: '',
-        eventAddress: '',
-        eventNotes: '',
-        eventTime: moment(),
-        eventDate: moment(),
+        calendarEvents:
+            {
+                eventDate: new Date(),
+                endEventDate: new Date(),
+                startTime: moment(),
+                endTime: moment(),
+                eventTitle: '',
+                notes: '',
+                location: '',
+            }
     }
 
+
     handleInputField = infoKey => (event) => {
+        const inputedVal = event.target != null ? event.target.value : event;
         this.setState({
-            [infoKey]: event.target.value,
+            // calendarEvents: {
+            //     ...this.state.calendarEvents,
+            // },
+            [infoKey]: inputedVal,
         });
     }
 
@@ -41,21 +52,30 @@ class EventModal extends Component {
     closeNewEvent = (event) => {
         this.setState({
             setOpen: false,
-            eventName: '',
-            eventAddress: '',
-            eventTime: '',
             eventDate: '',
-            eventNotes: '',
+            startTime: '',
+            endTime: '',
+            endEventDate: '',
+            eventTitle: '',
+            notes: '',
+            location: '',
         })
     }
 
     handleSubmit = (event, infoKey) => {
-        event.preventDefault();
-        this.props.handleSubmit({
-            [infoKey]: event.target.value,
-            eventTime: moment(),
-            eventDate: moment(), 
+        this.props.dispatch({
+            type: 'POST_EVENT',
+            payload: {
+                eventDate: this.state.eventDate,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
+                endEventDate: this.state.endEventDate,
+                eventTitle: this.state.eventTitle,
+                notes: this.state.notes,
+                location: this.state.location,
+            }
         })
+        this.closeNewEvent();
     }
 
     render() {
@@ -72,35 +92,43 @@ class EventModal extends Component {
                     <div className="event-modal">
                         <Modal open={this.state.setOpen} onClose={this.closeNewEvent}>
                             <div className="modal-input">
-                                <h2>Create Event</h2>
-                                <form className="event-form">
+                                <div className="modal-header">
+                                    <h2>Create Event</h2>
+                                </div>
+                                <div className="event-form">
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
                                             <div className="text-input">
                                                 <TextField variant="outlined"
                                                     type="text"
                                                     label="Event Name"
-                                                    value={this.state.eventName}
-                                                    onChange={this.handleInputField('eventName')}
+                                                    value={this.state.calendarEvents.eventTitle}
+                                                    onChange={this.handleInputField('eventTitle')}
                                                 />
                                                 <TextField variant="outlined"
                                                     type="text"
                                                     label="Address"
-                                                    value={this.state.eventAddress}
-                                                    onChange={this.handleInputField('eventAddress')}
+                                                    value={this.state.calendarEvents.location}
+                                                    onChange={this.handleInputField('location')}
                                                 />
                                                 <TextField variant="outlined"
                                                     type="text"
-                                                    label="Time"
-                                                    value={this.state.eventTime}
-                                                    onChange={this.handleInputField('eventTime')}
+                                                    label="Start Time"
+                                                    value={this.state.calendarEvents.startTime}
+                                                    onChange={this.handleInputField('startTime')}
+                                                />
+                                                <TextField variant="outlined"
+                                                    type="text"
+                                                    label="End Time"
+                                                    value={this.state.calendarEvents.endTime}
+                                                    onChange={this.handleInputField('endTime')}
                                                 />
                                             </div>
                                         </Grid>
                                         <Grid item xs={6}>
                                             <DatePicker
                                                 value={this.state.eventDate}
-                                                
+                                                onChange={this.handleInputField('eventDate')}
                                             />
                                         </Grid>
                                     </Grid>
@@ -110,14 +138,20 @@ class EventModal extends Component {
                                             label="Notes"
                                             multiline
                                             rowsMax="4"
-                                            value={this.state.eventNotes}
-                                            onChange={this.handleInputField('eventNotes')}
+                                            value={this.state.calendarEvents.notes}
+                                            onChange={this.handleInputField('notes')}
                                         />
                                     </div>
-                                </form>
-                                <button>
-                                    OK
-                                </button>
+                                </div>
+                                <div className="form-button">
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.handleSubmit}
+                                    >
+                                        OK
+                                </Button>
+                                </div>
                             </div>
                         </Modal>
                     </div>
