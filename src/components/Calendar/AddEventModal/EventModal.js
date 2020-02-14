@@ -63,7 +63,6 @@ class EventModal extends Component {
     }
 
     handleSubmit = (event, infoKey) => {
-        event.preventDefault();
         this.props.dispatch({
             type: 'POST_EVENT',
             payload: {
