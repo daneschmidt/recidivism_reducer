@@ -6,7 +6,7 @@ import bossFormSaga from './bossform.saga';
 import getAllClientsListSaga from './getAllClientsListSaga';
 import getTasksSaga from './getTasksSaga';
 import getRecentCompsSaga from './competitions.saga';
-import calendar from './calendar.saga'
+import calendar from './calendar.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -16,7 +16,7 @@ import calendar from './calendar.saga'
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-  console.log('The Saga Continues')
+  console.log('The Saga Continues');
   yield all([
     loginSaga(),
     registrationSaga(),
@@ -24,7 +24,7 @@ export default function* rootSaga() {
     bossFormSaga(),
     getAllClientsListSaga(),
     getTasksSaga(),
-    getRecentCompsSaga()
-    calendar(),
+    getRecentCompsSaga(),
+    calendar()
   ]);
 }
