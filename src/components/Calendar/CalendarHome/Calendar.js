@@ -17,15 +17,16 @@ class Calendar extends Component {
     this.props.dispatch({
         type: 'GET_EVENTS',
     })
-}
-
+  }
+  
   render() {
     return (
       <div>
         <div className="calendar">
-          <EventModal />
+          {/* <EventModal /> */}
           <EventClick />
-          <CalendarList calendarEvent={this.props.store.calendarEvent} />
+          {/* <CalendarList calendarEvent={this.props.store.calendar} /> */}
+          {/* <CalendarList  /> */}
         </div>
       </div>
     )
