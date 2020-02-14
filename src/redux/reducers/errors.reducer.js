@@ -43,6 +43,16 @@ const bossFormMessage = (state = '', action) => {
   }
 };
 
+const addEventMessage = (state = '', action) => {
+  switch (action.type) {
+    case 'CLEAR_ADD_EVENT_ERROR':
+      return '';
+    case 'EVENT_REJECTED':
+      return 'Please Resubmit Form';
+    default:
+      return state;
+  }
+};
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
@@ -50,4 +60,5 @@ export default combineReducers({
   loginMessage,
   registrationMessage,
   bossFormMessage,
+  addEventMessage,
 });

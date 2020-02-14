@@ -5,6 +5,7 @@ import user from './user.reducer';
 import progress from './progression.reducer';
 import client from './client.reducer';
 import competitions from './competitions.reducer';
+import calendar from './calendar.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   progress, //renders default list for progress tracker
   client,
   competitions
+  calendar,
 });
 
 export default rootReducer;
