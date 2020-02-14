@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import Details from '../DetailsButton/DetailsButton';
 //material UI imports
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -53,6 +54,7 @@ class CompetitionList extends Component {
             <TableCell>
               <Button style={{ backgroundColor: 'black', color: 'white' }}>
                 Details
+                <Details />
               </Button>
             </TableCell>
           </TableRow>

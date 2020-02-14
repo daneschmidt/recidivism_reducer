@@ -15,7 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import BeTheBoss from '../BeTheBoss/BeTheBoss';
 import UserPage from '../UserPage/UserPage';
-import Calendar from '../Calendar/Calendar';
+import Calendar from '../Calendar/CalendarHome/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';

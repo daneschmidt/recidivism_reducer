@@ -2,16 +2,18 @@ import _ from 'lodash';
 import { combineReducers } from 'redux';
 import { ADD_TASK, MOVE_TASK, EDIT_TASK, DELETE_TASK } from './actions';
 
-const defaultState = [
-  { id: 'step1', title: 'step 1', tasks: [1, 2] },
-  { id: 'step2', title: 'step 2', tasks: [] },
-  { id: 'step3', title: 'step 3', tasks: [] },
-  { id: 'step4', title: 'step 4', tasks: [] },
-  { id: 'step5', title: 'step 5', tasks: [] },
-  { id: 'step6', title: 'step 6', tasks: [] }
-];
+function lists(state, action) {
+  if (state === undefined) {
+    return {
+      step1: { id: 'step1', title: 'step 1', tasks: [1, 2] },
+      step2: { id: 'step2', title: 'step 2', tasks: [] },
+      step3: { id: 'step3', title: 'step 3', tasks: [] },
+      step4: { id: 'step4', title: 'step 4', tasks: [] },
+      step5: { id: 'step5', title: 'step 5', tasks: [] },
+      step6: { id: 'step6', title: 'step 6', tasks: [] }
+    };
+  }
 
-function lists(state = defaultState, action) {
   switch (action.type) {
     case ADD_TASK: {
       return {
