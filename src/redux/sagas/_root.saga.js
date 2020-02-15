@@ -9,6 +9,10 @@ import getRecentCompsSaga from './competitions.saga';
 import calendar from './calendar.saga';
 import getAllTasksSaga from './getAllTasksSaga';
 import getClientTasksSaga from './getClientTasksSaga';
+import getClientsSaga from './client.saga';
+import getTasksSaga from './getTasksSaga';
+import getRecentCompsSaga from './competitions.saga';
+import calendar from './calendar.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -24,6 +28,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     bossFormSaga(),
+    getClientsSaga(),
     getAllClientsListSaga(),
     getUserTasksSaga(),
     getRecentCompsSaga(),

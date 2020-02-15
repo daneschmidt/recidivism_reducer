@@ -17,7 +17,7 @@ VALUES
     ('Sean', 'Pherigo', 'Male', 8162345678, 's.pherigo@gmail.com', True, 'Felony', True,'2 years', 
     '2020-02-10' , '22', 'Missouri', True, 'Tom Jones', 8085699854, True, 'Connections', 
     'Dane Pherigo Coffee Shop', 'Starting Stage', 'Hope to gain info', 'info', 'JoshBW.png', 
-    '2020-02-10 04:05:06', True);;
+    '2020-02-10 04:05:06', True);
 
 INSERT INTO "address"
     ("clients_id", "street", "city", "state", "zip", "business", "home", "current")
