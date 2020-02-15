@@ -9,6 +9,7 @@ class CalendarItem extends Component {
             <div>
                 <p>{this.props.item.title}</p>
                 <p>{this.props.item.start}</p>
+                <p>{this.props.item.end}</p>
             </div>
         );
     }
