@@ -1,26 +1,26 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 // Get call for tasks
-function* getTasks(action) {
+function* getUserTasks(action) {
     console.log(`In get tasks`);
     const sortBy = action.payload.sortBy;
-    const clientId = action.payload.clients_id;
+    const id = action.payload.id;
     const trueOrFalse = action.payload.trueOrFalse;
     try {
         const response = yield axios({
             method: 'GET',
-            url: '/api/tasksGet/' + sortBy + '/' + clientId + '/' + trueOrFalse,
+            url: '/api/tasksGet/' + sortBy + '/' + id + '/' + trueOrFalse,
         });
         yield put({
-            type: 'SET_TASKS',
+            type: 'SET_USER_TASKS',
             payload: response.data
         });
     } catch(err) {
         console.log('error fetching tasks', err);
     }
 }
-function* getTasksSaga() {
-    yield takeLatest('GET_TASKS', getTasks);
+function* getUserTasksSaga() {
+    yield takeLatest('GET_TASKS_BY_USER', getUserTasks);
 }
 
-export default getTasksSaga;
+export default getUserTasksSaga;

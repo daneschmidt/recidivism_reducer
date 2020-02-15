@@ -4,9 +4,11 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import bossFormSaga from './bossform.saga';
 import getAllClientsListSaga from './getAllClientsListSaga';
-import getTasksSaga from './getTasksSaga';
+import getUserTasksSaga from './getUserTasksSaga';
 import getRecentCompsSaga from './competitions.saga';
-import calendar from './calendar.saga'
+import calendar from './calendar.saga';
+import getAllTasksSaga from './getAllTasksSaga';
+import getClientTasksSaga from './getClientTasksSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,8 +25,10 @@ export default function* rootSaga() {
     userSaga(),
     bossFormSaga(),
     getAllClientsListSaga(),
-    getTasksSaga(),
+    getUserTasksSaga(),
     getRecentCompsSaga(),
     calendar(),
+    getAllTasksSaga(),
+    getClientTasksSaga(),
   ]);
 }
