@@ -53,7 +53,11 @@ VALUES
 ( 3, 2, 'Make sure Sean Pherigo has insurance', False, '2020-02-13
 04:05:06', '2020-02-28 05:05:05'),
 ( 3, 2, 'Make sure Sean Pherigo SBA', False, '2020-02-13
-04:05:06', '2020-02-29 05:05:05');
+04:05:06', '2020-02-29 05:05:05'),
+( 2, 2, 'Make sure Sean Pherigo has LLC', False, '2020-02-13
+04:05:06', '2020-02-27 05:05:05'),
+( 2, 2, 'Make sure Sean Pherigo has insurance', False, '2020-02-13
+04:05:06', '2020-02-28 05:05:05');
 
 INSERT INTO "notes"
     ("clients_id", "users_id", "note", "timeStamp")
