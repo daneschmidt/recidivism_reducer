@@ -3,13 +3,14 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import bossFormSaga from './bossform.saga';
-import getAllClientsListSaga from './getAllClientsListSaga';
-import getUserTasksSaga from './getUserTasksSaga';
+import getAllClientsListSaga from './getAllClientsList.saga';
+import getUserTasksSaga from './getUserTasks.saga';
 import getRecentCompsSaga from './competitions.saga';
 import calendar from './calendar.saga';
-import getAllTasksSaga from './getAllTasksSaga';
-import getClientTasksSaga from './getClientTasksSaga';
+import getAllTasksSaga from './getAllTasks.saga';
+import getClientTasksSaga from './getClientTasks.saga';
 import getClientsSaga from './client.saga';
+import putTaskSaga from './putTask.saga'
 
 
 // rootSaga is the primary saga.
@@ -33,5 +34,6 @@ export default function* rootSaga() {
     calendar(),
     getAllTasksSaga(),
     getClientTasksSaga(),
+    putTaskSaga(),
   ]);
 }

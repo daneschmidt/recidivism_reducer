@@ -10,15 +10,14 @@ const router: express.Router = express.Router();
 router.put('/put', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
     const taskId: number | null =<number>(req.body.taskId);
     const completedOn: string | null =<string>req.body.completedOn;
-    const checkbox: boolean | null =<boolean>req.body.complete;
+    const checkbox: boolean | null =<boolean>req.body.checkbox;
     let queryText: string | null = ``;
     //Checks to see if task is marked as true or false
-    //Then set querystring to do the opposite
-    if(checkbox == false){
+    if(checkbox == true){
         queryText = `UPDATE "tasks" SET "complete" = TRUE,
         "completedOn" = $2 
         WHERE "id" = $1;`;
-    }else if(checkbox == true){
+    }else if(checkbox == false){
         queryText = `UPDATE "tasks" SET "complete" = FALSE,
         "completedOn" =$2 
         WHERE "id" = $1;`; 

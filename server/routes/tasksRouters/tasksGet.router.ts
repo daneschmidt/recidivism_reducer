@@ -22,6 +22,7 @@ router.get(
     "user"."lastName" AS "userLastName", "tasks".complete FROM "tasks"
     JOIN "clients" ON "tasks".clients_id = "clients".id
     JOIN "user" ON "tasks".users_id = "user".id
+<<<<<<< HEAD
     WHERE "clients".id = $1 AND "tasks".complete = $2
     ORDER BY "tasks"."dueBy" ASC
     LIMIT 4;`;
@@ -32,6 +33,16 @@ router.get(
       })
       .catch(err => {
         console.log(`error getting tasks ${err}`);
+=======
+    WHERE "clients".id = $1
+    ORDER BY "tasks".complete ASC, "tasks"."dueBy" ASC;`;
+    pool.query(queryText, [clientId])
+    .then((response) => {
+        res.send(response.rows)
+    })
+    .catch((err) => {
+        console.log(`error getting tasks ${err}`)
+>>>>>>> develop
         res.sendStatus(500);
       });
   }
