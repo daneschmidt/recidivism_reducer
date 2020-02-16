@@ -6,7 +6,14 @@ import TextField from '@material-ui/core/TextField';
 
 class DetailsButton extends Component {
   state = {
-    setOpen: false
+    setOpen: false,
+    addResults: {
+      name: '',
+      dateOf: '',
+      firstName: '',
+      lastName: '',
+      business: ''
+    }
   };
 
   //modal functionality

@@ -19,16 +19,23 @@ class ProgressionTracker extends React.Component {
   }
 
   getTasks(list, tasks) {
-    return _.map(list.tasks, taskId => tasks[taskId]);
+    // return _.map(list.tasks, taskId => tasks[taskId]);
+    let tasksArr = [];
+    for (let item in tasks) {
+      tasksArr.push(tasks[item]);
+    }
+    return tasksArr.filter(task => list.tasks.includes(task.id));
   }
 
   onDragEnd({ source, destination, draggableId }) {
     // dropped outside the list
+    console.log('this.onDragEnd', source, destination, draggableId);
     if (!destination) {
       return;
     }
 
     if (source.droppableId !== destination.droppableId) {
+      console.log('destination');
       this.props.moveTask(
         source.droppableId,
         destination.droppableId,
@@ -50,9 +57,10 @@ class ProgressionTracker extends React.Component {
           </span>
           <Grid container spacing={3}>
             <DragDropContext onDragEnd={this.onDragEnd}>
-              {Object.keys(lists).map((item, index) => {
+              {Object.keys(lists).map((key, index) => {
+                let item = lists[key];
                 return (
-                  <Droppable droppableId={item.id} key={index}>
+                  <Droppable droppableId={item.id.toString()} key={index}>
                     {(provided, snapshot) => (
                       <Grid item xs={2}>
                         <Paper style={{ margin: '10px', padding: '10px' }}>

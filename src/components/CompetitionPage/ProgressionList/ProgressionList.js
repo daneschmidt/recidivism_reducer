@@ -4,34 +4,29 @@ import Task from '../Task/Task';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { connect } from 'react-redux';
 
-class List extends React.Component {
+export default class List extends React.Component {
   render() {
-    const lists = this.props.store.progress.lists;
-    const tasks = this.props.store.progress.tasks;
-    console.log('--------', tasks);
-    const taskArr = Object.keys(tasks).map((taskIndex, index) => {
-      const task = tasks[taskIndex];
-      return (
-        <Draggable key={task.id} draggableId={task.id} index={index}>
-          {(provided, snapshot) => (
-            <Task
-              list={this.lists}
-              task={task}
-              innerRef={provided.innerRef}
-              provided={provided}
-            />
-          )}
-        </Draggable>
-      );
-    });
     return (
-      <div ref={this.props.store.progress.innerRef}>
-        <div>{lists.title}</div>
-        {taskArr}
+      <div ref={this.props.innerRef}>
+        <div>{this.props.list.title}</div>
+        {this.props.tasks.map((task, index) => (
+          <Draggable
+            key={task.id.toString()}
+            draggableId={task.id.toString()}
+            index={index}
+          >
+            {(provided, snapshot) => (
+              <Task
+                list={this.props.list}
+                task={task}
+                innerRef={provided.innerRef}
+                provided={provided}
+              />
+            )}
+          </Draggable>
+        ))}
         {this.props.provided.placeholder}
       </div>
     );
   }
 }
-
-export default connect(mapStoreToProps)(List);
