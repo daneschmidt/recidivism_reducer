@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const calendarReducer = (state = [], action) => {
+const calendarEvent = (state = [], action) => {
     // put({
     //   type: 'SET_CALENDAR',
     //   payload: response.data
@@ -21,7 +21,10 @@ const calendarReducer = (state = [], action) => {
         return action.payload.map((calendarEventItem) => {
           return {
             ...calendarEventItem,
-            title: calendarEventItem.title,
+            title: calendarEventItem.eventTitle,
+            start: calendarEventItem.startTime,
+            end: calendarEventItem.endTime,
+            date: calendarEventItem.startTime
           }
         });
       default:
@@ -30,5 +33,5 @@ const calendarReducer = (state = [], action) => {
   };
 
   export default combineReducers({
-    calendarReducer,
+    calendarEvent,
 });
