@@ -5,11 +5,12 @@ import user from './user.reducer';
 import progress from './progression.reducer';
 import client from './client.reducer';
 import getAllClientsReducer from './getAllClients.reducer';
-import getUserTasksReducer from './getUserTasks.reducer'
+// import getTasksReducer from './getTasks.reducer';
+import getUserTasksReducer from './getUserTasks.reducer';
 import competitions from './competitions.reducer';
 import calendar from './calendar.reducer';
 import getAllTasksReducer from './getAllTasks.reducer';
-import getClientTasksReducer from './getClientTasks.reducer'
+import getClientTasksReducer from './getClientTasks.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -28,7 +29,7 @@ const rootReducer = combineReducers({
   competitions,
   calendar,
   getAllTasksReducer,
-  getClientTasksReducer,
+  getClientTasksReducer
 });
 
 export default rootReducer;

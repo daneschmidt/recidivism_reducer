@@ -10,8 +10,7 @@ import calendar from './calendar.saga';
 import getAllTasksSaga from './getAllTasks.saga';
 import getClientTasksSaga from './getClientTasks.saga';
 import getClientsSaga from './client.saga';
-import putTaskSaga from './putTask.saga'
-
+import putTaskSaga from './putTask.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,7 +20,6 @@ import putTaskSaga from './putTask.saga'
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-  console.log('The Saga Continues')
   yield all([
     loginSaga(),
     registrationSaga(),
@@ -34,6 +32,6 @@ export default function* rootSaga() {
     calendar(),
     getAllTasksSaga(),
     getClientTasksSaga(),
-    putTaskSaga(),
+    putTaskSaga()
   ]);
 }

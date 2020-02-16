@@ -18,6 +18,7 @@ class Task extends React.Component {
 
   render() {
     const { task, provided, innerRef } = this.props;
+    console.log(task);
 
     return (
       <Card
