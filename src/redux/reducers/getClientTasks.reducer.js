@@ -1,11 +1,11 @@
 
 //List of tasks from server
-const getTasksReducer = (state = [], action) => {
+const getClientTasksReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_TASKS':
+        case 'SET_CLIENT_TASKS':
             return action.payload;
         default:
             return state;
     }
 }
-export default getTasksReducer;
+export default getClientTasksReducer;
