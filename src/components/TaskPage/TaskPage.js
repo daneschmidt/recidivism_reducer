@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import moment from 'moment';
-import { MenuItem, Select, Button, TextField } from '@material-ui/core';
 /*eslint-disable*/
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -31,9 +30,10 @@ class TaskPage extends Component {
         heading: 'Task Page',
         tasks: {
             sortBy: 'byClients',
-            // id: this.props.store.user.id,
             clients_id: '',
             trueOrFalse: 'False',
+            checkbox: 'False',
+            taskId: '',
         } 
     }
     
@@ -67,6 +67,30 @@ class TaskPage extends Component {
         });
         this.getClientTasks(event, inputKey);
     }
+    handleCheckboxChange = (event, id, inputKey) => {
+        this.setState({
+            tasks: {
+                ...this.state.tasks,
+                id: event.target.value
+            }
+        });
+        this.markTask(event, id, inputKey);
+    }
+
+    markTask = (event, id, inputKey) => {
+        const taskId = id;
+        const checkbox = inputKey;
+        const completedOn = moment(Date()).format();
+        this.props.dispatch({
+            type: 'MARK_TASK',
+            payload: {
+                taskId,
+                completedOn,
+                checkbox,
+                id: this.props.user.id,
+            }
+        })
+    }
 
     getClientTasks = (event, inputKey) => {
         const tasksToGet = this.state.tasks;
@@ -85,41 +109,48 @@ class TaskPage extends Component {
                 <option key={index} value={item.id}>{item.firstName} {item.lastName}</option>
             )
         });
+        const blankClient = <option>Select Client</option>;
 
         const taskListByAll = this.props.store.getAllTasksReducer.map((item, index) => {
             return (
-                <ul>
-                    <li key={index}>Task: {item.task}&nbsp;
-                    Added On: {moment(item.assignedOn).format('LL')}&nbsp;
-                    Due By: {moment(item.dueBy).format('LL')}&nbsp;
-                    Added By: {item.userFirstName} {item.userLastName}&nbsp;
-                    Client: {item.clientsFirstName} {item.clientsLastName}&nbsp;
-                     </li>
-                </ul>
+                <div key={index}>
+                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)}/>
+                    <ul className="noBullets">
+                        <li>Task: {item.task}</li>
+                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
+                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
+                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
+                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
+                    </ul>
+                </div>
             )
         });
         const taskListByUser = this.props.store.getUserTasksReducer.map((item, index) => {
             return (
-                <ul>
-                    <li key={index}>Task: {item.task}&nbsp;
-                    Added On: {moment(item.assignedOn).format('LL')}&nbsp;
-                    Due By: {moment(item.dueBy).format('LL')}&nbsp;
-                    Added By: {item.userFirstName} {item.userLastName}&nbsp;
-                    Client: {item.clientsFirstName} {item.clientsLastName}&nbsp;
-                     </li>
-                </ul>
+                <div key={index}>
+                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)}/>
+                    <ul className="noBullets">
+                        <li>Task: {item.task}</li>
+                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
+                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
+                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
+                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
+                     </ul>
+                </div>
             )
         });
         const taskListByClient = this.props.store.getClientTasksReducer.map((item, index) => {
             return (
-                <ul>
-                    <li key={index}>Task: {item.task}&nbsp;
-                    Added On: {moment(item.assignedOn).format('LL')}&nbsp;
-                    Due By: {moment(item.dueBy).format('LL')}&nbsp;
-                    Added By: {item.userFirstName} {item.userLastName}&nbsp;
-                    Client: {item.clientsFirstName} {item.clientsLastName}&nbsp;
-                     </li>
-                </ul>
+                <div key={index}>
+                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)}/>
+                    <ul className="noBullets">
+                        <li>Task: {item.task}</li>
+                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
+                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
+                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
+                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
+                    </ul>
+                </div>
             )
         });
         return (
@@ -144,7 +175,8 @@ class TaskPage extends Component {
                             tabContent: taskListByAll
                         },
                         {
-                            tabName: <select class="select-css" onChange={(event) => this.handleInputChange(event, this.state.tasks.clients_id = event.target.value)}>
+                            tabName: <select className="select-css" onChange={(event) => this.handleInputChange(event, this.state.tasks.clients_id = event.target.value)}>
+                            {blankClient}
                             {allClientsList}
                             </select>,
                             tabIcon: PlaylistAddCheckIcon,
@@ -226,3 +258,6 @@ export default connect(mapStoreToProps)(TaskPage);
 // },
 
 // const useStyles = makeStyles(styles);
+
+
+/*onChange={(event) => this.handleCheckboxChange(event, item.id, this.state.tasks.checkbox = 'False')}*/
