@@ -19,10 +19,9 @@ router.get('/byClients/:clientId/:trueOrFalse', rejectUnauthenticated, (req: Req
     "user"."lastName" AS "userLastName", "tasks".complete FROM "tasks"
     JOIN "clients" ON "tasks".clients_id = "clients".id
     JOIN "user" ON "tasks".users_id = "user".id
-    WHERE "clients".id = $1 AND "tasks".complete = $2
-    ORDER BY "tasks"."dueBy" ASC
-    LIMIT 4;`;
-    pool.query(queryText, [clientId, trueOrFalse])
+    WHERE "clients".id = $1
+    ORDER BY "tasks".complete ASC, "tasks"."dueBy" ASC;`;
+    pool.query(queryText, [clientId])
     .then((response) => {
         res.send(response.rows)
     })
