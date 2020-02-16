@@ -13,7 +13,6 @@ router.put('/put', rejectUnauthenticated, (req: Request, res: Response, next: ex
     const checkbox: boolean | null =<boolean>req.body.checkbox;
     let queryText: string | null = ``;
     //Checks to see if task is marked as true or false
-    //Then set querystring to do the opposite
     if(checkbox == true){
         queryText = `UPDATE "tasks" SET "complete" = TRUE,
         "completedOn" = $2 
