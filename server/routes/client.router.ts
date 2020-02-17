@@ -4,7 +4,7 @@ import rejectUnauthenticated from '../modules/authentication-middleware';
 
 const router: express.Router = express.Router();
 
-router.get('/all', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+router.get('/all', rejectUnauthenticated, (req: express.Request, res: express.Response, next: express.NextFunction): void => {
 	const queryText:
 		| string
 		| null = `SELECT "id", "firstName", "lastName", "email", "phoneNumber", "timeStamp" FROM "clients"`;
@@ -19,7 +19,7 @@ router.get('/all', (req: express.Request, res: express.Response, next: express.N
 		});
 });
 
-router.get('/search/:keyword', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+router.get('/search/:keyword', rejectUnauthenticated, (req: express.Request, res: express.Response, next: express.NextFunction): void => {
     let keyword = req.params.keyword;
 	const queryText: 
 		| string 
