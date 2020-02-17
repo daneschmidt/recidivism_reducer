@@ -4,7 +4,7 @@ import rejectUnauthenticated from '../modules/authentication-middleware';
 
 const router: express.Router = express.Router();
 
-router.get('/all', rejectUnauthenticated, (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+router.get('/all', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
 	const queryText:
 		| string
 		| null = `SELECT "id", "firstName", "lastName", "email", "phoneNumber", "timeStamp" FROM "clients"`;
@@ -17,6 +17,22 @@ router.get('/all', rejectUnauthenticated, (req: express.Request, res: express.Re
 			console.log(`Error retrieving client list ${err}`);
 			res.sendStatus(500);
 		});
+});
+
+router.get('/search/:keyword', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+    let keyword = req.params.keyword;
+	const queryText: 
+		| string 
+		| null = `SELECT "firstName", "lastName", "phoneNumber", "email" FROM "clients"
+                            WHERE "firstName" LIKE '%${keyword}%'
+                            OR "lastName" LIKE '%${keyword}%'`;
+	pool
+		.query(queryText)
+        .then((response) => { res.send(response.rows); })
+        .catch(err => {
+            console.log(`Error with SELECT results query: ${err}`);
+            res.sendStatus(500);
+        });
 });
 
 router.post("/", (req: express.Request, res: express.Response, next: express.NextFunction): void => {
