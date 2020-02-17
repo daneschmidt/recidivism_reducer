@@ -8,6 +8,7 @@ import getAllClientsReducer from './getAllClients.reducer';
 import getTasksReducer from './getTasks.reducer'
 import competitions from './competitions.reducer';
 import calendar from './calendar.reducer';
+import userCredentials from './user.credentials.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   getTasksReducer,
   competitions,
   calendar,
+  userCredentials
 });
 
 export default rootReducer;
