@@ -7,6 +7,7 @@ import getAllClientsListSaga from './getAllClientsList.saga';
 import getUserTasksSaga from './getUserTasks.saga';
 import getRecentCompsSaga from './competitions.saga';
 import calendar from './calendar.saga';
+import getProfileSaga from './profile.saga';
 import userCredentials from './user.credentials.saga';
 import getAllTasksSaga from './getAllTasks.saga';
 import getClientTasksSaga from './getClientTasks.saga';
@@ -21,17 +22,18 @@ import putTaskSaga from './putTask.saga';
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-	yield all([
-		loginSaga(),
-		registrationSaga(),
-		userSaga(),
-		bossFormSaga(),
-		getClientsSaga(),
-		getTasksSaga(),
-		getRecentCompsSaga(),
-		calendar(),
-		userCredentials(),
-	]);
+  yield all([
+    loginSaga(),
+    registrationSaga(),
+    userSaga(),
+    bossFormSaga(),
+    getClientsSaga(),
+    getTasksSaga(),
+    getRecentCompsSaga(),
+    calendar(),
+    getProfileSaga(),
+    userCredentials(),
+  ]);
   yield all([
     loginSaga(),
     registrationSaga(),
