@@ -5,7 +5,7 @@ import { ADD_TASK, MOVE_TASK, EDIT_TASK, DELETE_TASK } from './actions';
 function lists(state, action) {
   if (state === undefined) {
     return {
-      step1: { id: 'step1', title: 'step 1', tasks: ['1', '2'] },
+      step1: { id: 'step1', title: 'step 1', tasks: [] },
       step2: { id: 'step2', title: 'step 2', tasks: [] },
       step3: { id: 'step3', title: 'step 3', tasks: [] },
       step4: { id: 'step4', title: 'step 4', tasks: [] },
@@ -15,6 +15,36 @@ function lists(state, action) {
   }
 
   switch (action.type) {
+    case 'SET_STATUS': {
+      return {
+        ...state,
+        step1: {
+          ...state.step1,
+          title: action.payload.step1
+        },
+        step2: {
+          ...state.step2,
+          title: action.payload.step2
+        },
+        step3: {
+          ...state.step3,
+          title: action.payload.step3
+        },
+        step4: {
+          ...state.step4,
+          title: action.payload.step4
+        },
+        step5: {
+          ...state.step5,
+          title: action.payload.step5
+        },
+        step6: {
+          ...state.step6,
+          title: action.payload.step6
+        }
+      };
+    }
+
     case ADD_TASK: {
       return {
         ...state,
@@ -24,15 +54,10 @@ function lists(state, action) {
         }
       };
     }
+
     case MOVE_TASK: {
-      console.log(action);
       const from = state[action.fromListId];
       const to = state[action.toListId];
-      console.log({
-        ...state,
-        [from.id]: { ...from, tasks: _.without(from.tasks, action.id) },
-        [to.id]: { ...to, tasks: to.tasks.concat(action.id) }
-      });
       return {
         ...state,
         [from.id]: { ...from, tasks: _.without(from.tasks, action.id) },
@@ -65,7 +90,7 @@ function tasks(state, action) {
 
   switch (action.type) {
     case ADD_TASK:
-      task = { id: action.id, title: 'New Task' };
+      task = { id: action.id, title: 'New Participant' };
       return {
         ...state,
         [action.id]: task

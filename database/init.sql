@@ -66,10 +66,20 @@ CREATE TABLE "clients_competitions" (
   "id" SERIAL PRIMARY KEY,
   "clients_id" int REFERENCES "clients",
   "competitions_id" int REFERENCES "competitions",
-  "statusNum" int,
+  "status" varchar,
   "award" varchar,
   "grantAmount" int,
   "notes" varchar
+);
+
+CREATE TABLE "competition_status" (
+  "id" SERIAL PRIMARY KEY,
+  "step1" varchar,
+  "step2" varchar,
+  "step3" varchar,
+  "step4" varchar,
+  "step5" varchar,
+  "step6" varchar
 );
 
 CREATE TABLE "links" (

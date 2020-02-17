@@ -12,6 +12,7 @@ import tasksGet from './routes/tasksRouters/tasksGet.router';
 import tasks from './routes/tasksRouters/tasks.router';
 import eventRouter from './routes/event.router';
 import competitions from './routes/competitions.router';
+import status from './routes/status.router';
 
 require('dotenv').config();
 
@@ -39,6 +40,7 @@ app.use('/api/events', eventRouter);
 app.use('/api/competitions', competitions);
 app.use('/api/profile', profile);
 app.use('/api/profile/edit', editProfile);
+app.use('/api/status', status);
 
 // Serve static files
 app.use(express.static('build'));
@@ -48,7 +50,7 @@ const PORT: number | string = process.env.PORT || 5000;
 
 /** Listen * */
 app.listen(PORT, (): void => {
-	console.log(`So awesome. Much wow. Listening on port: ${PORT}`);
+  console.log(`So awesome. Much wow. Listening on port: ${PORT}`);
 });
 
 export default app;
