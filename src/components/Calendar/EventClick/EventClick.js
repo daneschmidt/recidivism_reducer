@@ -16,32 +16,28 @@ import Modal from '@material-ui/core/Modal';
 // CSS
 import '../../Calendar/EventClick/EventClick.css'
 
-// Basic class component structure for React with default state
-// value setup. When making a new component be sure to replace 
-// the component name TemplateClass with the name for the new 
-// component.
 class EventClick extends Component {
 
     state = {
         setOpen: false,
-        selectedEvent: {},
-        calendarEvents: [
-            {
-                title: 'Be The Boss',
-                start: '2020-02-21',
-                notes: 'hey',
-            },
-            {
-                title: 'Be The Boss',
-                start: '2020-02-21',
-                notes: 'hey',
-            },
-            {
-                title: 'Be The Boss',
-                start: '2020-02-22',
-                notes: 'hey',
-            }
-        ]
+        // selectedEvent: {},
+        // calendarEvents: [
+        //     {
+        //         title: 'Be The Boss',
+        //         start: '2020-02-21',
+        //         notes: 'hey',
+        //     },
+        //     {
+        //         title: 'Be The Boss',
+        //         start: '2020-02-21',
+        //         notes: 'hey',
+        //     },
+        //     {
+        //         title: 'Be The Boss',
+        //         start: '2020-02-22',
+        //         notes: 'hey',
+        //     }
+        // ]
     }
 
     handleEventClick = (calEvent) => {
@@ -63,6 +59,28 @@ class EventClick extends Component {
     }
 
     render() {
+
+        // console.log('*******', this.props.store.calendar.calendarEvent);
+
+        const eventSample = [
+            {
+                title: "test",
+                date: "2020-02-14"
+            },
+            {
+                title: "test2",
+                date: "2020-02-15"
+            }
+        ]
+
+        const eventArray = this.props.store.calendar.calendarEvent.map((item, index) => {
+            return {
+                title: item.eventTitle,
+                date: item.date,
+                event: item
+            }
+        })
+
         return (
             <div>
                 <div>
@@ -76,8 +94,9 @@ class EventClick extends Component {
                             }}
                             ref={this.calendarComponentRef}
                             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                            events={this.state.calendarEvents}
+                            // events={this.props.store.calendar.calendarEvent}
                             //dateClick={this.handleDateClick}
+                            events={eventArray}
                             eventClick={this.handleEventClick}
                         />
                         <div>
@@ -85,7 +104,13 @@ class EventClick extends Component {
                         open={this.state.setOpen}
                         onClose={this.closeModal}>
                         <div className="modal">
-                        <h2>Reducer should have this info</h2>
+                        <h3>{this.props.store.calendar.calendarEvent.eventDate}</h3>
+                        <h3>{this.props.store.calendar.calendarEvent.startTime}</h3>
+                        <h3>{this.props.store.calendar.calendarEvent.endTime}</h3>
+                        <h3>{this.props.store.calendar.calendarEvent.endEventDate}</h3>
+                        <h3>{this.props.store.calendar.calendarEvent.eventTitle}</h3>
+                        <h3>{this.props.store.calendar.calendarEvent.notes}</h3>
+                        <h3>{this.props.store.calendar.calendarEvent.location}</h3>
                         </div>
                     </Modal>
                 </div>

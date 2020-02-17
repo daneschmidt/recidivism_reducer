@@ -21,10 +21,10 @@ const calendarEvent = (state = [], action) => {
         return action.payload.map((calendarEventItem) => {
           return {
             ...calendarEventItem,
-            title: calendarEventItem.title,
-            start: calendarEventItem.start,
-            end: calendarEventItem.end
-
+            title: calendarEventItem.eventTitle,
+            start: calendarEventItem.startTime,
+            end: calendarEventItem.endTime,
+            date: calendarEventItem.startTime
           }
         });
       default:

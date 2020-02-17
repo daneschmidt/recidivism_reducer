@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* getAllEvents() {
     try {
-        const response = yield axios.get('/api/events');
+        const response = yield axios.get('/api/events/');
         console.log(response);
         yield put ({
             type: 'SET_CALENDAR',
@@ -12,6 +12,19 @@ function* getAllEvents() {
     } catch (err) {
         console.log(`Couldn't get all events`, err)
     };
+};
+
+function* getSingleEvent(action) {
+  try {
+      const response = yield axios.get('/api/events/', action.payload);
+      console.log(response);
+      yield put ({
+          type: 'SET_CALENDAR',
+          payload: response.data
+      })
+  } catch (err) {
+      console.log(`Couldn't get all events`, err)
+  };
 };
 
 function* addNewEvent(action) {
@@ -31,6 +44,7 @@ function* addNewEvent(action) {
 
 function* calendar() {
   yield takeLatest('GET_EVENTS', getAllEvents);
+  yield takeLatest('GET_EVENT', getSingleEvent);
   yield takeLatest('POST_EVENT', addNewEvent);
 }
 
