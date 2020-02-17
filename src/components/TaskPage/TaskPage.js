@@ -22,7 +22,7 @@ import CustomTabs from "../CustomTabs/CustomTabs";
 import BugReport from "@material-ui/icons/BugReport";
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import { bugs, website, server } from "../../../src/variables/general";
-
+import AddTaskModal from '../TaskPage/AddTaskModal';
 
 class TaskPage extends Component {
     
@@ -156,9 +156,9 @@ class TaskPage extends Component {
         return (
             <div>
                 <h2>{this.state.heading}</h2>
-                <button>Add Task</button>
                 <GridContainer justify="center" paddingTop={12}>
             <GridItem xs={12} sm={12} md={10}>
+            <AddTaskModal />
                 <CustomTabs
                     title="Task List:"
                     headerColor="primary"
@@ -186,24 +186,6 @@ class TaskPage extends Component {
                 />
             </GridItem>
         </GridContainer>
-                {/* <form onSubmit={this.getTasks}>
-
-                    <Select onChange={(event) => this.handleInputChange(event, this.state.tasks.sortBy = event.target.value)}>
-                        <option value="byClients">Clients</option>
-                        <option value="byUser">{this.props.store.user.firstName} {this.props.store.user.lastName}</option>
-                        <option value="All">All</option>
-                    </Select>
-                    <Select onChange={(event) => this.handleInputChange(event, this.state.tasks.clients_id = event.target.value)}>
-                        {allClientsList}
-                    </Select>
-                    <Select value="FALSE" onChange={(event) => this.handleInputChange(event, this.state.tasks.trueOrFalse = event.target.value)}>
-                        <option value="FALSE">Uncompleted</option>
-                        <option value="TRUE">Completed</option>
-                    </Select>
-                    <Button type='submit' value='Submit'>Get Tasks</Button>
-                </form>
-
-                {taskList} */}
             </div>
         )
     }
