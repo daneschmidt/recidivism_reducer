@@ -21,15 +21,15 @@ class EventModal extends Component {
     state = {
         setOpen: false,
         calendarEvents:
-            {
-                eventDate: new Date(),
-                endEventDate: new Date(),
-                startTime: moment(),
-                endTime: moment(),
-                eventTitle: '',
-                notes: '',
-                location: '',
-            }
+        {
+            eventDate: new Date(),
+            endEventDate: new Date(),
+            startTime: moment().format('h:mma'),
+            endTime: moment().format('h:mma'),
+            eventTitle: '',
+            notes: '',
+            location: '',
+        }
     }
 
 
@@ -102,25 +102,21 @@ class EventModal extends Component {
                                                 <TextField variant="outlined"
                                                     type="text"
                                                     label="Event Name"
-                                                    value={this.state.calendarEvents.eventTitle}
                                                     onChange={this.handleInputField('eventTitle')}
                                                 />
                                                 <TextField variant="outlined"
                                                     type="text"
                                                     label="Address"
-                                                    value={this.state.calendarEvents.location}
                                                     onChange={this.handleInputField('location')}
                                                 />
                                                 <TextField variant="outlined"
                                                     type="text"
                                                     label="Start Time"
-                                                    value={this.state.calendarEvents.startTime}
                                                     onChange={this.handleInputField('startTime')}
                                                 />
                                                 <TextField variant="outlined"
                                                     type="text"
                                                     label="End Time"
-                                                    value={this.state.calendarEvents.endTime}
                                                     onChange={this.handleInputField('endTime')}
                                                 />
                                             </div>
@@ -138,19 +134,18 @@ class EventModal extends Component {
                                             label="Notes"
                                             multiline
                                             rowsMax="4"
-                                            value={this.state.calendarEvents.notes}
                                             onChange={this.handleInputField('notes')}
                                         />
                                     </div>
-                                </div>
-                                <div className="form-button">
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={this.handleSubmit}
-                                    >
-                                        OK
-                                </Button>
+                                    <div className="form-button">
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={this.handleSubmit}
+                                        >
+                                            OK
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                         </Modal>

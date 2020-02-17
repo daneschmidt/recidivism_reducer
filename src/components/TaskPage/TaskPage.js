@@ -1,25 +1,63 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import moment from 'moment';
+/*eslint-disable*/
+import { makeStyles } from "@material-ui/core/styles";
+// @material-ui/icons
+import AddAlert from "@material-ui/icons/AddAlert";
+// core components
+import GridItem from "../Grid/GridItem.js";
+import GridContainer from "../Grid/GridContainer.js";
+import SnackbarContent from "../Snackbar/SnackbarContent";
+import Snackbar from "../Snackbar/Snackbar";
+import Card from "../Card/Card.js";
+import CardHeader from "../Card/CardHeader.js";
+import CardBody from "../Card/CardBody.js";
+import Tasks from "../../components/Tasks/Tasks";
+import Table from "../../components/Table/Table.js";
+import Code from "@material-ui/icons/Code";
+import Cloud from "@material-ui/icons/Cloud";
+import CustomTabs from "../CustomTabs/CustomTabs";
+import BugReport from "@material-ui/icons/BugReport";
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import { bugs, website, server } from "../../../src/variables/general";
+
 
 class TaskPage extends Component {
+    
     state = {
         heading: 'Task Page',
         tasks: {
-            sortBy: '',
+            sortBy: 'byClients',
             clients_id: '',
-            trueOrFalse: '',
-        }
+            trueOrFalse: 'False',
+            checkbox: 'False',
+            taskId: '',
+        } 
     }
+    
     componentDidMount() {
         this.props.dispatch({
             type: 'GET_ALL_CLIENTS_LIST'
         })
-        // this.props.dispatch({
-        // type: 'GET_TASKS'
-        // })
+        this.props.dispatch({
+            type: 'GET_TASKS_BY_USER',
+            payload: {
+                sortBy: 'byUser',
+                id: this.props.user.id,
+                trueOrFalse: 'False',
+            }
+        })
+        this.props.dispatch({
+            type: 'GET_TASKS_BY_ALL',
+            payload: {
+                sortBy: 'byAll',
+                trueOrFalse: 'False',
+            }
+        })
     }
-
+    
     handleInputChange = (event, inputKey) => {
         this.setState({
             tasks: {
@@ -27,92 +65,154 @@ class TaskPage extends Component {
                 [inputKey]: event.target.value
             }
         });
+        this.getClientTasks(event, inputKey);
+    }
+    handleCheckboxChange = (event, id, inputKey) => {
+        this.setState({
+            tasks: {
+                ...this.state.tasks,
+                id: event.target.value
+            }
+        });
+        this.markTask(event, id, inputKey);
     }
 
-    getTasks = (event, inputKey) => {
+    markTask = (event, id, inputKey) => {
+        const taskId = id;
+        const checkbox = inputKey;
+        const completedOn = moment(Date()).format();
+        this.props.dispatch({
+            type: 'MARK_TASK',
+            payload: {
+                taskId,
+                completedOn,
+                checkbox,
+                id: this.props.user.id,
+            }
+        })
+    }
+
+    getClientTasks = (event, inputKey) => {
         const tasksToGet = this.state.tasks;
         const userID = this.props.store.user.id;
-        // const trueOrFalse = this.state.complete
-        // const taskDataForServer = {
-        //     ...tasksToGet,
-        // }
         event.preventDefault();
         this.props.dispatch({
-            type: 'GET_TASKS',
+            type: 'GET_TASKS_BY_CLIENT',
             payload: tasksToGet
         })
     }
 
     render() {
+        const currentUser = `${this.props.store.user.firstName} ${this.props.store.user.lastName} Tasks`;
         const allClientsList = this.props.store.getAllClientsReducer.map((item, index) => {
             return (
                 <option key={index} value={item.id}>{item.firstName} {item.lastName}</option>
             )
         });
-        const taskList = this.props.store.getTasksReducer.map((item, index) => {
+        const blankClient = <option>Select Client</option>;
+
+        const taskListByAll = this.props.store.getAllTasksReducer.map((item, index) => {
             return (
-                <ul>
-                    <li key={index}>{item.task} {item.clientsFirstName}</li>
-                </ul>
+                <div key={index}>
+                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)}/>
+                    <ul className="noBullets">
+                        <li>Task: {item.task}</li>
+                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
+                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
+                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
+                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
+                    </ul>
+                </div>
+            )
+        });
+        const taskListByUser = this.props.store.getUserTasksReducer.map((item, index) => {
+            return (
+                <div key={index}>
+                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)}/>
+                    <ul className="noBullets">
+                        <li>Task: {item.task}</li>
+                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
+                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
+                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
+                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
+                     </ul>
+                </div>
+            )
+        });
+        const taskListByClient = this.props.store.getClientTasksReducer.map((item, index) => {
+            return (
+                <div key={index}>
+                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)}/>
+                    <ul className="noBullets">
+                        <li>Task: {item.task}</li>
+                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
+                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
+                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
+                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
+                    </ul>
+                </div>
             )
         });
         return (
             <div>
                 <h2>{this.state.heading}</h2>
                 <button>Add Task</button>
-                <form onSubmit={this.getTasks}>
+                <GridContainer justify="center" paddingTop={12}>
+            <GridItem xs={12} sm={12} md={10}>
+                <CustomTabs
+                    title="Task List:"
+                    headerColor="primary"
+                    tabs={[
+                        {
+                            tabName: currentUser,
+                            tabIcon: PlaylistAddCheckIcon,
+                            tabContent: taskListByUser
+                        },
 
-                    <select onChange={(event) => this.handleInputChange(event, this.state.tasks.sortBy = event.target.value)}>
+                        {
+                            tabName: "All Tasks",
+                            tabIcon: PlaylistAddCheckIcon,
+                            tabContent: taskListByAll
+                        },
+                        {
+                            tabName: <select className="select-css" onChange={(event) => this.handleInputChange(event, this.state.tasks.clients_id = event.target.value)}>
+                            {blankClient}
+                            {allClientsList}
+                            </select>,
+                            tabIcon: PlaylistAddCheckIcon,
+                            tabContent: taskListByClient
+                        }
+                    ]}
+                />
+            </GridItem>
+        </GridContainer>
+                {/* <form onSubmit={this.getTasks}>
+
+                    <Select onChange={(event) => this.handleInputChange(event, this.state.tasks.sortBy = event.target.value)}>
                         <option value="byClients">Clients</option>
                         <option value="byUser">{this.props.store.user.firstName} {this.props.store.user.lastName}</option>
                         <option value="All">All</option>
-                    </select>
-                    <select onChange={(event) => this.handleInputChange(event, this.state.tasks.clients_id = event.target.value)}>
+                    </Select>
+                    <Select onChange={(event) => this.handleInputChange(event, this.state.tasks.clients_id = event.target.value)}>
                         {allClientsList}
-                    </select>
-                    <select onChange={(event) => this.handleInputChange(event, this.state.tasks.trueOrFalse = event.target.value)}>
+                    </Select>
+                    <Select value="FALSE" onChange={(event) => this.handleInputChange(event, this.state.tasks.trueOrFalse = event.target.value)}>
                         <option value="FALSE">Uncompleted</option>
                         <option value="TRUE">Completed</option>
-                    </select>
-                    <button type='submit' value='Submit'>Get Tasks</button>
+                    </Select>
+                    <Button type='submit' value='Submit'>Get Tasks</Button>
                 </form>
 
-                {taskList}
+                {taskList} */}
             </div>
         )
     }
 }
 
-// /*eslint-disable*/
-// import React from "react";
-// // nodejs library to set properties for components
-// // import PropTypes from "prop-types";
-// // @material-ui/core components
-// import { makeStyles } from "@material-ui/core/styles";
-// // @material-ui/icons
-// import AddAlert from "@material-ui/icons/AddAlert";
-// // core components
-// import GridItem from "../Grid/GridItem.js";
-// import GridContainer from "../Grid/GridContainer.js";
-// import Button from "../CustomButtons/Button.js";
-// import SnackbarContent from "../Snackbar/SnackbarContent";
-// import Snackbar from "../Snackbar/Snackbar";
-// import Card from "../Card/Card.js";
-// import CardHeader from "../Card/CardHeader.js";
-// import CardBody from "../Card/CardBody.js";
-// import Tasks from "../../components/Tasks/Tasks";
-// import Table from "../../components/Table/Table.js";
 
-// import Code from "@material-ui/icons/Code";
-// import Cloud from "@material-ui/icons/Cloud";
-
-// import CustomTabs from "../CustomTabs/CustomTabs";
-// import BugReport from "@material-ui/icons/BugReport";
-// import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+export default connect(mapStoreToProps)(TaskPage);
 
 
-
-// import { bugs, website, server } from "../../../src/variables/general";
 
 // const styles = {
 //     cardCategoryWhite: {
@@ -144,54 +244,20 @@ class TaskPage extends Component {
 //     }
 // };
 
+
+// {
+//     tabName: "Kyle's Tasks",
+//     tabIcon: PlaylistAddCheckIcon,
+//     tabContent: (
+//         <Tasks
+//             checkedIndexes={[0, 3]}
+//             tasksIndexes={[1]}
+//             tasks={bugs}
+//         />
+//     )
+// },
+
 // const useStyles = makeStyles(styles);
 
-// export default function Notifications() {
-//     return (
-//         <GridContainer justify="center" paddingTop={12}>
-//             <GridItem xs={12} sm={12} md={10}>
-//                 <CustomTabs
-//                     title="Task List:"
-//                     headerColor="primary"
-//                     tabs={[
-//                         {
-//                             tabName: "Kyle's Tasks",
-//                             tabIcon: PlaylistAddCheckIcon,
-//                             tabContent: (
-//                                 <Tasks
-//                                     checkedIndexes={[0, 3]}
-//                                     tasksIndexes={[0, 1, 2, 3, 4, 5]}
-//                                     tasks={bugs}
-//                                 />
-//                             )
-//                         },
-//                         {
-//                             tabName: "Leslie's Tasks",
-//                             tabIcon: PlaylistAddCheckIcon,
-//                             tabContent: (
-//                                 <Tasks
-//                                     checkedIndexes={[0]}
-//                                     tasksIndexes={[0, 1]}
-//                                     tasks={website}
-//                                 />
-//                             )
-//                         },
-//                         {
-//                             tabName: "All Tasks",
-//                             tabIcon: PlaylistAddCheckIcon,
-//                             tabContent: (
-//                                 <Tasks
-//                                     checkedIndexes={[1]}
-//                                     tasksIndexes={[0, 1, 2]}
-//                                     tasks={server}
-//                                 />
-//                             )
-//                         }
-//                     ]}
-//                 />
-//             </GridItem>
-//         </GridContainer>
-//     );
-// }
 
-export default connect(mapStoreToProps)(TaskPage);
+/*onChange={(event) => this.handleCheckboxChange(event, item.id, this.state.tasks.checkbox = 'False')}*/
