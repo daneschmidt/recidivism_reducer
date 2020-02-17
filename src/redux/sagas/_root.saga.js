@@ -21,17 +21,6 @@ import putTaskSaga from './putTask.saga';
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-	yield all([
-		loginSaga(),
-		registrationSaga(),
-		userSaga(),
-		bossFormSaga(),
-		getClientsSaga(),
-		getTasksSaga(),
-		getRecentCompsSaga(),
-		calendar(),
-		userCredentials(),
-	]);
   yield all([
     loginSaga(),
     registrationSaga(),
@@ -42,6 +31,7 @@ export default function* rootSaga() {
     getUserTasksSaga(),
     getRecentCompsSaga(),
     calendar(),
+    userCredentials(),
     getAllTasksSaga(),
     getClientTasksSaga(),
     putTaskSaga()
