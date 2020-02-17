@@ -32,7 +32,7 @@ function* addNewEvent(action) {
 
     yield put({ type: 'CLEAR_ADD_EVENT_ERROR' });
 
-    const response = yield axios.post('api/events', action.payload);
+    const response = yield axios.post('/api/events', action.payload);
     console.log(response);
     yield put({type: 'SET_CALENDAR'});
     
@@ -42,10 +42,10 @@ function* addNewEvent(action) {
   }
 }
 
-function* bossFormSaga() {
+function* calendar() {
   yield takeLatest('GET_EVENTS', getAllEvents);
   yield takeLatest('GET_EVENT', getSingleEvent);
   yield takeLatest('POST_EVENT', addNewEvent);
 }
 
-export default bossFormSaga;
+export default calendar;
