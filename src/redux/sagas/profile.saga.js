@@ -1,21 +1,27 @@
-import { put, takeLatest } from "redux-saga/effects";
-import axios from "axios";
 
-function* getProfile() {
+import axios from 'axios';
+import { put, takeLatest } from 'redux-saga/effects';
+
+function* getProfile(action) {
+	// console.log(action.payload.id)
+	// const clientsId = action.payload.id;
+	// console.log(id);
 	try {
-		const response = yield axios.get("/api/profile");
-
+		const response = yield axios({
+			method: 'GET',
+			url: '/api/profile/' + action.payload.id,
+		});
 		yield put({
-			type: "SET_PROFILE",
+			type: 'SET_PROFILE',
 			payload: response.data,
 		});
 	} catch (err) {
-		console.log("Error fetching profile:", err);
+		console.log('Error fetching profile:', err);
 	}
 }
 
 function* getProfileSaga() {
-	yield takeLatest("GET_PROFILE", getProfile);
+	yield takeLatest('GET_PROFILE', getProfile);
 }
 
 export default getProfileSaga;

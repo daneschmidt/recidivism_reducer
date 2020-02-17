@@ -7,6 +7,7 @@ import getAllClientsListSaga from './getAllClientsList.saga';
 import getUserTasksSaga from './getUserTasks.saga';
 import getRecentCompsSaga from './competitions.saga';
 import calendar from './calendar.saga';
+import getProfileSaga from './profile.saga';
 import userCredentials from './user.credentials.saga';
 import getAllTasksSaga from './getAllTasks.saga';
 import getClientTasksSaga from './getClientTasks.saga';
@@ -34,6 +35,7 @@ export default function* rootSaga() {
     userCredentials(),
     getAllTasksSaga(),
     getClientTasksSaga(),
-    putTaskSaga()
+    getProfileSaga(),
+    putTaskSaga(),
   ]);
 }
