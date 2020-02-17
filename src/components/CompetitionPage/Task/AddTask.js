@@ -2,14 +2,13 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { addTask } from '../../../redux/reducers/actions';
+import uuid from 'uuid/v1';
 
 import Button from '@material-ui/core/Button';
 
 class AddTask extends React.Component {
   add() {
-    const id = this.props.tasks.length
-      ? _.last(_.sortBy(this.props.tasks, 'id')).id + 1
-      : 1;
+    const id = uuid();
     this.props.dispatch(addTask(id));
   }
 

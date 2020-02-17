@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* getAllEvents() {
     try {
-        const response = yield axios.get('api/calendar');
+        const response = yield axios.get('/api/events/');
         console.log(response);
         yield put ({
             type: 'SET_CALENDAR',
@@ -14,12 +14,25 @@ function* getAllEvents() {
     };
 };
 
+function* getSingleEvent(action) {
+  try {
+      const response = yield axios.get('/api/events/', action.payload);
+      console.log(response);
+      yield put ({
+          type: 'SET_CALENDAR',
+          payload: response.data
+      })
+  } catch (err) {
+      console.log(`Couldn't get all events`, err)
+  };
+};
+
 function* addNewEvent(action) {
   try {
 
     yield put({ type: 'CLEAR_ADD_EVENT_ERROR' });
 
-    const response = yield axios.post('api/calendar/events', action.payload);
+    const response = yield axios.post('/api/events', action.payload);
     console.log(response);
     yield put({type: 'SET_CALENDAR'});
     
@@ -29,9 +42,10 @@ function* addNewEvent(action) {
   }
 }
 
-function* bossFormSaga() {
+function* calendar() {
   yield takeLatest('GET_EVENTS', getAllEvents);
+  yield takeLatest('GET_EVENT', getSingleEvent);
   yield takeLatest('POST_EVENT', addNewEvent);
 }
 
-export default bossFormSaga;
+export default calendar;
