@@ -15,10 +15,10 @@ class Calendar extends Component {
 
   componentDidMount() {
     this.props.dispatch({
-        type: 'GET_EVENTS',
+      type: 'GET_EVENTS',
     })
   }
-  
+
   render() {
     return (
       <div>
