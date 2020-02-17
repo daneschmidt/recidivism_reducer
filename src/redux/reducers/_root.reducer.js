@@ -9,6 +9,7 @@ import getAllClientsReducer from './getAllClients.reducer';
 import getUserTasksReducer from './getUserTasks.reducer';
 import competitions from './competitions.reducer';
 import calendar from './calendar.reducer';
+import userCredentials from './user.credentials.reducer';
 import getAllTasksReducer from './getAllTasks.reducer';
 import getClientTasksReducer from './getClientTasks.reducer';
 
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   getUserTasksReducer,
   competitions,
   calendar,
+  userCredentials,
   getAllTasksReducer,
   getClientTasksReducer
 });
