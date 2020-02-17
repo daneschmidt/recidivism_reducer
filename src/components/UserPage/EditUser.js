@@ -1,33 +1,19 @@
-// React
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // Material-UI
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
-import DeleteIcon from '@material-ui/icons/Delete';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-// CSS
-import '../UserPage/UserPage.css'
-
-class UserPage extends Component {
+class EditUser extends Component {
 
     state = {
         setOpen: false,
-        checkbox: false,
         firstName: '',
         lastName: '',
         phoneNumber: '',
@@ -39,12 +25,6 @@ class UserPage extends Component {
             level4: 4,
             level5: 5,
         }
-    }
-
-   componentDidMount() {
-        this.props.dispatch({
-            type: 'GET_USER_CREDENTIALS',
-        })
     }
 
     handleInputChange = propertyName => (event) => {
@@ -61,29 +41,7 @@ class UserPage extends Component {
         });
         
     }
-
-    handleChange = (event) => {
-        this.setState({
-            checkbox: true
-        })
-    }
-
-    checkboxClicked = (event) => {
-        this.setState({
-            id: event.target.value,
-        })
-    }
-
-    // Material-UI styles
-    useStyles = (makeStyles) => {
-        this.setState({
-            table: {
-                minWidth: 650,
-            },
-        })
-    }
-
-    // Update user credentials
+    
     handleUpdate = (event) => {
         this.props.dispatch({
             type: 'EDIT_USER_CREDENTIALS',
@@ -98,14 +56,12 @@ class UserPage extends Component {
         this.closeEditUser();
     }
 
-    // opends edit modal
     openEditUser = (event) => {
         this.setState({
             setOpen: true,
         })
     }
 
-    // clears input fields and closes modal
     closeEditUser = (event) => {
         this.setState({
             setOpen: false,
@@ -123,49 +79,9 @@ class UserPage extends Component {
         })
     }
 
-    // Doesn't delete user just changes isActive to false
-    handleStatusChange = (event) => { }
-
     render() {
         return (
-            <div>
-                <TableContainer component={Paper}>
-                    <Table className={this.useStyles.table} size="small">
-                        <TableHead className="table-head">
-                            <TableRow className="table-row">
-                                <TableCell></TableCell>
-                                <TableCell>First Name</TableCell>
-                                <TableCell>Last Name</TableCell>
-                                <TableCell>Phone Number</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Security Level</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
-                                <TableRow key={index}>
-                                    <TableCell align="right">
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    checked={this.state.handleCheckbox}
-                                                    onChange={(event) => this.handleChange(event, item.id, this.state.checkbox = event.target.checked)}
-                                                    color="primary"
-                                                />
-                                            }
-                                        />
-                                    </TableCell>
-                                    <TableCell>{item.firstName}</TableCell>
-                                    <TableCell>{item.lastName}</TableCell>
-                                    <TableCell>{item.phoneNumber}</TableCell>
-                                    <TableCell>{item.email}</TableCell>
-                                    <TableCell>{item.securityLevel}</TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                <div className="edit-button">
+            <div className="edit-button">
                     <Button
                         variant="contained"
                         color="primary"
@@ -284,9 +200,8 @@ class UserPage extends Component {
                         </Modal>
                     </div>
                 </div>
-            </div>
         );
     }
 }
 
-export default connect(mapStoreToProps)(UserPage);
+export default connect(mapStoreToProps)(EditUser);

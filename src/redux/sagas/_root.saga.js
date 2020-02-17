@@ -28,24 +28,14 @@ export default function* rootSaga() {
     userSaga(),
     bossFormSaga(),
     getClientsSaga(),
-    getAllTasksSaga(),
-    getRecentCompsSaga(),
-    calendar(),
-    getProfileSaga(),
-    userCredentials(),
-  ]);
-  yield all([
-    loginSaga(),
-    registrationSaga(),
-    userSaga(),
-    bossFormSaga(),
-    getClientsSaga(),
     getAllClientsListSaga(),
     getUserTasksSaga(),
     getRecentCompsSaga(),
     calendar(),
+    userCredentials(),
     getAllTasksSaga(),
     getClientTasksSaga(),
-    putTaskSaga()
+    getProfileSaga(),
+    putTaskSaga(),
   ]);
 }
