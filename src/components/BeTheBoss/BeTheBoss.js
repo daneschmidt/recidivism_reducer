@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import Swal from 'sweetalert2';
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+
 class BeTheBoss extends Component {
 	state = {
 		firstName: "",
@@ -22,21 +24,30 @@ class BeTheBoss extends Component {
 		if (this.state.firstName && 
 			this.state.lastName &&
 			this.state.gender &&
-			this.state.phoneNumber &&
-			this.state.email) {
-		  this.props.dispatch({
+			this.state.phoneNumber) {
+		this.props.dispatch({
 			type: 'ADD_CLIENT',
 			payload: {
-			  firstName: this.state.firstName,
-			  lastName: this.state.lastName,
-			  gender: this.state.gender,
-			  phoneNumber: this.state.phoneNumber,
-			  email: this.state.email,
+			  	firstName: this.state.firstName,
+			  	lastName: this.state.lastName,
+			  	gender: this.state.gender,
+			  	phoneNumber: this.state.phoneNumber,
+			  	email: this.state.email,
 			},
-		  });
+		  	});
+
+			Swal.fire("You\'re done!", "Thanks for entering your info!", "success")
+
+			this.setState({
+				firstName: "",
+				lastName: "",
+				gender: "",
+				phoneNumber: "",
+				email: "",
+			})
 		} else {
 			console.log('whoops');
-			this.props.dispatch({ type: 'CLIENT_REJECTED' });
+			Swal.fire("Oops!", "Please enter all of your info!", "error")
 			// if (!this.state.firstName) alert("Must enter first name.");
 			// else if (!this.state.lastName) alert("Must enter last name.");
 			// else if (!this.state.gender) alert("Must enter gender.");
