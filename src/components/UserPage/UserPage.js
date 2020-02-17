@@ -41,6 +41,12 @@ class UserPage extends Component {
         }
     }
 
+   componentDidMount() {
+        this.props.dispatch({
+            type: 'GET_USER_CREDENTIALS',
+        })
+    }
+
     handleInputChange = propertyName => (event) => {
         this.setState({
             securityLevel: {
@@ -53,21 +59,22 @@ class UserPage extends Component {
             },
             [propertyName]: event.target.value,
         });
-        console.log(propertyName);
+        
     }
 
-    componentDidMount() {
-        this.props.dispatch({
-            type: 'GET_USER_CREDENTIALS',
-        })
-    }
-
-    handleCheckbox = (event) => {
+    handleChange = (event) => {
         this.setState({
-            checkbox: true,
+            checkbox: true
         })
     }
 
+    checkboxClicked = (event) => {
+        this.setState({
+            id: event.target.value,
+        })
+    }
+
+    // Material-UI styles
     useStyles = (makeStyles) => {
         this.setState({
             table: {
@@ -76,12 +83,29 @@ class UserPage extends Component {
         })
     }
 
+    // Update user credentials
+    handleUpdate = (event) => {
+        this.props.dispatch({
+            type: 'EDIT_USER_CREDENTIALS',
+            payload: {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                phoneNumber: this.state.phoneNumber,
+                email: this.state.email,
+                securityLevel: this.state.securityLevel,
+            },
+        });
+        this.closeEditUser();
+    }
+
+    // opends edit modal
     openEditUser = (event) => {
         this.setState({
             setOpen: true,
         })
     }
 
+    // clears input fields and closes modal
     closeEditUser = (event) => {
         this.setState({
             setOpen: false,
@@ -99,21 +123,8 @@ class UserPage extends Component {
         })
     }
 
-    handleUpdate = (event) => {
-        this.props.dispatch({
-            type: 'REGISTER',
-            payload: {
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                phoneNumber: this.state.phoneNumber,
-                email: this.state.email,
-                securityLevel: this.state.securityLevel,
-            },
-        });
-        this.closeNewEvent();
-    }
-
-    handleDelete = (event) => { }
+    // Doesn't delete user just changes isActive to false
+    handleStatusChange = (event) => { }
 
     render() {
         return (
@@ -131,26 +142,26 @@ class UserPage extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.props.store.userCredentials.userCredentials.map(row => (
-                                <TableRow key={row.user}>
+                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
+                                <TableRow key={index}>
                                     <TableCell align="right">
                                         <FormControlLabel
                                             control={
                                                 <Checkbox
                                                     checked={this.state.handleCheckbox}
-                                                    //onChange={this.handleInputChange('checkbox')}
+                                                    onChange={(event) => this.handleChange(event, item.id, this.state.checkbox = event.target.checked)}
                                                     color="primary"
                                                 />
                                             }
                                         />
                                     </TableCell>
-                                    <TableCell>{row.firstName}</TableCell>
-                                    <TableCell>{row.lastName}</TableCell>
-                                    <TableCell>{row.phoneNumber}</TableCell>
-                                    <TableCell>{row.email}</TableCell>
-                                    <TableCell>{row.securityLevel}</TableCell>
+                                    <TableCell>{item.firstName}</TableCell>
+                                    <TableCell>{item.lastName}</TableCell>
+                                    <TableCell>{item.phoneNumber}</TableCell>
+                                    <TableCell>{item.email}</TableCell>
+                                    <TableCell>{item.securityLevel}</TableCell>
                                 </TableRow>
-                            ))}
+                            )}
                         </TableBody>
                     </Table>
                 </TableContainer>
