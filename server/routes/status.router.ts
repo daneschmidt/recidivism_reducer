@@ -5,7 +5,7 @@ import rejectUnauthenticated from '../modules/authentication-middleware';
 
 const router: express.Router = express.Router();
 
-//Route to create a list of competitions with joint clients to competitions
+//Route to GET status names
 router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
   const queryText: string = `SELECT * FROM "competition_status" 
     WHERE "competition_status"."id" = '1';`;
@@ -20,7 +20,8 @@ router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
     });
 });
 
-router.put('/', (req: Request, res: Response): void => {
+//Route to UPDATE status names
+router.put('/', rejectUnauthenticated, (req: Request, res: Response): void => {
   const data = req.body;
   const queryText: string = `UPDATE "competition_status" SET "step1" = '${data.step1}',
     "step2" = '${data.step2}',"step3" = '${data.step3}',"step4" = '${data.step4}',

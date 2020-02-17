@@ -13,6 +13,9 @@ import getClientsSaga from './client.saga';
 import putTaskSaga from './putTask.saga';
 import getStatusSaga from './status.saga';
 import updateStatusSaga from './updateStatus.saga';
+import getParticipantsSaga from './getParticipants.saga';
+import editParticipantSaga from './editParticipant.saga';
+import addParticipantSaga from './addParticipant.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -36,6 +39,9 @@ export default function* rootSaga() {
     getClientTasksSaga(),
     putTaskSaga(),
     getStatusSaga(),
-    updateStatusSaga()
+    updateStatusSaga(),
+    getParticipantsSaga(),
+    editParticipantSaga(),
+    addParticipantSaga()
   ]);
 }

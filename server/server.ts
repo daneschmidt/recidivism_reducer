@@ -13,6 +13,7 @@ import tasks from './routes/tasksRouters/tasks.router';
 import eventRouter from './routes/event.router';
 import competitions from './routes/competitions.router';
 import status from './routes/status.router';
+import participants from './routes/participant.router';
 
 require('dotenv').config();
 
@@ -41,6 +42,7 @@ app.use('/api/competitions', competitions);
 app.use('/api/profile', profile);
 app.use('/api/profile/edit', editProfile);
 app.use('/api/status', status);
+app.use('/api/participants', participants);
 
 // Serve static files
 app.use(express.static('build'));

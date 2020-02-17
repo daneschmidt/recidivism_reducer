@@ -88,6 +88,11 @@ CREATE TABLE "links" (
   "url" varchar
 );
 
+    CREATE TABLE "participants" (
+  "id" SERIAL PRIMARY KEY,
+  "parName" varchar
+);
+
 CREATE TABLE "tasks" (
   "id" SERIAL PRIMARY KEY,
   "users_id" int REFERENCES "user",

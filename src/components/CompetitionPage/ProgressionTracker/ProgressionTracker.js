@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
@@ -15,8 +15,14 @@ import Paper from '@material-ui/core/Paper';
 class ProgressionTracker extends React.Component {
   constructor(props) {
     super(props);
-
     this.onDragEnd = this.onDragEnd.bind(this);
+  }
+
+  //GET SAGA for all participants
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_PARTICIPANTS'
+    });
   }
 
   getTasks(list, tasks) {
@@ -70,7 +76,7 @@ class ProgressionTracker extends React.Component {
                   <Droppable droppableId={item.id} key={index}>
                     {(provided, snapshot) => (
                       <Grid item xs={2}>
-                        <Paper style={{ margin: '10px', padding: '10px' }}>
+                        <Paper style={{ margin: '2px', padding: '2px' }}>
                           <List
                             style={{ flex: '1' }}
                             list={item}
@@ -94,7 +100,8 @@ class ProgressionTracker extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   moveTask: (fromListId, toListId, id) =>
-    dispatch(moveTask(fromListId, toListId, id))
+    dispatch(moveTask(fromListId, toListId, id)),
+  dispatch
 });
 
 export default connect(mapStoreToProps, mapDispatchToProps)(ProgressionTracker);

@@ -5,7 +5,11 @@ import { ADD_TASK, MOVE_TASK, EDIT_TASK, DELETE_TASK } from './actions';
 function lists(state, action) {
   if (state === undefined) {
     return {
-      step1: { id: 'step1', title: 'step 1', tasks: [] },
+      step1: {
+        id: 'step1',
+        title: 'step 1',
+        tasks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+      },
       step2: { id: 'step2', title: 'step 2', tasks: [] },
       step3: { id: 'step3', title: 'step 3', tasks: [] },
       step4: { id: 'step4', title: 'step 4', tasks: [] },
@@ -82,13 +86,36 @@ function tasks(state, action) {
       1: { id: '1', title: 'Participant 1' },
       2: { id: '2', title: 'Participant 2' },
       3: { id: '3', title: 'Participant 3' },
-      4: { id: '4', title: 'Participant 4' }
+      4: { id: '4', title: 'Participant 4' },
+      5: { id: '5', title: 'Participant 5' },
+      6: { id: '6', title: 'Participant 6' },
+      7: { id: '7', title: 'Participant 7' },
+      8: { id: '8', title: 'Participant 8' },
+      9: { id: '9', title: 'Participant 9' },
+      10: { id: '10', title: 'Participant 10' }
     };
   }
 
   let task;
-
   switch (action.type) {
+    case 'SET_PARTICIPANTS': {
+      return {
+        ...state,
+        1: {
+          id: action.payload[0].id,
+          title: action.payload[0].parName
+        },
+        2: {
+          id: action.payload[1].id,
+          title: action.payload[1].parName
+        },
+        3: {
+          id: action.payload[2].id,
+          title: action.payload[2].parName
+        }
+      };
+    }
+
     case ADD_TASK:
       task = { id: action.id, title: 'New Participant' };
       return {

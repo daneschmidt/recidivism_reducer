@@ -1,8 +1,8 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import Task from '../Task/Task';
-import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { connect } from 'react-redux';
+// import mapStoreToProps from '../../../redux/mapStoreToProps';
+// import { connect } from 'react-redux';
 
 export default class List extends React.Component {
   render() {

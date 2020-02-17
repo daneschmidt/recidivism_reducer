@@ -10,6 +10,9 @@ class AddTask extends React.Component {
   add() {
     const id = uuid();
     this.props.dispatch(addTask(id));
+    this.props.dispatch({
+      type: 'ADD_PARTICIPANT'
+    });
   }
 
   render() {

@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { put, all, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 // Put call for tasks
 function* updateStatus(action) {
   try {
-    const response = yield axios({
+    yield axios({
       method: 'PUT',
       url: '/api/status',
       data: action.payload
