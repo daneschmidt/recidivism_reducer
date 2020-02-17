@@ -7,7 +7,7 @@ import getClientsSaga from './client.saga';
 import getTasksSaga from './getTasksSaga';
 import getRecentCompsSaga from './competitions.saga';
 import calendar from './calendar.saga';
-
+import getProfileSaga from './profile.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -25,5 +25,6 @@ export default function* rootSaga() {
 		getTasksSaga(),
 		getRecentCompsSaga(),
 		calendar(),
+		getProfileSaga(),
 	]);
 }
