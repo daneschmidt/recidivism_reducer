@@ -25,7 +25,7 @@ router.put('/edit-user/:id', (req: express.Request, res: express.Response, next:
 	const phoneNumber: number | null = <number>req.body.phoneNumber;
 	const email: string | null = <string>req.body.email;
 	const securityLevel: number | null = <number>req.body.securityLevel;
-	const id: number | null = <number>req.params.id;
+	const id = req.params.id;
 
 	const queryText = `UPDATE "user" SET 
 	"firstName" = $1,
