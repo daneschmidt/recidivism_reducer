@@ -58,7 +58,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 //                     <CardBody>
 //                         <Table
 //                             tableHeaderColor="primary"
-//                             tableHead={["ID", "Name", "Salary", "Location"]}
+//                             tableHead={["First Name", "Last Name", "Phone Number", "Email"]}
 //                             tableData={[
 //                                 ["1", "Dane Schmidt", "$136,738", "OP KS THO"],
 //                                 ["2", "Grizzler Johnston", "$123,789", "KC MO YO"],
@@ -87,29 +87,30 @@ class clientPage extends Component {
 		});
 	}
 	//Dispatches selected client id to profile.saga
-	goToProfile = id => {
+	goToProfile = (event, id) => {
 		console.log(id);
 		this.props.dispatch({
 			type: 'GET_PROFILE',
-			payload: id,
+			payload: { id }
 		});
 		//Navigates to profile page, will give all information on selected client
-		this.props.history.push('/profile/');
+		this.props.history.push('/profilepage');
 	};
 
 	render() {
 		const clientList = this.props.store.client.map((item, index) => {
 			return (
-				<div
-					key={index}
-					className='click-client'
-					onClick={event => this.goToProfile(item.id)}
-				>
-					<span>{item.firstName}</span>
-					<span>{item.lastName}</span>
-					<span>{item.email}</span>
-					<span>{item.phoneNumber}</span>
-				</div>
+				<ul>
+					<li key={index} onClick={event => this.goToProfile(event, item.id)}>
+						{item.firstName}
+						<br />
+						{item.lastName}
+						<br />
+						{item.phoneNumber}
+						<br />
+						{item.email}
+					</li>
+				</ul>
 			);
 		});
 		return <div>{clientList}</div>;

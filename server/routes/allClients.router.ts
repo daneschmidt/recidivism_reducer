@@ -7,7 +7,7 @@ const router: express.Router = express.Router();
 
 //Route to create a list of clients
 //includes id, firstName, lastName, email, phoneNumber, timeStamp
-router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
+router.get('/all', rejectUnauthenticated, (req: Request, res: Response): void => {
 	const queryText:
 		| string
 		| null = `SELECT "id", "firstName", "lastName", "email", "phoneNumber", "timeStamp" FROM "clients"`;
