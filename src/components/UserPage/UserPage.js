@@ -108,28 +108,37 @@ class UserPage extends Component {
         this.closeEditUser();
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            //text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.value) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-            }
-            this.props.dispatch({
-                type: 'EDIT_USER_STATUS',
-                payload: {
-                    isActive: this.state.isActive,
-                    id: this.state.id
-                }
-            })
-          })
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                this.props.dispatch({
+                    type: 'EDIT_USER_STATUS',
+                    payload: {
+                        isActive: this.state.isActive,
+                        id: this.state.id
+                    }
+                })
+            }  else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+              ) {
+                Swal.fire(
+                  'Cancelled',
+                  'Your imaginary file is safe :)',
+                  'error'
+                )
+              }
+        })
     }
 
     // Update user credentials with sweet alert pop up 
@@ -177,7 +186,7 @@ class UserPage extends Component {
 
     render() {
         return (
-            
+
             <div>
                 <TableContainer component={Paper} className="container">
                     <Table size="small">
