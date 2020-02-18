@@ -50,14 +50,13 @@ router.put(
 		const editTimeStamp = req.body.timeStamp;
 		const editIsActive = req.body.isActive;
 		const queryText: string = `UPDATE "clients" SET 
-        "firstName" = $2, "lastName" = $3, "gender" = $4, "phoneNumber" = $5, "email" = $6,  "criminalRecord" = $7, "misdemOrFel" = $8, 
-        "incarceratedYorN" = $9, "incarcerationLength" = $10, "releaseDate" = $11, "docNumber" = $12, "stateIncarcerated" = $13, 
-        "paroleOnRelease" = $14, "agentName" = $15, "agentPhone" = $16, "connections" = $17, "ifYesConnections" = $18, "business" = $19,
-        "businessStage" = $20, "whyAtBeTheBoss" = $21, "whatHopeToGain" = $22, "profilePic" = $23, "timeStamp" = $24, "isActive" = $25
-        WHERE "id" = $1;`;
+        "firstName" = $1, "lastName" = $2, "gender" = $3, "phoneNumber" = $4, "email" = $5,  "criminalRecord" = $6, "misdemOrFel" = $7, 
+        "incarceratedYorN" = $8, "incarcerationLength" = $9, "releaseDate" = $10, "docNumber" = $11, "stateIncarcerated" = $12, 
+        "paroleOnRelease" = $13, "agentName" = $14, "agentPhone" = $15, "connections" = $16, "ifYesConnections" = $17, "business" = $18,
+        "businessStage" = $19, "whyAtBeTheBoss" = $20, "whatHopeToGain" = $21, "profilePic" = $22, "timeStamp" = $23, "isActive" = $24
+        WHERE "id" = $25;`;
 		pool
 			.query(queryText, [
-				profileId,
 				editFirstName,
 				editLastName,
 				editGender,
@@ -82,6 +81,7 @@ router.put(
 				editProfilePic,
 				editTimeStamp,
 				editIsActive,
+				profileId,
 			])
 			.then(response => {
 				res.sendStatus(201);
