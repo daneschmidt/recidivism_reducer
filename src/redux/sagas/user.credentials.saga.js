@@ -17,12 +17,15 @@ function* getAllUserCredentials() {
 
 // Update user credentials information
 function* editUserCredential(action) {
-    const id = action.payload;
+    const id = action.payload.id;
     try {
-        const response = yield axios.put('/api/user-credentials/edit-user/', + id);
-        console.log(response);
+        yield axios({
+            method: 'PUT',
+            url: '/api/user-credentials/edit-user/'+id,
+            data: action.payload
+        });
         yield put ({
-            type: 'SET_USER_CREDENTIALS',
+            type: 'GET_USER_CREDENTIALS',
         })
     } catch (err) {
         console.log(`Couldn't update user`, err)
@@ -31,15 +34,29 @@ function* editUserCredential(action) {
 
 // changes isActive status in database to false
 function* changeUserStatus(action) {
-    try {
-        const response = yield axios.put('/api/user-credentials/', action.payload);
-        console.log(response);
-        yield put ({
-            type: 'SET_USER_CREDENTIALS',
-        })
-    } catch (err) {
-        console.log(`Couldn't update user status`, err)
-    };
+    // const id = action.payload.id;
+    // try {
+    //     const response = yield axios.put('/api/user-credentials/user-status/', + id);
+    //     console.log(response);
+    //     yield put ({
+    //         type: 'GET_USER_CREDENTIALS',
+    //     })
+    // } catch (err) {
+    //     console.log(`Couldn't update user status`, err)
+    // };
+        const id = action.payload.id;
+        try {
+            yield axios({
+                method: 'PUT',
+                url: '/api/user-credentials/user-status/'+id,
+                data: action.payload
+            });
+            yield put ({
+                type: 'GET_USER_CREDENTIALS',
+            })
+        } catch (err) {
+            console.log(`Couldn't update user status`, err)
+        };
 };
 
 function* userCredentials() {

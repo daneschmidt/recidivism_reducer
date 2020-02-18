@@ -42,7 +42,7 @@ router.put('/edit-user/:id', (req: express.Request, res: express.Response, next:
 			phoneNumber,
 			email,
 			securityLevel,
-			id
+			id,
 		])
 		.then(() => res.sendStatus(200))
 		.catch(err => {
