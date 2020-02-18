@@ -8,9 +8,9 @@ const router: express.Router = express.Router();
  * GET route for selected individual client profile
  */
 router.get(
-	'/profile/:id',
+	'/:id',
 	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
+		const profileId: number | null = <number>Number(req.params.id);
 		const queryText: string = `SELECT * FROM "clients" WHERE "id" = $1;`;
 		pool
 			.query(queryText, [profileId])
@@ -28,67 +28,68 @@ router.get(
  * Put routes for updating selected individual client profile
  */
 router.put(
-	'/edit/:id',
+	'/put/:id',
 	(req: Request, res: Response, next: express.NextFunction): void => {
 		const profileId = req.params.id;
-		const editFirstName = req.body.firstName;
-		const editLastName = req.body.lastName;
-		const editGender = req.body.gender;
-		const editPhoneNumber = req.body.phoneNumber;
-		const editEmail = req.body.email;
-		const editCriminalRecord = req.body.criminalRecord;
-		const editMisdemOrFel = req.body.misdemOrFel;
-		const editIncarceratedYorN = req.body.incarceratedYorN;
-		const editIncarcerationLength = req.body.incarcerationLength;
-		const editReleaseDate = req.body.releaseDate;
-		const editDocNumber = req.body.docNumber;
-		const editStateIncarcerated = req.body.stateIncarcerated;
-		const editParoleOnRelease = req.body.paroleOnRelease;
-		const editAgentName = req.body.agentName;
-		const editAgentPhone = req.body.agentPhone;
-		const editConnections = req.body.connections;
-		const editIfYesConnection = req.body.ifYesConnections;
-		const editBusiness = req.body.business;
-		const editBusinessStage = req.body.businessStage;
-		const editWhyAtBeTheBoss = req.body.whyAtBeTheBoss;
-		const editWhatHopeToGain = req.body.whatHopeToGain;
+		const editFirstName: string | null = <string>req.body.firstName;
+		const editLastName: string | null = <string>req.body.lastName;
+		const editGender: string | null = <string>req.body.gender;
+		const editPhoneNumber: number | null = <number>req.body.phoneNumber;
+		const editEmail: string | null = <string>req.body.email;
+		const editCriminalRecord: string | null = <string>req.body.criminalRecord;
+		const editMisdemOrFel: string | null = <string>req.body.misdemOrFel;
+		const editIncarceratedYorN: string | null = <string>req.body.incarceratedYorN;
+		const editIncarcerationLength: string | null = <string>req.body.incarcerationLength;
+		const editReleaseDate: number | null = <number>req.body.releaseDate;
+		const editDocNumber: number | null = <number>req.body.docNumber;
+		const editStateIncarcerated: string | null = <string>req.body.stateIncarcerated;
+		const editParoleOnRelease: string | null = <string>req.body.paroleOnRelease;
+		const editAgentName: string | null = <string>req.body.agentName;
+		const editAgentPhone: number | null = <number>req.body.agentPhone;
+		const editConnections: string | null = <string>req.body.connections;
+		const editIfYesConnection: string | null = <string>req.body.ifYesConnections;
+		const editBusiness: string | null = <string>req.body.business;
+		const editBusinessStage: string | null = <string>req.body.businessStage;
+		const editWhyAtBeTheBoss: string | null = <string>req.body.whyAtBeTheBoss;
+		const editWhatHopeToGain: string | null = <string>req.body.whatHopeToGain;
 		const editProfilePic = req.body.profilePic;
-		const editTimeStamp = req.body.timeStamp;
-		const editIsActive = req.body.isActive;
+		const editTimeStamp: number | null = <number>req.body.timeStamp;
+		const editIsActive: string | null = <string>req.body.isActive;
+
 		const queryText: string = `UPDATE "clients" SET 
         "firstName" = $2, "lastName" = $3, "gender" = $4, "phoneNumber" = $5, "email" = $6,  "criminalRecord" = $7, "misdemOrFel" = $8, 
         "incarceratedYorN" = $9, "incarcerationLength" = $10, "releaseDate" = $11, "docNumber" = $12, "stateIncarcerated" = $13, 
         "paroleOnRelease" = $14, "agentName" = $15, "agentPhone" = $16, "connections" = $17, "ifYesConnections" = $18, "business" = $19,
         "businessStage" = $20, "whyAtBeTheBoss" = $21, "whatHopeToGain" = $22, "profilePic" = $23, "timeStamp" = $24, "isActive" = $25
-        WHERE "id" = $1;`;
-		pool
-			.query(queryText, [
-				profileId,
-				editFirstName,
-				editLastName,
-				editGender,
-				editPhoneNumber,
-				editEmail,
-				editCriminalRecord,
-				editMisdemOrFel,
-				editIncarceratedYorN,
-				editIncarcerationLength,
-				editReleaseDate,
-				editDocNumber,
-				editStateIncarcerated,
-				editParoleOnRelease,
-				editAgentName,
-				editAgentPhone,
-				editConnections,
-				editIfYesConnection,
-				editBusiness,
-				editBusinessStage,
-				editWhyAtBeTheBoss,
-				editWhatHopeToGain,
-				editProfilePic,
-				editTimeStamp,
-				editIsActive,
-			])
+		WHERE "id" = $1;`;
+
+		pool.query(queryText, [
+			profileId,
+			editFirstName,
+			editLastName,
+			editGender,
+			editPhoneNumber,
+			editEmail,
+			editCriminalRecord,
+			editMisdemOrFel,
+			editIncarceratedYorN,
+			editIncarcerationLength,
+			editReleaseDate,
+			editDocNumber,
+			editStateIncarcerated,
+			editParoleOnRelease,
+			editAgentName,
+			editAgentPhone,
+			editConnections,
+			editIfYesConnection,
+			editBusiness,
+			editBusinessStage,
+			editWhyAtBeTheBoss,
+			editWhatHopeToGain,
+			editProfilePic,
+			editTimeStamp,
+			editIsActive,
+		])
 			.then(response => {
 				res.sendStatus(201);
 			})

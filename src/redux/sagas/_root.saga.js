@@ -13,7 +13,7 @@ import getAllTasksSaga from './getAllTasks.saga';
 import getClientTasksSaga from './getClientTasks.saga';
 import getClientsSaga from './client.saga';
 import putTaskSaga from './putTask.saga';
-
+import searchClientSaga from './clientSearch.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -28,24 +28,16 @@ export default function* rootSaga() {
     userSaga(),
     bossFormSaga(),
     getClientsSaga(),
-    getTasksSaga(),
-    getRecentCompsSaga(),
-    calendar(),
-    getProfileSaga(),
-    userCredentials(),
-  ]);
-  yield all([
-    loginSaga(),
-    registrationSaga(),
-    userSaga(),
-    bossFormSaga(),
-    getClientsSaga(),
     getAllClientsListSaga(),
     getUserTasksSaga(),
     getRecentCompsSaga(),
     calendar(),
     getAllTasksSaga(),
     getClientTasksSaga(),
-    putTaskSaga()
+    putTaskSaga(),
+    getProfileSaga(),
+    userCredentials(),
+    searchClientSaga(),
+
   ]);
 }

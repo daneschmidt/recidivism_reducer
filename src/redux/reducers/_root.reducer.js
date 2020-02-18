@@ -5,12 +5,9 @@ import user from './user.reducer';
 import progress from './progression.reducer';
 import client from './client.reducer';
 import getAllClientsReducer from './getAllClients.reducer';
-import getTasksReducer from './getTasks.reducer';
 import competitions from './competitions.reducer';
 import calendar from './calendar.reducer';
 import getProfileReducer from './profile.reducer';
-import competitions from './competitions.reducer';
-import calendar from './calendar.reducer';
 import userCredentials from './user.credentials.reducer';
 import getAllTasksReducer from './getAllTasks.reducer';
 import getClientTasksReducer from './getClientTasks.reducer';
@@ -28,7 +25,6 @@ const rootReducer = combineReducers({
   progress, //renders default list for progress tracker
   client,
   getAllClientsReducer,
-  getTasksReducer,
   competitions,
   calendar,
   getProfileReducer,
