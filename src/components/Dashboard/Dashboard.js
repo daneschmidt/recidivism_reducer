@@ -29,6 +29,7 @@ import CustomTabs from "../CustomTabs/CustomTabs";
 import BugReport from "@material-ui/icons/BugReport";
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
+import TaskPage from "../TaskPage/TaskPage";
 
 
 import { bugs, website, server } from "../../../src/variables/general";
@@ -40,14 +41,17 @@ import {
 } from "../../variables/charts";
 
 import styles from "../../assets/jss/material-dashboard-react/views/dashboardStyle"
+import Calendar from "../Calendar/CalendarHome/Calendar.js";
+import ClientPage from "../ClientPage/ClientPage.js";
 
 const useStyles = makeStyles(styles);
 
 export default function DashboardPage() {
     const classes = useStyles();
     return (
+
         <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={2}>
+            {/* <GridItem xs={12} sm={12} md={2}>
                 <Card>
                     <CardHeader color="primary">
                         <h4 className={classes.cardTitleWhite}>Client List</h4>
@@ -73,48 +77,20 @@ export default function DashboardPage() {
                         />
                     </CardBody>
                 </Card>
+            </GridItem> */}
+
+            <GridItem xs={12} sm={12} md={2}>
+                <ClientPage />
             </GridItem>
+
             <GridItem xs={12} sm={12} md={5}>
-                <CustomTabs
-                    title="Task List:"
-                    headerColor="primary"
-                    tabs={[
-                        {
-                            tabName: "Kyle's Tasks",
-                            tabIcon: PlaylistAddCheckIcon,
-                            tabContent: (
-                                <Tasks
-                                    checkedIndexes={[0, 3]}
-                                    tasksIndexes={[0, 1, 2, 3, 4, 5]}
-                                    tasks={bugs}
-                                />
-                            )
-                        },
-                        {
-                            tabName: "Leslie's Tasks",
-                            tabIcon: PlaylistAddCheckIcon,
-                            tabContent: (
-                                <Tasks
-                                    checkedIndexes={[0]}
-                                    tasksIndexes={[0, 1]}
-                                    tasks={website}
-                                />
-                            )
-                        },
-                        {
-                            tabName: "All Tasks",
-                            tabIcon: PlaylistAddCheckIcon,
-                            tabContent: (
-                                <Tasks
-                                    checkedIndexes={[1]}
-                                    tasksIndexes={[0, 1, 2]}
-                                    tasks={server}
-                                />
-                            )
-                        }
-                    ]}
-                />
+                <TaskPage />
             </GridItem>
+
+            <GridItem xs={12} sm={12} md={4}>
+                <Calendar />
+            </GridItem>
+
             <GridItem xs={12} sm={12} md={4}>
                 <Card chart>
                     <CardHeader color="secondary">
@@ -140,30 +116,3 @@ export default function DashboardPage() {
         </GridContainer>
     );
 }
-
-
-
-
-
-
-
-
-
-
-/// OLD PAGE
-
-
-
-// class Dashboard extends Component {
-//     render() {
-//         return(
-//             <div>                                   
-//                 <p>
-//                     Dashboard Page!
-//                 </p>                                                  
-//             </div>
-//         )
-//     }
-// }
-
-// export default Dashboard;
