@@ -76,9 +76,10 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 //     )
 // }
 
-class clientPage extends Component {
+class ClientPage extends Component {
 	state = {
-		// heading: "Class Component",
+		heading: "Clients",
+		search_string: '',
 	};
 	//Dispatches to client.saga to GET full list of clients
 	componentDidMount() {
@@ -86,6 +87,37 @@ class clientPage extends Component {
 			type: 'GET_CLIENTS',
 		});
 	}
+	//Captures onChange event in the search field
+	onChange = key => event => {
+		this.setState(
+			{
+				...this.state,
+				[key]: event.target.value
+			},
+			() => {
+				console.log(this.state);
+			}
+		);
+	};
+	//Dispatches to profile.saga to edit selected client's profile
+	editProfile = id => {
+		console.log(id);
+		this.props.dispatch({
+			type: 'EDIT_PROFILE',
+			payload: id,
+		});
+		//Navigates to Edit Profile Modal
+		this.props.history.push('/editprofilepage');
+	};
+	//Dispatches to client
+	search = event => {
+		this.props.dispatch({
+			type: 'SEARCH_CLIENT',
+			payload: { search_string: this.state.search_string }
+		});
+	};
+
+
 	//Dispatches selected client id to profile.saga
 	goToProfile = (event, id) => {
 		console.log(id);
@@ -100,8 +132,8 @@ class clientPage extends Component {
 	render() {
 		const clientList = this.props.store.client.map((item, index) => {
 			return (
-				<ul>
-					<li key={index} onClick={event => this.goToProfile(event, item.id)}>
+				<ul key={index}>
+					<li onClick={event => this.goToProfile(event, item.id)}>
 						{item.firstName}
 						<br />
 						{item.lastName}
@@ -109,12 +141,23 @@ class clientPage extends Component {
 						{item.phoneNumber}
 						<br />
 						{item.email}
+						<button onClick={this.editProfile}>EDIT</button>
 					</li>
 				</ul>
+
 			);
 		});
-		return <div>{clientList}</div>;
+		return (
+			<div>
+				<h1>{this.state.heading}</h1>
+				<div>
+					<input type="text" onChange={this.onChange('search_string')}></input>
+					<button onClick={this.search}>SEARCH</button>
+				</div>
+				{clientList}
+			</div>
+		);
 	}
 }
 
-export default connect(mapStoreToProps)(clientPage);
+export default connect(mapStoreToProps)(ClientPage);

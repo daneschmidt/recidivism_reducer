@@ -49,7 +49,16 @@ class profilePage extends Component {
 				);
 			},
 		);
-		return <div>{clientProfile}</div>;
+		return (
+			<div>
+				<div>
+					<button onClick={this.editProfile}>EDIT</button>
+				</div>
+				<div>
+					{clientProfile}
+				</div>
+			</div>
+		);
 	}
 }
 
