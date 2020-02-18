@@ -76,7 +76,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 //     )
 // }
 
-class clientPage extends Component {
+class ClientPage extends Component {
 	state = {
 		heading: "Clients",
 		search_string: '',
@@ -160,4 +160,4 @@ class clientPage extends Component {
 	}
 }
 
-export default connect(mapStoreToProps)(clientPage);
+export default connect(mapStoreToProps)(ClientPage);
