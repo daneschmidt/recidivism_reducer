@@ -1,29 +1,29 @@
-import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { put, takeLatest } from 'redux-saga/effects';
 
 function* getAllEvents() {
-    try {
-        const response = yield axios.get('/api/events/');
-        console.log(response);
-        yield put ({
-            type: 'SET_CALENDAR',
-            payload: response.data
-        })
-    } catch (err) {
-        console.log(`Couldn't get all events`, err)
-    };
+  try {
+    const response = yield axios.get('/api/events/');
+    console.log(response);
+    yield put({
+      type: 'SET_CALENDAR',
+      payload: response.data
+    })
+  } catch (err) {
+    console.log(`Couldn't get all events`, err)
+  };
 };
 
 function* getSingleEvent(action) {
   try {
-      const response = yield axios.get('/api/events/', action.payload);
-      console.log(response);
-      yield put ({
-          type: 'SET_CALENDAR',
-          payload: response.data
-      })
+    const response = yield axios.get('/api/events/', action.payload);
+    console.log(response);
+    yield put({
+      type: 'SET_CALENDAR',
+      payload: response.data
+    })
   } catch (err) {
-      console.log(`Couldn't get all events`, err)
+    console.log(`Couldn't get all events`, err)
   };
 };
 
@@ -34,11 +34,11 @@ function* addNewEvent(action) {
 
     const response = yield axios.post('/api/events', action.payload);
     console.log(response);
-    yield put({type: 'SET_CALENDAR'});
-    
+    yield put({ type: 'SET_CALENDAR' });
+
   } catch (error) {
-      console.log('Error with adding event:', error);
-      yield put({ type: 'EVENT_REJECTED' });
+    console.log('Error with adding event:', error);
+    yield put({ type: 'EVENT_REJECTED' });
   }
 }
 
