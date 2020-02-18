@@ -11,6 +11,7 @@ import getProfileReducer from './profile.reducer';
 import userCredentials from './user.credentials.reducer';
 import getAllTasksReducer from './getAllTasks.reducer';
 import getClientTasksReducer from './getClientTasks.reducer';
+import getUserTasksReducer from './getUserTasks.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -30,7 +31,8 @@ const rootReducer = combineReducers({
   getProfileReducer,
   userCredentials,
   getAllTasksReducer,
-  getClientTasksReducer
+  getClientTasksReducer,
+  getUserTasksReducer,
 });
 
 export default rootReducer;
