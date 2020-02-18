@@ -7,7 +7,6 @@ function* getParticipants(action) {
       method: 'GET',
       url: '/api/participants/'
     });
-    console.log(response.data);
     yield put({
       type: 'SET_PARTICIPANTS',
       payload: response.data

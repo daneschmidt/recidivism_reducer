@@ -3,10 +3,11 @@ import { put, takeLatest } from 'redux-saga/effects';
 // Put call for tasks
 function* addParticipant(action) {
   try {
+    console.log(action.payload);
     yield axios({
       method: 'POST',
       url: '/api/participants/',
-      data: ''
+      data: { id: action.payload }
     });
     put({
       type: 'GET_PARTICIPANTS'

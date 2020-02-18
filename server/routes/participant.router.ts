@@ -22,10 +22,11 @@ router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
 
 router.post('/', (req: Request, res: Response): void => {
   const data = req.body;
+  console.log(data);
   const queryText: string = `INSERT INTO "participants"
-  ("parName")
+  ("id","parName")
 VALUES
-  ('${data.parName}');`;
+  ('${data.id}','');`;
   pool
     .query(queryText)
     .then(response => {

@@ -28,13 +28,26 @@ class ProgressionTracker extends React.Component {
   getTasks(list, tasks) {
     // return _.map(list.tasks, taskId => tasks[taskId]);
     let tasksArr = [];
+    console.log(tasks);
     for (let item in tasks) {
       tasksArr.push(tasks[item]);
     }
-    if (list.tasks.length <= 0) {
-      return [];
+
+    for (let item in tasks) {
+      tasksArr.push(tasks[item]);
     }
-    return tasksArr.filter(task => list.tasks.includes(task.id));
+
+    for (let item in tasks) {
+      list.tasks.push(item.id);
+    }
+
+    // if (list.tasks.length <= 0) {
+    //   return [];
+    // }
+    tasksArr = tasksArr.filter(task => list.tasks.includes(task.id));
+    console.log(list);
+    console.log(tasksArr);
+    return tasksArr;
   }
 
   onDragEnd({ source, destination, draggableId }) {
@@ -55,11 +68,12 @@ class ProgressionTracker extends React.Component {
   render() {
     const lists = this.props.store.progress.lists;
     const tasks = this.props.store.progress.tasks;
-
     return (
       <div>
-        <Card style={{ backgroundColor: 'steelblue' }}>
-          <h2 style={{ margin: '10px', display: 'inline-block' }}>
+        <Card style={{ backgroundColor: 'black' }}>
+          <h2
+            style={{ margin: '10px', display: 'inline-block', color: 'white' }}
+          >
             Competition Progression Tracker
           </h2>
           <span style={{ margin: '10px', display: 'inline-block' }}>

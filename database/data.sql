@@ -34,11 +34,6 @@ INSERT INTO "competitions"
 VALUES
     ('2020-03-10', 'Super Competition');
 
-INSERT INTO "participants"
-    ("parName")
-VALUES
-    ('Luke Ma');
-
 INSERT INTO "clients_competitions"
     ("clients_id", "competitions_id", "status", "award", "grantAmount", "notes")
 VALUES

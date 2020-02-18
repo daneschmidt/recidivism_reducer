@@ -27,7 +27,7 @@ class Task extends React.Component {
       type: 'EDIT_PARTICIPANT',
       payload: this.state
     });
-    // console.log(this.state);
+    console.log(this.state);
   }
 
   delete() {

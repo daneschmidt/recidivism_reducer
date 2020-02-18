@@ -11,7 +11,8 @@ class AddTask extends React.Component {
     const id = uuid();
     this.props.dispatch(addTask(id));
     this.props.dispatch({
-      type: 'ADD_PARTICIPANT'
+      type: 'ADD_PARTICIPANT',
+      payload: id
     });
   }
 

@@ -88,8 +88,8 @@ CREATE TABLE "links" (
   "url" varchar
 );
 
-    CREATE TABLE "participants" (
-  "id" SERIAL PRIMARY KEY,
+  CREATE TABLE "participants" (
+  "id" varchar,
   "parName" varchar
 );
 
