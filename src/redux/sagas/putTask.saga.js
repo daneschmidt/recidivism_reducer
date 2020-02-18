@@ -3,7 +3,7 @@ import { put, all, takeLatest } from 'redux-saga/effects';
 // Put call for tasks
 function* putTask(action) {
     console.log(`In put task`);
-    const id= action.payload.id
+    const id= action.payload.id;
     try {
         const response = yield axios({
             method: 'PUT',

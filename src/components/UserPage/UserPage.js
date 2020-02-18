@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+import EditUser from '../UserPage/EditUser';
+
 // Material-UI
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -20,6 +22,9 @@ import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+// Sweet Alert
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 // CSS
 import '../UserPage/UserPage.css'
 
@@ -27,11 +32,13 @@ class UserPage extends Component {
 
     state = {
         setOpen: false,
-        checkbox: false,
+        checkbox: '',
+        isActive: false,
         firstName: '',
         lastName: '',
         phoneNumber: '',
         email: '',
+        id: '',
         securityLevel: {
             level1: 1,
             level2: 2,
@@ -41,7 +48,7 @@ class UserPage extends Component {
         }
     }
 
-   componentDidMount() {
+    componentDidMount() {
         this.props.dispatch({
             type: 'GET_USER_CREDENTIALS',
         })
@@ -59,46 +66,18 @@ class UserPage extends Component {
             },
             [propertyName]: event.target.value,
         });
-        
+
     }
 
-    handleChange = (event) => {
+    // allow checkbox to have blue check mark
+    handleCheckboxChange = (event, id) => {
         this.setState({
-            checkbox: true
+            checkbox: id,
+            id,
         })
     }
 
-    checkboxClicked = (event) => {
-        this.setState({
-            id: event.target.value,
-        })
-    }
-
-    // Material-UI styles
-    useStyles = (makeStyles) => {
-        this.setState({
-            table: {
-                minWidth: 650,
-            },
-        })
-    }
-
-    // Update user credentials
-    handleUpdate = (event) => {
-        this.props.dispatch({
-            type: 'EDIT_USER_CREDENTIALS',
-            payload: {
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                phoneNumber: this.state.phoneNumber,
-                email: this.state.email,
-                securityLevel: this.state.securityLevel,
-            },
-        });
-        this.closeEditUser();
-    }
-
-    // opends edit modal
+    // opens edit modal
     openEditUser = (event) => {
         this.setState({
             setOpen: true,
@@ -108,6 +87,7 @@ class UserPage extends Component {
     // clears input fields and closes modal
     closeEditUser = (event) => {
         this.setState({
+            checkbox: false,
             setOpen: false,
             firstName: '',
             lastName: '',
@@ -124,13 +104,83 @@ class UserPage extends Component {
     }
 
     // Doesn't delete user just changes isActive to false
-    handleStatusChange = (event) => { }
+    handleStatusChange = (event) => {
+        this.closeEditUser();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+            this.props.dispatch({
+                type: 'EDIT_USER_STATUS',
+                payload: {
+                    isActive: this.state.isActive,
+                    id: this.state.id
+                }
+            })
+          })
+    }
+
+    // Update user credentials with sweet alert pop up 
+    // with success or failed message
+    handleUserUpdate = (event) => {
+        if (this.state.firstName &&
+            this.state.lastName &&
+            this.state.phoneNumber &&
+            this.state.email &&
+            this.state.securityLevel) {
+            this.props.dispatch({
+                type: 'EDIT_USER_CREDENTIALS',
+                payload: {
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    phoneNumber: this.state.phoneNumber,
+                    email: this.state.email,
+                    securityLevel: this.state.securityLevel,
+                    id: this.state.id
+                },
+            });
+            this.closeEditUser();
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'User has been updated!',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                this.setState({
+                    checkbox: null,
+                });
+            })
+        } else {
+            this.closeEditUser();
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                //title: 'Oops...',
+                text: 'Please fill out all input fields!',
+                timer: 1500
+            })
+        }
+    }
 
     render() {
         return (
+            
             <div>
-                <TableContainer component={Paper}>
-                    <Table className={this.useStyles.table} size="small">
+                <TableContainer component={Paper} className="container">
+                    <Table size="small">
                         <TableHead className="table-head">
                             <TableRow className="table-row">
                                 <TableCell></TableCell>
@@ -148,8 +198,8 @@ class UserPage extends Component {
                                         <FormControlLabel
                                             control={
                                                 <Checkbox
-                                                    checked={this.state.handleCheckbox}
-                                                    onChange={(event) => this.handleChange(event, item.id, this.state.checkbox = event.target.checked)}
+                                                    checked={this.state.checkbox === item.id}
+                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
                                                     color="primary"
                                                 />
                                             }
@@ -212,7 +262,7 @@ class UserPage extends Component {
                                         <Grid item xs={6}>
                                             <h3>Security Level</h3>
                                             <FormControlLabel
-                                                control={<Radio color="primary"/>}
+                                                control={<Radio color="primary" />}
                                                 label="1"
                                                 labelPlacement="end"
                                                 value={this.state.securityLevel.level1}
@@ -220,7 +270,7 @@ class UserPage extends Component {
                                             />
                                             <br></br>
                                             <FormControlLabel
-                                                control={<Radio color="primary"/>}
+                                                control={<Radio color="primary" />}
                                                 label="2"
                                                 labelPlacement="end"
                                                 value={this.state.securityLevel.level2}
@@ -228,7 +278,7 @@ class UserPage extends Component {
                                             />
                                             <br></br>
                                             <FormControlLabel
-                                                control={<Radio color="primary"/>}
+                                                control={<Radio color="primary" />}
                                                 label="3"
                                                 labelPlacement="end"
                                                 value={this.state.securityLevel.level3}
@@ -236,7 +286,7 @@ class UserPage extends Component {
                                             />
                                             <br></br>
                                             <FormControlLabel
-                                                control={<Radio color="primary"/>}
+                                                control={<Radio color="primary" />}
                                                 label="4"
                                                 labelPlacement="end"
                                                 value={this.state.securityLevel.level4}
@@ -244,7 +294,7 @@ class UserPage extends Component {
                                             />
                                             <br></br>
                                             <FormControlLabel
-                                                control={<Radio color="primary"/>}
+                                                control={<Radio color="primary" />}
                                                 label="5"
                                                 labelPlacement="end"
                                                 value={this.state.securityLevel.level5}
@@ -256,7 +306,7 @@ class UserPage extends Component {
                                         <Button
                                             variant="contained"
                                             color="primary"
-                                            onClick={this.handleDelete}
+                                            onClick={this.handleStatusChange}
                                         >
                                             Delete
                                         </Button>
@@ -274,7 +324,7 @@ class UserPage extends Component {
                                         <Button
                                             variant="contained"
                                             color="primary"
-                                            onClick={this.handleUpdate}
+                                            onClick={this.handleUserUpdate}
                                         >
                                             Update
                                         </Button>
@@ -288,5 +338,4 @@ class UserPage extends Component {
         );
     }
 }
-
 export default connect(mapStoreToProps)(UserPage);
