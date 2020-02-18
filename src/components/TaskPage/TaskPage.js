@@ -27,7 +27,6 @@ import AddTaskModal from '../TaskPage/AddTaskModal';
 class TaskPage extends Component {
 
     state = {
-        heading: 'Task Page',
         tasks: {
             sortBy: 'byClients',
             clients_id: '',
@@ -158,7 +157,6 @@ class TaskPage extends Component {
                 <h2>{this.state.heading}</h2>
                 <GridContainer justify="center" paddingTop={12}>
                     <GridItem xs={12} sm={12} md={10}>
-                        <AddTaskModal />
                         <CustomTabs
                             title="Task List:"
                             headerColor="primary"
@@ -184,6 +182,7 @@ class TaskPage extends Component {
                                 }
                             ]}
                         />
+                        <AddTaskModal />
                     </GridItem>
                 </GridContainer>
             </div>

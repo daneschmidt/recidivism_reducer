@@ -43,6 +43,7 @@ import {
 import styles from "../../assets/jss/material-dashboard-react/views/dashboardStyle"
 import Calendar from "../Calendar/CalendarHome/Calendar.js";
 import ClientPage from "../ClientPage/ClientPage.js";
+import CompetitionPage from "../CompetitionPage/CompetitionPage"
 
 const useStyles = makeStyles(styles);
 
@@ -51,47 +52,24 @@ export default function DashboardPage() {
     return (
 
         <GridContainer justify="center">
-            {/* <GridItem xs={12} sm={12} md={2}>
-                <Card>
-                    <CardHeader color="primary">
-                        <h4 className={classes.cardTitleWhite}>Client List</h4>
-                        <p className={classes.cardCategoryWhite}>
-                            Clients as of 2-12-2020
-              </p>
-                    </CardHeader>
-                    <CardBody>
-                        <Table
-                            tableHeaderColor="primary"
-                            tableHead={["Name"]}
-                            tableData={[
-                                ["Dane Schmidt"],
-                                ["Grizzler Johnston"],
-                                ["Josh Wolf"],
-                                ["Dad Lackus"],
-                                ["Luke YoMaMa"],
-                                ["DUKE LUKE"],
-                                ["Scott"],
-                                ["Rachael"],
-                                ["Myron"]
-                            ]}
-                        />
-                    </CardBody>
-                </Card>
-            </GridItem> */}
 
             <GridItem xs={12} sm={12} md={2}>
                 <ClientPage />
             </GridItem>
 
-            <GridItem xs={12} sm={12} md={5}>
+            <GridItem xs={12} sm={12} md={6}>
                 <TaskPage />
             </GridItem>
 
             <GridItem xs={12} sm={12} md={4}>
-                <Calendar />
+                <Calendar /> CompetitionPage
             </GridItem>
 
-            <GridItem xs={12} sm={12} md={4}>
+            <GridItem xs={12} sm={12} md={8}>
+                <CompetitionPage />
+            </GridItem>
+
+            {/* <GridItem xs={12} sm={12} md={4}>
                 <Card chart>
                     <CardHeader color="secondary">
                         <ChartistGraph
@@ -112,7 +90,7 @@ export default function DashboardPage() {
               </div>
                     </CardFooter>
                 </Card>
-            </GridItem>
+            </GridItem> */}
         </GridContainer>
     );
 }
