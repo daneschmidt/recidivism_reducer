@@ -21,11 +21,15 @@ class EventModal extends Component {
     state = {
         setOpen: false,
         calendarEvents:
-        {
-            eventDate: new Date(),
-            endEventDate: new Date(),
-            startTime: moment().format('h:mma'),
-            endTime: moment().format('h:mma'),
+        {   
+            eventDate: '',
+            //startTime: moment().format('h:mma'),
+            //endTime: moment().format('h:mma'),
+            // eventDate: new Date(),
+            // endEventDate: new Date(),
+            //startTime: moment().format('h:mma'),
+            startTime: '',
+            // endTime: moment().format('h:mma'),
             eventTitle: '',
             notes: '',
             location: '',
@@ -69,7 +73,11 @@ class EventModal extends Component {
                 eventDate: moment(this.state.eventDate).format("YYYY-MM-DD"),
                 startTime: moment(this.state.startTime, "h:mma").format('HH:mm'),
                 endTime: moment(this.state.endTime, "h:mma").format('HH:mm'),
-                endEventDate: moment(this.state.endEventDate).format("YYYY-MM-DD"),
+                //endEventDate: moment(this.state.endEventDate).format("YYYY-MM-DD"),
+                // eventDate: this.state.eventDate,
+                // startTime: this.state.startTime,    
+                //startTime: moment(this.state.startTime, "h:mma").format('HH:mm'),
+                //endTime: moment(this.state.endTime, "h:mma").format('HH:mm'),
                 eventTitle: this.state.eventTitle,
                 notes: this.state.notes,
                 location: this.state.location,
@@ -122,6 +130,9 @@ class EventModal extends Component {
                                             </div>
                                         </Grid>
                                         <Grid item xs={6}>
+
+                                            {/* <input type="datetime-local" value="-08:00" onChange={this.handleInputField('eventDate')}/> */}
+                                            {/* <input type="hidden" id="timezone" name="timezone" value="-08:00" /> */}
                                             <DatePicker
                                                 value={this.state.eventDate}
                                                 onChange={this.handleInputField('eventDate')}
@@ -145,6 +156,7 @@ class EventModal extends Component {
                                         >
                                             OK
                                         </Button>
+
                                     </div>
                                 </div>
                             </div>

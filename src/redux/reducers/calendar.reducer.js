@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
+//import moment from 'moment-timezone/builds/moment-timezone-with-data';
 import moment from 'moment';
+// import 'moment-timezone';
+
 
 const calendarEvent = (state = [], action) => {
     // put({
@@ -25,6 +28,7 @@ const calendarEvent = (state = [], action) => {
             title: calendarEventItem.eventTitle,
             start: calendarEventItem.startTime,
             end: calendarEventItem.endTime,
+            //date: moment.tz(calendarEventItem.eventDate, 'America/Chicago').format('z'),
             date: moment(calendarEventItem.eventDate).utcOffset(0, false).format("YYYY-MM-DD")
           }
         });
