@@ -3,7 +3,7 @@ import {
   HashRouter as Router,
   Route,
   Redirect,
-  Switch
+  Switch,
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -23,6 +23,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import ClientPage from '../ClientPage/ClientPage';
 import Competition from '../CompetitionPage/CompetitionPage';
 import TaskPage from '../TaskPage/TaskPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
+import EditProfilePage from '../EditProfilePage/EditProfilePage';
 
 import './App.css';
 
@@ -51,6 +53,12 @@ class App extends Component {
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
             <ProtectedRoute exact path='/userpage' component={UserPage} />
+            <ProtectedRoute exact path='/profilepage' component={ProfilePage} />
+            <ProtectedRoute
+              exact
+              path='/editprofilepage'
+              component={EditProfilePage}
+            />
             <ProtectedRoute exact path='/calendar' component={Calendar} />
             <ProtectedRoute exact path='/userpage' component={UserPage} />
             <ProtectedRoute exact path='/competition' component={Competition} />
