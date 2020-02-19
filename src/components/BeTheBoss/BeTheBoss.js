@@ -191,68 +191,41 @@ class BeTheBoss extends Component {
 
 	render() {
 		return (
-			<GridContainer justify="center">
-				<GridItem xs={12} sm={12} md={6}>
-					<Card>
-						<CardHeader justify="center">
-							<h4>BE THE BOSS FORM</h4>
-						</CardHeader>
-						<CardBody>
-
-
-							First Name: <input
-								type="text"
-								placeholder="First Name"
-								value={this.state.firstName}
-								onChange={event => this.changeField(event, "firstName")}
-								required
-							/>
-							<br />
-
-
-							Last Name:
-										<input
-								type="text"
-								placeholder="Last Name"
-								value={this.state.lastName}
-								onChange={event => this.changeField(event, "lastName")}
-							/>
-							<br />
-
-
-							Gender:
-										<input
-								type="text"
-								placeholder="Gender"
-								value={this.state.gender}
-								onChange={event => this.changeField(event, "gender")}
-							/>
-							<br />
-
-							Phone Number:
-										<input
-								type="number"
-								placeholder="Phone Number"
-								value={this.state.phoneNumber}
-								onChange={event => this.changeField(event, "phoneNumber")}
-							/>
-							<br />
-
-							Email Address
-								<input
-								type="text"
-								placeholder="Email"
-								value={this.state.email}
-								onChange={event => this.changeField(event, "email")} />
-
-							<button onClick={this.addClientInfo}>Submit</button>
-
-
-
-						</CardBody>
-					</Card>
-				</GridItem>
-			</GridContainer>
+			<div>
+				<h1>Be The Boss</h1>
+				<input
+					type="text"
+					placeholder="First Name"
+					value={this.state.firstName}
+					onChange={event => this.changeField(event, "firstName")}
+					required
+				/>
+				<input
+					type="text"
+					placeholder="Last Name"
+					value={this.state.lastName}
+					onChange={event => this.changeField(event, "lastName")}
+				/>
+				<input
+					type="text"
+					placeholder="Gender"
+					value={this.state.gender}
+					onChange={event => this.changeField(event, "gender")}
+				/>
+				<input
+					type="number"
+					placeholder="Phone Number"
+					value={this.state.phoneNumber}
+					onChange={event => this.changeField(event, "phoneNumber")}
+				/>
+				<input
+					type="text"
+					placeholder="Email"
+					value={this.state.email}
+					onChange={event => this.changeField(event, "email")}
+				/>
+				<button onClick={this.addClientInfo}>Submit</button>
+			</div>
 		);
 	}
 }

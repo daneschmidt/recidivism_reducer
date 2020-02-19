@@ -99,16 +99,7 @@ class ClientPage extends Component {
 			}
 		);
 	};
-	//Dispatches to profile.saga to edit selected client's profile
-	editProfile = id => {
-		console.log(id);
-		this.props.dispatch({
-			type: 'EDIT_PROFILE',
-			payload: id,
-		});
-		//Navigates to Edit Profile Modal
-		this.props.history.push('/editprofilepage');
-	};
+
 	//Dispatches to client
 	search = event => {
 		this.props.dispatch({
@@ -116,6 +107,15 @@ class ClientPage extends Component {
 			payload: { search_string: this.state.search_string }
 		});
 	};
+
+	delete = event => {
+		this.props.dispatch({
+			type: 'DELETE_CLIENT',
+			payload: {
+				// this.state.isActive
+			}
+		})
+	}
 
 
 	//Dispatches selected client id to profile.saga
@@ -141,7 +141,6 @@ class ClientPage extends Component {
 						{item.phoneNumber}
 						<br />
 						{item.email}
-						<button onClick={this.editProfile}>EDIT</button>
 					</li>
 				</ul>
 
