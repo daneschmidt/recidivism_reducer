@@ -102,11 +102,8 @@ class ClientResults extends Component {
 	};
 
 	//Dispatches to client
-	search = event => {
-		this.props.dispatch({
-			type: 'SEARCH_CLIENT',
-			payload: { search_string: this.state.search_string }
-		});
+	search = (event) => {
+		this.props.dispatch({ type: 'SEARCH_CLIENT', payload: this.state.search_string });
 	};
 
 	delete = event => {
