@@ -102,15 +102,10 @@ class ClientPage extends Component {
 	};
 
 	//Dispatches to client
-<<<<<<< HEAD
-	search = (event) => {
-		this.props.dispatch({ type: 'SEARCH_CLIENT', payload: this.state.search_string });
-	}
-=======
 	search = event => {
 		this.props.dispatch({
 			type: 'SEARCH_CLIENT',
-			payload: { search_string: this.state.search_string }
+			payload: this.state.search_string
 		});
 	};
 
@@ -123,7 +118,6 @@ class ClientPage extends Component {
 		})
 	}
 
->>>>>>> develop
 
 	//Dispatches selected client id to profile.saga
 	goToProfile = (event, id) => {
