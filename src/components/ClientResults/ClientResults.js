@@ -77,7 +77,7 @@ import ClientSearchItem from '../ClientSearchItem/ClientSearchItem';
 //     )
 // }
 
-class ClientPage extends Component {
+class ClientResults extends Component {
 	state = {
 		heading: "Clients",
 		search_string: '',

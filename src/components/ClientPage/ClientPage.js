@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { Link } from 'react-router-dom';
 
 // import { makeStyles } from "@material-ui/core/styles";
 
@@ -151,7 +152,9 @@ class ClientPage extends Component {
 				<h1>{this.state.heading}</h1>
 				<div>
 					<input type="text" onChange={this.onChange('search_string')}></input>
+					<Link to="/clientresults">
 					<button onClick={this.search}>SEARCH</button>
+					</Link>
 				</div>
 				{clientList}
 			</div>
