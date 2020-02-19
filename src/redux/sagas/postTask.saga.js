@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { put, all, takeLatest } from 'redux-saga/effects';
 // Put call for tasks
-function* putTask(action) {
-    console.log(`In put task`);
-    const id= action.payload.id;
+function* postTask(action) {
+    console.log(`In post task`);
+    const id= action.payload.users_id
     try {
         const response = yield axios({
-            method: 'PUT',
-            url: '/api/tasks/put',
+            method: 'POST',
+            url: '/api/tasks/post',
             data: action.payload
         });
         yield all([
@@ -31,8 +31,8 @@ function* putTask(action) {
         console.log('error putting task', err);
     }
 }
-function* putTaskSaga() {
-    yield takeLatest('MARK_TASK', putTask);
+function* postTaskSaga() {
+    yield takeLatest('POST_TASK', postTask);
 }
 
-export default putTaskSaga;
+export default postTaskSaga;

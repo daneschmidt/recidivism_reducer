@@ -11,8 +11,16 @@ import getProfileSaga from './profile.saga';
 import userCredentials from './user.credentials.saga';
 import getAllTasksSaga from './getAllTasks.saga';
 import getClientTasksSaga from './getClientTasks.saga';
-import getClientsSaga from './client.saga';
 import putTaskSaga from './putTask.saga';
+import getStatusSaga from './status.saga';
+import updateStatusSaga from './updateStatus.saga';
+import getParticipantsSaga from './getParticipants.saga';
+import editParticipantSaga from './editParticipant.saga';
+import addParticipantSaga from './addParticipant.saga';
+import searchClientSaga from './clientSearch.saga';
+import postTaskSaga from './postTask.saga';
+import putClientTaskSaga from './putClientTask.saga';
+import getClientsSaga from './client.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -28,24 +36,23 @@ export default function* rootSaga() {
     userSaga(),
     bossFormSaga(),
     getClientsSaga(),
-    getAllTasksSaga(),
-    getRecentCompsSaga(),
-    calendar(),
-    getProfileSaga(),
-    userCredentials(),
-  ]);
-  yield all([
-    loginSaga(),
-    registrationSaga(),
-    userSaga(),
-    bossFormSaga(),
-    getClientsSaga(),
     getAllClientsListSaga(),
     getUserTasksSaga(),
     getRecentCompsSaga(),
     calendar(),
+    userCredentials(),
     getAllTasksSaga(),
     getClientTasksSaga(),
-    putTaskSaga()
+    putTaskSaga(),
+    getStatusSaga(),
+    updateStatusSaga(),
+    getParticipantsSaga(),
+    editParticipantSaga(),
+    addParticipantSaga(),
+    getProfileSaga(),
+    putClientTaskSaga(),
+    userCredentials(),
+    searchClientSaga(),
+    postTaskSaga()
   ]);
 }
