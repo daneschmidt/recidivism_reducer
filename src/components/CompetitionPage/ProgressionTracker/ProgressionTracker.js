@@ -28,25 +28,15 @@ class ProgressionTracker extends React.Component {
   getTasks(list, tasks) {
     // return _.map(list.tasks, taskId => tasks[taskId]);
     let tasksArr = [];
-    console.log(tasks);
     for (let item in tasks) {
       tasksArr.push(tasks[item]);
     }
 
-    for (let item in tasks) {
-      tasksArr.push(tasks[item]);
+    if (list.tasks.length <= 0) {
+      return [];
     }
 
-    for (let item in tasks) {
-      list.tasks.push(item.id);
-    }
-
-    // if (list.tasks.length <= 0) {
-    //   return [];
-    // }
     tasksArr = tasksArr.filter(task => list.tasks.includes(task.id));
-    console.log(list);
-    console.log(tasksArr);
     return tasksArr;
   }
 
@@ -62,6 +52,10 @@ class ProgressionTracker extends React.Component {
         destination.droppableId,
         draggableId
       );
+      this.props.dispatch({
+        type: 'EDIT_PARTICIPANT',
+        payload: { id: draggableId, status: destination.droppableId }
+      });
     }
   }
 

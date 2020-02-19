@@ -7,7 +7,10 @@ function* editParticipant(action) {
     yield axios({
       method: 'PUT',
       url: '/api/participants/' + id,
-      data: { name: action.payload.parName }
+      data: {
+        name: action.payload.parName || null,
+        status: action.payload.status || null
+      }
     });
     put({
       type: 'GET_PARTICIPANTS'

@@ -19,6 +19,18 @@ function lists(state, action) {
   }
 
   switch (action.type) {
+    case 'INIT_LIST': {
+      let result = _.cloneDeep(state);
+
+      for (let item of action.payload) {
+        if (result[item.status].tasks.includes(item.id)) {
+          continue;
+        }
+        result[item.status].tasks.push(item.id);
+      }
+      return result;
+    }
+
     case 'SET_STATUS': {
       return {
         ...state,
@@ -49,12 +61,29 @@ function lists(state, action) {
       };
     }
 
+    // case ADD_TASK: {
+    //   return {
+    //     ...state,
+    //     step1: {
+    //       ...state.step1,
+    //       tasks: state.step1.tasks.concat(action.id)
+    //     }
+    //   };
+    // }
+
     case ADD_TASK: {
+      let tasks = [...state.step1.tasks];
+      if (tasks.includes(action.id)) {
+        // do nothing
+      } else {
+        tasks.push(action.id);
+      }
+
       return {
         ...state,
         step1: {
           ...state.step1,
-          tasks: state.step1.tasks.concat(action.id)
+          tasks: tasks
         }
       };
     }
@@ -89,10 +118,12 @@ function tasks(state = defaultTasks, action) {
       let result = {};
       for (let item of action.payload) {
         result[item.id] = {
-          id: item.id.toString(),
-          title: item.parName
+          id: item.id,
+          title: item.parName,
+          status: item.status
         };
       }
+
       return result;
     }
 
@@ -102,6 +133,7 @@ function tasks(state = defaultTasks, action) {
         ...state,
         [action.id]: task
       };
+
     case EDIT_TASK:
       task = state[action.id];
       return {

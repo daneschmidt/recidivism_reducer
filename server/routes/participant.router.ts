@@ -24,9 +24,9 @@ router.post('/', (req: Request, res: Response): void => {
   const data = req.body;
   console.log(data);
   const queryText: string = `INSERT INTO "participants"
-  ("id","parName")
+  ("id","parName","status")
 VALUES
-  ('${data.id}','');`;
+  ('${data.id}','', 'step1');`;
   pool
     .query(queryText)
     .then(response => {
@@ -42,9 +42,21 @@ VALUES
 router.put('/:id', (req: Request, res: Response): void => {
   const data = req.body;
   const id = req.params.id;
-  console.log(req.body);
-  const queryText: string = `UPDATE "participants" SET "parName" = '${data.name}'
+  let queryText: string = '';
+  if (data.name && data.status) {
+    queryText = `UPDATE "participants" 
+    SET ("parName", "status") = ('${data.name}', '${data.status}')
     WHERE "id" = '${id}';`;
+  } else if (data.name) {
+    queryText = `UPDATE "participants" 
+    SET "parName" = '${data.name}'
+    WHERE "id" = '${id}';`;
+  } else {
+    queryText = `UPDATE "participants" 
+    SET "status" = '${data.status}'
+    WHERE "id" = '${id}';`;
+  }
+
   pool
     .query(queryText)
     .then(response => {

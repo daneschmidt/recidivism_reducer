@@ -90,7 +90,8 @@ CREATE TABLE "links" (
 
   CREATE TABLE "participants" (
   "id" varchar,
-  "parName" varchar
+  "parName" varchar,
+  "status" varchar
 );
 
 CREATE TABLE "tasks" (

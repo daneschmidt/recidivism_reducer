@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, all, takeLatest } from 'redux-saga/effects';
 // Get call for tasks
 function* getParticipants(action) {
   try {
@@ -7,10 +7,16 @@ function* getParticipants(action) {
       method: 'GET',
       url: '/api/participants/'
     });
-    yield put({
-      type: 'SET_PARTICIPANTS',
-      payload: response.data
-    });
+    yield all([
+      put({
+        type: 'SET_PARTICIPANTS',
+        payload: response.data
+      }),
+      put({
+        type: 'INIT_LIST',
+        payload: response.data
+      })
+    ]);
   } catch (err) {
     console.log('error fetching participants', err);
   }
