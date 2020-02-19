@@ -102,7 +102,7 @@ class CreateNewCompetition extends Component {
         <Button
           variant='contained'
           size='small'
-          color='primary'
+          color='white'
           onClick={this.handleOpen}
         >
           Start New Competition

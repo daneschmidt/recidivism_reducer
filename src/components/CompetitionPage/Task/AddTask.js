@@ -21,7 +21,7 @@ class AddTask extends React.Component {
       <Button
         variant='contained'
         size='small'
-        color='primary'
+        color='white'
         onClick={() => this.add()}
       >
         Add Participant
