@@ -22,6 +22,7 @@ import postTaskSaga from './postTask.saga';
 import putClientTaskSaga from './putClientTask.saga';
 import getClientsSaga from './client.saga';
 import postUserSaga from './postUser.saga';
+import putPasswordSaga from './putPassword.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -55,6 +56,7 @@ export default function* rootSaga() {
     userCredentials(),
     searchClientSaga(),
     postTaskSaga(),
-    postUserSaga()
+    postUserSaga(),
+    putPasswordSaga()
   ]);
 }
