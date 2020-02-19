@@ -20,7 +20,7 @@ import CardFooter from "../Card/CardFooter.js";
 
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
 
-const styles = (theme: Theme) =>
+const styles = () =>
 	createStyles({
 		// 	cardHeader: {
 		// 	padding: "0.75rem 1.25rem",
