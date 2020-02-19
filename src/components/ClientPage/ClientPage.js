@@ -110,13 +110,9 @@ class ClientPage extends Component {
 		this.props.history.push('/editprofilepage');
 	};
 	//Dispatches to client
-	search = event => {
-		this.props.dispatch({
-			type: 'SEARCH_CLIENT',
-			payload: { search_string: this.state.search_string }
-		});
-	};
-
+	search = (event) => {
+		this.props.dispatch({ type: 'SEARCH_CLIENT', payload: this.state.search_string });
+	}
 
 	//Dispatches selected client id to profile.saga
 	goToProfile = (event, id) => {
