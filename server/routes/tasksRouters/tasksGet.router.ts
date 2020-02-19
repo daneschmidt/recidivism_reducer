@@ -9,11 +9,11 @@ const router: express.Router = express.Router();
 //Order by due date ascending
 router.get('/byClients/:clientId/:trueOrFalse', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
     // const userSecurityLevel: number | null = <number>Number(req.params.userSecurityLevel);
-    const clientId: number | null = <number>Number(req.params.clientId);
+    const clientId: number | null = <number>parseInt(req.params.clientId);
     const trueOrFalse: string | null =<string>(req.params.trueOrFalse); 
-
+    console.log(clientId)
     const queryText: string = `SELECT "tasks".id AS "tasksId", "tasks"."dueBy",
-    "user".id AS "userId", 
+    "user".id AS "userId", "tasks".clients_id AS clients_id,
     "tasks"."assignedOn", "tasks".task, "clients"."firstName" AS "clientsFirstName", 
     "clients"."lastName" AS "clientsLastName", "user"."firstName" AS "userFirstName", 
     "user"."lastName" AS "userLastName", "tasks".complete FROM "tasks"

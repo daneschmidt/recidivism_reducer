@@ -3,7 +3,9 @@ import { combineReducers } from 'redux';
 const userCredentials = (state = [], action) => {
     switch (action.type) {
       case 'SET_USER_CREDENTIALS':
-        return action.payload;
+        return [
+          ...action.payload
+        ];
       case 'UNSET_USER_CREDENTIAL':
         return {};
       default:
