@@ -46,7 +46,7 @@ router.get('/byUser/:userId/:trueOrFalse', rejectUnauthenticated, (req: Request,
     JOIN "user" ON "tasks".users_id = "user".id
     WHERE "user".id = $1 AND "tasks".complete = $2
     ORDER BY "tasks"."dueBy" ASC
-    LIMIT 10;`;
+    LIMIT 5;`;
     pool.query(queryText, [userId, trueOrFalse])
     .then((response) => {
         res.send(response.rows)

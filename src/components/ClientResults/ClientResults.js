@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { Link } from 'react-router-dom';
+import ClientSearchItem from '../ClientSearchItem/ClientSearchItem';
 
 // import { makeStyles } from "@material-ui/core/styles";
 
@@ -77,7 +77,7 @@ import { Link } from 'react-router-dom';
 //     )
 // }
 
-class ClientPage extends Component {
+class ClientResults extends Component {
 	state = {
 		heading: "Clients",
 		search_string: '',
@@ -102,11 +102,6 @@ class ClientPage extends Component {
 	};
 
 	//Dispatches to client
-<<<<<<< HEAD
-	search = (event) => {
-		this.props.dispatch({ type: 'SEARCH_CLIENT', payload: this.state.search_string });
-	}
-=======
 	search = event => {
 		this.props.dispatch({
 			type: 'SEARCH_CLIENT',
@@ -123,7 +118,6 @@ class ClientPage extends Component {
 		})
 	}
 
->>>>>>> develop
 
 	//Dispatches selected client id to profile.saga
 	goToProfile = (event, id) => {
@@ -137,19 +131,20 @@ class ClientPage extends Component {
 	};
 
 	render() {
-		const clientList = this.props.store.client.map((item, index) => {
+		const clientList = this.props.store.clientSearch.map((item, index) => {
 			return (
-				<ul key={index}>
-					<li onClick={event => this.goToProfile(event, item.id)}>
-						{item.firstName}
-						<br />
-						{item.lastName}
-						<br />
-						{item.phoneNumber}
-						<br />
-						{item.email}
-					</li>
-				</ul>
+                <ClientSearchItem key={index} client={item} />
+				// <ul key={index}>
+				// 	<li onClick={event => this.goToProfile(event, item.id)}>
+				// 		{item.firstName}
+				// 		<br />
+				// 		{item.lastName}
+				// 		<br />
+				// 		{item.phoneNumber}
+				// 		<br />
+				// 		{item.email}
+				// 	</li>
+				// </ul>
 
 			);
 		});
@@ -158,9 +153,7 @@ class ClientPage extends Component {
 				<h1>{this.state.heading}</h1>
 				<div>
 					<input type="text" onChange={this.onChange('search_string')}></input>
-					<Link to="/clientresults">
 					<button onClick={this.search}>SEARCH</button>
-					</Link>
 				</div>
 				{clientList}
 			</div>
@@ -168,4 +161,4 @@ class ClientPage extends Component {
 	}
 }
 
-export default connect(mapStoreToProps)(ClientPage);
+export default connect(mapStoreToProps)(ClientResults);
