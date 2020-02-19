@@ -66,10 +66,10 @@ class EventModal extends Component {
         this.props.dispatch({
             type: 'POST_EVENT',
             payload: {
-                eventDate: this.state.eventDate,
-                startTime: this.state.startTime,
-                endTime: this.state.endTime,
-                endEventDate: this.state.endEventDate,
+                eventDate: moment(this.state.eventDate).format("YYYY-MM-DD"),
+                startTime: moment(this.state.startTime, "h:mma").format('HH:mm'),
+                endTime: moment(this.state.endTime, "h:mma").format('HH:mm'),
+                endEventDate: moment(this.state.endEventDate).format("YYYY-MM-DD"),
                 eventTitle: this.state.eventTitle,
                 notes: this.state.notes,
                 location: this.state.location,

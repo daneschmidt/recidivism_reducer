@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import moment from 'moment';
 
 const calendarEvent = (state = [], action) => {
     // put({
@@ -24,7 +25,7 @@ const calendarEvent = (state = [], action) => {
             title: calendarEventItem.eventTitle,
             start: calendarEventItem.startTime,
             end: calendarEventItem.endTime,
-            date: calendarEventItem.startTime
+            date: moment(calendarEventItem.eventDate).utcOffset(0, false).format("YYYY-MM-DD")
           }
         });
       default:

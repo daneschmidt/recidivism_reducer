@@ -23,7 +23,7 @@ class Calendar extends Component {
     return (
       <div>
         <div className="calendar">
-          {/* <EventModal /> */}
+          <EventModal />
           <EventClick />
           {/* <CalendarList calendarEvent={this.props.store.calendar} /> */}
           {/* <CalendarList  /> */}

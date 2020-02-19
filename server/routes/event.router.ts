@@ -46,10 +46,10 @@ router.post('/', (req: express.Request, res: express.Response, next: express.Nex
     const endEventDate: number | null = <number>req.body.endEventDate;
 
 	const queryText: string = `INSERT INTO "events" ("eventDate", "startTime", "endTime", "endEventDate", "eventTitle", "notes", "location") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`;
-	pool.query(queryText, [eventDate, startTime, endTime, endEventDate, eventTitle, eventTitle, notes, location])
+	pool.query(queryText, [eventDate, startTime, endTime, endEventDate, eventTitle, notes, location])
 		.then(() => res.sendStatus(201))
 		.catch(err => {
-			console.log(`Error POSTing new event: ${err}`);
+			console.log(`Error POSTing new event: ${err}, req.body: ${JSON.stringify(req.body)}`);
 			res.sendStatus(500);
 		});
 });
