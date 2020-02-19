@@ -7,6 +7,12 @@ class profilePage extends Component {
 		// heading: "Class Component",
 	};
 
+	componentDidMount() {
+		this.props.dispatch({
+			type: 'GET_NOTES',
+		});
+	}
+
 	//Dispatches selected profile id to editProfile.saga
 	editProfile = id => {
 		console.log(id);
@@ -41,14 +47,20 @@ class profilePage extends Component {
 						<li>Type Of Business: {item.business}</li>
 						<li>Business Stage: {item.businessStage}</li>
 						<li>Why Did You Attend "Be The Boss": {item.whyAtBeTheBoss}</li>
-						<li>
-							What Do You Hope To Gain By Attending: {item.whatHopeToGain}
-						</li>
+						<li>What Do You Hope To Gain By Attending: {item.whatHopeToGain}</li>
 						<li>Active: {item.isActive}</li>
 					</ul>
 				);
-			},
+			}
 		);
+		// const notesArray = this.props.store.getProfileReducer.map((item, index) => {
+		// 	return (
+		// 		<div key={index}>
+		// 			<p>{item.notes}</p>
+		// 		</div>
+		// 	)
+		// }
+		// );
 		return (
 			<div>
 				<div>
