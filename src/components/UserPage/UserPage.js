@@ -22,6 +22,7 @@ import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import AddUserModal from '../UserPage/AddUserModal';
 // Sweet Alert
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
@@ -188,6 +189,7 @@ class UserPage extends Component {
         return (
 
             <div>
+                <AddUserModal />
                 <TableContainer component={Paper} className="container">
                     <Table size="small">
                         <TableHead className="table-head">
@@ -341,6 +343,8 @@ class UserPage extends Component {
                                 </div>
                             </div>
                         </Modal>
+                    </div>
+                    <div>
                     </div>
                 </div>
             </div>

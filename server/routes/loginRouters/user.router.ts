@@ -3,7 +3,8 @@ import express  from 'express';
 import rejectUnauthenticated from '../../modules/authentication-middleware';
 import pool from '../../modules/pool';
 import userStrategy from '../../strategies/user.strategy';
-import {encryptPassword} from '../../modules/encryption';
+import { encryptPassword} from '../../modules/encryption';
+// import encryptLib from '../../modules/encryption';
 
 const router: express.Router = express.Router();
 
@@ -11,7 +12,7 @@ router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
   res.send(req.user);
 });
 //Route to add new user
-router.post('/add', (req: Request, res: Response, next: express.NextFunction): void => {
+router.post('/add', rejectUnauthenticated, (req: Request, res: Response, next: express.NextFunction): void => {
   const firstName: string | null = <string>req.body.firstName;
   const lastName: string | null = <string>req.body.lastName;
   const username: string | null = <string>req.body.username;
