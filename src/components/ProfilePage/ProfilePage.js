@@ -53,14 +53,14 @@ class profilePage extends Component {
 				);
 			}
 		);
-		// const notesArray = this.props.store.getProfileReducer.map((item, index) => {
-		// 	return (
-		// 		<div key={index}>
-		// 			<p>{item.notes}</p>
-		// 		</div>
-		// 	)
-		// }
-		// );
+		const notesArray = this.props.store.getProfileReducer.map((item, index) => {
+			return (
+				<div key={index}>
+					<p>{item.note}</p>
+				</div>
+			)
+		}
+		);
 		return (
 			<div>
 				<div>
@@ -68,6 +68,10 @@ class profilePage extends Component {
 				</div>
 				<div>
 					{clientProfile}
+				</div>
+				<h2>Notes</h2>
+				<div>
+					{notesArray}
 				</div>
 			</div>
 		);
