@@ -32,7 +32,7 @@ const rootReducer = combineReducers({
   userCredentials,
   getAllTasksReducer,
   getClientTasksReducer,
-  getUserTasksReducer,
+  getUserTasksReducer
 });
 
 export default rootReducer;

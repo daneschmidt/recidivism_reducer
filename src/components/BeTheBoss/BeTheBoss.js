@@ -137,19 +137,19 @@ const styles = (theme: Theme) =>
 
 
 class BeTheBoss extends Component {
-	state = {
-		firstName: "",
-		lastName: "",
-		gender: "",
-		phoneNumber: "",
-		email: "",
-	};
+  state = {
+    firstName: '',
+    lastName: '',
+    gender: '',
+    phoneNumber: '',
+    email: ''
+  };
 
-	changeField = (event, infoKey) => {
-		this.setState({
-			[infoKey]: event.target.value,
-		});
-	};
+  changeField = (event, infoKey) => {
+    this.setState({
+      [infoKey]: event.target.value
+    });
+  };
 
 	addClientInfo = (event) => {
 		event.preventDefault();
