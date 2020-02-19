@@ -5,7 +5,7 @@ import user from './user.reducer';
 import progress from './progression.reducer';
 import client from './client.reducer';
 import getAllClientsReducer from './getAllClients.reducer';
-import getTasksReducer from './getTasks.reducer';
+// import getTasksReducer from './getTasks.reducer';
 import getUserTasksReducer from './getUserTasks.reducer';
 import competitions from './competitions.reducer';
 import calendar from './calendar.reducer';

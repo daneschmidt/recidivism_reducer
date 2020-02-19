@@ -10,7 +10,6 @@ import getRecentCompsSaga from './competitions.saga';
 import calendar from './calendar.saga';
 import getAllTasksSaga from './getAllTasks.saga';
 import getClientTasksSaga from './getClientTasks.saga';
-import getClientsSaga from './client.saga';
 import putTaskSaga from './putTask.saga';
 
 // rootSaga is the primary saga.
