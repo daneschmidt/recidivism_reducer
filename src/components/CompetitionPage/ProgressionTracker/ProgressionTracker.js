@@ -8,7 +8,6 @@ import AddTask from '../Task/AddTask';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
@@ -20,16 +19,23 @@ class ProgressionTracker extends React.Component {
   }
 
   getTasks(list, tasks) {
-    return _.map(list.tasks, taskId => tasks[taskId]);
+    // return _.map(list.tasks, taskId => tasks[taskId]);
+    let tasksArr = [];
+    for (let item in tasks) {
+      tasksArr.push(tasks[item]);
+    }
+    return tasksArr.filter(task => list.tasks.includes(task.id));
   }
 
   onDragEnd({ source, destination, draggableId }) {
     // dropped outside the list
+    console.log('this.onDragEnd', source, destination, draggableId);
     if (!destination) {
       return;
     }
 
     if (source.droppableId !== destination.droppableId) {
+      console.log('destination');
       this.props.moveTask(
         source.droppableId,
         destination.droppableId,
@@ -41,29 +47,27 @@ class ProgressionTracker extends React.Component {
   render() {
     const lists = this.props.store.progress.lists;
     const tasks = this.props.store.progress.tasks;
-    console.log(this.props.store.progress.lists);
 
     return (
-      <div style={{ marginTop: '20px', width: '100%' }}>
-        <Card style={{ backgroundColor: 'black', color: 'white' }}>
-          <CardContent>
-            <h2 style={{ margin: '10px', display: 'inline-block' }}>
-              Competition Progression Tracker
-            </h2>
-            <span style={{ margin: '10px', display: 'inline-block' }}>
-              <AddTask />
-            </span>
-            <Grid container spacing={3}>
-              <DragDropContext onDragEnd={this.onDragEnd}>
-                {lists.map(list => (
-                  <Droppable droppableId={list.id} key={list.id}>
+      <div>
+        <Card style={{ backgroundColor: 'steelblue' }}>
+          <h2 style={{ margin: '10px' }}>Competition Progression Tracker</h2>
+          <span style={{ margin: '10px' }}>
+            <AddTask />
+          </span>
+          <Grid container spacing={3}>
+            <DragDropContext onDragEnd={this.onDragEnd}>
+              {Object.keys(lists).map((key, index) => {
+                let item = lists[key];
+                return (
+                  <Droppable droppableId={item.id.toString()} key={index}>
                     {(provided, snapshot) => (
                       <Grid item xs={2}>
                         <Paper style={{ margin: '10px', padding: '10px' }}>
                           <List
                             style={{ flex: '1' }}
-                            list={list}
-                            tasks={this.getTasks(list, tasks)}
+                            list={item}
+                            tasks={this.getTasks(item, tasks)}
                             innerRef={provided.innerRef}
                             provided={provided}
                           />
@@ -71,10 +75,10 @@ class ProgressionTracker extends React.Component {
                       </Grid>
                     )}
                   </Droppable>
-                ))}
-              </DragDropContext>
-            </Grid>
-          </CardContent>
+                );
+              })}
+            </DragDropContext>
+          </Grid>
         </Card>
       </div>
     );

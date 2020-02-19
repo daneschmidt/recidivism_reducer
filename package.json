@@ -12,6 +12,7 @@
     "@material-ui/core": "^4.9.2",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.0",
+    "@sweetalert/with-react": "^0.1.1",
     "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "^1.17.0",
     "@types/cookie-session": "^2.0.37",
@@ -46,7 +47,11 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
-    "typescript": "^3.7.5"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^9.7.2",
+    "sweetalert2-react": "^0.8.3",
+    "typescript": "^3.7.5",
+    "uuid": "^3.4.0"
   },
   "scripts": {
     "start": "npm run tsc && node dist/server.js",

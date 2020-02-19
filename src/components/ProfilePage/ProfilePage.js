@@ -1,69 +1,64 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import mapStoreToProps from "../../redux/mapStoreToProps";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class profilePage extends Component {
 	state = {
 		// heading: "Class Component",
 	};
 
-	componentDidMount() {
+	//Dispatches selected profile id to editProfile.saga
+	editProfile = id => {
+		console.log(id);
 		this.props.dispatch({
-			type: "GET_PROFILE",
+			type: 'EDIT_PROFILE',
+			payload: id,
 		});
-	}
+		//Navigates to Edit Profile Modal
+		this.props.history.push('/editprofilepage');
+	};
 
 	render() {
-		return;
-		<div className="container">
-			<p>First Name:{this.props.store.profile.firstName}</p>
-
-			<p>Last Name:{this.props.store.profile.lastName}</p>
-
-			<p>Gender:{this.props.store.profile.gender}</p>
-
-			<p>Phone Number:{this.props.store.profile.phoneNumber}</p>
-
-			<p>Email:{this.props.store.profile.email}</p>
-
-			<p>Criminal Record:{this.props.store.profile.criminalRecord}</p>
-
-			<p>Currently Incarcerated:{this.props.store.profile.currentlyIncar}</p>
-
-			<p>Incarceration Length:{this.props.store.profile.incarcerationLength}</p>
-
-			<p>Release Date:{this.props.store.profile.releaseDate}</p>
-
-			<p>DOC Number:{this.props.store.profile.docNumber}</p>
-
-			<p>State of Incarceration:{this.props.store.profile.stateIncarcerated}</p>
-
-			<p>Currently On Parole:{this.props.store.profile.paroleOnRelease}</p>
-
-			<p>Parole Officer:{this.props.store.profile.agentName}</p>
-
-			<p>Parole Officer Phone Number:{this.props.store.profile.agentPhone}</p>
-
-			<p>
-				Connections With Reentry Programs:{this.props.store.profile.connections}
-			</p>
-
-			<p>Type Of Business:{this.props.store.profile.business}</p>
-
-			<p>Business Stage:{this.props.store.profile.businessStage}</p>
-
-			<p>
-				Why Did You Attend "Be The Boss":
-				{this.props.store.profile.whyAtBeTheBoss}
-			</p>
-
-			<p>
-				What Do You Hope To Gain By Attending:
-				{this.props.store.profile.whatHopeToGain}
-			</p>
-
-			<p>Active:{this.props.store.profile.isActive}</p>
-		</div>;
+		const clientProfile = this.props.store.getProfileReducer.map(
+			(item, index) => {
+				return (
+					<ul key={index}>
+						<li>Frist Name: {item.firstName}</li>
+						<li>Last Name: {item.lastName}</li>
+						<li>Gender: {item.gender}</li>
+						<li>Phone Number: {item.phoneNumber}</li>
+						<li>Email: {item.email}</li>
+						<li>Criminal Record: {item.criminalRecord}</li>
+						<li>Currently Incarcerated: {item.currentlyIncar}</li>
+						<li>Incarceration Length: {item.incarcerationLength}</li>
+						<li>Release Date: {item.releaseDate}</li>
+						<li>D.O.C Number: {item.docNumber}</li>
+						<li>State of Incarceration: {item.stateIncarcerated}</li>
+						<li>Currently On Parole: {item.paroleOnRelease}</li>
+						<li>Parole Officer: {item.agentName}</li>
+						<li>Parole Officer Phone Number: {item.agentPhone}</li>
+						<li>Connections With Reentry Programs: {item.connections}</li>
+						<li>Type Of Business: {item.business}</li>
+						<li>Business Stage: {item.businessStage}</li>
+						<li>Why Did You Attend "Be The Boss": {item.whyAtBeTheBoss}</li>
+						<li>
+							What Do You Hope To Gain By Attending: {item.whatHopeToGain}
+						</li>
+						<li>Active: {item.isActive}</li>
+					</ul>
+				);
+			},
+		);
+		return (
+			<div>
+				<div>
+					<button onClick={this.editProfile}>EDIT</button>
+				</div>
+				<div>
+					{clientProfile}
+				</div>
+			</div>
+		);
 	}
 }
 

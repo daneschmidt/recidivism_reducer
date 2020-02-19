@@ -68,6 +68,7 @@ CREATE TABLE "clients_competitions" (
   "competitions_id" int REFERENCES "competitions",
   "statusNum" int,
   "award" varchar,
+  "grantAmount" int,
   "notes" varchar
 );
 

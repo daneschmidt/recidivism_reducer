@@ -1,5 +1,4 @@
 import { all } from 'redux-saga/effects';
-import getClientsSaga from './client.saga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
@@ -8,9 +7,14 @@ import getAllClientsListSaga from './getAllClientsList.saga';
 import getUserTasksSaga from './getUserTasks.saga';
 import getRecentCompsSaga from './competitions.saga';
 import calendar from './calendar.saga';
+import getProfileSaga from './profile.saga';
+import userCredentials from './user.credentials.saga';
 import getAllTasksSaga from './getAllTasks.saga';
 import getClientTasksSaga from './getClientTasks.saga';
 import putTaskSaga from './putTask.saga';
+import searchClientSaga from './clientSearch.saga';
+import postTaskSaga from './postTask.saga';
+import putClientTaskSaga from './putClientTask.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -30,8 +34,14 @@ export default function* rootSaga() {
     getUserTasksSaga(),
     getRecentCompsSaga(),
     calendar(),
+    userCredentials(),
     getAllTasksSaga(),
     getClientTasksSaga(),
-    putTaskSaga()
+    putTaskSaga(),
+    getProfileSaga(),
+    putClientTaskSaga(),
+    userCredentials(),
+    searchClientSaga(),
+    postTaskSaga(),
   ]);
 }
