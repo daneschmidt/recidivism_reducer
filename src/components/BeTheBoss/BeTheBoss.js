@@ -20,7 +20,7 @@ import CardFooter from "../Card/CardFooter.js";
 
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
 
-const styles = (theme: Theme) =>
+const styles = () =>
 	createStyles({
 		// 	cardHeader: {
 		// 	padding: "0.75rem 1.25rem",
@@ -137,19 +137,19 @@ const styles = (theme: Theme) =>
 
 
 class BeTheBoss extends Component {
-	state = {
-		firstName: "",
-		lastName: "",
-		gender: "",
-		phoneNumber: "",
-		email: "",
-	};
+  state = {
+    firstName: '',
+    lastName: '',
+    gender: '',
+    phoneNumber: '',
+    email: ''
+  };
 
-	changeField = (event, infoKey) => {
-		this.setState({
-			[infoKey]: event.target.value,
-		});
-	};
+  changeField = (event, infoKey) => {
+    this.setState({
+      [infoKey]: event.target.value
+    });
+  };
 
 	addClientInfo = (event) => {
 		event.preventDefault();
