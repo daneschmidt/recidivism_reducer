@@ -23,11 +23,14 @@ import Radio from '@material-ui/core/Radio';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import AddUserModal from '../UserPage/AddUserModal';
+import EditPasswordModal from './EditPasswordModal';
+
 // Sweet Alert
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 // CSS
 import '../UserPage/UserPage.css'
+
 
 class UserPage extends Component {
 
@@ -190,6 +193,7 @@ class UserPage extends Component {
 
             <div>
                 <AddUserModal />
+                <EditPasswordModal />
                 <TableContainer component={Paper} className="container">
                     <Table size="small">
                         <TableHead className="table-head">
