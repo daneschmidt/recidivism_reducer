@@ -2,26 +2,26 @@ import React from "react";
 import { Component } from "react";
 // nodejs library to set properties for components
 // react plugin for creating charts
-import ChartistGraph from "react-chartist";
+// import ChartistGraph from "react-chartist";
 // import PropTypes from "prop-types";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+// // @material-ui/core components
+// import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 // @material-ui/icons
-import AddAlert from "@material-ui/icons/AddAlert";
+// import AddAlert from "@material-ui/icons/AddAlert";
 // core components
 import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
 import Button from "../CustomButtons/Button.js";
-import SnackbarContent from "../Snackbar/SnackbarContent";
-import Snackbar from "../Snackbar/Snackbar";
+// import SnackbarContent from "../Snackbar/SnackbarContent";
+// import Snackbar from "../Snackbar/Snackbar";
 import Card from "../Card/Card.js";
 import CardHeader from "../Card/CardHeader.js";
 import CardBody from "../Card/CardBody.js";
 import CardFooter from "../Card/CardFooter.js";
-import Tasks from "../../components/Tasks/Tasks";
-import Table from "../../components/Table/Table.js";
-import AccessTime from "@material-ui/icons/AccessTime";
+// import Tasks from "../../components/Tasks/Tasks";
+// import Table from "../../components/Table/Table.js";
+// import AccessTime from "@material-ui/icons/AccessTime";
 import CustomInput from "../../components/CustomInput/CustomInput.js";
 
 import { connect } from 'react-redux';
@@ -230,18 +230,18 @@ export default connect(mapStoreToProps)(LoginPage);
 
 /// OLD CODE ///
 
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-class EditUser extends Component {
-    render() {
-        return (
-            <div>
-                <p>
-                    Edit User Page!
-                </p>
-            </div>
-        )
-    }
-}
+// class EditUser extends Component {
+//     render() {
+//         return (
+//             <div>
+//                 <p>
+//                     Edit User Page!
+//                 </p>
+//             </div>
+//         )
+//     }
+// }
 
-export default EditUserPage
+// export default EditUserPage
