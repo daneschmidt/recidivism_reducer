@@ -88,7 +88,8 @@ class EventClick extends Component {
                 index: index,
                 title: item.eventTitle,
                 date: item.date,
-                evenTitle: item.evenTitle
+                evenTitle: item.evenTitle,
+                
             }
         })
 
