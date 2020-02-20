@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import moment from 'moment';
-import DatePicker from 'react-date-picker';
+
 // Material UI
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
@@ -11,19 +10,18 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
 // CSS
-import '../TaskPage/Modal.css'
+import '../UserPage/Modal.css'
 // Sweet Alert
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
-class AddTaskModal extends Component {
+class EditPasswordModal extends Component {
     state = {
         setOpen: false,
-        newTask: {
-            users_id: this.props.store.user.id,
-            clients_id: '',
-            task: '',
-            assignedOn: moment(Date()).format(),
-            dueBy: '',
+        newPassword: {
+            id: this.props.store.user.id,
+            oldPassword: '',
+            enteredNewPassword: '',
+            enteredNewPasswordConfirmed: ''
         }
     };
 
@@ -34,34 +32,33 @@ class AddTaskModal extends Component {
         });
     }
 
-    openAddTask = (event) => {
+    openEditPassword = (event) => {
         this.setState({
             setOpen: true,
         })
     }
 
-    closeAddTask = (event) => {
+    closeEditPassword = (event) => {
         this.setState({
             setOpen: false,
         })
     }
     handleSubmit = (event, infoKey) => {
-        if(this.state.newTask.task &&
-            this.state.newTask.clients_id &&
-            this.state.newTask.dueBy) {
-        // this.closeAddTask();
-        
+        if(this.state.newPassword.oldPassword &&
+            this.state.newPassword.enteredNewPassword &&
+            this.state.newPassword.enteredNewPasswordConfirmed === this.state.newPassword.enteredNewPassword 
+            ) {
         this.props.dispatch({
-            type: 'POST_TASK',
+            type: 'PUT_PASSWORD',
             payload: {
-                ...this.state.newTask
+                ...this.state.newPassword
             }
         })
-        this.closeAddTask();
+        this.closeEditPassword();
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Task has been Added!',
+            title: 'Your password has been changed!',
             showConfirmButton: false,
             timer: 1500
         }).then(() => {
@@ -70,64 +67,57 @@ class AddTaskModal extends Component {
             });
         })
     } else {
-        this.closeAddTask();
+        this.closeEditPassword();
         Swal.fire({
             position: 'center',
             icon: 'error',
-            text: 'Please fill out all input fields!',
-            timer: 1500
+            // title: 'Please fill out all input fields!',
+            text: `Your passwords do not match. Please try again.`,
+            timer: 2000
         })
     }
-        // this.closeAddTask();
 }
 
     render() {
-        const allClientsList = this.props.store.getAllClientsReducer.map((item, index) => {
-            return (
-                <option key={index} value={item.id}>{item.firstName} {item.lastName}</option>
-            )
-        });
-        const blankClient = <option>Select Client</option>;
+        
         return (
             <div className="container">
                 <div className="modal-button">
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={this.openAddTask}
+                        onClick={this.openEditPassword}
                     >
-                        Add Task
+                        Change Password
                     </Button>
                 </div>
                 <div className="event-modal">
                     <Modal
                         open={this.state.setOpen}
-                        onClose={this.closeAddTask}>
+                        onClose={this.closeEditPassword}>
                         <div className="modal">
-                            <h2>Add Task</h2>
+                            <h2>Edit Password</h2>
                             <div className="text-input">
                                 <TextField variant="outlined"
                                     type="text"
-                                    label="Task"
+                                    label="Current Password"
                                     
-                                    onChange={(event) => this.handleInputField(event, this.state.newTask.task = event.target.value)}
+                                    onChange={(event) => this.handleInputField(event, this.state.newPassword.oldPassword = event.target.value)}
                                 />
                                 <TextField variant="outlined"
                                     type="text"
-                                    label="Due By"
-                                    type="date"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                      }}
-                                    onChange={(event) => this.handleInputField(event, this.state.newTask.dueBy = event.target.value)}
+                                    label="New Password"
+                                    // InputLabelProps={{
+                                    //     shrink: true,
+                                    //   }}
+                                    onChange={(event) => this.handleInputField(event, this.state.newPassword.enteredNewPassword = event.target.value)}
                                 />
-                                
-                                <Grid item xs={6}>
-                                </Grid>
-                                <select className="select-task-css" onChange={(event) => this.handleInputField(event, this.state.newTask.clients_id = event.target.value)}>
-                                    {blankClient}
-                                    {allClientsList}
-                                </select>
+                                <TextField variant="outlined"
+                                    type="text"
+                                    label="Confirm New Password"
+                                    
+                                    onChange={(event) => this.handleInputField(event, this.state.newPassword.enteredNewPasswordConfirmed = event.target.value)}
+                                />
                                 </div>
                                 <div className="form-button">
                                     <Button
@@ -135,7 +125,7 @@ class AddTaskModal extends Component {
                                         color="primary"
                                         onClick={this.handleSubmit}
                                     >
-                                        Add Task
+                                        Change Password
                                     </Button>
                             </div>
                         </div>
@@ -146,4 +136,4 @@ class AddTaskModal extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(AddTaskModal);
+export default connect(mapStoreToProps)(EditPasswordModal);

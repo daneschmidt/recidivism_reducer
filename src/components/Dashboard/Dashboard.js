@@ -59,7 +59,7 @@ export default function DashboardPage() {
       </GridItem>
 
       <GridItem xs={12} sm={12} md={4}>
-        <Calendar /> CompetitionPage
+        <Calendar />
       </GridItem>
 
       <GridItem xs={12} sm={12} md={8}>

@@ -18,9 +18,16 @@ import CardHeader from "../Card/CardHeader.js";
 import CardBody from "../Card/CardBody.js";
 import CardFooter from "../Card/CardFooter.js";
 
-import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
+import Paper from '@material-ui/core/Paper';
 
-const styles = (theme: Theme) =>
+import Button from '@material-ui/core/Button';
+
+import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { Grid } from '@material-ui/core';
+
+import './BeTheBoss.css';
+
+const styles = () =>
 	createStyles({
 		// 	cardHeader: {
 		// 	padding: "0.75rem 1.25rem",
@@ -137,19 +144,19 @@ const styles = (theme: Theme) =>
 
 
 class BeTheBoss extends Component {
-  state = {
-    firstName: '',
-    lastName: '',
-    gender: '',
-    phoneNumber: '',
-    email: ''
-  };
+	state = {
+		firstName: '',
+		lastName: '',
+		gender: '',
+		phoneNumber: '',
+		email: ''
+	};
 
-  changeField = (event, infoKey) => {
-    this.setState({
-      [infoKey]: event.target.value
-    });
-  };
+	changeField = (event, infoKey) => {
+		this.setState({
+			[infoKey]: event.target.value
+		});
+	};
 
 	addClientInfo = (event) => {
 		event.preventDefault();
@@ -192,64 +199,53 @@ class BeTheBoss extends Component {
 	render() {
 		return (
 			<GridContainer justify="center">
-				<GridItem xs={12} sm={12} md={6}>
+				<GridItem xs={12} sm={12} md={8}>
 					<Card>
-						<CardHeader justify="center">
-							<h4>BE THE BOSS FORM</h4>
-						</CardHeader>
-						<CardBody>
-
-
-							First Name: <input
+						<Paper className="paperPanel" elevation={5}>
+							<h1 className='beTheBoss'>Be The Boss</h1>
+							<input
 								type="text"
+								className="inputs"
 								placeholder="First Name"
 								value={this.state.firstName}
 								onChange={event => this.changeField(event, "firstName")}
 								required
 							/>
 							<br />
-
-
-							Last Name:
-										<input
+							<input
 								type="text"
+								className="inputs"
 								placeholder="Last Name"
 								value={this.state.lastName}
 								onChange={event => this.changeField(event, "lastName")}
 							/>
 							<br />
-
-
-							Gender:
-										<input
+							<input
 								type="text"
+								className="inputs"
 								placeholder="Gender"
 								value={this.state.gender}
 								onChange={event => this.changeField(event, "gender")}
 							/>
 							<br />
-
-							Phone Number:
-										<input
+							<input
 								type="number"
+								className="inputs"
 								placeholder="Phone Number"
 								value={this.state.phoneNumber}
 								onChange={event => this.changeField(event, "phoneNumber")}
 							/>
 							<br />
-
-							Email Address
-								<input
+							<input
 								type="text"
+								className="inputs"
 								placeholder="Email"
 								value={this.state.email}
-								onChange={event => this.changeField(event, "email")} />
-
-							<button onClick={this.addClientInfo}>Submit</button>
-
-
-
-						</CardBody>
+								onChange={event => this.changeField(event, "email")}
+							/>
+							<br />
+							<button variant="contained" color="primary" onClick={this.addClientInfo}>Submit</button>
+						</Paper>
 					</Card>
 				</GridItem>
 			</GridContainer>
