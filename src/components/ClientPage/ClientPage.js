@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
+import Card from "../Card/Card.js";
 
 class ClientPage extends Component {
 	state = {
@@ -77,16 +78,20 @@ class ClientPage extends Component {
 			);
 		});
 		return (
-			<div>
-				<h1>{this.state.heading}</h1>
-				<div>
-					<input type="text" onChange={this.onChange('search_string')}></input>
-					<Link to="/clientresults">
-						<button onClick={this.search}>SEARCH</button>
-					</Link>
-				</div>
-				{clientList}
-			</div>
+			<GridContainer justify="center">
+				<GridItem xs={12} sm={12} md={4}>
+					<Card>
+						<h1>{this.state.heading}</h1>
+						<div>
+							<input type="text" onChange={this.onChange('search_string')}></input>
+							<Link to="/clientresults">
+								<button onClick={this.search}>SEARCH</button>
+							</Link>
+						</div>
+						{clientList}
+					</Card>
+				</GridItem>
+			</GridContainer>
 		);
 	}
 }
