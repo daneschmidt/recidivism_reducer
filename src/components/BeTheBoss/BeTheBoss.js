@@ -20,6 +20,8 @@ import CardFooter from "../Card/CardFooter.js";
 
 import Paper from '@material-ui/core/Paper';
 
+import Button from '@material-ui/core/Button';
+
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Grid } from '@material-ui/core';
 
@@ -232,7 +234,7 @@ class BeTheBoss extends Component {
 								value={this.state.email}
 								onChange={event => this.changeField(event, "email")}
 							/>
-							<button onClick={this.addClientInfo}>Submit</button>
+							<button variant="contained" color="primary" onClick={this.addClientInfo}>Submit</button>
 						</Paper>
 					</Card>
 				</GridItem>
