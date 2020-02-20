@@ -12,6 +12,7 @@ import userCredentials from './user.credentials.reducer';
 import getAllTasksReducer from './getAllTasks.reducer';
 import getClientTasksReducer from './getClientTasks.reducer';
 import getUserTasksReducer from './getUserTasks.reducer';
+import clientSearch from './clientsearch.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   progress, //renders default list for progress tracker
   client,
+  clientSearch,
   getAllClientsReducer,
   competitions,
   calendar,
@@ -32,7 +34,7 @@ const rootReducer = combineReducers({
   userCredentials,
   getAllTasksReducer,
   getClientTasksReducer,
-  getUserTasksReducer,
+  getUserTasksReducer
 });
 
 export default rootReducer;

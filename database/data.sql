@@ -24,15 +24,20 @@ INSERT INTO "address"
 VALUES
     (1, '215th Court', 'Peculiar', 'MO', 64078, True, False, False);
 
+INSERT INTO "competition_status"
+    ("step1", "step2", "step3", "step4", "step5", "step6")
+VALUES
+    ('1', '2', '3', '4', '5', '6');
+
 INSERT INTO "competitions"
     ("dateOf", "name")
 VALUES
     ('2020-03-10', 'Super Competition');
 
 INSERT INTO "clients_competitions"
-    ("clients_id", "competitions_id", "statusNum", "award", "notes")
+    ("clients_id", "competitions_id", "status", "award", "grantAmount", "notes")
 VALUES
-    (1, 1, 1, 'Congrats', 'You are awewsome!');
+    (1, 1, '', 'Congrats', 10000, 'You are awesome!');
 
 INSERT INTO "links"
     ("clients_id", "url")

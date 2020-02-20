@@ -19,6 +19,22 @@ router.get('/all', rejectUnauthenticated, (req: express.Request, res: express.Re
 		});
 });
 
+router.get('/search/:keyword', rejectUnauthenticated, (req: express.Request, res: express.Response, next: express.NextFunction): void => {
+    let keyword = req.params.keyword;
+	const queryText: 
+		| string 
+		| null = `SELECT "firstName", "lastName", "phoneNumber", "email" FROM "clients"
+                            WHERE "firstName" LIKE '%${keyword}%'
+                            OR "lastName" LIKE '%${keyword}%'`;
+	pool
+		.query(queryText)
+        .then((response) => { res.send(response.rows); })
+        .catch(err => {
+            console.log(`Error with SELECT results query: ${err}`);
+            res.sendStatus(500);
+        });
+});
+
 router.post("/", (req: express.Request, res: express.Response, next: express.NextFunction): void => {
 	const firstName: string | null = <string>req.body.firstName;
 	const lastName: string | null = <string>req.body.lastName;

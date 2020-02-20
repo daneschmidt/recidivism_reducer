@@ -25,6 +25,7 @@ import Competition from '../CompetitionPage/CompetitionPage';
 import TaskPage from '../TaskPage/TaskPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
+import ClientResults from '../ClientResults/ClientResults';
 
 import './App.css';
 
@@ -46,8 +47,9 @@ class App extends Component {
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route exact path='/betheboss' component={BeTheBoss} />
-            <Route exact path='/clientpage' component={ClientPage} />
-            <Route exact path='/home' component={LandingPage} />
+            <ProtectedRoute exact path='/clientpage' component={ClientPage} />
+            <ProtectedRoute exact path='/clientresults' component={ClientResults} />
+            <ProtectedRoute exact path='/home' component={LandingPage} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
