@@ -3,7 +3,7 @@ import {
   HashRouter as Router,
   Route,
   Redirect,
-  Switch,
+  Switch
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -25,6 +25,7 @@ import Competition from '../CompetitionPage/CompetitionPage';
 import TaskPage from '../TaskPage/TaskPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
+import SurveyPage from '../SurveyPage/SurveyPage';
 
 import './App.css';
 
@@ -63,6 +64,7 @@ class App extends Component {
             <ProtectedRoute exact path='/userpage' component={UserPage} />
             <ProtectedRoute exact path='/competition' component={Competition} />
             <ProtectedRoute exact path='/taskpage' component={TaskPage} />
+            <ProtectedRoute exact path='/surveypage' component={SurveyPage} />
             {/* This works the same as the other protected route, except that if the user is logged in,
 
 

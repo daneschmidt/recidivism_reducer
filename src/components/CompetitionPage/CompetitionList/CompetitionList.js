@@ -327,7 +327,7 @@ class CompetitionList extends Component {
             style={{
               position: 'absolute',
               width: '40%',
-              height: '60%',
+              height: '33%',
               backgroundColor: 'white',
               color: 'white',
               border: '2px solid white',
