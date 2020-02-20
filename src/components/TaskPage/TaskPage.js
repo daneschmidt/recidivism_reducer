@@ -11,6 +11,8 @@ import CustomTabs from "../CustomTabs/CustomTabs";
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
 import AddTaskModal from '../TaskPage/AddTaskModal';
+// Sweet Alert
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 class TaskPage extends Component {
 
@@ -68,6 +70,21 @@ class TaskPage extends Component {
         const taskId = id;
         const checkbox = inputKey;
         const completedOn = moment(Date()).format();
+        Swal.fire({
+            title: 'Change Completion Status?',
+            text: "Are you sure you want to change this task's completion status",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Change It!'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'Status Changed!',
+                'Completion Status has been changed!',
+                'success'
+              )
         this.props.dispatch({
             type: 'MARK_TASK',
             payload: {
@@ -79,6 +96,7 @@ class TaskPage extends Component {
         })
         // this.getClientTasks(event)
     }
+})}
 
     handleClientCheckboxChange = (event, id, clients_id, inputKey) => {
         this.setState({
@@ -94,16 +112,33 @@ class TaskPage extends Component {
         const taskId = id;
         const checkbox = inputKey;
         const completedOn = moment(Date()).format();
-        this.props.dispatch({
-            type: 'MARK_CLIENT_TASK',
-            payload: {
-                taskId,
-                completedOn,
-                checkbox,
-                clients_id,
-                id: this.props.user.id,
+        Swal.fire({
+            title: 'Change Completion Status?',
+            text: "Are you sure you want to change this task's completion status",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Change It!'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'Status Changed!',
+                'Completion Status has been changed!',
+                'success'
+              )
+              this.props.dispatch({
+                type: 'MARK_CLIENT_TASK',
+                payload: {
+                    taskId,
+                    completedOn,
+                    checkbox,
+                    clients_id,
+                    id: this.props.user.id,
+                }
+            })
             }
-        })
+    })
         this.getClientTasks(event)
     }
     getClientTasks = (event, inputKey) => {

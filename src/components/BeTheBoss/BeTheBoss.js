@@ -19,8 +19,9 @@ import CardBody from "../Card/CardBody.js";
 import CardFooter from "../Card/CardFooter.js";
 
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { Grid } from '@material-ui/core';
 
-const styles = (theme: Theme) =>
+const styles = () =>
 	createStyles({
 		// 	cardHeader: {
 		// 	padding: "0.75rem 1.25rem",
@@ -138,16 +139,16 @@ const styles = (theme: Theme) =>
 
 class BeTheBoss extends Component {
 	state = {
-		firstName: "",
-		lastName: "",
-		gender: "",
-		phoneNumber: "",
-		email: "",
+		firstName: '',
+		lastName: '',
+		gender: '',
+		phoneNumber: '',
+		email: ''
 	};
 
 	changeField = (event, infoKey) => {
 		this.setState({
-			[infoKey]: event.target.value,
+			[infoKey]: event.target.value
 		});
 	};
 
@@ -192,64 +193,41 @@ class BeTheBoss extends Component {
 	render() {
 		return (
 			<GridContainer justify="center">
-				<GridItem xs={12} sm={12} md={6}>
+				<GridItem xs={12} sm={12} md={8}>
 					<Card>
-						<CardHeader justify="center">
-							<h4>BE THE BOSS FORM</h4>
-						</CardHeader>
-						<CardBody>
-
-
-							First Name: <input
-								type="text"
-								placeholder="First Name"
-								value={this.state.firstName}
-								onChange={event => this.changeField(event, "firstName")}
-								required
-							/>
-							<br />
-
-
-							Last Name:
-										<input
-								type="text"
-								placeholder="Last Name"
-								value={this.state.lastName}
-								onChange={event => this.changeField(event, "lastName")}
-							/>
-							<br />
-
-
-							Gender:
-										<input
-								type="text"
-								placeholder="Gender"
-								value={this.state.gender}
-								onChange={event => this.changeField(event, "gender")}
-							/>
-							<br />
-
-							Phone Number:
-										<input
-								type="number"
-								placeholder="Phone Number"
-								value={this.state.phoneNumber}
-								onChange={event => this.changeField(event, "phoneNumber")}
-							/>
-							<br />
-
-							Email Address
-								<input
-								type="text"
-								placeholder="Email"
-								value={this.state.email}
-								onChange={event => this.changeField(event, "email")} />
-
-							<button onClick={this.addClientInfo}>Submit</button>
-
-
-
-						</CardBody>
+						<h1>Be The Boss</h1>
+						<input
+							type="text"
+							placeholder="First Name"
+							value={this.state.firstName}
+							onChange={event => this.changeField(event, "firstName")}
+							required
+						/>
+						<input
+							type="text"
+							placeholder="Last Name"
+							value={this.state.lastName}
+							onChange={event => this.changeField(event, "lastName")}
+						/>
+						<input
+							type="text"
+							placeholder="Gender"
+							value={this.state.gender}
+							onChange={event => this.changeField(event, "gender")}
+						/>
+						<input
+							type="number"
+							placeholder="Phone Number"
+							value={this.state.phoneNumber}
+							onChange={event => this.changeField(event, "phoneNumber")}
+						/>
+						<input
+							type="text"
+							placeholder="Email"
+							value={this.state.email}
+							onChange={event => this.changeField(event, "email")}
+						/>
+						<button onClick={this.addClientInfo}>Submit</button>
 					</Card>
 				</GridItem>
 			</GridContainer>

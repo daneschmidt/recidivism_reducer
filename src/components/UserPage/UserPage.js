@@ -22,6 +22,7 @@ import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import AddUserModal from '../UserPage/AddUserModal';
 // Sweet Alert
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
@@ -108,28 +109,37 @@ class UserPage extends Component {
         this.closeEditUser();
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            //text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.value) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-            }
-            this.props.dispatch({
-                type: 'EDIT_USER_STATUS',
-                payload: {
-                    isActive: this.state.isActive,
-                    id: this.state.id
-                }
-            })
-          })
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                this.props.dispatch({
+                    type: 'EDIT_USER_STATUS',
+                    payload: {
+                        isActive: this.state.isActive,
+                        id: this.state.id
+                    }
+                })
+            }  else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+              ) {
+                Swal.fire(
+                  'Cancelled',
+                  'Your imaginary file is safe :)',
+                  'error'
+                )
+              }
+        })
     }
 
     // Update user credentials with sweet alert pop up 
@@ -177,8 +187,9 @@ class UserPage extends Component {
 
     render() {
         return (
-            
+
             <div>
+                <AddUserModal />
                 <TableContainer component={Paper} className="container">
                     <Table size="small">
                         <TableHead className="table-head">
@@ -332,6 +343,8 @@ class UserPage extends Component {
                                 </div>
                             </div>
                         </Modal>
+                    </div>
+                    <div>
                     </div>
                 </div>
             </div>
