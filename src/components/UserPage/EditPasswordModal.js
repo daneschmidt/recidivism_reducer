@@ -72,7 +72,7 @@ class EditPasswordModal extends Component {
             position: 'center',
             icon: 'error',
             // title: 'Please fill out all input fields!',
-            text: `You have entered a field incorrectly.`,
+            text: `Your passwords do not match. Please try again.`,
             timer: 2000
         })
     }
@@ -88,7 +88,7 @@ class EditPasswordModal extends Component {
                         color="primary"
                         onClick={this.openEditPassword}
                     >
-                        Edit Password
+                        Change Password
                     </Button>
                 </div>
                 <div className="event-modal">
@@ -125,7 +125,7 @@ class EditPasswordModal extends Component {
                                         color="primary"
                                         onClick={this.handleSubmit}
                                     >
-                                        Edit Password
+                                        Change Password
                                     </Button>
                             </div>
                         </div>
