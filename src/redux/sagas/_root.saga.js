@@ -22,6 +22,9 @@ import postTaskSaga from './postTask.saga';
 import putClientTaskSaga from './putClientTask.saga';
 import getClientsSaga from './client.saga';
 import deleteParticipantSaga from './deleteParticipant.saga';
+import addRecentCompSaga from './addRecentComp.saga';
+import deleteRecentCompSaga from './deleteRecentComp.saga';
+import editRecentCompSaga from './editRecentComp.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -55,6 +58,9 @@ export default function* rootSaga() {
     userCredentials(),
     searchClientSaga(),
     postTaskSaga(),
-    deleteParticipantSaga()
+    deleteParticipantSaga(),
+    addRecentCompSaga(),
+    deleteRecentCompSaga(),
+    editRecentCompSaga()
   ]);
 }
