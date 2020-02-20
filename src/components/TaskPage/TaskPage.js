@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import moment from 'moment';
-// @material-ui/icons
-import AddAlert from "@material-ui/icons/AddAlert";
+
 // core components
 import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
 import CustomTabs from "../CustomTabs/CustomTabs";
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import AddTaskModal from '../TaskPage/AddTaskModal';
 // Sweet Alert
@@ -94,7 +94,6 @@ class TaskPage extends Component {
                 id: this.props.user.id,
             }
         })
-        // this.getClientTasks(event)
     }
 })}
 
@@ -162,7 +161,7 @@ class TaskPage extends Component {
         const taskListByAll = this.props.store.getAllTasksReducer.map((item, index) => {
             return (
                 <div key={index}>
-                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
+                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
                     <ul className="noBullets">
                         <li>Task: {item.task}</li>
                         <li>Added On: {moment(item.assignedOn).format('LL')}</li>
@@ -176,7 +175,7 @@ class TaskPage extends Component {
         const taskListByUser = this.props.store.getUserTasksReducer.map((item, index) => {
             return (
                 <div key={index}>
-                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
+                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
                     <ul className="noBullets">
                         <li>Task: {item.task}</li>
                         <li>Added On: {moment(item.assignedOn).format('LL')}</li>
@@ -190,7 +189,7 @@ class TaskPage extends Component {
         const taskListByClient = this.props.store.getClientTasksReducer.map((item, index) => {
             return (
                 <div key={index}>
-                    <input type="checkbox" checked={item.complete} onChange={(event) => this.handleClientCheckboxChange(event, item.tasksId, item.clients_id, this.state.tasks.checkbox = event.target.checked)}/>
+                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleClientCheckboxChange(event, item.tasksId, item.clients_id, this.state.tasks.checkbox = event.target.checked)}/>
                     <ul className="noBullets">
                         <li>Task: {item.task}</li>
                         <li>Added On: {moment(item.assignedOn).format('LL')}</li>

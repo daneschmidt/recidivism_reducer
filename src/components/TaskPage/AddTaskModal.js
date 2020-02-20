@@ -105,13 +105,14 @@ class AddTaskModal extends Component {
                         onClose={this.closeAddTask}>
                         <div className="modal">
                             <h2>Add Task</h2>
-                            <div className="text-input">
+                            <div className="event-form">
+                            
                                 <TextField variant="outlined"
                                     type="text"
                                     label="Task"
-                                    
                                     onChange={(event) => this.handleInputField(event, this.state.newTask.task = event.target.value)}
                                 />
+                                
                                 <TextField variant="outlined"
                                     type="text"
                                     label="Due By"
@@ -122,13 +123,11 @@ class AddTaskModal extends Component {
                                     onChange={(event) => this.handleInputField(event, this.state.newTask.dueBy = event.target.value)}
                                 />
                                 
-                                <Grid item xs={6}>
-                                </Grid>
                                 <select className="select-task-css" onChange={(event) => this.handleInputField(event, this.state.newTask.clients_id = event.target.value)}>
                                     {blankClient}
                                     {allClientsList}
                                 </select>
-                                </div>
+                            </div>
                                 <div className="form-button">
                                     <Button
                                         variant="contained"
