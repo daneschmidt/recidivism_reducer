@@ -65,9 +65,7 @@ class ClientPage extends Component {
 			return (
 				<ul key={index}>
 					<li onClick={event => this.goToProfile(event, item.id)}>
-						{item.firstName}
-						<br />
-						{item.lastName}
+						{item.firstName} {item.lastName}
 						<br />
 						{item.phoneNumber}
 						<br />

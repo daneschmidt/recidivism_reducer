@@ -26,6 +26,10 @@ import AddUserModal from '../UserPage/AddUserModal';
 // Sweet Alert
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
+import GridItem from "../Grid/GridItem.js";
+import GridContainer from "../Grid/GridContainer.js";
+import Card from "../Card/Card.js";
+
 // CSS
 import '../UserPage/UserPage.css'
 
@@ -129,16 +133,16 @@ class UserPage extends Component {
                         id: this.state.id
                     }
                 })
-            }  else if (
+            } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
-              ) {
+            ) {
                 Swal.fire(
-                  'Cancelled',
-                  'Your imaginary file is safe :)',
-                  'error'
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
                 )
-              }
+            }
         })
     }
 
@@ -190,46 +194,54 @@ class UserPage extends Component {
 
             <div>
                 <AddUserModal />
-                <TableContainer component={Paper} className="container">
-                    <Table size="small">
-                        <TableHead className="table-head">
-                            <TableRow className="table-row">
-                                <TableCell></TableCell>
-                                <TableCell>First Name</TableCell>
-                                <TableCell>Last Name</TableCell>
-                                <TableCell>Phone Number</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Security Level</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
-                                <TableRow key={index}>
-                                    <TableCell align="right">
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    checked={this.state.checkbox === item.id}
-                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
-                                                    color="primary"
-                                                />
-                                            }
-                                        />
-                                    </TableCell>
-                                    <TableCell>{item.firstName}</TableCell>
-                                    <TableCell>{item.lastName}</TableCell>
-                                    <TableCell>{item.phoneNumber}</TableCell>
-                                    <TableCell>{item.email}</TableCell>
-                                    <TableCell>{item.securityLevel}</TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                <GridContainer justify="center">
+                    <GridItem xs={12} sm={12} md={10}>
+                        <Card>
+                            <Paper className="paperPanel" elevation={5}>
+                                <TableContainer component={Paper} className="container">
+                                    <Table size="small">
+                                        <TableHead className="table-head">
+                                            <TableRow className="table-row">
+                                                <TableCell></TableCell>
+                                                <TableCell>First Name</TableCell>
+                                                <TableCell>Last Name</TableCell>
+                                                <TableCell>Phone Number</TableCell>
+                                                <TableCell>Email</TableCell>
+                                                <TableCell>Security Level</TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
+                                                <TableRow key={index}>
+                                                    <TableCell align="right">
+                                                        <FormControlLabel
+                                                            control={
+                                                                <Checkbox
+                                                                    checked={this.state.checkbox === item.id}
+                                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
+                                                                    color="primary"
+                                                                />
+                                                            }
+                                                        />
+                                                    </TableCell>
+                                                    <TableCell>{item.firstName}</TableCell>
+                                                    <TableCell>{item.lastName}</TableCell>
+                                                    <TableCell>{item.phoneNumber}</TableCell>
+                                                    <TableCell>{item.email}</TableCell>
+                                                    <TableCell>{item.securityLevel}</TableCell>
+                                                </TableRow>
+                                            )}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            </Paper>
+                        </Card>
+                    </GridItem>
+                </GridContainer>
                 <div className="edit-button">
                     <Button
                         variant="contained"
-                        color="primary"
+                        color="default"
                         onClick={this.openEditUser}
                     >
                         Edit
@@ -334,7 +346,7 @@ class UserPage extends Component {
                                     <div className="update-button">
                                         <Button
                                             variant="contained"
-                                            color="primary"
+                                            color="default"
                                             onClick={this.handleUserUpdate}
                                         >
                                             Update

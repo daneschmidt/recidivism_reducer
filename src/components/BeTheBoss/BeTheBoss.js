@@ -234,7 +234,7 @@ class BeTheBoss extends Component {
 								value={this.state.email}
 								onChange={event => this.changeField(event, "email")}
 							/>
-							<button variant="contained" color="primary" onClick={this.addClientInfo}>Submit</button>
+							<Button variant="contained" color="default" onClick={this.addClientInfo}>Submit</Button>
 						</Paper>
 					</Card>
 				</GridItem>
