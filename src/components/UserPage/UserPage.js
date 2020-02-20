@@ -23,6 +23,8 @@ import Radio from '@material-ui/core/Radio';
 // import DeleteIcon from '@material-ui/icons/Delete';
 
 import AddUserModal from '../UserPage/AddUserModal';
+import EditPasswordModal from './EditPasswordModal';
+
 // Sweet Alert
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
@@ -32,6 +34,7 @@ import Card from "../Card/Card.js";
 
 // CSS
 import '../UserPage/UserPage.css'
+
 
 class UserPage extends Component {
 
@@ -194,50 +197,43 @@ class UserPage extends Component {
 
             <div>
                 <AddUserModal />
-                <GridContainer justify="center">
-                    <GridItem xs={12} sm={12} md={11}>
-
-                        <Paper className="paperPanel" elevation={5}>
-                            <TableContainer component={Paper} className="container">
-                                <Table size="small">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell></TableCell>
-                                            <TableCell>First Name</TableCell>
-                                            <TableCell>Last Name</TableCell>
-                                            <TableCell>Phone Number</TableCell>
-                                            <TableCell>Email</TableCell>
-                                            <TableCell>Security Level</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {this.props.store.userCredentials.userCredentials.map((item, index) =>
-                                            <TableRow key={index}>
-                                                <TableCell align="right">
-                                                    <FormControlLabel
-                                                        control={
-                                                            <Checkbox
-                                                                checked={this.state.checkbox === item.id}
-                                                                onChange={(event) => this.handleCheckboxChange(event, item.id)}
-                                                                color="primary"
-                                                            />
-                                                        }
-                                                    />
-                                                </TableCell>
-                                                <TableCell>{item.firstName}</TableCell>
-                                                <TableCell>{item.lastName}</TableCell>
-                                                <TableCell>{item.phoneNumber}</TableCell>
-                                                <TableCell>{item.email}</TableCell>
-                                                <TableCell>{item.securityLevel}</TableCell>
-                                            </TableRow>
-                                        )}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        </Paper>
-
-                    </GridItem>
-                </GridContainer>
+                <EditPasswordModal />
+                <TableContainer component={Paper} className="container">
+                    <Table size="small">
+                        <TableHead className="table-head">
+                            <TableRow className="table-row">
+                                <TableCell></TableCell>
+                                <TableCell>First Name</TableCell>
+                                <TableCell>Last Name</TableCell>
+                                <TableCell>Phone Number</TableCell>
+                                <TableCell>Email</TableCell>
+                                <TableCell>Security Level</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
+                                <TableRow key={index}>
+                                    <TableCell align="right">
+                                        <FormControlLabel
+                                            control={
+                                                <Checkbox
+                                                    checked={this.state.checkbox === item.id}
+                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
+                                                    color="primary"
+                                                />
+                                            }
+                                        />
+                                    </TableCell>
+                                    <TableCell>{item.firstName}</TableCell>
+                                    <TableCell>{item.lastName}</TableCell>
+                                    <TableCell>{item.phoneNumber}</TableCell>
+                                    <TableCell>{item.email}</TableCell>
+                                    <TableCell>{item.securityLevel}</TableCell>
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
                 <div className="edit-button">
                     <Button
                         variant="contained"

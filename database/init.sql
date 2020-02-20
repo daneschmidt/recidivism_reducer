@@ -58,8 +58,13 @@ CREATE TABLE "address" (
 
 CREATE TABLE "competitions" (
   "id" SERIAL PRIMARY KEY,
-  "dateOf" timestamp,
-  "name" varchar
+  "dateOf" varchar,
+  "name" varchar,
+  "winnerName" varchar,
+  "amountGranted" varchar,
+  "businessName" varchar,
+  "notes" varchar
+  
 );
 
 CREATE TABLE "clients_competitions" (

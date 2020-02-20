@@ -202,39 +202,49 @@ class BeTheBoss extends Component {
 				<GridItem xs={12} sm={12} md={8}>
 					<Card>
 						<Paper className="paperPanel" elevation={5}>
-							<h1>Be The Boss</h1>
+							<h1 className='beTheBoss'>Be The Boss</h1>
 							<input
 								type="text"
+								className="inputs"
 								placeholder="First Name"
 								value={this.state.firstName}
 								onChange={event => this.changeField(event, "firstName")}
 								required
 							/>
+							<br />
 							<input
 								type="text"
+								className="inputs"
 								placeholder="Last Name"
 								value={this.state.lastName}
 								onChange={event => this.changeField(event, "lastName")}
 							/>
+							<br />
 							<input
 								type="text"
+								className="inputs"
 								placeholder="Gender"
 								value={this.state.gender}
 								onChange={event => this.changeField(event, "gender")}
 							/>
+							<br />
 							<input
 								type="number"
+								className="inputs"
 								placeholder="Phone Number"
 								value={this.state.phoneNumber}
 								onChange={event => this.changeField(event, "phoneNumber")}
 							/>
+							<br />
 							<input
 								type="text"
+								className="inputs"
 								placeholder="Email"
 								value={this.state.email}
 								onChange={event => this.changeField(event, "email")}
 							/>
-							<Button variant="contained" color="default" onClick={this.addClientInfo}>Submit</Button>
+							<br />
+							<button variant="contained" color="primary" onClick={this.addClientInfo}>Submit</button>
 						</Paper>
 					</Card>
 				</GridItem>
