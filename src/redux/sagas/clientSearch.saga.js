@@ -1,9 +1,12 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* searchClients() {
+function* searchClients(action) {
     try {
-        const response = yield axios.get(`/api/clients/search/${action.payload}`);
+        const response = yield axios ({
+            method: 'GET',
+            url: `/api/clients/search/${action.payload}`
+        });
         yield put({
             type: 'SET_SEARCH_CLIENT',
             payload: response.data,

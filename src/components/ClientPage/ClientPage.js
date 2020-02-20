@@ -89,22 +89,16 @@ class ClientPage extends Component {
 		});
 	}
 	//Captures onChange event in the search field
-	onChange = key => event => {
-		this.setState(
-			{
-				...this.state,
+	onChange = key => (event) => {
+		this.setState({
 				[key]: event.target.value
-			},
-			() => {
-				console.log(this.state);
-			}
-		);
-	};
+		});
+	}
 
 	//Dispatches to client
 	search = (event) => {
 		this.props.dispatch({ type: 'SEARCH_CLIENT', payload: this.state.search_string });
-	};
+	}
 
 	delete = event => {
 		this.props.dispatch({

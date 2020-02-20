@@ -181,11 +181,6 @@ class BeTheBoss extends Component {
 		} else {
 			console.log('whoops');
 			Swal.fire("Oops!", "Please enter all of your info!", "error")
-			// if (!this.state.firstName) alert("Must enter first name.");
-			// else if (!this.state.lastName) alert("Must enter last name.");
-			// else if (!this.state.gender) alert("Must enter gender.");
-			// else if (!this.state.phoneNumber) alert("Must enter phone number.");
-			// else if (!this.state.email) alert("Must enter email.");
 		}
 	}
 
