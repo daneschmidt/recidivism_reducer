@@ -20,7 +20,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
-import DeleteIcon from '@material-ui/icons/Delete';
+// import DeleteIcon from '@material-ui/icons/Delete';
 
 import AddUserModal from '../UserPage/AddUserModal';
 // Sweet Alert
@@ -195,47 +195,47 @@ class UserPage extends Component {
             <div>
                 <AddUserModal />
                 <GridContainer justify="center">
-                    <GridItem xs={12} sm={12} md={10}>
-                        <Card>
-                            <Paper className="paperPanel" elevation={5}>
-                                <TableContainer component={Paper} className="container">
-                                    <Table size="small">
-                                        <TableHead className="table-head">
-                                            <TableRow className="table-row">
-                                                <TableCell></TableCell>
-                                                <TableCell>First Name</TableCell>
-                                                <TableCell>Last Name</TableCell>
-                                                <TableCell>Phone Number</TableCell>
-                                                <TableCell>Email</TableCell>
-                                                <TableCell>Security Level</TableCell>
+                    <GridItem xs={12} sm={12} md={11}>
+
+                        <Paper className="paperPanel" elevation={5}>
+                            <TableContainer component={Paper} className="container">
+                                <Table size="small">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell></TableCell>
+                                            <TableCell>First Name</TableCell>
+                                            <TableCell>Last Name</TableCell>
+                                            <TableCell>Phone Number</TableCell>
+                                            <TableCell>Email</TableCell>
+                                            <TableCell>Security Level</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {this.props.store.userCredentials.userCredentials.map((item, index) =>
+                                            <TableRow key={index}>
+                                                <TableCell align="right">
+                                                    <FormControlLabel
+                                                        control={
+                                                            <Checkbox
+                                                                checked={this.state.checkbox === item.id}
+                                                                onChange={(event) => this.handleCheckboxChange(event, item.id)}
+                                                                color="primary"
+                                                            />
+                                                        }
+                                                    />
+                                                </TableCell>
+                                                <TableCell>{item.firstName}</TableCell>
+                                                <TableCell>{item.lastName}</TableCell>
+                                                <TableCell>{item.phoneNumber}</TableCell>
+                                                <TableCell>{item.email}</TableCell>
+                                                <TableCell>{item.securityLevel}</TableCell>
                                             </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
-                                                <TableRow key={index}>
-                                                    <TableCell align="right">
-                                                        <FormControlLabel
-                                                            control={
-                                                                <Checkbox
-                                                                    checked={this.state.checkbox === item.id}
-                                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
-                                                                    color="primary"
-                                                                />
-                                                            }
-                                                        />
-                                                    </TableCell>
-                                                    <TableCell>{item.firstName}</TableCell>
-                                                    <TableCell>{item.lastName}</TableCell>
-                                                    <TableCell>{item.phoneNumber}</TableCell>
-                                                    <TableCell>{item.email}</TableCell>
-                                                    <TableCell>{item.securityLevel}</TableCell>
-                                                </TableRow>
-                                            )}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
-                            </Paper>
-                        </Card>
+                                        )}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </Paper>
+
                     </GridItem>
                 </GridContainer>
                 <div className="edit-button">

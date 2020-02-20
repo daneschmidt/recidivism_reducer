@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
 // CSS
-import '../UserPage/Modal.css'
+import '../../components/App/App.css';
 // Sweet Alert
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
