@@ -21,6 +21,10 @@ import searchClientSaga from './clientSearch.saga';
 import postTaskSaga from './postTask.saga';
 import putClientTaskSaga from './putClientTask.saga';
 import getClientsSaga from './client.saga';
+import deleteParticipantSaga from './deleteParticipant.saga';
+import addRecentCompSaga from './addRecentComp.saga';
+import deleteRecentCompSaga from './deleteRecentComp.saga';
+import editRecentCompSaga from './editRecentComp.saga';
 import postUserSaga from './postUser.saga';
 import putPasswordSaga from './putPassword.saga';
 
@@ -56,6 +60,10 @@ export default function* rootSaga() {
     userCredentials(),
     searchClientSaga(),
     postTaskSaga(),
+    deleteParticipantSaga(),
+    addRecentCompSaga(),
+    deleteRecentCompSaga(),
+    editRecentCompSaga(),
     postUserSaga(),
     putPasswordSaga()
   ]);

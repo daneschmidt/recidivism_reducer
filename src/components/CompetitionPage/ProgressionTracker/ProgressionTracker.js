@@ -1,13 +1,13 @@
 // import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import List from '../ProgressionList/ProgressionList';
 import { moveTask } from '../../../redux/reducers/actions';
 import AddTask from '../Task/AddTask';
-import mapStoreToProps from '../../../redux/mapStoreToProps';
 import CreateNew from '../../CreateNewCompetition/CreateNewCompetition';
-
+//material UI
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -84,7 +84,7 @@ class ProgressionTracker extends React.Component {
                   <Droppable droppableId={item.id} key={index}>
                     {(provided, snapshot) => (
                       <Grid item xs={2}>
-                        <Paper style={{ margin: '2px', padding: '2px' }}>
+                        <Paper style={{ margin: '5px', padding: '1px' }}>
                           <List
                             style={{ flex: '1' }}
                             list={item}
