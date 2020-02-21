@@ -53,7 +53,7 @@ export default function DashboardPage() {
 
         <GridContainer justify="center">
 
-            <GridItem xs={12} sm={12} md={2}>
+            <GridItem xs={12} sm={12} md={3}>
                 <ClientPage />
             </GridItem>
 

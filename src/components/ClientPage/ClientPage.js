@@ -55,23 +55,30 @@ class ClientPage extends Component {
 	render() {
 		const clientList = this.props.store.client.map((item, index) => {
 			return (
-				<div key={index}>
-					<h3 onClick={event => this.goToProfile(event, item.id)}>
-						{item.firstName} {item.lastName}
-					</h3>
-					<p>
-						phone: {item.phoneNumber}
-					</p>
-					<p>
-						email: {item.email} 
-					</p>
-				</div>
-
+				<GridContainer justify="center">
+				<GridItem xs={12} sm={12} md={8}>
+					<Card>
+						<Paper className="paperPanel" elevation={5}>
+						<div key={index}>
+							<h3 onClick={event => this.goToProfile(event, item.id)}>
+								{item.firstName} {item.lastName}
+							</h3>
+							<p>
+								phone: {item.phoneNumber}
+							</p>
+							<p>
+								email: {item.email} 
+							</p>
+						</div>
+						</Paper>
+					</Card>
+				</GridItem>
+			</GridContainer>
 			);
 		});
 		return (
 			<GridContainer justify="center">
-				<GridItem xs={12} sm={12} md={9}>
+				<GridItem xs={12} sm={12} md={8}>
 					<Card>
 						<Paper className="paperPanel" elevation={5}>
 							<h1>{this.state.heading}</h1>
@@ -81,7 +88,9 @@ class ClientPage extends Component {
 									<button onClick={this.search}>SEARCH</button>
 								</Link>
 							</div>
-							{clientList}
+							
+									{clientList}
+								
 						</Paper>
 					</Card>
 				</GridItem>
