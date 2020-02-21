@@ -20,14 +20,21 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
-import DeleteIcon from '@material-ui/icons/Delete';
+// import DeleteIcon from '@material-ui/icons/Delete';
 
 import AddUserModal from '../UserPage/AddUserModal';
+import EditPasswordModal from './EditPasswordModal';
+
 // Sweet Alert
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
+import GridItem from "../Grid/GridItem.js";
+import GridContainer from "../Grid/GridContainer.js";
+import Card from "../Card/Card.js";
+
 // CSS
 import '../UserPage/UserPage.css'
+
 
 class UserPage extends Component {
 
@@ -129,16 +136,16 @@ class UserPage extends Component {
                         id: this.state.id
                     }
                 })
-            }  else if (
+            } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
-              ) {
+            ) {
                 Swal.fire(
-                  'Cancelled',
-                  'Your imaginary file is safe :)',
-                  'error'
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
                 )
-              }
+            }
         })
     }
 
@@ -190,6 +197,7 @@ class UserPage extends Component {
 
             <div>
                 <AddUserModal />
+                <EditPasswordModal />
                 <TableContainer component={Paper} className="container">
                     <Table size="small">
                         <TableHead className="table-head">
@@ -229,7 +237,7 @@ class UserPage extends Component {
                 <div className="edit-button">
                     <Button
                         variant="contained"
-                        color="primary"
+                        color="default"
                         onClick={this.openEditUser}
                     >
                         Edit
@@ -334,7 +342,7 @@ class UserPage extends Component {
                                     <div className="update-button">
                                         <Button
                                             variant="contained"
-                                            color="primary"
+                                            color="default"
                                             onClick={this.handleUserUpdate}
                                         >
                                             Update

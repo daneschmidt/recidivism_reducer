@@ -5,10 +5,10 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-const Nav = (props) => {
+const Nav = props => {
   let loginLinkData = {
     path: '/login',
-    text: 'Login',
+    text: 'Login'
   };
 
   if (props.store.user.id != null) {
@@ -17,17 +17,17 @@ const Nav = (props) => {
   }
 
   return (
-    <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Determination Inc. Community Tracker</h2>
+    <div className='nav'>
+      <Link to='/home'>
+        <h2 className='nav-title'>Determination Inc. Community Tracker</h2>
       </Link>
-      <div className="nav-left">
-      <Link className="nav-link" to="/betheboss">
+      <div className='nav-left'>
+        <Link className='nav-link' to='/betheboss'>
           Be The Boss
         </Link>
       </div>
-      <div className="nav-right">
-        <Link className="nav-link" to={loginLinkData.path}>
+      <div className='nav-right'>
+        <Link className='nav-link' to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
           and call this link 'Login / Register' if they are not */}
@@ -36,22 +36,25 @@ const Nav = (props) => {
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (
           <>
-            <Link className="nav-link" to="/clientpage">
+            <Link className='nav-link' to='/clientpage'>
               Client Page
             </Link>
-            <Link className="nav-link" to="/calendar">
+            <Link className='nav-link' to='/calendar'>
               Calendar
             </Link>
-            <Link className="nav-link" to="/competition">
+            <Link className='nav-link' to='/competition'>
               Competitions
             </Link>
-            <Link className="nav-link" to="/taskpage">
+            <Link className='nav-link' to='/taskpage'>
               Task Page
             </Link>
-            <Link className="nav-link" to="/userpage">
+            <Link className='nav-link' to='/userpage'>
               User Page
             </Link>
-            <LogOutButton className="nav-link"/>
+            <Link className='nav-link' to='/surveypage'>
+              Survey Page
+            </Link>
+            <LogOutButton className='nav-link' />
           </>
         )}
         {/* Always show this link since the about page is not protected */}

@@ -1,0 +1,39 @@
+.container {
+    background-color:#b6c1cb ;
+    color: #1a262a;
+}
+
+
+/* .modal-button {
+    background-color: #f0ad43;
+    padding: 20px;
+    text-align: right;
+} */
+
+/* .form-button {
+    background-color: #f0ad43;
+    padding: 20px;
+    text-align: right;
+} */
+
+ .edit-profile-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+} 
+
+ .text-input {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    
+} 
+
+.modal {
+    background-color: lightgray ;
+    display: grid;
+    grid-template-rows: max-content;
+    height: 75%;
+    width: 75%;
+}

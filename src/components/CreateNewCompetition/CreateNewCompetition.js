@@ -100,9 +100,10 @@ class CreateNewCompetition extends Component {
     return (
       <div>
         <Button
+          style={{ backgroundColor: '#f0ad43', color: '#1a262a' }}
           variant='contained'
           size='small'
-          color='white'
+          color='#f0ad43'
           onClick={this.handleOpen}
         >
           Start New Competition
@@ -112,24 +113,23 @@ class CreateNewCompetition extends Component {
             style={{
               position: 'absolute',
               width: '40%',
-              height: '50%',
-              backgroundColor: 'white',
-              color: 'white',
-              border: '2px solid white',
-              padding: '10px',
+              color: '#1a262a',
+              border: '2px solid #f0ad43',
               top: '50%',
               left: '50%',
-              transform: 'translate(-50%, -50%)',
-              marginRight: '-50%',
-              opacity: '100%'
+              height: '30%',
+              transform: 'translate(-50%, -50%)'
             }}
             aria-labelledby='simple-modal-title'
             aria-describedby='simple-modal-description'
             open={this.state.setOpen}
           >
-            <div>
+            <div
+              className='modal-content'
+              style={{ outline: 'none', height: '100%' }}
+            >
               <h4 id='simple-modal-title'>Add Result</h4>
-              <div style={{ display: 'flex' }}>
+              <div style={{ display: 'flex', outline: 'none' }}>
                 <div style={{ flex: '1' }}>
                   <TextField
                     onChange={event => this.changeField(event, 'step1')}
@@ -154,11 +154,13 @@ class CreateNewCompetition extends Component {
                   ></TextField>
                   <Button
                     style={{
-                      backgroundColor: 'black',
+                      backgroundColor: '#f0ad43',
                       color: 'white',
                       margin: '2px',
-                      display: 'inline-block'
+                      display: 'inline-block',
+                      color: 'black'
                     }}
+                    size='small'
                     onClick={this.submit}
                   >
                     Start Competition
@@ -188,17 +190,18 @@ class CreateNewCompetition extends Component {
                     size='small'
                   ></TextField>
                   <Button
+                    size='small'
                     style={{
-                      backgroundColor: 'black',
+                      backgroundColor: '#f0ad43',
                       color: 'white',
                       marginLeft: '14px',
-                      display: 'inline-block'
+                      display: 'inline-block',
+                      color: 'black'
                     }}
                     onClick={this.handleClose}
                   >
                     Cancel
                   </Button>
-                  <div></div>
                 </div>
               </div>
             </div>
