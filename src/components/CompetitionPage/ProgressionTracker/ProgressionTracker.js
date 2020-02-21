@@ -64,9 +64,16 @@ class ProgressionTracker extends React.Component {
     const tasks = this.props.store.progress.tasks;
     return (
       <div>
-        <Card style={{ backgroundColor: '#1a262a', opacity: '70%' }}>
+        <Card
+          raised={false}
+          style={{ backgroundColor: 'rgb(56, 73, 84, 0.3)', padding: '15px' }}
+        >
           <h2
-            style={{ margin: '10px', display: 'inline-block', color: 'white' }}
+            style={{
+              margin: '0 10px 10px 0',
+              display: 'inline-block',
+              color: '#1a262a'
+            }}
           >
             Competition Progression Tracker
           </h2>
@@ -76,15 +83,24 @@ class ProgressionTracker extends React.Component {
           <span style={{ margin: '10px', display: 'inline-block' }}>
             <CreateNew />
           </span>
-          <Grid container spacing={3}>
+          <Grid container spacing={2}>
             <DragDropContext onDragEnd={this.onDragEnd}>
               {Object.keys(lists).map((key, index) => {
                 let item = lists[key];
                 return (
-                  <Droppable droppableId={item.id} key={index}>
+                  <Droppable
+                    droppableId={item.id}
+                    key={index}
+                    style={{ margin: '2px' }}
+                  >
                     {(provided, snapshot) => (
                       <Grid item xs={2}>
-                        <Paper style={{ margin: '5px', padding: '1px' }}>
+                        <Paper
+                          style={{
+                            padding: '1px',
+                            background: '#384954'
+                          }}
+                        >
                           <List
                             style={{ flex: '1' }}
                             list={item}

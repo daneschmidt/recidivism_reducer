@@ -19,10 +19,9 @@ class AddTask extends React.Component {
   render() {
     return (
       <Button
-        style={{ backgroundColor: '#f0ad43', color: 'white' }}
+        style={{ backgroundColor: '#f0ad43', color: '#1a262a' }}
         variant='contained'
         size='small'
-        color='#f0ad43'
         onClick={() => this.add()}
       >
         Add Participant

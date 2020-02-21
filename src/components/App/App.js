@@ -18,7 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import Calendar from '../Calendar/CalendarHome/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+// import RegisterPage from '../';
 import Dashboard from '../Dashboard/Dashboard';
 import ClientPage from '../ClientPage/ClientPage';
 import Competition from '../CompetitionPage/CompetitionPage';
@@ -116,12 +116,12 @@ class App extends Component {
               component={LoginPage}
             />
 
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path='/registration'
               authRedirect='/dashboard'
               component={RegisterPage}
-            />
+            /> */}
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
