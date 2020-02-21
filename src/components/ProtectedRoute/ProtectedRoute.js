@@ -1,8 +1,8 @@
 import React from 'react';
-import {
-  Route,
-  Redirect,
-} from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import LoginPage from '../LoginPage/LoginPage';
+// import RegisterPage from '../RegisterPage/RegisterPage';
 import { connect } from 'react-redux';
 import LoginPage from '../LoginPage/LoginPage';
 import mapStoreToProps from '../../redux/mapStoreToProps';
@@ -17,7 +17,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // by checking req.isAuthenticated for authentication
 // and by checking req.user for authorization
 
-const ProtectedRoute = (props) => {
+const ProtectedRoute = props => {
   // Using destructuring, this takes ComponentToProtect from component
   // prop and grabs all other props to pass them along to Route
   const {
@@ -39,6 +39,10 @@ const ProtectedRoute = (props) => {
     // if they are not logged in, check the loginMode on Redux State
     // if the mode is 'login', show the LoginPage
     ComponentToShow = LoginPage;
+  } else {
+    // the the user is not logged in and the mode is not 'login'
+    // show the RegisterPage
+    // ComponentToShow = RegisterPage;
   }
   // redirect a logged in user if an authRedirect prop has been provided
   if (store.user.id && authRedirect != null) {
@@ -53,9 +57,7 @@ const ProtectedRoute = (props) => {
       {...otherProps}
       component={ComponentToShow}
     />
-  )
-}
+  );
+};
 
-export default connect(mapStoreToProps)(ProtectedRoute)
-
-
+export default connect(mapStoreToProps)(ProtectedRoute);

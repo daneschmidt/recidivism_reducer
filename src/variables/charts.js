@@ -71,28 +71,15 @@ const dailySalesChart = {
 
 const emailsSubscriptionChart = {
   data: {
-    labels: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'Mai',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
-    ],
-    series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
+    labels: ['2018', 'Q1 2019', 'Q2 2019', 'Q3 2019', 'Q4 2019'],
+    series: [[42, 43, 20, 80, 53, 53, 78]]
   },
   options: {
     axisX: {
-      showGrid: false
+      showGrid: true
     },
     low: 0,
-    high: 1000,
+    high: 100,
     chartPadding: {
       top: 0,
       right: 5,

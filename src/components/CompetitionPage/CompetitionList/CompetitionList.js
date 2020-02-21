@@ -239,14 +239,15 @@ class CompetitionList extends Component {
     //competition list map render
     const competitionsArr = this.props.store.competitions.map((item, index) => {
       return (
-        <TableBody key={index}>
+        <TableBody key={index} style={{ backgroundColor: '#fefefe' }}>
           <TableRow>
             <TableCell>{item.name}</TableCell>
             <TableCell>{item.dateOf}</TableCell>
             <TableCell>{item.winnerName}</TableCell>
             <TableCell>
               <Button
-                style={{ backgroundColor: 'black', color: 'white' }}
+                size='small'
+                style={{ backgroundColor: '#f0ad43', color: 'black' }}
                 onClick={event => this.getDetails(event, item, item.id)}
               >
                 Details
@@ -255,8 +256,9 @@ class CompetitionList extends Component {
             </TableCell>
             <TableCell>
               <Button
-                color='secondary'
-                style={{ color: 'white', backgroundColor: 'red' }}
+                size='small'
+                color='#cb3e4b'
+                style={{ color: 'black', backgroundColor: '#cb3e4b' }}
                 onClick={event => this.delete(event, item.id)}
               >
                 Delete
@@ -271,23 +273,25 @@ class CompetitionList extends Component {
     return (
       // event table
       <Card
+        raised={false}
         style={{
           width: '100%',
           marginTop: '20px',
-          backgroundColor: 'black',
-          color: 'white'
+          backgroundColor: 'rgb(56, 73, 84, 0.3)',
+          color: '#1a262a'
         }}
       >
         <CardContent>
-          <h2 style={{ margin: '10px', display: 'inline-block' }}>
+          <h2 style={{ margin: '0 10px 10px 0', display: 'inline-block' }}>
             Recent Competitions
           </h2>
           <Button
             style={{
-              backgroundColor: 'white',
+              backgroundColor: '#f0ad43',
               color: 'black',
               margin: '10px',
-              display: 'inline-block'
+              display: 'inline-block',
+              color: '#1a262a'
             }}
             type='button'
             onClick={this.openModal}
@@ -299,21 +303,23 @@ class CompetitionList extends Component {
         <CardContent>
           <TableContainer component={Paper}>
             <Table>
-              <TableHead>
+              <TableHead
+                style={{ backgroundColor: '#384954', color: '#b6c1cb' }}
+              >
                 <TableRow>
-                  <TableCell>
+                  <TableCell style={{ color: '#b6c1cb' }}>
                     <strong>Event Name</strong>
                   </TableCell>
-                  <TableCell>
+                  <TableCell style={{ color: '#b6c1cb' }}>
                     <strong>Event Date</strong>
                   </TableCell>
-                  <TableCell>
+                  <TableCell style={{ color: '#b6c1cb' }}>
                     <strong>Event Winner</strong>
                   </TableCell>
-                  <TableCell>
+                  <TableCell style={{ color: '#b6c1cb' }}>
                     <strong>Details</strong>
                   </TableCell>
-                  <TableCell>
+                  <TableCell style={{ color: '#b6c1cb' }}>
                     <strong>Delete</strong>
                   </TableCell>
                 </TableRow>
@@ -327,22 +333,21 @@ class CompetitionList extends Component {
             style={{
               position: 'absolute',
               width: '40%',
-              height: '33%',
-              backgroundColor: 'white',
-              color: 'white',
-              border: '2px solid white',
-              padding: '10px',
+              color: '#1a262a',
+              border: '2px solid #f0ad43',
               top: '50%',
               left: '50%',
-              transform: 'translate(-50%, -50%)',
-              marginRight: '-50%',
-              opacity: '100%'
+              height: '40%',
+              transform: 'translate(-50%, -50%)'
             }}
             aria-labelledby='simple-modal-title'
             aria-describedby='simple-modal-description'
             open={this.state.setOpen}
           >
-            <div>
+            <div
+              className='modal-content'
+              style={{ outline: 'none', height: '100%' }}
+            >
               <h4 id='simple-modal-title'>Add Result</h4>
               <div style={{ display: 'flex' }}>
                 <div style={{ flex: '1' }}>
@@ -403,10 +408,11 @@ class CompetitionList extends Component {
                   />
                   <div>
                     <Button
+                      size='small'
                       onClick={this.conditionalButton}
                       style={{
-                        backgroundColor: 'black',
-                        color: 'white',
+                        backgroundColor: '#f0ad43',
+                        color: 'black',
                         margin: '2px',
                         display: 'inline-block'
                       }}
@@ -414,9 +420,10 @@ class CompetitionList extends Component {
                       Confirm Change
                     </Button>
                     <Button
+                      size='small'
                       style={{
-                        backgroundColor: 'black',
-                        color: 'white',
+                        backgroundColor: '#f0ad43',
+                        color: 'black',
                         marginLeft: '14px',
                         display: 'inline-block'
                       }}
@@ -424,7 +431,6 @@ class CompetitionList extends Component {
                     >
                       Cancel
                     </Button>
-                    {/* {detailsArr} */}
                   </div>
                 </div>
               </div>
