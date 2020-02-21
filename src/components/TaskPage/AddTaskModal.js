@@ -128,7 +128,7 @@ class AddTaskModal extends Component {
                                     type="date"
                                     InputLabelProps={{
                                         shrink: true,
-                                      }}
+                                    }}
                                     onChange={(event) => this.handleInputField(event, this.state.newTask.dueBy = event.target.value)}
                                 />
                                 

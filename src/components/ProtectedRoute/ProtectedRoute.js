@@ -3,9 +3,8 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -40,12 +39,7 @@ const ProtectedRoute = (props) => {
     // if they are not logged in, check the loginMode on Redux State
     // if the mode is 'login', show the LoginPage
     ComponentToShow = LoginPage;
-  } else {
-    // the the user is not logged in and the mode is not 'login'
-    // show the RegisterPage
-    ComponentToShow = RegisterPage;
   }
-
   // redirect a logged in user if an authRedirect prop has been provided
   if (store.user.id && authRedirect != null) {
     return <Redirect exact from={otherProps.path} to={authRedirect} />;
@@ -53,12 +47,12 @@ const ProtectedRoute = (props) => {
 
   // We return a Route component that gets added to our list of routes
   return (
-      <Route
-        // all props like 'exact' and 'path' that were passed in
-        // are now passed along to the 'Route' Component
-        {...otherProps}
-        component={ComponentToShow}
-      />
+    <Route
+      // all props like 'exact' and 'path' that were passed in
+      // are now passed along to the 'Route' Component
+      {...otherProps}
+      component={ComponentToShow}
+    />
   )
 }
 
