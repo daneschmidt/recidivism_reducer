@@ -27,7 +27,7 @@ class EventModal extends Component {
     state = {
         setOpen: false,
         calendarEvents:
-        {   
+        {
             eventDate: '',
             endDate: '',
             eventTitle: '',
@@ -38,7 +38,7 @@ class EventModal extends Component {
             //eventDate: new Date(dateStr + 'T00:00:00'),
             // endEventDate: new Date(),
             //startTime: moment().format('h:mma'),
-            
+
             // endTime: moment().format('h:mma'),
             eventTitle: '',
             notes: '',
@@ -100,26 +100,25 @@ class EventModal extends Component {
         return (
             <GridContainer justify="center">
                 <Paper className="paperPanel" elevation={5}>
-                    <div className="container">
-                        <div className="task-button">
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={this.openNewEvent}
-                            >
-                                Add Event
+                    <div className="add-event">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.openNewEvent}
+                    >
+                        Add Event
                     </Button>
-
-                            <div className="modal">
-                                <Modal open={this.state.setOpen} onClose={this.closeNewEvent}>
-                                    <div className="modal-input">
-                                        <div className="modal-header">
-                                            <h2>Create Event</h2>
-                                        </div>
-                                        <div className="event-form">
-                                            <Grid container spacing={2}>
-                                                <Grid item xs={6}>
-                                                <div className="text-input">
+                    </div>
+                    <div>
+                        <Modal open={this.state.setOpen} onClose={this.closeNewEvent}>
+                            <div className="modal-input">
+                                <div className="modal-header">
+                                    <h2>Create Event</h2>
+                                </div>
+                                <div className="event-form">
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={6}>
+                                            <div className="text-input">
                                                 <TextField variant="outlined"
                                                     type="text"
                                                     label="Event Name"
@@ -179,20 +178,18 @@ class EventModal extends Component {
                                             onChange={this.handleInputField('notes')}
                                         />
                                     </div>
-                                            <div className="form-button">
-                                                <Button
-                                                    variant="contained"
-                                                    color="primary"
-                                                    onClick={this.handleSubmit}
-                                                >
-                                                    OK
+                                    <div className="form-button">
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={this.handleSubmit}
+                                        >
+                                            OK
                                         </Button>
-                                            </div>
-                                        </div>
                                     </div>
-                                </Modal>
+                                </div>
                             </div>
-                        </div>
+                        </Modal>
                     </div>
                 </Paper>
             </GridContainer>

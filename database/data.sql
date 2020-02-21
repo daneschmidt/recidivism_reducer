@@ -161,9 +161,12 @@ VALUES
 04:05:06');
 
 INSERT INTO "events"
-    ("eventDate", "endDate", "endTime", "eventTitle", "notes", "location")
+    ("eventDate", "endDate", "eventTitle", "notes", "location")
 VALUES
-    ( '2020-02-10', '2020-02-10', '018:00:00', 'Back To Business', 'Get ready to change lives', 'Prime Digital Academy');
+    ( '2020-02-17 9:00:00', '2020-02-17 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-17 10:00:00', '2020-02-17 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-17 11:00:00', '2020-02-17 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-17 13:00:00', '2020-02-17 19:00:00', 'Brainstorm next competition', 'notes', 'location');
 
 INSERT INTO "survey"
     ("clients_id", "businessStarted", "revenue", "date")
