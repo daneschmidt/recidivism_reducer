@@ -21,11 +21,7 @@ const Nav = props => {
       <Link to='/home'>
         <h2 className='nav-title'>Determination Inc. Community Tracker</h2>
       </Link>
-      <div className='nav-left'>
-        <Link className='nav-link' to='/betheboss'>
-          Be The Boss
-        </Link>
-      </div>
+
       <div className='nav-right'>
         <Link className='nav-link' to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
@@ -54,6 +50,11 @@ const Nav = props => {
             <Link className='nav-link' to='/surveypage'>
               Survey Page
             </Link>
+
+            <Link className='nav-link' to='/betheboss'>
+              Be The Boss
+            </Link>
+
             <LogOutButton className='nav-link' />
           </>
         )}
