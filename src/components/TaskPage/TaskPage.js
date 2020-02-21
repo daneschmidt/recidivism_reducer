@@ -9,6 +9,8 @@ import GridContainer from "../Grid/GridContainer.js";
 import CustomTabs from "../CustomTabs/CustomTabs";
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import Checkbox from '@material-ui/core/Checkbox';
+import Paper from '@material-ui/core/Paper';
+import Card from "../Card/Card.js";
 
 import AddTaskModal from '../TaskPage/AddTaskModal';
 // Sweet Alert
@@ -205,6 +207,8 @@ class TaskPage extends Component {
                 <h2>{this.state.heading}</h2>
                 <GridContainer justify="center" paddingTop={12}>
                     <GridItem xs={12} sm={12} md={10}>
+                    <Card>
+                    <Paper className="paperPanel" elevation={5}>
                         <CustomTabs
                             title="Task List:"
                             headerColor="primary"
@@ -231,6 +235,8 @@ class TaskPage extends Component {
                             ]}
                         />
                         <AddTaskModal />
+                        </Paper>
+                        </Card>
                     </GridItem>
                 </GridContainer>
             </div>
