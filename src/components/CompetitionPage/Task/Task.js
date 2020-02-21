@@ -6,6 +6,9 @@ import { editTask, deleteTask } from '../../../redux/reducers/actions';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import SaveIcon from '@material-ui/icons/Save';
 
 class Task extends React.Component {
   state = {
@@ -46,16 +49,29 @@ class Task extends React.Component {
         {...provided.draggableProps}
         {...provided.dragHandleProps}
       >
-        <CardContent>
+        <CardContent
+          style={{
+            padding: '3px',
+            marginBottom: '3px'
+          }}
+        >
           <ContentEditable
+            style={{
+              borderBottom: '1px solid rgb(56, 73, 84, 0.4)',
+              backgroundColor: 'rgb(56, 73, 84, 0.1)'
+            }}
             html={task.title}
             disabled={false}
             onChange={event => this.handleChange(event, 'parName')}
           />
         </CardContent>
-        <CardContent style={{ marginBottom: '10px', backgroundColor: '#555' }}>
-          <div style={{ display: 'flex' }}>
-            <Button
+        <CardContent
+          style={{
+            padding: '3px'
+          }}
+        >
+          <div style={{ display: 'flex', marginLeft: '30px' }}>
+            {/* <Button
               variant='contained'
               size='small'
               color='primary'
@@ -72,7 +88,21 @@ class Task extends React.Component {
               onClick={e => this.delete(e)}
             >
               X
-            </Button>
+            </Button> */}
+            <IconButton
+              aria-label='save'
+              color='primary'
+              onClick={e => this.add(e)}
+            >
+              <SaveIcon fontSize='small' />
+            </IconButton>
+            <IconButton
+              aria-label='delete'
+              color='secondary'
+              onClick={e => this.delete(e)}
+            >
+              <DeleteIcon fontSize='small' />
+            </IconButton>
           </div>
         </CardContent>
       </Card>
