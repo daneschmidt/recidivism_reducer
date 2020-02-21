@@ -3,12 +3,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import moment from 'moment';
-import DatePicker from 'react-date-picker';
+
 // Material UI
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import GridItem from "../Grid/GridItem.js";
+import GridContainer from "../Grid/GridContainer.js";
+import Card from "../Card/Card.js";
+import Paper from '@material-ui/core/Paper';
 
 // CSS
 import '../TaskPage/Modal.css'
@@ -104,14 +108,20 @@ class AddTaskModal extends Component {
                         open={this.state.setOpen}
                         onClose={this.closeAddTask}>
                         <div className="modal">
+                        <GridContainer justify="center">
+                        
+				{/* <GridItem xs={12} sm={12} md={8}> */}
+					<Card>
+						{/* <Paper className="paperPanel" elevation={5}> */}
                             <h2>Add Task</h2>
-                            <div className="text-input">
+                            <div className="event-form">
+                                
                                 <TextField variant="outlined"
                                     type="text"
                                     label="Task"
-
                                     onChange={(event) => this.handleInputField(event, this.state.newTask.task = event.target.value)}
                                 />
+                                
                                 <TextField variant="outlined"
                                     type="text"
                                     label="Due By"
@@ -121,24 +131,26 @@ class AddTaskModal extends Component {
                                     }}
                                     onChange={(event) => this.handleInputField(event, this.state.newTask.dueBy = event.target.value)}
                                 />
-
-                                <Grid item xs={6}>
-                                </Grid>
+                                
                                 <select className="select-task-css" onChange={(event) => this.handleInputField(event, this.state.newTask.clients_id = event.target.value)}>
                                     {blankClient}
                                     {allClientsList}
                                 </select>
                             </div>
-                            <div className="form-button">
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={this.handleSubmit}
-                                >
-                                    Add Task
+                                <div className="form-button">
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.handleSubmit}
+                                    >
+                                        Add Task
                                     </Button>
                             </div>
-                        </div>
+                        {/* </Paper> */}
+					</Card>
+				{/* </GridItem> */}
+			</GridContainer>
+                                    </div>
                     </Modal>
                 </div>
             </div>
