@@ -33,7 +33,7 @@ class Calendar extends Component {
           <Card>
             <Paper className="paperPanel" elevation={5}>
               <div className="calendar">
-                {/* <EventModal /> */}
+                <EventModal />
                 <EventClick />
                 {/* <CalendarList calendarEvent={this.props.store.calendar} /> */}
                 {/* <CalendarList  /> */}
