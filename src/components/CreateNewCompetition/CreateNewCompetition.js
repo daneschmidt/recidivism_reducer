@@ -198,7 +198,6 @@ class CreateNewCompetition extends Component {
                   >
                     Cancel
                   </Button>
-                  <div></div>
                 </div>
               </div>
             </div>

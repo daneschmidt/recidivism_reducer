@@ -31,6 +31,10 @@ class Task extends React.Component {
 
   delete() {
     this.props.deleteTask(this.props.list.id, this.props.task.id);
+    this.props.dispatch({
+      type: 'DELETE_PARTICIPANT',
+      payload: this.props.task.id
+    });
   }
 
   render() {

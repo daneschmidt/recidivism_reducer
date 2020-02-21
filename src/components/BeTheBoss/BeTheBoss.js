@@ -4,26 +4,26 @@ import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 
 
-import Link from '@material-ui/core/Link';
-// import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+// import Link from '@material-ui/core/Link';
+// // import { makeStyles } from '@material-ui/core/styles';
+// import Table from '@material-ui/core/Table';
+// import TableBody from '@material-ui/core/TableBody';
+// import TableCell from '@material-ui/core/TableCell';
+// import TableHead from '@material-ui/core/TableHead';
+// import TableRow from '@material-ui/core/TableRow';
 import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
 import Card from "../Card/Card.js";
-import CardHeader from "../Card/CardHeader.js";
-import CardBody from "../Card/CardBody.js";
-import CardFooter from "../Card/CardFooter.js";
+// import CardHeader from "../Card/CardHeader.js";
+// import CardBody from "../Card/CardBody.js";
+// import CardFooter from "../Card/CardFooter.js";
 
 import Paper from '@material-ui/core/Paper';
 
 import Button from '@material-ui/core/Button';
 
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { Grid } from '@material-ui/core';
+// import { Grid } from '@material-ui/core';
 
 import './BeTheBoss.css';
 
@@ -202,38 +202,48 @@ class BeTheBoss extends Component {
 				<GridItem xs={12} sm={12} md={8}>
 					<Card>
 						<Paper className="paperPanel" elevation={5}>
-							<h1>Be The Boss</h1>
+							<h1 className='beTheBoss'>Be The Boss</h1>
 							<input
 								type="text"
+								className="inputs"
 								placeholder="First Name"
 								value={this.state.firstName}
 								onChange={event => this.changeField(event, "firstName")}
 								required
 							/>
+							<br />
 							<input
 								type="text"
+								className="inputs"
 								placeholder="Last Name"
 								value={this.state.lastName}
 								onChange={event => this.changeField(event, "lastName")}
 							/>
+							<br />
 							<input
 								type="text"
+								className="inputs"
 								placeholder="Gender"
 								value={this.state.gender}
 								onChange={event => this.changeField(event, "gender")}
 							/>
+							<br />
 							<input
 								type="number"
+								className="inputs"
 								placeholder="Phone Number"
 								value={this.state.phoneNumber}
 								onChange={event => this.changeField(event, "phoneNumber")}
 							/>
+							<br />
 							<input
 								type="text"
+								className="inputs"
 								placeholder="Email"
 								value={this.state.email}
 								onChange={event => this.changeField(event, "email")}
 							/>
+							<br />
 							<button variant="contained" color="primary" onClick={this.addClientInfo}>Submit</button>
 						</Paper>
 					</Card>

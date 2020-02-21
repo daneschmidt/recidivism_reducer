@@ -30,9 +30,9 @@ VALUES
     ('1', '2', '3', '4', '5', '6');
 
 INSERT INTO "competitions"
-    ("dateOf", "name")
+    ("dateOf", "name", "winnerName", "amountGranted", "businessName", "notes")
 VALUES
-    ('2020-03-10', 'Super Competition');
+    ('2020-03-10', 'Super Competition', 'dane pherigo','10000', 'all star lawn mowing', 'awesome idea, very motivated');
 
 INSERT INTO "clients_competitions"
     ("clients_id", "competitions_id", "status", "award", "grantAmount", "notes")

@@ -3,7 +3,7 @@ import {
   HashRouter as Router,
   Route,
   Redirect,
-  Switch,
+  Switch
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -25,6 +25,7 @@ import Competition from '../CompetitionPage/CompetitionPage';
 import TaskPage from '../TaskPage/TaskPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
+// import SurveyPage from '../SurveyPage/SurveyPage';
 import ClientResults from '../ClientResults/ClientResults';
 
 import './App.css';
@@ -48,7 +49,11 @@ class App extends Component {
             This is a route anyone can see, no login necessary */}
             <Route exact path='/betheboss' component={BeTheBoss} />
             <ProtectedRoute exact path='/clientpage' component={ClientPage} />
-            <ProtectedRoute exact path='/clientresults' component={ClientResults} />
+            <ProtectedRoute
+              exact
+              path='/clientresults'
+              component={ClientResults}
+            />
             <ProtectedRoute exact path='/home' component={LandingPage} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -65,6 +70,7 @@ class App extends Component {
             <ProtectedRoute exact path='/userpage' component={UserPage} />
             <ProtectedRoute exact path='/competition' component={Competition} />
             <ProtectedRoute exact path='/taskpage' component={TaskPage} />
+            {/* <ProtectedRoute exact path='/surveypage' component={SurveyPage} /> */}
             {/* This works the same as the other protected route, except that if the user is logged in,
 
 
