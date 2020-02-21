@@ -21,7 +21,7 @@ router.get('/', (req: express.Request, res: express.Response, next: express.Next
 router.get('/:id', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
     const eventId: number | null = <number>Number(req.params.id);
 
-    const queryText: string = `SELECT "id", "eventTitle", "eventDate", "eventLocation", "startTime" FROM "events"
+    const queryText: string = `SELECT "id", "eventTitle", "endDate", "eventLocation", "startTime" FROM "events"
     WHERE "id" = $1
     ORDER BY "startTime" ASC;`;
 
@@ -41,12 +41,13 @@ router.post('/', (req: express.Request, res: express.Response, next: express.Nex
     const notes: string | null = <string>req.body.notes;
     const location: string | null = <string>req.body.location;
     const eventDate: number | null = <number>req.body.eventDate;
+    const endDate: number | null = <number>req.body.endDate;
     const startTime: number | null = <number>req.body.startTime;
     const endTime: number | null = <number>req.body.endTime;
     const endEventDate: number | null = <number>req.body.endEventDate;
 
-	const queryText: string = `INSERT INTO "events" ("eventDate", "startTime", "endTime", "eventTitle", "notes", "location") VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
-	pool.query(queryText, [eventDate, startTime, endTime, eventTitle, notes, location])
+	const queryText: string = `INSERT INTO "events" ("eventDate", "endDate", "endTime", "eventTitle", "notes", "location") VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
+	pool.query(queryText, [eventDate, endDate, endTime, eventTitle, notes, location])
 		.then(() => res.sendStatus(201))
 		.catch(err => {
 			console.log(`Error POSTing new event: ${err}, req.body: ${JSON.stringify(req.body)}`);
