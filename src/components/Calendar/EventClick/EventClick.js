@@ -3,17 +3,20 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 // React Full Calendar
+//import { Calendar } from '@fullcalendar/core';
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-//import momentPlugin from "@fullcalendar/moment";
+//import momentPlugin from "@fullcalendar/core/moment";
 
 // Material UI
 import Container from '@material-ui/core/Container';
 import Modal from '@material-ui/core/Modal';
 import Grid from '@material-ui/core/Grid';
 //import Button from '@material-ui/core/Button';
+
+import moment from 'moment';
 
 // CSS
 import '../../Calendar/EventClick/EventClick.css'
@@ -84,11 +87,24 @@ class EventClick extends Component {
         ]
 
         const eventArray = this.props.store.calendar.calendarEvent.map((item, index) => {
+            console.log(item);
+            const convertedStartTime = item.eventDate.slice(0,-1);
+            const convertedEndTime = item.endDate.slice(0,-1);
+            console.log(convertedStartTime);
             return {
-                index: index,
-                title: item.eventTitle,
-                date: item.date,
-                evenTitle: item.evenTitle,
+               
+                 title: item.eventTitle,
+                 date: item.date,
+                 end: convertedEndTime,
+                 start: convertedStartTime,
+                 //endTime: item.endTime,
+                 //start: item.startTime,
+                 
+                 //endTime: item.endTime,
+                //date: item.date,
+                //evenTitle: item.evenTitle,
+                //start: item.start,
+
                 
             }
         })
@@ -108,7 +124,8 @@ class EventClick extends Component {
                 <div>
                     <Container maxWidth="md" className="calendar-container">
                         <FullCalendar
-                            defaultView="dayGridMonth"
+                            timeZone = "America/Chicago"
+                            defaultView="timeGridWeek"
                             header={{
                                 left: "prev, next, today",
                                 center: "title",
@@ -116,7 +133,7 @@ class EventClick extends Component {
                             }}
                             ref={this.calendarComponentRef}
                             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                            // events={this.props.store.calendar.calendarEvent}
+                            //events={this.props.store.calendar.calendarEvent}
                             //dateClick={this.handleDateClick}
                             events={eventArray}
                             eventClick={this.handleEventClick}
