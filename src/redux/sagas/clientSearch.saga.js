@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* searchClients() {
     try {
-        const response = yield axios.get('/api/client');
+        const response = yield axios.get('/api/clients');
 
         yield put({
             type: 'SET_SEARCH_CLIENT',

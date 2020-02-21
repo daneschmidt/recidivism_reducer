@@ -7,9 +7,7 @@ const router: express.Router = express.Router();
 
 //Route to create a list of competitions with joint clients to competitions
 router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
-  const queryText: string = `SELECT * FROM "clients" 
-    JOIN "clients_competitions" ON "clients_competitions".clients_id = "clients".id
-    JOIN "competitions" ON "competitions".id = "clients_competitions".competitions_id
+  const queryText: string = `SELECT * FROM "competitions" 
     ORDER BY "competitions"."dateOf" ASC LIMIT 10;`;
   pool
     .query(queryText)
@@ -22,21 +20,54 @@ router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
     });
 });
 
-// router.post('/', (req: Request, res: Response): void => {
-//   const data = req.body;
+router.post('/', (req: Request, res: Response): void => {
+  const data = req.body;
+  pool
+    .query(
+      `INSERT INTO "competitions"
+    ("name", "dateOf", "winnerName", "amountGranted", "businessName", "notes")
+VALUES
+    ('${data.name}', '${data.dateOf}', '${data.winnerName}', '${data.amountGranted}', '${data.businessName}', '${data.notes}'); `
+    )
+    .then(response => {
+      res.send(response.rows);
+    })
+    .catch(err => {
+      console.log(`Error adding competition to list ${err}`);
+      res.sendStatus(500);
+    });
+});
 
-//   //querying to match by client name and return ID to post into joint table
-//   pool.query(` SELECT * FROM "clients"
-//   WHERE "firstName" ILIKE '${data.firstName}' AND "lastName" ILIKE '${data.lastName}';`)
-//     .then(response => {
-// 		const clientID = response.rows[0].id
-//       pool.query(``)
-//       res.send(response.rows);
-//     })
-//     .catch(err => {
-//       console.log(`Error adding to competition to list ${err}`);
-//       res.sendStatus(500);
-//     });
-// });
+router.put('/:id', (req: Request, res: Response): void => {
+  const data = req.body;
+  const id = req.params.id;
+  pool
+    .query(
+      `UPDATE "competitions"
+    SET ("name", "dateOf", "winnerName", "amountGranted", "businessName", "notes")=
+    ('${data.name}', '${data.dateOf}', '${data.winnerName}','${data.amountGranted}', '${data.businessName}', '${data.notes}')
+    WHERE "id"='${id}'; `
+    )
+    .then(response => {
+      res.send(response.rows);
+    })
+    .catch(err => {
+      console.log(`Error adding competition to list ${err}`);
+      res.sendStatus(500);
+    });
+});
+
+router.delete('/:id', (req: Request, res: Response): void => {
+  const id = req.params.id;
+  pool
+    .query('DELETE FROM "competitions" WHERE id=$1', [req.params.id])
+    .then(response => {
+      res.send(response.rows);
+    })
+    .catch(err => {
+      console.log(`Error deleting from competition list ${err}`);
+      res.sendStatus(500);
+    });
+});
 
 export default router;

@@ -20,6 +20,7 @@ router.get('/', rejectUnauthenticated, (req: Request, res: Response): void => {
     });
 });
 
+//Route POST to add new participant
 router.post('/', (req: Request, res: Response): void => {
   const data = req.body;
   console.log(data);
@@ -64,6 +65,19 @@ router.put('/:id', (req: Request, res: Response): void => {
     })
     .catch(err => {
       console.log(`Error updating participant list ${err}`);
+      res.sendStatus(500);
+    });
+});
+
+router.delete('/:id', (req: Request, res: Response): void => {
+  const id = req.params.id;
+  pool
+    .query('DELETE FROM "participants" WHERE id=$1', [req.params.id])
+    .then(response => {
+      res.send(response.rows);
+    })
+    .catch(err => {
+      console.log(`Error deleting participant list ${err}`);
       res.sendStatus(500);
     });
 });

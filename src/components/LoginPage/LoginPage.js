@@ -5,10 +5,10 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class LoginPage extends Component {
   state = {
     username: '',
-    password: '',
+    password: ''
   };
 
-  login = (event) => {
+  login = event => {
     event.preventDefault();
 
     if (this.state.username && this.state.password) {
@@ -16,50 +16,47 @@ class LoginPage extends Component {
         type: 'LOGIN',
         payload: {
           username: this.state.username,
-          password: this.state.password,
-        },
+          password: this.state.password
+        }
       });
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
-  } // end login
+  }; // end login
 
-  handleInputChangeFor = propertyName => (event) => {
+  handleInputChangeFor = propertyName => event => {
     this.setState({
-      [propertyName]: event.target.value,
+      [propertyName]: event.target.value
     });
-  }
+  };
 
   render() {
     return (
       <div>
         {this.props.store.errors.loginMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
+          <h2 className='alert' role='alert'>
             {this.props.store.errors.loginMessage}
           </h2>
         )}
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
-            <label htmlFor="username">
+            <label htmlFor='username'>
               Username:
               <input
-                type="text"
-                name="username"
+                type='text'
+                name='username'
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
             </label>
           </div>
           <div>
-            <label htmlFor="password">
+            <label htmlFor='password'>
               Password:
               <input
-                type="password"
-                name="password"
+                type='password'
+                name='password'
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
@@ -67,10 +64,10 @@ class LoginPage extends Component {
           </div>
           <div>
             <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
+              className='log-in'
+              type='submit'
+              name='submit'
+              value='Log In'
             />
           </div>
         </form>
@@ -80,8 +77,6 @@ class LoginPage extends Component {
 }
 
 export default connect(mapStoreToProps)(LoginPage);
-
-
 
 //OLD STUFF
 
@@ -135,8 +130,6 @@ export default connect(mapStoreToProps)(LoginPage);
 
 // // const useStyles = makeStyles(styles);
 // // const classes = useStyles();
-
-
 
 // class LoginPage extends Component {
 //   state = {

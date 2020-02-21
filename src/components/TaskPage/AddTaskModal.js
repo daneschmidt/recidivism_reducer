@@ -12,6 +12,8 @@ import Grid from '@material-ui/core/Grid';
 
 // CSS
 import '../TaskPage/Modal.css'
+// Sweet Alert
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 class AddTaskModal extends Component {
     state = {
@@ -44,6 +46,11 @@ class AddTaskModal extends Component {
         })
     }
     handleSubmit = (event, infoKey) => {
+        if(this.state.newTask.task &&
+            this.state.newTask.clients_id &&
+            this.state.newTask.dueBy) {
+        // this.closeAddTask();
+        
         this.props.dispatch({
             type: 'POST_TASK',
             payload: {
@@ -51,7 +58,28 @@ class AddTaskModal extends Component {
             }
         })
         this.closeAddTask();
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Task has been Added!',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            this.setState({
+                checkbox: null,
+            });
+        })
+    } else {
+        this.closeAddTask();
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            text: 'Please fill out all input fields!',
+            timer: 1500
+        })
     }
+        // this.closeAddTask();
+}
 
     render() {
         const allClientsList = this.props.store.getAllClientsReducer.map((item, index) => {
