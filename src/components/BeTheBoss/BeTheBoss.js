@@ -191,68 +191,76 @@ class BeTheBoss extends Component {
         <GridItem xs={12} sm={12} md={4}>
           <Card>
             <CardContent className='paperPanel' elevation={5}>
-              <Paper style={{ backgroundColor: '#86949f', color: '#1a262a' }}>
-                <h1 className='beTheBoss' style={{ padding: '20px' }}>
-                  Be The Boss
+              <Paper style={{ backgroundColor: '#fefefe', color: '#1a262a' }}>
+                <h1 className='beTheBoss' style={{ padding: '10px' }}>
+                  Hello
                 </h1>
-                <TextField
-                  style={{ margin: '13px' }}
-                  variant='outlined'
-                  size='small'
-                  type='text'
-                  className='inputs'
-                  label='First Name'
-                  value={this.state.firstName}
-                  onChange={event => this.changeField(event, 'firstName')}
-                  required
-                />
+                <h2 className='beTheBoss' style={{ padding: '10px' }}>
+                  Welcome to Be the Boss Workshop!
+                </h2>
+
+                <div style={{ display: 'flex' }}>
+                  <TextField
+                    style={{ margin: '13px', flex: '1' }}
+                    variant='outlined'
+                    size='small'
+                    type='text'
+                    className='inputs'
+                    label='First Name'
+                    value={this.state.firstName}
+                    onChange={event => this.changeField(event, 'firstName')}
+                    required
+                  />
+                  <br />
+                  <TextField
+                    style={{ margin: '13px', flex: '1' }}
+                    variant='outlined'
+                    size='small'
+                    type='text'
+                    className='inputs'
+                    label='Last Name'
+                    value={this.state.lastName}
+                    onChange={event => this.changeField(event, 'lastName')}
+                    required
+                  />
+                </div>
                 <br />
-                <TextField
-                  style={{ margin: '13px' }}
-                  variant='outlined'
-                  size='small'
-                  type='text'
-                  className='inputs'
-                  label='Last Name'
-                  value={this.state.lastName}
-                  onChange={event => this.changeField(event, 'lastName')}
-                  required
-                />
-                <br />
-                <TextField
-                  style={{ margin: '13px' }}
-                  variant='outlined'
-                  size='small'
-                  type='text'
-                  className='inputs'
-                  label='Gender'
-                  value={this.state.gender}
-                  onChange={event => this.changeField(event, 'gender')}
-                  required
-                />
-                <br />
-                <TextField
-                  style={{ margin: '13px' }}
-                  variant='outlined'
-                  size='small'
-                  type='number'
-                  className='inputs'
-                  label='Phone Number'
-                  value={this.state.phoneNumber}
-                  onChange={event => this.changeField(event, 'phoneNumber')}
-                  required
-                />
-                <br />
-                <TextField
-                  style={{ margin: '13px' }}
-                  variant='outlined'
-                  size='small'
-                  type='text'
-                  className='inputs'
-                  label='Email'
-                  value={this.state.email}
-                  onChange={event => this.changeField(event, 'email')}
-                />
+                <div style={{ display: 'flex' }}>
+                  <TextField
+                    style={{ margin: '13px', flex: '2' }}
+                    variant='outlined'
+                    size='small'
+                    type='text'
+                    className='inputs'
+                    label='Gender'
+                    value={this.state.gender}
+                    onChange={event => this.changeField(event, 'gender')}
+                    required
+                  />
+                  <br />
+                  <TextField
+                    style={{ margin: '13px', flex: '2' }}
+                    variant='outlined'
+                    size='small'
+                    type='number'
+                    className='inputs'
+                    label='Phone Number'
+                    value={this.state.phoneNumber}
+                    onChange={event => this.changeField(event, 'phoneNumber')}
+                    required
+                  />
+                  <br />
+                  <TextField
+                    style={{ margin: '13px', flex: '2' }}
+                    variant='outlined'
+                    size='small'
+                    type='text'
+                    className='inputs'
+                    label='Email'
+                    value={this.state.email}
+                    onChange={event => this.changeField(event, 'email')}
+                  />
+                </div>
                 <br />
                 <Button
                   style={{ margin: '20px' }}
