@@ -122,7 +122,6 @@ CREATE TABLE "events" (
   "id" SERIAL PRIMARY KEY,
   "eventDate" timestamp,
   "endDate" timestamp,
-  "endTime" time,
   "eventTitle" varchar,
   "notes" varchar,
   "location" varchar
