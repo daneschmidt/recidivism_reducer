@@ -3,8 +3,8 @@ INSERT INTO "user"
 VALUES
     ( 'Josh', 'Mann', 'JoMa', '1234', 5, 8161234567, 'j.ma@gmail.com', 'Admin'),
     ( 'Prime', 'Dev', 'PrimeDev', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 1111111111, 'email1', 'Developer'),
-    ( 'Test', 'Admin', 'TestAdmin', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 1111111111, 'email2', 'Developer');
-( 'Kyle', 'Smith', 'KyleSmith', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 8168675309, 'kylesemail@gmail.com', 'The Boss')
+    ( 'Test', 'Admin', 'TestAdmin', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 1111111111, 'email2', 'Developer'),
+( 'Kyle', 'Smith', 'KyleSmith', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 8168675309, 'kylesemail@gmail.com', 'The Boss');
 INSERT INTO "clients"
     ("firstName", "lastName", "gender", "phoneNumber", "email", "criminalRecord", "misdemOrFel",
     "incarceratedYorN", "incarcerationLength", "releaseDate", "docNumber", "stateIncarcerated",
