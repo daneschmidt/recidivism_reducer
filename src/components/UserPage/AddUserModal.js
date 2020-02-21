@@ -90,7 +90,7 @@ class AddUserModal extends Component {
     render() {
 
         return (
-            <div className="container">
+            <div>
                 <div className="modal-button">
                     <Button
                         variant="contained"
