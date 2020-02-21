@@ -50,40 +50,40 @@ class AddTaskModal extends Component {
         })
     }
     handleSubmit = (event, infoKey) => {
-        if(this.state.newTask.task &&
+        if (this.state.newTask.task &&
             this.state.newTask.clients_id &&
             this.state.newTask.dueBy) {
+            // this.closeAddTask();
+
+            this.props.dispatch({
+                type: 'POST_TASK',
+                payload: {
+                    ...this.state.newTask
+                }
+            })
+            this.closeAddTask();
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Task has been Added!',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                this.setState({
+                    checkbox: null,
+                });
+            })
+        } else {
+            this.closeAddTask();
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                text: 'Please fill out all input fields!',
+                timer: 1500
+            })
+        }
         // this.closeAddTask();
-        
-        this.props.dispatch({
-            type: 'POST_TASK',
-            payload: {
-                ...this.state.newTask
-            }
-        })
-        this.closeAddTask();
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Task has been Added!',
-            showConfirmButton: false,
-            timer: 1500
-        }).then(() => {
-            this.setState({
-                checkbox: null,
-            });
-        })
-    } else {
-        this.closeAddTask();
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            text: 'Please fill out all input fields!',
-            timer: 1500
-        })
     }
-        // this.closeAddTask();
-}
 
     render() {
         const allClientsList = this.props.store.getAllClientsReducer.map((item, index) => {
@@ -108,49 +108,49 @@ class AddTaskModal extends Component {
                         open={this.state.setOpen}
                         onClose={this.closeAddTask}>
                         <div className="modal">
-                        <GridContainer justify="center">
-                        
-				{/* <GridItem xs={12} sm={12} md={8}> */}
-					<Card>
-						{/* <Paper className="paperPanel" elevation={5}> */}
-                            <h2>Add Task</h2>
-                            <div className="event-form">
-                                
-                                <TextField variant="outlined"
-                                    type="text"
-                                    label="Task"
-                                    onChange={(event) => this.handleInputField(event, this.state.newTask.task = event.target.value)}
-                                />
-                                
-                                <TextField variant="outlined"
-                                    type="text"
-                                    label="Due By"
-                                    type="date"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    onChange={(event) => this.handleInputField(event, this.state.newTask.dueBy = event.target.value)}
-                                />
-                                
-                                <select className="select-task-css" onChange={(event) => this.handleInputField(event, this.state.newTask.clients_id = event.target.value)}>
-                                    {blankClient}
-                                    {allClientsList}
-                                </select>
-                            </div>
-                                <div className="form-button">
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={this.handleSubmit}
-                                    >
-                                        Add Task
-                                    </Button>
-                            </div>
-                        {/* </Paper> */}
-					</Card>
-				{/* </GridItem> */}
-			</GridContainer>
+                            <GridContainer justify="center">
+
+                                {/* <GridItem xs={12} sm={12} md={8}> */}
+                                <Card>
+                                    {/* <Paper className="paperPanel" elevation={5}> */}
+                                    <h2>Add Task</h2>
+                                    <div className="event-form">
+
+                                        <TextField variant="outlined"
+                                            type="text"
+                                            label="Task"
+                                            onChange={(event) => this.handleInputField(event, this.state.newTask.task = event.target.value)}
+                                        />
+
+                                        <TextField variant="outlined"
+                                            type="text"
+                                            label="Due By"
+                                            type="date"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            onChange={(event) => this.handleInputField(event, this.state.newTask.dueBy = event.target.value)}
+                                        />
+
+                                        <select className="select-task-css" onChange={(event) => this.handleInputField(event, this.state.newTask.clients_id = event.target.value)}>
+                                            {blankClient}
+                                            {allClientsList}
+                                        </select>
                                     </div>
+                                    <div className="form-button">
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={this.handleSubmit}
+                                        >
+                                            Add Task
+                                    </Button>
+                                    </div>
+                                    {/* </Paper> */}
+                                </Card>
+                                {/* </GridItem> */}
+                            </GridContainer>
+                        </div>
                     </Modal>
                 </div>
             </div>

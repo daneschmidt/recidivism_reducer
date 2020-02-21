@@ -7,8 +7,21 @@ import Task from '../Task/Task';
 export default class List extends React.Component {
   render() {
     return (
-      <div ref={this.props.innerRef}>
-        <div>{this.props.list.title}</div>
+      <div
+        ref={this.props.innerRef}
+        style={{ minHeight: '100px', padding: '10px' }}
+      >
+        <div
+          style={{
+            padding: '0 0 6px 0',
+            textAlign: 'center',
+            color: '#b6c1cb',
+            borderBottom: '1px solid #b6c1cb',
+            marginBottom: '10px'
+          }}
+        >
+          {this.props.list.title}
+        </div>
         {this.props.tasks.map((task, index) => (
           <Draggable key={task.id} draggableId={task.id} index={index}>
             {(provided, snapshot) => (

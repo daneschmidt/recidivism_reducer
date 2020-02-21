@@ -4,10 +4,17 @@
 }
 
 
-.modal-button {
+/* .modal-button {
+    background-color: #f0ad43;
     padding: 20px;
     text-align: right;
-}
+} */
+
+/* .form-button {
+    background-color: #f0ad43;
+    padding: 20px;
+    text-align: right;
+} */
 
  .edit-profile-modal {
     position: fixed;
