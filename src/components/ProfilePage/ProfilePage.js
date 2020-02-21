@@ -40,7 +40,7 @@ class profilePage extends Component {
 						<li>Business Stage: {item.businessStage}</li>
 						<li>Why Did You Attend "Be The Boss": {item.whyAtBeTheBoss}</li>
 						<li>What Do You Hope To Gain By Attending: {item.whatHopeToGain}</li>
-						<li>Active: {item.isActive}</li>
+						{/* <li>Active: {item.isActive}</li> */}
 					</ul>
 				);
 			}

@@ -19,7 +19,7 @@ VALUES
         '2020-02-10' , '22', 'Missouri', True, 'Tom Jones', 8085699856, True, 'Connections',
         'Doug & Sean Jones Coffee Shop', 'Starting Stage', 'Hope to gain info', 'info', 'JoshBW.png',
         '2020-02-10 04:05:06', True),
-    ('Theresa', 'Williams', 'Female', 81623458678, 's.pherigo@gmail.com', True, 'Felony', True, '2 years',
+    ('Theresa', 'Williams', 'Female', 81623458678, 't.williams@gmail.com', True, 'Felony', True, '2 years',
         '2020-01-10' , '32', 'Missouri', True, 'Tom Jones', 8085699854, True, 'Connections',
         'Window cleaning business', 'Working on a Loan', 'Hope to gain info', 'info', 'JoshBW.png',
         '2020-02-10 04:05:06', True),
@@ -161,10 +161,12 @@ VALUES
 04:05:06');
 
 INSERT INTO "events"
-    ("eventDate", "startTime", "endTime", "endEventDate", "eventTitle", "notes", "location")
+    ("eventDate", "endDate", "eventTitle", "notes", "location")
 VALUES
-    ( '2020-02-10', '2020-02-10
-016:00:00', '2020-02-10 018:00:00', '2020-02-10 019:00:00', 'Back To Business', 'Get ready to change lives', 'Prime Digital Academy');
+    ( '2020-02-17 9:00:00', '2020-02-17 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-17 10:00:00', '2020-02-17 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-17 11:00:00', '2020-02-17 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-17 13:00:00', '2020-02-17 19:00:00', 'Brainstorm next competition', 'notes', 'location');
 
 INSERT INTO "survey"
     ("clients_id", "businessStarted", "revenue", "date")

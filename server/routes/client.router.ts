@@ -41,10 +41,24 @@ router.post("/", (req: express.Request, res: express.Response, next: express.Nex
 	const phoneNumber: number | null = <number>req.body.phoneNumber;
 	const email: string | null = <string>req.body.email;
 	const gender: string | null = <string>req.body.gender;
-
+	let notes_id: number | null;
 	const queryText: string = `INSERT INTO "clients" ("firstName", "lastName", "gender", "phoneNumber", "email") VALUES ($1, $2, $3, $4, $5) RETURNING id`;
 	pool.query(queryText, [firstName, lastName, gender, phoneNumber, email])
-		.then(() => res.sendStatus(201))
+		.then((response) => {
+			const notesId = response.rows.map((item, index) => {
+				return notes_id = <number>item.id;
+			})
+			const queryText = `INSERT INTO "notes" ("clients_id")
+			VALUES ($1);`;
+			pool.query(queryText, [...notesId])
+			.then(response => {
+				res.sendStatus(201);
+			})
+			.catch(err => {
+				console.log(err);
+				res.sendStatus(500);
+			});
+		})
 		.catch(err => {
 			console.log(`Error saving Be The Boss form: ${err}`);
 			res.sendStatus(500);
