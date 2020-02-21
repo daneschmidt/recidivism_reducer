@@ -92,7 +92,7 @@ class EventClick extends Component {
             const convertedEndTime = item.endDate.slice(0,-1);
             console.log(convertedStartTime);
             return {
-               
+                textColor: '#1a262a', 
                  title: item.eventTitle,
                  date: item.date,
                  end: convertedEndTime,
@@ -125,6 +125,8 @@ class EventClick extends Component {
                     <Container maxWidth="md" className="calendar-container">
                         <FullCalendar
                             timeZone = "America/Chicago"
+                            eventColor = '#b6c1cb'
+                            textColor = '#b6c1cb'
                             defaultView="timeGridWeek"
                             header={{
                                 left: "prev, next, today",
