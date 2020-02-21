@@ -16,6 +16,14 @@ import AddTaskModal from '../TaskPage/AddTaskModal';
 // Sweet Alert
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 class TaskPage extends Component {
 
     state = {
@@ -80,24 +88,25 @@ class TaskPage extends Component {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Change It!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.value) {
-              Swal.fire(
-                'Status Changed!',
-                'Completion Status has been changed!',
-                'success'
-              )
-        this.props.dispatch({
-            type: 'MARK_TASK',
-            payload: {
-                taskId,
-                completedOn,
-                checkbox,
-                id: this.props.user.id,
+                Swal.fire(
+                    'Status Changed!',
+                    'Completion Status has been changed!',
+                    'success'
+                )
+                this.props.dispatch({
+                    type: 'MARK_TASK',
+                    payload: {
+                        taskId,
+                        completedOn,
+                        checkbox,
+                        id: this.props.user.id,
+                    }
+                })
             }
         })
     }
-})}
 
     handleClientCheckboxChange = (event, id, clients_id, inputKey) => {
         this.setState({
@@ -121,25 +130,25 @@ class TaskPage extends Component {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Change It!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.value) {
-              Swal.fire(
-                'Status Changed!',
-                'Completion Status has been changed!',
-                'success'
-              )
-              this.props.dispatch({
-                type: 'MARK_CLIENT_TASK',
-                payload: {
-                    taskId,
-                    completedOn,
-                    checkbox,
-                    clients_id,
-                    id: this.props.user.id,
-                }
-            })
+                Swal.fire(
+                    'Status Changed!',
+                    'Completion Status has been changed!',
+                    'success'
+                )
+                this.props.dispatch({
+                    type: 'MARK_CLIENT_TASK',
+                    payload: {
+                        taskId,
+                        completedOn,
+                        checkbox,
+                        clients_id,
+                        id: this.props.user.id,
+                    }
+                })
             }
-    })
+        })
         this.getClientTasks(event)
     }
     getClientTasks = (event, inputKey) => {
@@ -163,14 +172,56 @@ class TaskPage extends Component {
         const taskListByAll = this.props.store.getAllTasksReducer.map((item, index) => {
             return (
                 <div key={index}>
-                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
-                    <ul className="noBullets">
+
+                    {/* <ul className="noBullets">
                         <li>Task: {item.task}</li>
                         <li>Added On: {moment(item.assignedOn).format('LL')}</li>
                         <li>Due By: {moment(item.dueBy).format('LL')}</li>
                         <li>Added By: {item.userFirstName} {item.userLastName}</li>
                         <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
-                    </ul>
+                    </ul> */}
+                    <TableContainer component={Paper} className="container">
+                        <Table size="small">
+                            <TableHead className="table-head">
+                                <TableRow className="table-row">
+                                    <TableCell></TableCell>
+                                    <TableCell>{item.task}</TableCell>
+                                    {/* <TableCell>Task:</TableCell> */}
+                                    <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
+                                    {/* <TableCell>Added On:</TableCell> */}
+                                    <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
+                                    {/* <TableCell>Due By:</TableCell> */}
+                                    {/* <TableCell>Added By:</TableCell> */}
+                                    <TableCell>{item.userFirstName}</TableCell>
+                                    {/* <TableCell>Client:</TableCell> */}
+                                    <TableCell>{item.clientsFirstName}</TableCell>
+                                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
+                                </TableRow>
+                            </TableHead>
+                            {/* <TableBody>
+                                {this.props.store.userCredentials.userCredentials.map((item, index) =>
+                                    <TableRow key={index}>
+                                        <TableCell align="right">
+                                            <FormControlLabel
+                                                control={
+                                                    <Checkbox
+                                                        checked={this.state.checkbox === item.id}
+                                                        onChange={(event) => this.handleCheckboxChange(event, item.id)}
+                                                        color="primary"
+                                                    />
+                                                }
+                                            />
+                                        </TableCell>
+                                        <TableCell>{item.task}</TableCell>
+                                        <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
+                                        <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
+                                        <TableCell>{item.userFirstName}</TableCell>
+                                        <TableCell>{item.clientsFirstName}</TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody> */}
+                        </Table>
+                    </TableContainer>
                 </div>
             )
         });
@@ -191,7 +242,7 @@ class TaskPage extends Component {
         const taskListByClient = this.props.store.getClientTasksReducer.map((item, index) => {
             return (
                 <div key={index}>
-                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleClientCheckboxChange(event, item.tasksId, item.clients_id, this.state.tasks.checkbox = event.target.checked)}/>
+                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleClientCheckboxChange(event, item.tasksId, item.clients_id, this.state.tasks.checkbox = event.target.checked)} />
                     <ul className="noBullets">
                         <li>Task: {item.task}</li>
                         <li>Added On: {moment(item.assignedOn).format('LL')}</li>
@@ -205,37 +256,37 @@ class TaskPage extends Component {
         return (
             <div>
                 <h2>{this.state.heading}</h2>
-                <GridContainer justify="center" paddingTop={12}>
+                <GridContainer justify="center" paddingTop={5}>
                     <GridItem xs={12} sm={12} md={10}>
-                    <Card>
-                    <Paper className="paperPanel" elevation={5}>
-                        <CustomTabs
-                            title="Task List:"
-                            headerColor="primary"
-                            tabs={[
-                                {
-                                    tabName: currentUser,
-                                    tabIcon: PlaylistAddCheckIcon,
-                                    tabContent: taskListByUser
-                                },
+                        <Card>
+                            <Paper className="paperPanel" elevation={5}>
+                                <CustomTabs
+                                    title="Task List:"
+                                    headerColor="primary"
+                                    tabs={[
+                                        {
+                                            tabName: currentUser,
+                                            tabIcon: PlaylistAddCheckIcon,
+                                            tabContent: taskListByUser
+                                        },
 
-                                {
-                                    tabName: "All Tasks",
-                                    tabIcon: PlaylistAddCheckIcon,
-                                    tabContent: taskListByAll
-                                },
-                                {
-                                    tabName: <select className="select-css" onChange={(event) => this.handleInputChange(event, this.state.tasks.clients_id = event.target.value)}>
-                                        {blankClient}
-                                        {allClientsList}
-                                    </select>,
-                                    tabIcon: PlaylistAddCheckIcon,
-                                    tabContent: taskListByClient
-                                }
-                            ]}
-                        />
-                        <AddTaskModal />
-                        </Paper>
+                                        {
+                                            tabName: "All Tasks",
+                                            tabIcon: PlaylistAddCheckIcon,
+                                            tabContent: taskListByAll
+                                        },
+                                        {
+                                            tabName: <select className="select-css" onChange={(event) => this.handleInputChange(event, this.state.tasks.clients_id = event.target.value)}>
+                                                {blankClient}
+                                                {allClientsList}
+                                            </select>,
+                                            tabIcon: PlaylistAddCheckIcon,
+                                            tabContent: taskListByClient
+                                        }
+                                    ]}
+                                />
+                                <AddTaskModal />
+                            </Paper>
                         </Card>
                     </GridItem>
                 </GridContainer>
