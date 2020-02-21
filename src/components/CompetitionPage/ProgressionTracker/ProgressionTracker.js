@@ -64,7 +64,7 @@ class ProgressionTracker extends React.Component {
     const tasks = this.props.store.progress.tasks;
     return (
       <div>
-        <Card style={{ backgroundColor: 'black' }}>
+        <Card style={{ backgroundColor: '#1a262a', opacity: '70%' }}>
           <h2
             style={{ margin: '10px', display: 'inline-block', color: 'white' }}
           >

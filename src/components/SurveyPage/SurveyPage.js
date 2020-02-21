@@ -12,7 +12,10 @@ import Container from '@material-ui/core/Container';
 
 // import Swal from 'sweetalert2';
 
-import { completedTasksChart } from '../../variables/charts';
+import {
+  completedTasksChart,
+  emailsSubscriptionChart
+} from '../../variables/charts';
 
 class SurveyPage extends Component {
   render() {
@@ -83,7 +86,7 @@ class SurveyPage extends Component {
               }}
               onClick={this.submit}
             >
-              Start Competition
+              Add Survey
             </Button>
             <Button
               style={{
@@ -149,10 +152,11 @@ class SurveyPage extends Component {
                   marginBottom: '1rem'
                 }}
                 className='ct-chart'
-                data={completedTasksChart.data}
-                type='Line'
-                options={completedTasksChart.options}
-                listener={completedTasksChart.animation}
+                data={emailsSubscriptionChart.data}
+                type='Bar'
+                options={emailsSubscriptionChart.options}
+                responsiveOptions={emailsSubscriptionChart.responsiveOptions}
+                listener={emailsSubscriptionChart.animation}
               />
             </CardContent>
           </Card>

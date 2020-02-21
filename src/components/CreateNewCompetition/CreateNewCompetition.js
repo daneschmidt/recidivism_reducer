@@ -100,9 +100,10 @@ class CreateNewCompetition extends Component {
     return (
       <div>
         <Button
+          style={{ backgroundColor: '#f0ad43', color: 'white' }}
           variant='contained'
           size='small'
-          color='white'
+          color='#f0ad43'
           onClick={this.handleOpen}
         >
           Start New Competition

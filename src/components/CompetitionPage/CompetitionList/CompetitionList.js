@@ -246,7 +246,7 @@ class CompetitionList extends Component {
             <TableCell>{item.winnerName}</TableCell>
             <TableCell>
               <Button
-                style={{ backgroundColor: 'black', color: 'white' }}
+                style={{ backgroundColor: '#f0ad43', color: 'white' }}
                 onClick={event => this.getDetails(event, item, item.id)}
               >
                 Details
@@ -255,8 +255,8 @@ class CompetitionList extends Component {
             </TableCell>
             <TableCell>
               <Button
-                color='secondary'
-                style={{ color: 'white', backgroundColor: 'red' }}
+                color='#cb3e4b'
+                style={{ color: 'white', backgroundColor: '#cb3e4b' }}
                 onClick={event => this.delete(event, item.id)}
               >
                 Delete
@@ -274,7 +274,7 @@ class CompetitionList extends Component {
         style={{
           width: '100%',
           marginTop: '20px',
-          backgroundColor: 'black',
+          backgroundColor: '#1a262a',
           color: 'white'
         }}
       >
@@ -284,10 +284,11 @@ class CompetitionList extends Component {
           </h2>
           <Button
             style={{
-              backgroundColor: 'white',
+              backgroundColor: '#f0ad43',
               color: 'black',
               margin: '10px',
-              display: 'inline-block'
+              display: 'inline-block',
+              color: 'white'
             }}
             type='button'
             onClick={this.openModal}
