@@ -72,7 +72,7 @@ class ClientPage extends Component {
 						phone: {item.phoneNumber}
 					</p>
 					<p>
-						email: {item.email} 
+						email: {item.email}
 					</p>
 				</div>
 
