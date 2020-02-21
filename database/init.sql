@@ -120,10 +120,9 @@ CREATE TABLE "notes" (
 
 CREATE TABLE "events" (
   "id" SERIAL PRIMARY KEY,
-  "eventDate" date,
-  "startTime" timestamp,
+  "eventDate" timestamp,
+  "endDate" timestamp,
   "endTime" time,
-  "endEventDate" timestamp,
   "eventTitle" varchar,
   "notes" varchar,
   "location" varchar

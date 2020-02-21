@@ -34,7 +34,7 @@ function* addNewEvent(action) {
 
     const response = yield axios.post('/api/events', action.payload);
     console.log(response);
-    yield put({ type: 'SET_CALENDAR' });
+    yield put({ type: 'GET_EVENTS' });
 
   } catch (error) {
     console.log('Error with adding event:', error);

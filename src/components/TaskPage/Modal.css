@@ -18,9 +18,6 @@
     transform: translate(-50%, -50%);
 }
 
-h2 {
-  padding-left: 5%;
-}
 .task-button {
   padding: 20px;
   text-align: right;
