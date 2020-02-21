@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import LoginPage from '../LoginPage/LoginPage';
+// import RegisterPage from '../RegisterPage/RegisterPage';
 import { connect } from 'react-redux';
 import LoginPage from '../LoginPage/LoginPage';
-// import RegisterPage from '../RegisterPage/RegisterPage';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -42,7 +44,6 @@ const ProtectedRoute = props => {
     // show the RegisterPage
     // ComponentToShow = RegisterPage;
   }
-
   // redirect a logged in user if an authRedirect prop has been provided
   if (store.user.id && authRedirect != null) {
     return <Redirect exact from={otherProps.path} to={authRedirect} />;
