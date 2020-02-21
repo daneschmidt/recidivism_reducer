@@ -172,14 +172,6 @@ class TaskPage extends Component {
         const taskListByAll = this.props.store.getAllTasksReducer.map((item, index) => {
             return (
                 <div key={index}>
-
-                    {/* <ul className="noBullets">
-                        <li>Task: {item.task}</li>
-                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
-                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
-                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
-                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
-                    </ul> */}
                     <TableContainer component={Paper} className="container">
                         <Table size="small">
                             <TableHead className="table-head">
@@ -198,28 +190,6 @@ class TaskPage extends Component {
                                     <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
                                 </TableRow>
                             </TableHead>
-                            {/* <TableBody>
-                                {this.props.store.userCredentials.userCredentials.map((item, index) =>
-                                    <TableRow key={index}>
-                                        <TableCell align="right">
-                                            <FormControlLabel
-                                                control={
-                                                    <Checkbox
-                                                        checked={this.state.checkbox === item.id}
-                                                        onChange={(event) => this.handleCheckboxChange(event, item.id)}
-                                                        color="primary"
-                                                    />
-                                                }
-                                            />
-                                        </TableCell>
-                                        <TableCell>{item.task}</TableCell>
-                                        <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
-                                        <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
-                                        <TableCell>{item.userFirstName}</TableCell>
-                                        <TableCell>{item.clientsFirstName}</TableCell>
-                                    </TableRow>
-                                )}
-                            </TableBody> */}
                         </Table>
                     </TableContainer>
                 </div>
@@ -228,28 +198,52 @@ class TaskPage extends Component {
         const taskListByUser = this.props.store.getUserTasksReducer.map((item, index) => {
             return (
                 <div key={index}>
-                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
-                    <ul className="noBullets">
-                        <li>Task: {item.task}</li>
-                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
-                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
-                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
-                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
-                    </ul>
+                    <TableContainer component={Paper} className="container">
+                        <Table size="small">
+                            <TableHead className="table-head">
+                                <TableRow className="table-row">
+                                    <TableCell></TableCell>
+                                    <TableCell>{item.task}</TableCell>
+                                    {/* <TableCell>Task:</TableCell> */}
+                                    <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
+                                    {/* <TableCell>Added On:</TableCell> */}
+                                    <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
+                                    {/* <TableCell>Due By:</TableCell> */}
+                                    {/* <TableCell>Added By:</TableCell> */}
+                                    <TableCell>{item.userFirstName}</TableCell>
+                                    {/* <TableCell>Client:</TableCell> */}
+                                    <TableCell>{item.clientsFirstName}</TableCell>
+                                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
+                                </TableRow>
+                            </TableHead>
+                        </Table>
+                    </TableContainer>
                 </div>
             )
         });
         const taskListByClient = this.props.store.getClientTasksReducer.map((item, index) => {
             return (
                 <div key={index}>
-                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleClientCheckboxChange(event, item.tasksId, item.clients_id, this.state.tasks.checkbox = event.target.checked)} />
-                    <ul className="noBullets">
-                        <li>Task: {item.task}</li>
-                        <li>Added On: {moment(item.assignedOn).format('LL')}</li>
-                        <li>Due By: {moment(item.dueBy).format('LL')}</li>
-                        <li>Added By: {item.userFirstName} {item.userLastName}</li>
-                        <li>Client: {item.clientsFirstName} {item.clientsLastName}</li>
-                    </ul>
+                    <TableContainer component={Paper} className="container">
+                        <Table size="small">
+                            <TableHead className="table-head">
+                                <TableRow className="table-row">
+                                    <TableCell></TableCell>
+                                    <TableCell>{item.task}</TableCell>
+                                    {/* <TableCell>Task:</TableCell> */}
+                                    <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
+                                    {/* <TableCell>Added On:</TableCell> */}
+                                    <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
+                                    {/* <TableCell>Due By:</TableCell> */}
+                                    {/* <TableCell>Added By:</TableCell> */}
+                                    <TableCell>{item.userFirstName}</TableCell>
+                                    {/* <TableCell>Client:</TableCell> */}
+                                    <TableCell>{item.clientsFirstName}</TableCell>
+                                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleClientCheckboxChange(event, item.tasksId, item.clients_id, this.state.tasks.checkbox = event.target.checked)} />
+                                </TableRow>
+                            </TableHead>
+                        </Table>
+                    </TableContainer>
                 </div>
             )
         });
