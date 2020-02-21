@@ -162,7 +162,7 @@ class App extends Component {
         {/* </Switch> */}
         {/* <Footer /> */}
         {/* </div> */}
-        {/* </Router> */} */}
+        {/* </Router> */}
       </ThemeProvider>
     );
   }
