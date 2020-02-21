@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import EditProfilePage from '../EditProfilePage/EditProfilePage';
 
 class profilePage extends Component {
 	state = {
@@ -14,15 +15,6 @@ class profilePage extends Component {
 	}
 
 	//Dispatches selected profile id to editProfile.saga
-	editProfile = id => {
-		console.log(id);
-		this.props.dispatch({
-			type: 'EDIT_PROFILE',
-			payload: id,
-		});
-		//Navigates to Edit Profile Modal
-		this.props.history.push('/editprofilepage');
-	};
 
 	render() {
 		const clientProfile = this.props.store.getProfileReducer.map(
@@ -63,9 +55,7 @@ class profilePage extends Component {
 		);
 		return (
 			<div>
-				<div>
-					<button onClick={this.editProfile}>EDIT</button>
-				</div>
+
 				<div>
 					{clientProfile}
 				</div>
@@ -73,6 +63,7 @@ class profilePage extends Component {
 				<div>
 					{notesArray}
 				</div>
+				<EditProfilePage />
 			</div>
 		);
 	}

@@ -81,7 +81,7 @@ class AddTaskModal extends Component {
                                 <TextField variant="outlined"
                                     type="text"
                                     label="Task"
-                                    
+
                                     onChange={(event) => this.handleInputField(event, this.state.newTask.task = event.target.value)}
                                 />
                                 <TextField variant="outlined"
@@ -90,24 +90,24 @@ class AddTaskModal extends Component {
                                     type="date"
                                     InputLabelProps={{
                                         shrink: true,
-                                      }}
+                                    }}
                                     onChange={(event) => this.handleInputField(event, this.state.newTask.dueBy = event.target.value)}
                                 />
-                                
+
                                 <Grid item xs={6}>
                                 </Grid>
                                 <select className="select-task-css" onChange={(event) => this.handleInputField(event, this.state.newTask.clients_id = event.target.value)}>
                                     {blankClient}
                                     {allClientsList}
                                 </select>
-                                </div>
-                                <div className="form-button">
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={this.handleSubmit}
-                                    >
-                                        Add Task
+                            </div>
+                            <div className="form-button">
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.handleSubmit}
+                                >
+                                    Add Task
                                     </Button>
                             </div>
                         </div>
