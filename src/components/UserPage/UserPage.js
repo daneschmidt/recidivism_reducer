@@ -197,7 +197,6 @@ class UserPage extends Component {
         return (
 
             <div>
-
                 <CardContent>
                     <TableContainer component={Paper}>
                         <Table>
@@ -274,132 +273,161 @@ class UserPage extends Component {
                     </Grid>
 
                 </Grid>
+                <Modal
+                    style={{
+                        position: 'absolute',
+                        width: '40%',
+                        color: '#1a262a',
+                        border: '2px solid #f0ad43',
+                        top: '50%',
+                        left: '50%',
+                        height: '40%',
+                        transform: 'translate(-50%, -50%)'
+                    }}
+                    aria-labelledby='simple-modal-title'
+                    aria-describedby='simple-modal-description'
+                    open={this.state.setOpen} onClose={this.closeEditUser}
+                >
+                    <div
+                        className="modal-content"
+                        style={{ outline: 'none', height: '100%' }}
+                    >
+                        <h4 id='simple-modal-title'>Update User</h4>
 
-                <div className="edit-button">
+                        <Grid container>
 
-                    <div className="event-modal">
-                        <Modal style={{
-                            position: 'absolute',
-                            width: '40%',
-                            color: '#1a262a',
-                            border: '2px solid #f0ad43',
-                            top: '50%',
-                            left: '50%',
-                            height: '40%',
-                            transform: 'translate(-50%, -50%)'
-                        }} open={this.state.setOpen} onClose={this.closeEditUser} >
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h2>Update User</h2>
-                                </div>
-                                <div className="event-form">
-                                    <Grid container spacing={1}>
-                                        <Grid item xs={6}>
-                                            <div className="text-input">
-                                                <TextField variant="outlined"
-                                                    type="text"
-                                                    label="First Name"
-                                                    value={this.state.firstName}
-                                                    onChange={this.handleInputChange('firstName')}
-                                                />
-                                                <TextField variant="outlined"
-                                                    type="text"
-                                                    label="Last Name"
-                                                    value={this.state.lastName}
-                                                    onChange={this.handleInputChange('lastName')}
-                                                />
-                                                <TextField variant="outlined"
-                                                    type="number"
-                                                    label="Phone Number"
-                                                    value={this.state.phoneNumber}
-                                                    onChange={this.handleInputChange('phoneNumber')}
-                                                />
-                                                <TextField variant="outlined"
-                                                    type="text"
-                                                    label="Email"
-                                                    value={this.state.email}
-                                                    onChange={this.handleInputChange('email')}
-                                                />
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <h3>Security Level</h3>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="1"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level1}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                            <br></br>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="2"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level2}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                            <br></br>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="3"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level3}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                            <br></br>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="4"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level4}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                            <br></br>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="5"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level5}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                    <div className="form-button">
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={this.handleStatusChange}
-                                        >
-                                            Delete
+                            <Grid item xs={6} sm={6}>
+
+                                <TextField
+                                    onChange={this.handleInputChange('firstName')}
+                                    label="First Name"
+                                    variant='outlined'
+                                    style={{ margin: '3px' }}
+                                    defaultValue={this.state.firstName}
+                                ></TextField>
+
+                                <TextField
+                                    variant='outlined'
+                                    style={{ margin: '3px' }}
+                                    type="text"
+                                    label="Last Name"
+                                    value={this.state.lastName}
+                                    onChange={this.handleInputChange('lastName')}
+                                />
+                                <TextField
+                                    variant='outlined'
+                                    style={{ margin: '3px' }}
+                                    type="number"
+                                    label="Phone Number"
+                                    value={this.state.phoneNumber}
+                                    onChange={this.handleInputChange('phoneNumber')}
+                                />
+                                <TextField
+                                    variant='outlined'
+                                    style={{ margin: '3px' }}
+                                    type="text"
+                                    label="Email"
+                                    value={this.state.email}
+                                    onChange={this.handleInputChange('email')}
+                                />
+                            </Grid>
+
+                            <Grid item xs={6} sm={6}>
+                                <h3>Security Level</h3>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="1"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level1}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                                <br></br>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="2"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level2}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                                <br></br>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="3"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level3}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                                <br></br>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="4"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level4}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                                <br></br>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="5"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level5}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                            </Grid>
+
+
+
+                            <Grid item xs={2} sm={2}>
+                                <Button
+                                    size='small'
+                                    style={{
+                                        backgroundColor: '#f0ad43',
+                                        color: 'black',
+                                        marginLeft: '14px',
+
+
+                                    }}
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.closeEditUser}
+                                >
+                                    Cancel
                                         </Button>
-                                    </div>
-                                    <div className="cancel-button">
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={this.closeEditUser}
-                                        >
-                                            Cancel
+                                <Button
+                                    size='small'
+                                    style={{
+                                        backgroundColor: '#f0ad43',
+                                        color: 'black',
+                                        marginLeft: '14px',
+
+                                    }}
+                                    variant="contained"
+                                    color="default"
+                                    onClick={this.handleUserUpdate}
+                                >
+                                    Update
                                         </Button>
-                                    </div>
-                                    <div className="update-button">
-                                        <Button
-                                            variant="contained"
-                                            color="default"
-                                            onClick={this.handleUserUpdate}
-                                        >
-                                            Update
+                                <Button
+                                    size='small'
+                                    style={{
+                                        backgroundColor: '#f0ad43',
+                                        color: 'black',
+                                        marginLeft: '14px',
+
+                                    }}
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.handleStatusChange}
+                                >
+                                    Delete
                                         </Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Modal>
+                            </Grid>
+
+
+                        </Grid>
                     </div>
-                    <div>
-                    </div>
-                </div>
-            </div>
+                </Modal>
+            </div >
 
         );
     }
