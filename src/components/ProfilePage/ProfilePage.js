@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import './ProfilePage.css';
+import moment from 'moment';
 
 class profilePage extends Component {
 	state = {
@@ -29,7 +30,7 @@ class profilePage extends Component {
 						<p>Criminal Record: {item.criminalRecord}</p>
 						<p>Currently Incarcerated: {item.currentlyIncar}</p>
 						<p>Incarceration Length: {item.incarcerationLength}</p>
-						<p>Release Date: {item.releaseDate}</p>
+						<p>Release Date: {moment(item.releaseDate).format('LL')}</p>
 						<p>D.O.C Number: {item.docNumber}</p>
 						<p>State of Incarceration: {item.stateIncarcerated}</p>
 						<p>Currently On Parole: {item.paroleOnRelease}</p>
