@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import Calendar from '../Calendar/CalendarHome/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
+// import RegisterPage from '../';
 import Dashboard from '../Dashboard/Dashboard';
 import ClientPage from '../ClientPage/ClientPage';
 import Competition from '../CompetitionPage/CompetitionPage';
@@ -33,12 +34,12 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#f0ad43',
+      main: '#f0ad43'
     },
     secondary: {
-      main: '#cb3e4b',
-    },
-  },
+      main: '#cb3e4b'
+    }
+  }
 });
 
 class App extends Component {
@@ -72,7 +73,11 @@ class App extends Component {
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
               <ProtectedRoute exact path='/userpage' component={UserPage} />
-              <ProtectedRoute exact path='/profilepage' component={ProfilePage} />
+              <ProtectedRoute
+                exact
+                path='/profilepage'
+                component={ProfilePage}
+              />
               <ProtectedRoute
                 exact
                 path='/editprofilepage'
@@ -80,7 +85,11 @@ class App extends Component {
               />
               <ProtectedRoute exact path='/calendar' component={Calendar} />
               <ProtectedRoute exact path='/userpage' component={UserPage} />
-              <ProtectedRoute exact path='/competition' component={Competition} />
+              <ProtectedRoute
+                exact
+                path='/competition'
+                component={Competition}
+              />
               <ProtectedRoute exact path='/taskpage' component={TaskPage} />
               {/* <ProtectedRoute exact path='/surveypage' component={SurveyPage} /> */}
               {/* This works the same as the other protected route, except that if the user is logged in,
@@ -128,7 +137,12 @@ class App extends Component {
                 component={LoginPage}
               />
 
-
+              {/* <ProtectedRoute
+              exact
+              path='/registration'
+              authRedirect='/dashboard'
+              component={RegisterPage}
+            /> */}
 
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
@@ -136,6 +150,19 @@ class App extends Component {
             <Footer />
           </div>
         </Router>
+        {/* <ProtectedRoute
+          exact
+          path='/login'
+          authRedirect='/dashboard'
+          component={LoginPage}
+        /> */}
+        {/* 
+              {/* If none of the other routes matched, we will show a 404. */}
+        {/* <Route render={() => <h1>404</h1>} /> */}
+        {/* </Switch> */}
+        {/* <Footer /> */}
+        {/* </div> */}
+        {/* </Router> */}
       </ThemeProvider>
     );
   }

@@ -3,8 +3,8 @@ INSERT INTO "user"
 VALUES
     ( 'Josh', 'Mann', 'JoMa', '1234', 5, 8161234567, 'j.ma@gmail.com', 'Admin'),
     ( 'Prime', 'Dev', 'PrimeDev', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 1111111111, 'email1', 'Developer'),
-    ( 'Test', 'Admin', 'TestAdmin', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 1111111111, 'email2', 'Developer');
-( 'Kyle', 'Smith', 'KyleSmith', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 8168675309, 'kylesemail@gmail.com', 'The Boss')
+    ( 'Test', 'Admin', 'TestAdmin', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 1111111111, 'email2', 'Developer'),
+( 'Kyle', 'Smith', 'KyleSmith', '$2b$10$BoiqkRF6PW0Csei0ve6zT.LHuZSbolktRo4pz6sQwhQE/1AfxUb8G', 5, 8168675309, 'kylesemail@gmail.com', 'The Boss');
 INSERT INTO "clients"
     ("firstName", "lastName", "gender", "phoneNumber", "email", "criminalRecord", "misdemOrFel",
     "incarceratedYorN", "incarcerationLength", "releaseDate", "docNumber", "stateIncarcerated",
@@ -19,7 +19,7 @@ VALUES
         '2020-02-10' , '22', 'Missouri', True, 'Tom Jones', 8085699856, True, 'Connections',
         'Doug & Sean Jones Coffee Shop', 'Starting Stage', 'Hope to gain info', 'info', 'JoshBW.png',
         '2020-02-10 04:05:06', True),
-    ('Theresa', 'Williams', 'Female', 81623458678, 's.pherigo@gmail.com', True, 'Felony', True, '2 years',
+    ('Theresa', 'Williams', 'Female', 81623458678, 't.williams@gmail.com', True, 'Felony', True, '2 years',
         '2020-01-10' , '32', 'Missouri', True, 'Tom Jones', 8085699854, True, 'Connections',
         'Window cleaning business', 'Working on a Loan', 'Hope to gain info', 'info', 'JoshBW.png',
         '2020-02-10 04:05:06', True),
@@ -72,14 +72,14 @@ VALUES
 INSERT INTO "competitions"
     ("dateOf", "name", "winnerName", "amountGranted", "businessName", "notes")
 VALUES
-    ('2020-03-10', ' First Competition', 'Tracy Anderson', '10000', 'AllPro Drywall', 'awesome presentation, very concise'),
-    ('2020-09-24', 'Second Competition', 'Alexander Brown', '10000', 'DaVinci Lawn Mowing', 'good start, great attitude'),
-    ('2021-03-07', 'Third Competition', 'Abigail Byrne', '10000', 'Nitro Cleaning', 'very detailed, very well organized'),
-    ('2021-09-19', 'Fourth Competition', 'Emma Davies', '10000', 'Capitol Marketing', 'great ideas, really motivated'),
-    ('2022-03-05', 'Fifth Competition', 'Emily Gagnon', '10000', 'RiverView Painting', 'great business model'),
-    ('2022-09-14', 'Sixth Competition', 'Richard Jones', '10000', 'React Roofing', 'knows all the steps needed to be sucessful'),
-    ('2023-03-11', 'Seventh Competition', 'Kyle Lee', '10000', 'Tsunami Electrical', 'worked well with other participants'),
-    ('2023-09-09', 'Eighth Competition', 'Mason Miller', '10000', 'Salon Contour', 'amazing talent');
+    ('2016-03-10', ' First Competition', 'Tracy Anderson', '10000', 'AllPro Drywall', 'awesome presentation, very concise'),
+    ('2016-09-24', 'Second Competition', 'Alexander Brown', '10000', 'DaVinci Lawn Mowing', 'good start, great attitude'),
+    ('2017-03-07', 'Third Competition', 'Abigail Byrne', '10000', 'Nitro Cleaning', 'very detailed, very well organized'),
+    ('2017-09-19', 'Fourth Competition', 'Emma Davies', '10000', 'Capitol Marketing', 'great ideas, really motivated'),
+    ('2018-03-05', 'Fifth Competition', 'Emily Gagnon', '10000', 'RiverView Painting', 'great business model'),
+    ('2018-09-14', 'Sixth Competition', 'Richard Jones', '10000', 'React Roofing', 'knows all the steps needed to be sucessful'),
+    ('2019-03-11', 'Seventh Competition', 'Kyle Lee', '10000', 'Tsunami Electrical', 'worked well with other participants'),
+    ('2019-09-09', 'Eighth Competition', 'Mason Miller', '10000', 'Salon Contour', 'amazing talent');
 
 INSERT INTO "clients_competitions"
     ("clients_id", "competitions_id", "status", "award", "grantAmount", "notes")
@@ -118,6 +118,22 @@ VALUES
     ( 1, 7, 'Make sure to set up business account', False, '2020-03-03
 04:05:06', '2020-02-27 05:05:05'),
     ( 2, 8, 'Write reference letter', False, '2020-02-24
+04:05:06', '2020-02-28 05:05:05'),
+    ( 4, 10, 'Needs to work on a business name', False, '2020-07-16
+04:05:06', '2020-02-27 05:05:05'),
+    ( 4, 9, 'Needs to get taxes up to date', False, '2020-04-18
+04:05:06', '2020-02-28 05:05:05'),
+    ( 4, 2, 'Needs to get a LLC', False, '2020-05-03
+04:05:06', '2020-02-29 05:05:05'),
+    ( 4, 1, 'Speak with parole officer about starting business', False, '2020-09-13
+04:05:06', '2020-02-27 05:05:05'),
+    ( 4, 4, 'Make sure to get insurance', False, '2020-04-05
+04:05:06', '2020-02-28 05:05:05'),
+    ( 4, 5, 'Make sure to complete workman comp paperwork', False, '2020-06-29
+04:05:06', '2020-02-29 05:05:05'),
+    ( 4, 8, 'Make sure to set up business account', False, '2020-03-03
+04:05:06', '2020-02-27 05:05:05'),
+    ( 4, 7, 'Write reference letter', False, '2020-02-24
 04:05:06', '2020-02-28 05:05:05');
 
 INSERT INTO "notes"
@@ -137,7 +153,7 @@ VALUES
 04:05:06'),
     (7, 1, 'Needs to get workers comp', '2020-02-11
 04:05:06'),
-    (8, 1, 'Schedual in person meeting.', '2020-02-11
+    (8, 1, 'Schedule in person meeting.', '2020-02-11
 04:05:06'),
     (9, 1, 'Needs to set up business account', '2020-02-11
 04:05:06'),
@@ -145,30 +161,32 @@ VALUES
 04:05:06');
 
 INSERT INTO "events"
-    ("eventDate", "startTime", "endTime", "endEventDate", "eventTitle", "notes", "location")
+    ("eventDate", "endDate", "eventTitle", "notes", "location")
 VALUES
-    ( '2020-02-10', '2020-02-10
-016:00:00', '2020-02-10 018:00:00', '2020-02-10 019:00:00', 'Back To Business', 'Get ready to change lives', 'Prime Digital Academy');
+    ( '2020-02-17 9:00:00', '2020-02-17 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-17 10:00:00', '2020-02-17 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-17 11:00:00', '2020-02-17 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-17 13:00:00', '2020-02-17 19:00:00', 'Brainstorm next competition', 'notes', 'location');
 
 INSERT INTO "survey"
     ("clients_id", "businessStarted", "revenue", "date")
 VALUES
-    (1, False, 0, '2020-03-11'),
-    (2, False, 25000, '2020-03-11'),
-    (3, False, 25000, '2020-03-11'),
-    (4, False, 25000, '2020-03-11'),
-    (5, False, 25000, '2020-03-11'),
-    (6, False, 25000, '2020-03-11'),
-    (7, True, 25000, '2020-03-11'),
-    (8, True, 25000, '2020-03-11'),
-    (9, True, 25000, '2020-03-11'),
-    (10, True, 25000, '2020-03-11'),
-    (1, True, 25000, '2020-03-11'),
-    (2, True, 25000, '2020-03-11'),
-    (3, True, 25000, '2020-03-11'),
-    (4, True, 25000, '2020-03-11'),
-    (5, True, 25000, '2020-03-11'),
-    (6, True, 25000, '2020-03-11');
+    (1, False, 0, '2019-03-11'),
+    (2, False, 0, '2019-03-11'),
+    (3, False, 0, '2019-03-11'),
+    (4, False, 0, '2019-03-11'),
+    (5, False, 0, '2019-03-11'),
+    (6, False, 0, '2019-03-11'),
+    (7, False, 0, '2020-02-11'),
+    (8, True, 25000, '2020-02-11'),
+    (9, False, 0, '2020-02-11'),
+    (10, True, 25000, '2020-02-11'),
+    (1, True, 25000, '2020-02-11'),
+    (2, True, 25000, '2020-02-11'),
+    (3, True, 25000, '2020-02-11'),
+    (4, True, 25000, '2020-02-11'),
+    (5, True, 25000, '2020-02-11'),
+    (6, True, 25000, '2020-02-11');
 
 
 INSERT INTO "events_clients"

@@ -184,7 +184,7 @@ class TaskPage extends Component {
                                     <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
                                     {/* <TableCell>Due By:</TableCell> */}
                                     {/* <TableCell>Added By:</TableCell> */}
-                                    <TableCell>{item.userFirstName}</TableCell>
+                                    <TableCell>{item.clientsFirstName}</TableCell>
                                     {/* <TableCell>Client:</TableCell> */}
                                     <TableCell>{item.clientsFirstName}</TableCell>
                                     <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
@@ -210,7 +210,7 @@ class TaskPage extends Component {
                                     <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
                                     {/* <TableCell>Due By:</TableCell> */}
                                     {/* <TableCell>Added By:</TableCell> */}
-                                    <TableCell>{item.userFirstName}</TableCell>
+                                    <TableCell>{item.clientsFirstName}</TableCell>
                                     {/* <TableCell>Client:</TableCell> */}
                                     <TableCell>{item.clientsFirstName}</TableCell>
                                     <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
@@ -236,7 +236,7 @@ class TaskPage extends Component {
                                     <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
                                     {/* <TableCell>Due By:</TableCell> */}
                                     {/* <TableCell>Added By:</TableCell> */}
-                                    <TableCell>{item.userFirstName}</TableCell>
+                                    <TableCell>{item.clientsFirstName}</TableCell>
                                     {/* <TableCell>Client:</TableCell> */}
                                     <TableCell>{item.clientsFirstName}</TableCell>
                                     <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleClientCheckboxChange(event, item.tasksId, item.clients_id, this.state.tasks.checkbox = event.target.checked)} />
