@@ -23,9 +23,21 @@ router.get('/search/:keyword', rejectUnauthenticated, (req: express.Request, res
     let keyword = req.params.keyword;
 	const queryText: 
 		| string 
-		| null = `SELECT "firstName", "lastName", "phoneNumber", "email" FROM "clients"
-                            WHERE "firstName" LIKE '%${keyword}%'
-                            OR "lastName" LIKE '%${keyword}%'`;
+		| null = `SELECT "firstName", "lastName", "phoneNumber", "email", "id" FROM "clients"
+			WHERE to_tsvector("lastName") @@ to_tsquery('${keyword}')
+			OR to_tsvector("firstName") @@ to_tsquery('${keyword}')
+			OR "firstName" LIKE '%${keyword}%'
+			OR "lastName" LIKE '%${keyword}%'
+			OR "firstName" LIKE '${keyword}%'
+			OR "lastName" LIKE '${keyword}%'
+			OR "firstName" LIKE '%${keyword}'
+			OR "lastName" LIKE '%${keyword}'
+			OR "firstName" LIKE '_${keyword}_'
+			OR "lastName" LIKE '_${keyword}_'
+			OR "firstName" LIKE '${keyword}_'
+			OR "lastName" LIKE '${keyword}_'
+			OR "firstName" LIKE '_${keyword}'
+			OR "lastName" LIKE '_${keyword}';`;
 	pool
 		.query(queryText)
         .then((response) => { res.send(response.rows); })
