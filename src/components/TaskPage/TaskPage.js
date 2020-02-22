@@ -174,7 +174,11 @@ class TaskPage extends Component {
                 <div key={index}>
                     <TableContainer component={Paper} className="container">
                         <Table size="small">
-                            <TableHead className="table-head">
+                            <TableHead>
+                                <TableCell>Task:</TableCell>
+                                <TableCell>Assigned on:</TableCell>
+                            </TableHead>
+                            <TableBody className="table-body">
                                 <TableRow className="table-row">
                                     <TableCell></TableCell>
                                     <TableCell>{item.task}</TableCell>
@@ -189,7 +193,7 @@ class TaskPage extends Component {
                                     <TableCell>{item.clientsFirstName}</TableCell>
                                     <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
                                 </TableRow>
-                            </TableHead>
+                            </TableBody>
                         </Table>
                     </TableContainer>
                 </div>

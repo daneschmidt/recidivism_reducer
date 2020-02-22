@@ -20,6 +20,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
+import CardContent from '@material-ui/core/CardContent';
 // import DeleteIcon from '@material-ui/icons/Delete';
 
 import AddUserModal from '../UserPage/AddUserModal';
@@ -196,60 +197,103 @@ class UserPage extends Component {
         return (
 
             <div>
-                <AddUserModal />
-                <EditPasswordModal />
-                <TableContainer component={Paper} className="container">
-                    <Table size="small">
-                        <TableHead className="table-head">
-                            <TableRow className="table-row">
-                                <TableCell></TableCell>
-                                <TableCell>First Name</TableCell>
-                                <TableCell>Last Name</TableCell>
-                                <TableCell>Phone Number</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Security Level</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
-                                <TableRow key={index}>
-                                    <TableCell align="right">
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    checked={this.state.checkbox === item.id}
-                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
-                                                    color="primary"
-                                                />
-                                            }
-                                        />
+
+                <CardContent>
+                    <TableContainer component={Paper}>
+                        <Table>
+                            <TableHead
+                                style={{ backgroundColor: '#384954', color: '#b6c1cb' }}
+                            >
+                                <TableRow>
+                                    <TableCell style={{ color: '#b6c1cb' }}>
+                                        <strong>First Name</strong>
                                     </TableCell>
-                                    <TableCell>{item.firstName}</TableCell>
-                                    <TableCell>{item.lastName}</TableCell>
-                                    <TableCell>{item.phoneNumber}</TableCell>
-                                    <TableCell>{item.email}</TableCell>
-                                    <TableCell>{item.securityLevel}</TableCell>
+                                    <TableCell style={{ color: '#b6c1cb' }}>
+                                        <strong>Last Name</strong>
+                                    </TableCell>
+                                    <TableCell style={{ color: '#b6c1cb' }}>
+                                        <strong>Phone Number</strong>
+                                    </TableCell>
+                                    <TableCell style={{ color: '#b6c1cb' }}>
+                                        <strong>Email</strong>
+                                    </TableCell>
+                                    <TableCell style={{ color: '#b6c1cb' }}>
+                                        <strong>Security Level</strong>
+                                    </TableCell>
+                                    <TableCell style={{ color: '#b6c1cb' }} align="right">
+                                        <strong>Select User</strong>
+                                    </TableCell>
                                 </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                <div className="edit-button">
-                    <Button
-                        variant="contained"
-                        color="default"
-                        onClick={this.openEditUser}
-                    >
-                        Edit
+                            </TableHead>
+                            <TableBody>
+                                {this.props.store.userCredentials.userCredentials.map((item, index) =>
+                                    <TableRow key={index}>
+                                        <TableCell>{item.firstName}</TableCell>
+                                        <TableCell>{item.lastName}</TableCell>
+                                        <TableCell>{item.phoneNumber}</TableCell>
+                                        <TableCell>{item.email}</TableCell>
+                                        <TableCell>{item.securityLevel}</TableCell>
+                                        <TableCell align="right">
+                                            <FormControlLabel
+                                                control={
+                                                    <Checkbox
+                                                        checked={this.state.checkbox === item.id}
+                                                        onChange={(event) => this.handleCheckboxChange(event, item.id)}
+                                                        color="primary"
+                                                    />
+                                                }
+                                            />
+                                        </TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+
+
+                </CardContent>
+                <Grid container
+                    spacing={3}
+                    direction="column"
+                    justify="flex-start"
+                    alignItems="center">
+                    <Grid item xs={12} sm={6}>
+                        <Button
+                            variant="contained"
+                            color="default"
+                            onClick={this.openEditUser}
+                        >
+                            Edit
                 </Button>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <EditPasswordModal />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <AddUserModal />
+                    </Grid>
+
+                </Grid>
+
+                <div className="edit-button">
+
                     <div className="event-modal">
-                        <Modal open={this.state.setOpen} onClose={this.closeEditUser} className="user-modal">
-                            <div className="modal-input">
+                        <Modal style={{
+                            position: 'absolute',
+                            width: '40%',
+                            color: '#1a262a',
+                            border: '2px solid #f0ad43',
+                            top: '50%',
+                            left: '50%',
+                            height: '40%',
+                            transform: 'translate(-50%, -50%)'
+                        }} open={this.state.setOpen} onClose={this.closeEditUser} >
+                            <div className="modal-content">
                                 <div className="modal-header">
                                     <h2>Update User</h2>
                                 </div>
                                 <div className="event-form">
-                                    <Grid container spacing={2}>
+                                    <Grid container spacing={1}>
                                         <Grid item xs={6}>
                                             <div className="text-input">
                                                 <TextField variant="outlined"
@@ -356,6 +400,7 @@ class UserPage extends Component {
                     </div>
                 </div>
             </div>
+
         );
     }
 }
