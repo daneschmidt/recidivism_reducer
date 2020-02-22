@@ -7,6 +7,12 @@ import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
 import Card from "../Card/Card.js";
 import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 class ClientPage extends Component {
 	state = {
@@ -62,39 +68,49 @@ class ClientPage extends Component {
 	};
 
 	render() {
-		const clientList = this.props.store.client.map((item, index) => {
-			return (
-				<div key={index}>
-					<h3 onClick={event => this.goToProfile(event, item.id)}>
-						{item.firstName} {item.lastName}
-					</h3>
-					<p>
-						phone: {item.phoneNumber}
-					</p>
-					<p>
-						email: {item.email}
-					</p>
-				</div>
-
-			);
-		});
 		return (
-			<GridContainer justify="center">
-				<GridItem xs={12} sm={12} md={9}>
-					<Card>
-						<Paper className="paperPanel" elevation={5}>
-							<h1>{this.state.heading}</h1>
-							<div>
-								<input type="text" onChange={this.onChange('search_string')}></input>
-								<Link to="/clientresults">
-									<button onClick={this.search}>SEARCH</button>
-								</Link>
-							</div>
-							{clientList}
-						</Paper>
-					</Card>
-				</GridItem>
-			</GridContainer>
+			<div>
+				<GridContainer justify="center">
+					<GridItem xs={12} sm={12} md={9}>
+						<Card>
+							<Paper className="paperPanel" elevation={5}>
+								<h1>{this.state.heading}</h1>
+								<div>
+									<input type="text" onChange={this.onChange('search_string')}></input>
+									<Link to="/clientresults">
+										<button onClick={this.search}>SEARCH</button>
+									</Link>
+								</div>
+							</Paper>
+						</Card>
+					</GridItem>
+				</GridContainer>
+
+				<TableContainer component={Paper} className="container">
+					<Table size="large">
+						<TableHead className="table-head">
+							<TableRow className="table-row">
+								<TableCell></TableCell>
+								<TableCell align="left">First&nbsp;Name</TableCell>
+								<TableCell align="left">Last&nbsp;Name</TableCell>
+								<TableCell align="left">Phone&nbsp;Number</TableCell>
+								<TableCell align="left">Email</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{this.props.store.client.map((item, index) =>
+								<TableRow key={index}>
+									<TableCell align="right">{item.firstName}</TableCell>
+									<TableCell align="right">{item.lastName}</TableCell>
+									<TableCell align="right">{item.phoneNumber}</TableCell>
+									<TableCell align="right">{item.email}</TableCell>
+								</TableRow>
+							)}
+						</TableBody>
+					</Table>
+				</TableContainer>
+
+			</div>
 		);
 	}
 }
