@@ -171,25 +171,38 @@ class TaskPage extends Component {
 
         const taskListByAll = this.props.store.getAllTasksReducer.map((item, index) => {
             return (
-                <div key={index}>
+                <div>
+
                     <TableContainer component={Paper} className="container">
                         <Table size="small">
                             <TableHead className="table-head">
                                 <TableRow className="table-row">
                                     <TableCell></TableCell>
-                                    <TableCell>{item.task}</TableCell>
-                                    {/* <TableCell>Task:</TableCell> */}
-                                    <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
-                                    {/* <TableCell>Added On:</TableCell> */}
-                                    <TableCell>{moment(item.dueBy).format('LL')}</TableCell>
-                                    {/* <TableCell>Due By:</TableCell> */}
-                                    {/* <TableCell>Added By:</TableCell> */}
-                                    <TableCell>{item.clientsFirstName}</TableCell>
-                                    {/* <TableCell>Client:</TableCell> */}
-                                    <TableCell>{item.clientsFirstName}</TableCell>
-                                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
+                                    <TableCell>Task</TableCell>
+                                    <TableCell>Assigned On</TableCell>
+                                    <TableCell>Due By</TableCell>
+                                    <TableCell>Client First Name</TableCell>
+                                    <TableCell>Client Last Name</TableCell>
                                 </TableRow>
                             </TableHead>
+                            <TableBody>
+                                {this.props.store.getUserTasksReducer.map((item, index) =>
+                                    <TableRow key={index}>
+                                        <TableCell align="right">
+                                            <FormControlLabel
+                                                control={
+                                                    <Checkbox type="checkbox" checked={item.complete} onChange={(event) => this.handleCheckboxChange(event, item.tasksId, this.state.tasks.checkbox = event.target.checked)} />
+                                                }
+                                            />
+                                        </TableCell>
+                                        <TableCell>{item.task}</TableCell>
+                                        <TableCell>{item.assignedOn}</TableCell>
+                                        <TableCell>{item.dueBy}</TableCell>
+                                        <TableCell>{item.clientsFirstName}</TableCell>
+                                        <TableCell>{item.clientsLastName}</TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody>
                         </Table>
                     </TableContainer>
                 </div>
@@ -290,4 +303,3 @@ class TaskPage extends Component {
 }
 
 export default connect(mapStoreToProps)(TaskPage);
-
