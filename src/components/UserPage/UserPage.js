@@ -197,6 +197,15 @@ class UserPage extends Component {
         return (
 
             <div>
+                <div className="modal-button">
+                    <Button
+                        variant="contained"
+                        color="default"
+                        onClick={this.openEditUser}
+                    >
+                        Edit User
+                         </Button>
+                </div>
                 <CardContent>
                     <TableContainer component={Paper}>
                         <Table>
@@ -253,35 +262,26 @@ class UserPage extends Component {
                 </CardContent>
                 <Grid container
                     spacing={3}
-                    direction="column"
-                    justify="flex-start"
-                    alignItems="center">
-                    <Grid item xs={12} sm={6}>
-                        <Button
-                            variant="contained"
-                            color="default"
-                            onClick={this.openEditUser}
-                        >
-                            Edit
-                </Button>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
+                    align="center">
+
+                    <Grid item xs={4}>
                         <EditPasswordModal />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+
+                    <Grid item xs={4}>
                         <AddUserModal />
                     </Grid>
 
-                </Grid>
+                </Grid >
                 <Modal
                     style={{
                         position: 'absolute',
-                        width: '40%',
+                        width: '45%',
                         color: '#1a262a',
                         border: '2px solid #f0ad43',
                         top: '50%',
                         left: '50%',
-                        height: '40%',
+                        height: '70%',
                         transform: 'translate(-50%, -50%)'
                     }}
                     aria-labelledby='simple-modal-title'
@@ -294,9 +294,15 @@ class UserPage extends Component {
                     >
                         <h4 id='simple-modal-title'>Update User</h4>
 
-                        <Grid container>
 
-                            <Grid item xs={6} sm={6}>
+                        <Grid container
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="flex-start"
+                            spacing={2}>
+
+                            <Grid item xs={3} sm={6}>
 
                                 <TextField
                                     onChange={this.handleInputChange('firstName')}
@@ -332,7 +338,12 @@ class UserPage extends Component {
                                 />
                             </Grid>
 
-                            <Grid item xs={6} sm={6}>
+
+                            <Grid item xs={3} sm={6}>
+                                {/* <div>
+                                    <img src={/images/usericon.png}></img>
+                                </div> */}
+
                                 <h3>Security Level</h3>
                                 <FormControlLabel
                                     control={<Radio color="primary" />}
@@ -375,9 +386,14 @@ class UserPage extends Component {
                                 />
                             </Grid>
 
+                            <Grid container
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="flex-start"
+                                spacing={3}></Grid>
 
-
-                            <Grid item xs={2} sm={2}>
+                            <Grid item xs={3} sm={6}>
                                 <Button
                                     size='small'
                                     style={{
@@ -393,6 +409,9 @@ class UserPage extends Component {
                                 >
                                     Cancel
                                         </Button>
+                            </Grid>
+                            <Grid item xs={3} sm={6}>
+
                                 <Button
                                     size='small'
                                     style={{
@@ -407,6 +426,8 @@ class UserPage extends Component {
                                 >
                                     Update
                                         </Button>
+                            </Grid>
+                            <Grid item xs={3} sm={6}>
                                 <Button
                                     size='small'
                                     style={{
@@ -421,10 +442,10 @@ class UserPage extends Component {
                                 >
                                     Delete
                                         </Button>
+
                             </Grid>
-
-
                         </Grid>
+
                     </div>
                 </Modal>
             </div >
