@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
+import './ProfilePage.css';
 
 class profilePage extends Component {
 	state = {
@@ -20,28 +21,27 @@ class profilePage extends Component {
 		const clientProfile = this.props.store.getProfileReducer.map(
 			(item, index) => {
 				return (
-					<ul key={index}>
-						<li>Frist Name: {item.firstName}</li>
-						<li>Last Name: {item.lastName}</li>
-						<li>Gender: {item.gender}</li>
-						<li>Phone Number: {item.phoneNumber}</li>
-						<li>Email: {item.email}</li>
-						<li>Criminal Record: {item.criminalRecord}</li>
-						<li>Currently Incarcerated: {item.currentlyIncar}</li>
-						<li>Incarceration Length: {item.incarcerationLength}</li>
-						<li>Release Date: {item.releaseDate}</li>
-						<li>D.O.C Number: {item.docNumber}</li>
-						<li>State of Incarceration: {item.stateIncarcerated}</li>
-						<li>Currently On Parole: {item.paroleOnRelease}</li>
-						<li>Parole Officer: {item.agentName}</li>
-						<li>Parole Officer Phone Number: {item.agentPhone}</li>
-						<li>Connections With Reentry Programs: {item.connections}</li>
-						<li>Type Of Business: {item.business}</li>
-						<li>Business Stage: {item.businessStage}</li>
-						<li>Why Did You Attend "Be The Boss": {item.whyAtBeTheBoss}</li>
-						<li>What Do You Hope To Gain By Attending: {item.whatHopeToGain}</li>
-						{/* <li>Active: {item.isActive}</li> */}
-					</ul>
+					<div key={index}>
+						<h1>{item.firstName} {item.lastName}</h1>
+						<p>{item.gender}</p>
+						<p>Phone Number: {item.phoneNumber}</p>
+						<p>Email: {item.email}</p>
+						<p>Criminal Record: {item.criminalRecord}</p>
+						<p>Currently Incarcerated: {item.currentlyIncar}</p>
+						<p>Incarceration Length: {item.incarcerationLength}</p>
+						<p>Release Date: {item.releaseDate}</p>
+						<p>D.O.C Number: {item.docNumber}</p>
+						<p>State of Incarceration: {item.stateIncarcerated}</p>
+						<p>Currently On Parole: {item.paroleOnRelease}</p>
+						<p>Parole Officer: {item.agentName}</p>
+						<p>Parole Officer Phone Number: {item.agentPhone}</p>
+						<p>Connections With Reentry Programs: {item.connections}</p>
+						<p>Type Of Business: {item.business}</p>
+						<p>Business Stage: {item.businessStage}</p>
+						<p>Why Did You Attend "Be The Boss": {item.whyAtBeTheBoss}</p>
+						<p>What Do You Hope To Gain By Attending: {item.whatHopeToGain}</p>
+						<p>Active: {item.isActive}</p>
+					</div>
 				);
 			}
 		);
@@ -55,12 +55,11 @@ class profilePage extends Component {
 		);
 		return (
 			<div>
-
-				<div>
+				<div className="clientInfo">
 					{clientProfile}
 				</div>
-				<h2>Notes</h2>
-				<div>
+				<div className="clientNotes">
+					<h2>Notes</h2>
 					{notesArray}
 				</div>
 				<EditProfilePage />
