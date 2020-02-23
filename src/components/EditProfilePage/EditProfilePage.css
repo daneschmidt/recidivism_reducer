@@ -30,10 +30,9 @@
     
 } 
 
-.modal {
+.modalProfile {
     background-color: lightgray ;
     display: grid;
     grid-template-rows: max-content;
-    height: 75%;
     width: 75%;
 }

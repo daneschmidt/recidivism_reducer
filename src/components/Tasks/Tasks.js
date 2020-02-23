@@ -1,22 +1,23 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
-import Tooltip from "@material-ui/core/Tooltip";
-import IconButton from "@material-ui/core/IconButton";
-import Table from "@material-ui/core/Table";
-import TableRow from "@material-ui/core/TableRow";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
+import { makeStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import Table from '@material-ui/core/Table';
+import TableRow from '@material-ui/core/TableRow';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableContainer from '@material-ui/core/TableContainer';
 // @material-ui/icons
-import Edit from "@material-ui/icons/Edit";
-import Close from "@material-ui/icons/Close";
-import Check from "@material-ui/icons/Check";
+import Edit from '@material-ui/icons/Edit';
+import Close from '@material-ui/icons/Close';
+import Check from '@material-ui/icons/Check';
 // core components
-import styles from "../../assets/jss/material-dashboard-react/components/tasksStyle";
-
+import styles from '../../assets/jss/material-dashboard-react/components/tasksStyle';
 
 const useStyles = makeStyles(styles);
 
@@ -37,65 +38,78 @@ export default function Tasks(props) {
   const tableCellClasses = classnames(classes.tableCell, {
     [classes.tableCellRTL]: rtlActive
   });
+
   return (
-    <Table className={classes.table}>
-      <TableBody>
-        {tasksIndexes.map(value => (
-          <TableRow key={value} className={classes.tableRow}>
-            <TableCell className={tableCellClasses}>
-              <Checkbox
-                checked={checked.indexOf(value) !== -1}
-                tabIndex={-1}
-                onClick={() => handleToggle(value)}
-                checkedIcon={<Check className={classes.checkedIcon} />}
-                icon={<Check className={classes.uncheckedIcon} />}
-                classes={{
-                  checked: classes.checked,
-                  root: classes.root
-                }}
-              />
-            </TableCell>
-            <TableCell className={tableCellClasses}>{tasks[value]}</TableCell>
-            <TableCell className={classes.tableActions}>
-              <Tooltip
-                id="tooltip-top"
-                title="Edit Task"
-                placement="top"
-                classes={{ tooltip: classes.tooltip }}
-              >
-                <IconButton
-                  aria-label="Edit"
-                  className={classes.tableActionButton}
-                >
-                  <Edit
-                    className={
-                      classes.tableActionButtonIcon + " " + classes.edit
-                    }
-                  />
-                </IconButton>
-              </Tooltip>
-              <Tooltip
-                id="tooltip-top-start"
-                title="Remove"
-                placement="top"
-                classes={{ tooltip: classes.tooltip }}
-              >
-                <IconButton
-                  aria-label="Close"
-                  className={classes.tableActionButton}
-                >
-                  <Close
-                    className={
-                      classes.tableActionButtonIcon + " " + classes.close
-                    }
-                  />
-                </IconButton>
-              </Tooltip>
-            </TableCell>
+    <TableContainer>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <TableCell>1</TableCell>
+            <TableCell>1</TableCell>
+            <TableCell>1</TableCell>
+            <TableCell>1</TableCell>
+            <TableCell>1</TableCell>
+            <TableCell>1</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHead>
+        <TableBody>
+          {tasksIndexes.map(value => (
+            <TableRow key={value} className={classes.tableRow}>
+              <TableCell className={tableCellClasses}>
+                <Checkbox
+                  checked={checked.indexOf(value) !== -1}
+                  tabIndex={-1}
+                  onClick={() => handleToggle(value)}
+                  checkedIcon={<Check className={classes.checkedIcon} />}
+                  icon={<Check className={classes.uncheckedIcon} />}
+                  classes={{
+                    checked: classes.checked,
+                    root: classes.root
+                  }}
+                />
+              </TableCell>
+              <TableCell className={tableCellClasses}>{tasks[value]}</TableCell>
+              <TableCell className={classes.tableActions}>
+                <Tooltip
+                  id='tooltip-top'
+                  title='Edit Task'
+                  placement='top'
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <IconButton
+                    aria-label='Edit'
+                    className={classes.tableActionButton}
+                  >
+                    <Edit
+                      className={
+                        classes.tableActionButtonIcon + ' ' + classes.edit
+                      }
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip
+                  id='tooltip-top-start'
+                  title='Remove'
+                  placement='top'
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <IconButton
+                    aria-label='Close'
+                    className={classes.tableActionButton}
+                  >
+                    <Close
+                      className={
+                        classes.tableActionButtonIcon + ' ' + classes.close
+                      }
+                    />
+                  </IconButton>
+                </Tooltip>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
 

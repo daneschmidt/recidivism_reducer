@@ -43,7 +43,7 @@ class ModalTemplate extends Component {
                     <Modal
                         open={this.state.setOpen}
                         onClose={this.closeModal}>
-                        <div className="modal">
+                        <div className="modalPrime">
                             <h2>Modal</h2>
                         </div>
                     </Modal>

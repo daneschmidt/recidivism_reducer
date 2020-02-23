@@ -3,7 +3,7 @@
   text-align: right;
 }
 
-.modal {
+.modalAddTask {
     position: absolute;
     height: auto;
     /* display: inline-block; */
@@ -16,6 +16,21 @@
     padding: 5px;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+}
+
+.modal {
+  position: absolute;
+  height: auto;
+  /* display: inline-block; */
+  outline: none;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  background-color: rgb(178, 178, 194);
+  border: 2px solid #000;
+  padding: 5px;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
 .task-button {
