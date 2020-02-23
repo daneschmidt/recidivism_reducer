@@ -107,7 +107,7 @@ class AddTaskModal extends Component {
                     <Modal
                         open={this.state.setOpen}
                         onClose={this.closeAddTask}>
-                        <div className="modal">
+                        <div className="modalAddTask">
                             <GridContainer justify="center">
 
                                 {/* <GridItem xs={12} sm={12} md={8}> */}

@@ -3,7 +3,7 @@
   text-align: right;
 }
 
-.modal {
+.modalAddTask {
     position: absolute;
     height: auto;
     /* display: inline-block; */
