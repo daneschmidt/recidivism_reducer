@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class LoginPage extends Component {
   state = {
@@ -38,38 +41,70 @@ class LoginPage extends Component {
             {this.props.store.errors.loginMessage}
           </h2>
         )}
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
-          <div>
-            <label htmlFor='username'>
-              Username:
-              <input
+        <form
+          onSubmit={this.login}
+          style={{
+            backgroundColor: '#b6c1cb',
+            color: '#1a262a',
+            padding: '20px'
+          }}
+        >
+          <Paper
+            style={{
+              backgroundColor: '#fefefe',
+              color: '#1a262a',
+              padding: '20px',
+              width: '105%'
+            }}
+          >
+            <h1>Login</h1>
+            <div>
+              <TextField
                 type='text'
                 name='username'
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+                style={{
+                  marginLeft: '150px',
+                  marginTop: '30px',
+                  marginBottom: '20px',
+                  flex: '1'
+                }}
+                variant='outlined'
+                size='small'
+                className='inputs'
+                label='User Name'
+                required
               />
-            </label>
-          </div>
-          <div>
-            <label htmlFor='password'>
-              Password:
-              <input
+            </div>
+            <div>
+              <TextField
                 type='password'
                 name='password'
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
+                style={{ marginLeft: '150px', marginTop: '30px', flex: '1' }}
+                variant='outlined'
+                size='small'
+                className='inputs'
+                label='Password'
+                required
               />
-            </label>
-          </div>
-          <div>
-            <input
-              className='log-in'
-              type='submit'
-              name='submit'
-              value='Log In'
-            />
-          </div>
+            </div>
+            <div>
+              <Button
+                className='log-in'
+                type='submit'
+                name='submit'
+                value='Log In'
+                style={{ marginLeft: '200px', marginTop: '60px', flex: '1' }}
+                variant='contained'
+                color='primary'
+              >
+                Login
+              </Button>
+            </div>
+          </Paper>
         </form>
       </div>
     );

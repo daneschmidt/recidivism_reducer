@@ -10,6 +10,16 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+import CardContent from '@material-ui/core/CardContent';
+
 class ClientPage extends Component {
   state = {
     heading: 'Clients',
@@ -65,13 +75,26 @@ class ClientPage extends Component {
   render() {
     const clientList = this.props.store.client.map((item, index) => {
       return (
-        <div key={index}>
-          <h3 onClick={event => this.goToProfile(event, item.id)}>
+        <TableRow key={index} hover style={{ backgroundColor: '#fefefe' }}>
+          <TableCell onClick={event => this.goToProfile(event, item.id)}>
             {item.firstName} {item.lastName}
-          </h3>
-          <p>phone: {item.phoneNumber}</p>
-          <p>email: {item.email}</p>
-        </div>
+          </TableCell>
+          <TableCell>{item.phoneNumber}</TableCell>
+          <TableCell>{item.email}</TableCell>
+          <TableCell>
+            <IconButton
+              aria-label='info'
+              size='small'
+              // style={{ backgroundColor: '#f0ad43', color: '#384954' }}
+              color='primary'
+              onClick={event => this.goToProfile(event, item.id)}
+            >
+              <InfoIcon
+              //  fontSize='small'
+              />
+            </IconButton>
+          </TableCell>
+        </TableRow>
       );
     });
     return (
@@ -79,14 +102,18 @@ class ClientPage extends Component {
         <GridItem xs={12} sm={12} md={9}>
           <Card>
             <Paper
-              className='paperPanel'
               elevation={5}
-              style={{ backgroundColor: '#86949f', color: '#1a262a' }}
+              style={{
+                backgroundColor: '#86949f',
+                color: '#1a262a',
+                padding: '30px'
+              }}
             >
-              <h1>{this.state.heading}</h1>
-              <div>
+              <CardContent>
+                <h2>{this.state.heading}</h2>
+
                 <TextField
-                  style={{ margin: '13px' }}
+                  style={{ marginBottom: '10px' }}
                   variant='outlined'
                   size='small'
                   type='text'
@@ -95,8 +122,10 @@ class ClientPage extends Component {
                 />
                 <Link to='/clientresults'>
                   <Button
+                    variant='contained'
                     style={{
-                      marginTop: '15px',
+                      marginBottom: '10px',
+                      marginLeft: '15px',
                       backgroundColor: '#f0ad43',
                       color: '#1a262a'
                     }}
@@ -106,8 +135,31 @@ class ClientPage extends Component {
                     SEARCH
                   </Button>
                 </Link>
-              </div>
-              {clientList}
+              </CardContent>
+
+              <TableContainer component={Paper}>
+                <Table>
+                  <TableHead
+                    style={{ backgroundColor: '#384954', color: '#b6c1cb' }}
+                  >
+                    <TableRow>
+                      <TableCell style={{ color: '#b6c1cb' }}>
+                        <strong>Name</strong>
+                      </TableCell>
+                      <TableCell style={{ color: '#b6c1cb' }}>
+                        <strong>Phone</strong>
+                      </TableCell>
+                      <TableCell style={{ color: '#b6c1cb' }}>
+                        <strong>Email</strong>
+                      </TableCell>
+                      <TableCell style={{ color: '#b6c1cb' }}>
+                        <strong>Details</strong>
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>{clientList}</TableBody>
+                </Table>
+              </TableContainer>
             </Paper>
           </Card>
         </GridItem>

@@ -15,6 +15,7 @@ import GridContainer from '../Grid/GridContainer.js';
 // import SnackbarContent from "../Snackbar/SnackbarContent";
 // import Snackbar from "../Snackbar/Snackbar";
 // import Card from "../Card/Card.js";
+// import CardContent from '@material-ui/core/CardContent';
 // import CardHeader from "../Card/CardHeader.js";
 // import CardBody from "../Card/CardBody.js";
 // import CardFooter from "../Card/CardFooter.js";
@@ -49,16 +50,16 @@ const useStyles = makeStyles(styles);
 export default function DashboardPage() {
   const classes = useStyles();
   return (
-    <GridContainer justify='center'>
-      <GridItem xs={12} sm={12} md={2}>
+    <GridContainer style={{ display: 'flex' }} justify='center'>
+      <GridItem style={{ flex: '1' }} xs={12} sm={12} md={2}>
         <ClientPage />
       </GridItem>
 
-      <GridItem xs={12} sm={12} md={6}>
+      <GridItem style={{ flex: '2' }} xs={12} sm={12} md={6}>
         <TaskPage />
       </GridItem>
 
-      <GridItem xs={12} sm={12} md={4}>
+      <GridItem style={{ flex: '2' }} xs={12} sm={12} md={4}>
         <Calendar />
       </GridItem>
 

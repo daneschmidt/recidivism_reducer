@@ -77,14 +77,22 @@ VALUES
     ('2017-03-07', 'Third Competition', 'Abigail Byrne', '10000', 'Nitro Cleaning', 'very detailed, very well organized'),
     ('2017-09-19', 'Fourth Competition', 'Emma Davies', '10000', 'Capitol Marketing', 'great ideas, really motivated'),
     ('2018-03-05', 'Fifth Competition', 'Emily Gagnon', '10000', 'RiverView Painting', 'great business model'),
-    ('2018-09-14', 'Sixth Competition', 'Richard Jones', '10000', 'React Roofing', 'knows all the steps needed to be sucessful'),
-    ('2019-03-11', 'Seventh Competition', 'Kyle Lee', '10000', 'Tsunami Electrical', 'worked well with other participants'),
-    ('2019-09-09', 'Eighth Competition', 'Mason Miller', '10000', 'Salon Contour', 'amazing talent');
+    ('2018-09-14', 'Sixth Competition', 'Richard Jones', '10000', 'React Roofing', 'knows all the steps needed to be sucessful');
 
 INSERT INTO "clients_competitions"
     ("clients_id", "competitions_id", "status", "award", "grantAmount", "notes")
 VALUES
     (1, 1, '', 'Congrats', 10000, 'You are awesome!');
+
+INSERT INTO "participants"
+    ("id", "parName", "status")
+VALUES
+    ('31658e60-55a7-11ea-8c86-8bbb1ccfc341','Josh Ganote','step1'),
+    ('9bb98420-55a6-11ea-a27d-e30923a9ad90','Luke Ma','step1'),
+    ('28e6ed60-55ac-11ea-977a-a3520fa164db','Allen Lucke','step1'),
+    ('2eb85670-55ac-11ea-977a-a3520fa164db','Travis Johnston','step1'),
+    ('34837df0-55ac-11ea-977a-a3520fa164db','Lucas Pherigo','step1'),
+    ('64d99b60-55ac-11ea-a702-eb36189ca139','Dane Schmidt','step1');
 
 INSERT INTO "links"
     ("clients_id", "url")

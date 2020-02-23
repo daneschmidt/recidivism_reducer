@@ -16,6 +16,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Swal from 'sweetalert2';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import InfoIcon from '@material-ui/icons/Info';
 
 class CompetitionList extends Component {
   state = {
@@ -240,30 +243,37 @@ class CompetitionList extends Component {
     const competitionsArr = this.props.store.competitions.map((item, index) => {
       return (
         <TableBody key={index} style={{ backgroundColor: '#fefefe' }}>
-          <TableRow>
+          <TableRow hover>
             <TableCell>{item.name}</TableCell>
             <TableCell>{item.dateOf}</TableCell>
             <TableCell>{item.winnerName}</TableCell>
             <TableCell>
-              <Button
+              <IconButton
+                aria-label='info'
                 size='small'
-                style={{ backgroundColor: '#f0ad43', color: 'black' }}
+                // style={{ backgroundColor: '#f0ad43', color: '#384954' }}
+                color='primary'
                 onClick={event => this.getDetails(event, item, item.id)}
               >
-                Details
+                <InfoIcon
+                //  fontSize='small'
+                />
                 <Details />
-              </Button>
+              </IconButton>
             </TableCell>
             <TableCell>
-              <Button
+              <IconButton
+                aria-label='delete'
                 size='small'
-                color='#cb3e4b'
-                style={{ color: 'black', backgroundColor: '#cb3e4b' }}
+                color='secondary'
+                // style={{ color: '#384954', backgroundColor: '#cb3e4b' }}
                 onClick={event => this.delete(event, item.id)}
               >
-                Delete
+                <DeleteIcon
+                // fontSize='small'
+                />
                 <Details />
-              </Button>
+              </IconButton>
             </TableCell>
           </TableRow>
         </TableBody>
@@ -293,6 +303,7 @@ class CompetitionList extends Component {
               display: 'inline-block',
               color: '#1a262a'
             }}
+            variant='contained'
             type='button'
             onClick={this.openModal}
             size='small'

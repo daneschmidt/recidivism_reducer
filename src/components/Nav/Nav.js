@@ -21,11 +21,7 @@ const Nav = props => {
       <Link to='/home'>
         <h2 className='nav-title'>Determination Inc. Community Tracker</h2>
       </Link>
-      <div className='nav-left'>
-        <Link className='nav-link' to='/betheboss'>
-          Be The Boss
-        </Link>
-      </div>
+      <div className='nav-right'></div>
       <div className='nav-right'>
         <Link className='nav-link' to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
@@ -36,8 +32,11 @@ const Nav = props => {
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (
           <>
+            <Link className='nav-link' to='/betheboss'>
+              Be The Boss
+            </Link>
             <Link className='nav-link' to='/clientpage'>
-              Client Page
+              Clients
             </Link>
             <Link className='nav-link' to='/calendar'>
               Calendar
@@ -46,14 +45,14 @@ const Nav = props => {
               Competitions
             </Link>
             <Link className='nav-link' to='/taskpage'>
-              Task Page
+              Tasks
             </Link>
             <Link className='nav-link' to='/userpage'>
-              User Page
+              Users
             </Link>
-            <Link className='nav-link' to='/surveypage'>
-              Survey Page
-            </Link>
+            {/* <Link className='nav-link' to='/surveypage'>
+              Surveys
+            </Link> */}
             <LogOutButton className='nav-link' />
           </>
         )}
