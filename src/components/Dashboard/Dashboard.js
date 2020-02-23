@@ -32,18 +32,17 @@ import Grid from '@material-ui/core/Grid';
 
 
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }),
-);
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    backgroundColor: blueGrey[200],
+  },
+}));
 
 export default function DashboardPage() {
   const classes = useStyles();
@@ -56,8 +55,8 @@ export default function DashboardPage() {
         alignItems="center">
 
         <Grid item xs={6} sm={3}>
-          <Link to='/calendar'>
 
+          <Link to='/calendar'>
             <DateRangeIcon
               style={{
                 fontSize: 200,
