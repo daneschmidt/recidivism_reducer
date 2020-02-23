@@ -251,7 +251,7 @@ class EditProfilePage extends Component {
 						width="100%"
 						open={this.state.setOpen}
 						onClose={this.handleSubmit}>
-						<div className="modal">
+						<div className="modalProfile">
 							<h2>Update Client</h2>
 							<Grid container spacing={10}
 								direction="row"
