@@ -28,8 +28,6 @@ class EventModal extends Component {
         setOpen: false,
         calendarEvents:
         {
-            eventDate: '',
-            endDate: '',
             eventTitle: '',
             notes: '',
             location: '',
@@ -40,9 +38,6 @@ class EventModal extends Component {
             //startTime: moment().format('h:mma'),
 
             // endTime: moment().format('h:mma'),
-            eventTitle: '',
-            notes: '',
-            location: '',
         }
     }
 
