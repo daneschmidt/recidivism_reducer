@@ -200,9 +200,6 @@ class UserPage extends Component {
         return (
 
             <div>
-                <div className="modal-button">
-
-                </div>
                 <GridContainer justify='center'>
                     <GridItem xs={12} sm={12} md={11}>
                         <Card>
@@ -224,7 +221,6 @@ class UserPage extends Component {
                          </Button>
 
                                 </CardContent>
-
                                 <TableContainer component={Paper}>
                                     <Table>
                                         <TableHead
@@ -297,12 +293,12 @@ class UserPage extends Component {
                 <Modal
                     style={{
                         position: 'absolute',
-                        width: '50%',
+                        width: '70%',
                         color: '#1a262a',
                         border: '2px solid #f0ad43',
                         top: '50%',
                         left: '50%',
-                        height: '50%',
+                        height: '70%',
                         transform: 'translate(-50%, -50%)'
                     }}
                     aria-labelledby='simple-modal-title'
