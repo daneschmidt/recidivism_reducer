@@ -30,11 +30,19 @@ import CardContent from '@material-ui/core/CardContent';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+import ClientPage from '../ClientPage/ClientPage'
+
 
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    minWidth: 275,
+    maxWidth: 800
+  },
+  root2: {
+    minWidth: 275,
+    maxWidth: 800,
+    maxHeight: 400,
   },
   paper: {
     padding: theme.spacing(2),
@@ -47,75 +55,101 @@ const useStyles = makeStyles(theme => ({
 export default function DashboardPage() {
   const classes = useStyles();
   return (
-    <div>
-      <Grid
-        container
-        spacing={3}
-        direction="row"
-        alignItems="center">
+    <div align="center">
+      <Card className={classes.root} align="center">
+        <CardContent>
+          <Grid
+            container
+            spacing={3}
+            direction="row"
+            alignItems="center">
 
-        <Grid item xs={6} sm={3}>
+            <Grid item xs={6} sm={3}>
 
-          <Link to='/calendar'>
-            <DateRangeIcon
-              style={{
-                fontSize: 200,
-                color: blueGrey[900],
-              }}
-            />
-          </Link>
-          <h3 align="center">Calendar</h3>
-        </Grid>
+              <Link to='/calendar'>
+                <DateRangeIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[900],
+                  }}
+                />
+              </Link>
+              <h3 align="center">Calendar</h3>
+            </Grid>
 
-        <Grid item xs={6} sm={3}>
-          <Link to='/taskpage'>
-            <DoneAllIcon
-              style={{
-                fontSize: 200,
-                color: blueGrey[900]
-              }}
-            />
-          </Link>
-          <h3 align="center">Tasks</h3>
-        </Grid>
+            <Grid item xs={6} sm={3}>
+              <Link to='/taskpage'>
+                <DoneAllIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[900]
+                  }}
+                />
+              </Link>
+              <h3 align="center">Tasks</h3>
+            </Grid>
 
-        <Grid item xs={6} sm={3}>
-          <Link to='/userpage'>
-            <FaceIcon
-              style={{
-                fontSize: 200,
-                color: blueGrey[900]
-              }}
-            />
-          </Link>
-          <h3 align="center">Users</h3>
-        </Grid>
+            <Grid item xs={6} sm={3}>
+              <Link to='/userpage'>
+                <FaceIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[900]
+                  }}
+                />
+              </Link>
+              <h3 align="center">Users</h3>
+            </Grid>
 
-        <Grid item xs={6} sm={3}>
-          <Link to='/clientpage'>
-            <GroupIcon
-              style={{
-                fontSize: 200,
-                color: blueGrey[900]
-              }}
-            />
-          </Link>
-          <h3 align="center">Clients</h3>
-        </Grid>
+            {/* <Grid item xs={6} sm={3}>
+              <Link to='/clientpage'>
+                <GroupIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[900]
+                  }}
+                />
+              </Link>
+              <h3 align="center">Clients</h3>
+            </Grid> */}
 
-        <Grid item xs={6} sm={3}>
-          <Link to='/betheboss'>
-            <EmojiPeopleIcon
-              style={{
-                fontSize: 200,
-                color: blueGrey[900]
-              }}
-            />
-          </Link>
-          <h3 align="center">Be The Boss</h3>
-        </Grid>
+            <Grid item xs={6} sm={3}>
+              <Link to='/betheboss'>
+                <EmojiPeopleIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[900]
+                  }}
+                />
+              </Link>
+              <h3 align="center">Be The Boss</h3>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
 
-      </Grid>
+
+      <Card className={classes.root2} align="left">
+        <CardContent>
+          <Grid
+            container
+            spacing={12}
+            direction="row"
+            alignItems="center">
+
+            <Grid item xs={12} sm={12}>
+
+              <ClientPage />
+
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+
+
+
+
+
     </div >
   );
 }
