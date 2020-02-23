@@ -33,6 +33,9 @@ import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
 import Card from "../Card/Card.js";
 
+import FaceIcon from '@material-ui/icons/Face';
+import { blueGrey } from '@material-ui/core/colors';
+
 // CSS
 import '../UserPage/UserPage.css'
 
@@ -294,12 +297,12 @@ class UserPage extends Component {
                 <Modal
                     style={{
                         position: 'absolute',
-                        width: '45%',
+                        width: '50%',
                         color: '#1a262a',
                         border: '2px solid #f0ad43',
                         top: '50%',
                         left: '50%',
-                        height: '70%',
+                        height: '50%',
                         transform: 'translate(-50%, -50%)'
                     }}
                     aria-labelledby='simple-modal-title'
@@ -358,9 +361,12 @@ class UserPage extends Component {
 
 
                             <Grid item xs={3} sm={6}>
-                                {/* <div>
-                                    <img src={/images/usericon.png}></img>
-                                </div> */}
+                                <FaceIcon
+                                    style={{
+                                        fontSize: 128,
+                                        color: blueGrey[900]
+                                    }}
+                                />
 
                                 <h3>Security Level</h3>
                                 <FormControlLabel

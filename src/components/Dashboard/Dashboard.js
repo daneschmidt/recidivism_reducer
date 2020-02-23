@@ -47,10 +47,25 @@ import CompetitionPage from '../CompetitionPage/CompetitionPage';
 
 import { Link } from 'react-router-dom';
 
-import calIcon from '../Dashboard/images/calIcon.png';
-import taskIcon from '../Dashboard/images/taskIcon.png';
-import adminIcon from '../Dashboard/images/adminIcon.png';
-import clientsIcon from '../Dashboard/images/clientsIcon.png';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import GroupIcon from '@material-ui/icons/Group';
+import FaceIcon from '@material-ui/icons/Face';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+
+
+
+
+
+
+
+
+
+
+import { blueGrey } from '@material-ui/core/colors';
+
+
+
 
 const useStyles = makeStyles(styles);
 
@@ -66,30 +81,63 @@ export default function DashboardPage() {
 
       <GridItem style={{ flex: '2' }} xs={4} sm={4} md={4}>
         <Link to='/calendar'>
-          <h2>Calendar</h2>
-          <img src={calIcon} alt="Cal Icon" />
+
+          <DateRangeIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
         </Link>
+        <h3 align="center">Calendar</h3>
       </GridItem>
 
       <GridItem style={{ flex: '3' }} xs={4} sm={4} md={4}>
         <Link to='/taskpage'>
-          <h2>Tasks</h2>
-          <img src={taskIcon} alt="Task Icon" />
+          <DoneAllIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
         </Link>
+        <h3 align="center">Tasks</h3>
       </GridItem>
 
       <GridItem style={{ flex: '4' }} xs={4} sm={4} md={4}>
         <Link to='/userpage'>
-          <h2>Users</h2>
-          <img src={adminIcon} alt="Admin Icon" />
+          <FaceIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
         </Link>
+        <h3 align="center">Users</h3>
       </GridItem>
 
       <GridItem style={{ flex: '4' }} xs={4} sm={4} md={4}>
         <Link to='/clientpage'>
-          <h2>Clients</h2>
-          <img src={clientsIcon} alt="Clients Icon" />
+          <GroupIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
         </Link>
+        <h3 align="center">Clients</h3>
+      </GridItem>
+
+      <GridItem style={{ flex: '4' }} xs={4} sm={4} md={4}>
+        <Link to='/betheboss'>
+          <EmojiPeopleIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
+        </Link>
+        <h3 align="center">Be The Boss</h3>
       </GridItem>
 
       {/* <GridItem style={{ flex: '1' }} xs={12} sm={12} md={12}>
