@@ -81,7 +81,7 @@ class BeTheBoss extends Component {
             <CardContent className='paperPanel' elevation={5}>
               <Paper style={{ backgroundColor: '#fefefe', color: '#1a262a' }}>
                 <h1 className='beTheBoss' style={{ padding: '10px' }}>
-                  Hello
+                  HELLO THERE
                 </h1>
                 <h2 className='beTheBoss' style={{ padding: '10px' }}>
                   Welcome to Be the Boss Workshop!

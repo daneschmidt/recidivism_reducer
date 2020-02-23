@@ -45,27 +45,108 @@ import Calendar from '../Calendar/CalendarHome/Calendar.js';
 import ClientPage from '../ClientPage/ClientPage.js';
 import CompetitionPage from '../CompetitionPage/CompetitionPage';
 
+import { Link } from 'react-router-dom';
+
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import GroupIcon from '@material-ui/icons/Group';
+import FaceIcon from '@material-ui/icons/Face';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+
+
+
+
+
+
+
+
+
+
+import { blueGrey } from '@material-ui/core/colors';
+
+
+
+
 const useStyles = makeStyles(styles);
 
 export default function DashboardPage() {
   const classes = useStyles();
   return (
     <GridContainer style={{ display: 'flex' }} justify='center'>
-      <GridItem style={{ flex: '1' }} xs={12} sm={12} md={2}>
-        <ClientPage />
-      </GridItem>
 
-      <GridItem style={{ flex: '2' }} xs={12} sm={12} md={6}>
+
+      {/* <GridItem style={{ flex: '2' }} xs={12} sm={12} md={8}>
         <TaskPage />
+      </GridItem> */}
+
+      <GridItem style={{ flex: '2' }} xs={4} sm={4} md={4}>
+        <Link to='/calendar'>
+
+          <DateRangeIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
+        </Link>
+        <h3 align="center">Calendar</h3>
       </GridItem>
 
-      <GridItem style={{ flex: '2' }} xs={12} sm={12} md={4}>
-        <Calendar />
+      <GridItem style={{ flex: '3' }} xs={4} sm={4} md={4}>
+        <Link to='/taskpage'>
+          <DoneAllIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
+        </Link>
+        <h3 align="center">Tasks</h3>
       </GridItem>
 
-      <GridItem xs={12} sm={12} md={8}>
+      <GridItem style={{ flex: '4' }} xs={4} sm={4} md={4}>
+        <Link to='/userpage'>
+          <FaceIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
+        </Link>
+        <h3 align="center">Users</h3>
+      </GridItem>
+
+      <GridItem style={{ flex: '4' }} xs={4} sm={4} md={4}>
+        <Link to='/clientpage'>
+          <GroupIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
+        </Link>
+        <h3 align="center">Clients</h3>
+      </GridItem>
+
+      <GridItem style={{ flex: '4' }} xs={4} sm={4} md={4}>
+        <Link to='/betheboss'>
+          <EmojiPeopleIcon
+            style={{
+              fontSize: 200,
+              color: blueGrey[900]
+            }}
+          />
+        </Link>
+        <h3 align="center">Be The Boss</h3>
+      </GridItem>
+
+      {/* <GridItem style={{ flex: '1' }} xs={12} sm={12} md={12}>
+        <ClientPage />
+      </GridItem> */}
+
+      {/* <GridItem xs={12} sm={12} md={8}>
         <CompetitionPage />
-      </GridItem>
+      </GridItem> */}
 
       {/* <GridItem xs={12} sm={12} md={4}>
                 <Card chart>
