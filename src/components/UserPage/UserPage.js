@@ -198,68 +198,86 @@ class UserPage extends Component {
 
             <div>
                 <div className="modal-button">
-                    <Button
-                        variant="contained"
-                        color="default"
-                        onClick={this.openEditUser}
-                    >
-                        Edit User
-                         </Button>
+
                 </div>
-                <CardContent>
-                    <TableContainer component={Paper}>
-                        <Table>
-                            <TableHead
-                                style={{ backgroundColor: '#384954', color: '#b6c1cb' }}
+                <GridContainer justify='center'>
+                    <GridItem xs={12} sm={12} md={11}>
+                        <Card>
+                            <Paper
+                                elevation={5}
+                                style={{
+                                    backgroundColor: '#86949f',
+                                    color: '#1a262a',
+                                    padding: '30px'
+                                }}
                             >
-                                <TableRow>
-                                    <TableCell style={{ color: '#b6c1cb' }}>
-                                        <strong>First Name</strong>
-                                    </TableCell>
-                                    <TableCell style={{ color: '#b6c1cb' }}>
-                                        <strong>Last Name</strong>
-                                    </TableCell>
-                                    <TableCell style={{ color: '#b6c1cb' }}>
-                                        <strong>Phone Number</strong>
-                                    </TableCell>
-                                    <TableCell style={{ color: '#b6c1cb' }}>
-                                        <strong>Email</strong>
-                                    </TableCell>
-                                    <TableCell style={{ color: '#b6c1cb' }}>
-                                        <strong>Security Level</strong>
-                                    </TableCell>
-                                    <TableCell style={{ color: '#b6c1cb' }} align="right">
-                                        <strong>Select User</strong>
-                                    </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {this.props.store.userCredentials.userCredentials.map((item, index) =>
-                                    <TableRow key={index}>
-                                        <TableCell>{item.firstName}</TableCell>
-                                        <TableCell>{item.lastName}</TableCell>
-                                        <TableCell>{item.phoneNumber}</TableCell>
-                                        <TableCell>{item.email}</TableCell>
-                                        <TableCell>{item.securityLevel}</TableCell>
-                                        <TableCell align="right">
-                                            <FormControlLabel
-                                                control={
-                                                    <Checkbox
-                                                        checked={this.state.checkbox === item.id}
-                                                        onChange={(event) => this.handleCheckboxChange(event, item.id)}
-                                                        color="primary"
-                                                    />
-                                                }
-                                            />
-                                        </TableCell>
-                                    </TableRow>
-                                )}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                                <CardContent>
+                                    <Button
+                                        variant="contained"
+                                        color="default"
+                                        onClick={this.openEditUser}
+                                    >
+                                        Edit User
+                         </Button>
+
+                                </CardContent>
+
+                                <TableContainer component={Paper}>
+                                    <Table>
+                                        <TableHead
+                                            style={{ backgroundColor: '#384954', color: '#b6c1cb' }}
+                                        >
+                                            <TableRow>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>First Name</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>Last Name</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>Phone Number</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>Email</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>Security Level</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }} align="right">
+                                                    <strong>Select User</strong>
+                                                </TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
+                                                <TableRow key={index}>
+                                                    <TableCell>{item.firstName}</TableCell>
+                                                    <TableCell>{item.lastName}</TableCell>
+                                                    <TableCell>{item.phoneNumber}</TableCell>
+                                                    <TableCell>{item.email}</TableCell>
+                                                    <TableCell>{item.securityLevel}</TableCell>
+                                                    <TableCell align="right">
+                                                        <FormControlLabel
+                                                            control={
+                                                                <Checkbox
+                                                                    checked={this.state.checkbox === item.id}
+                                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
+                                                                    color="primary"
+                                                                />
+                                                            }
+                                                        />
+                                                    </TableCell>
+                                                </TableRow>
+                                            )}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            </Paper>
+                        </Card>
+                    </GridItem>
+                </GridContainer>
 
 
-                </CardContent>
                 <Grid container
                     spacing={3}
                     align="center">

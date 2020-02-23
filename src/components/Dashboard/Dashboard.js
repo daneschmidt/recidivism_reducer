@@ -45,27 +45,60 @@ import Calendar from '../Calendar/CalendarHome/Calendar.js';
 import ClientPage from '../ClientPage/ClientPage.js';
 import CompetitionPage from '../CompetitionPage/CompetitionPage';
 
+import { Link } from 'react-router-dom';
+
+import calIcon from '../Dashboard/images/calIcon.png';
+import taskIcon from '../Dashboard/images/taskIcon.png';
+import adminIcon from '../Dashboard/images/adminIcon.png';
+import clientsIcon from '../Dashboard/images/clientsIcon.png';
+
 const useStyles = makeStyles(styles);
 
 export default function DashboardPage() {
   const classes = useStyles();
   return (
     <GridContainer style={{ display: 'flex' }} justify='center'>
-      <GridItem style={{ flex: '1' }} xs={12} sm={12} md={2}>
-        <ClientPage />
-      </GridItem>
 
-      <GridItem style={{ flex: '2' }} xs={12} sm={12} md={6}>
+
+      {/* <GridItem style={{ flex: '2' }} xs={12} sm={12} md={8}>
         <TaskPage />
+      </GridItem> */}
+
+      <GridItem style={{ flex: '2' }} xs={4} sm={4} md={4}>
+        <Link to='/calendar'>
+          <h2>Calendar</h2>
+          <img src={calIcon} alt="Cal Icon" />
+        </Link>
       </GridItem>
 
-      <GridItem style={{ flex: '2' }} xs={12} sm={12} md={4}>
-        <Calendar />
+      <GridItem style={{ flex: '3' }} xs={4} sm={4} md={4}>
+        <Link to='/taskpage'>
+          <h2>Tasks</h2>
+          <img src={taskIcon} alt="Task Icon" />
+        </Link>
       </GridItem>
 
-      <GridItem xs={12} sm={12} md={8}>
+      <GridItem style={{ flex: '4' }} xs={4} sm={4} md={4}>
+        <Link to='/userpage'>
+          <h2>Users</h2>
+          <img src={adminIcon} alt="Admin Icon" />
+        </Link>
+      </GridItem>
+
+      <GridItem style={{ flex: '4' }} xs={4} sm={4} md={4}>
+        <Link to='/clientpage'>
+          <h2>Clients</h2>
+          <img src={clientsIcon} alt="Clients Icon" />
+        </Link>
+      </GridItem>
+
+      {/* <GridItem style={{ flex: '1' }} xs={12} sm={12} md={12}>
+        <ClientPage />
+      </GridItem> */}
+
+      {/* <GridItem xs={12} sm={12} md={8}>
         <CompetitionPage />
-      </GridItem>
+      </GridItem> */}
 
       {/* <GridItem xs={12} sm={12} md={4}>
                 <Card chart>
