@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import ClientSearchItem from '../ClientSearchItem/ClientSearchItem';
+// import ClientSearchItem from '../ClientSearchItem/ClientSearchItem';
+import { Link } from 'react-router-dom';
+
+import GridItem from '../Grid/GridItem.js';
+import GridContainer from '../Grid/GridContainer.js';
+import Card from '../Card/Card.js';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+import CardContent from '@material-ui/core/CardContent';
 
 // import { makeStyles } from "@material-ui/core/styles";
 
@@ -131,32 +149,98 @@ class ClientResults extends Component {
 	};
 
 	render() {
-		const clientList = this.props.store.clientSearch.map((item, index) => {
-			return (
-                <ClientSearchItem key={index} client={item} />
-				// <ul key={index}>
-				// 	<li onClick={event => this.goToProfile(event, item.id)}>
-				// 		{item.firstName}
-				// 		<br />
-				// 		{item.lastName}
-				// 		<br />
-				// 		{item.phoneNumber}
-				// 		<br />
-				// 		{item.email}
-				// 	</li>
-				// </ul>
-
-			);
-		});
+		// const clientResultList = this.props.store.clientSearch.map((item, index) => {
+		// 	return (
+        //         <ClientSearchItem key={index} client={item} />
+		// 	);
+		// });
 		return (
-			<div>
-				<h1>{this.state.heading}</h1>
-				<div>
-					<input type="text" onChange={this.onChange('search_string')}></input>
-					<button onClick={this.search}>SEARCH</button>
-				</div>
-				{clientList}
-			</div>
+			<GridContainer justify='center'>
+                <GridItem xs={12} sm={12} md={9}>
+                <Card>
+                    <Paper
+                    elevation={5}
+                    style={{
+                        backgroundColor: '#86949f',
+                        color: '#1a262a',
+                        padding: '30px'
+                    }}
+                    >
+                    <CardContent>
+                        <h2>{this.state.heading}</h2>
+
+                        <TextField
+                        style={{ marginBottom: '10px' }}
+                        variant='outlined'
+                        size='small'
+                        type='text'
+                        label='Enter Search'
+                        onChange={this.onChange('search_string')}
+                        />
+                        <Link to='/clientresults'>
+                        <Button
+                            variant='contained'
+                            style={{
+                            marginBottom: '10px',
+                            marginLeft: '15px',
+                            backgroundColor: '#f0ad43',
+                            color: '#1a262a'
+                            }}
+                            variant='outlined'
+                            onClick={this.search}
+                        >
+                            SEARCH
+                        </Button>
+                        </Link>
+                    </CardContent>
+
+                    <TableContainer component={Paper}>
+                        <Table>
+                        <TableHead
+                            style={{ backgroundColor: '#384954', color: '#b6c1cb' }}
+                        >
+                            <TableRow>
+                            <TableCell style={{ color: '#b6c1cb' }}>
+                                <strong>Name</strong>
+                            </TableCell>
+                            <TableCell style={{ color: '#b6c1cb' }}>
+                                <strong>Phone</strong>
+                            </TableCell>
+                            <TableCell style={{ color: '#b6c1cb' }}>
+                                <strong>Email</strong>
+                            </TableCell>
+                            <TableCell style={{ color: '#b6c1cb' }}>
+                                <strong>Details</strong>
+                            </TableCell>
+                            </TableRow>
+                        </TableHead>
+						<TableBody>{this.props.store.clientSearch.map((item, index) => 
+						<TableRow key={index}>
+						<TableCell>{item.firstName} {item.lastName}</TableCell>
+						<TableCell>{item.phoneNumber}</TableCell>
+						<TableCell>{item.email}</TableCell>
+						<TableCell>
+						<IconButton
+							aria-label='info'
+							size='small'
+							// style={{ backgroundColor: '#f0ad43', color: '#384954' }}
+							color='primary'
+							onClick={event => this.goToProfile(event, item.id)}
+							>
+							<InfoIcon
+							//  fontSize='small'
+							/>
+							</IconButton>
+						</TableCell>
+						</TableRow>
+						)}
+						</TableBody>
+                        </Table>
+                    </TableContainer>
+                    </Paper>
+                </Card>
+                </GridItem>
+            </GridContainer>
 		);
 	}
 }
