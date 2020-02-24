@@ -14,6 +14,10 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import FaceIcon from '@material-ui/icons/Face';
+import { blueGrey } from '@material-ui/core/colors';
+
 import './BeTheBoss.css';
 
 const styles = () => createStyles({});
@@ -76,16 +80,27 @@ class BeTheBoss extends Component {
   render() {
     return (
       <GridContainer justify='center'>
-        <GridItem xs={12} sm={12} md={4}>
+        <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardContent className='paperPanel' elevation={5}>
               <Paper style={{ backgroundColor: '#fefefe', color: '#1a262a' }}>
-                <h1 className='beTheBoss' style={{ padding: '10px' }}>
+                {/* <h1 className='beTheBoss' style={{ padding: '10px' }}>
                   HELLO THERE
+                </h1> */}
+                <br></br>
+                <FaceIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[600]
+                  }}
+                />
+                <h1 className='beTheBoss' style={{ padding: '10px' }}>
+                  Welcome to Be the Boss!
                 </h1>
-                <h2 className='beTheBoss' style={{ padding: '10px' }}>
-                  Welcome to Be the Boss Workshop!
+                <h2>
+                  Please Enter Your Info
                 </h2>
+
 
                 <div style={{ display: 'flex' }}>
                   <TextField
