@@ -20,6 +20,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
+import CardContent from '@material-ui/core/CardContent';
 // import DeleteIcon from '@material-ui/icons/Delete';
 
 import AddUserModal from '../UserPage/AddUserModal';
@@ -31,6 +32,9 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
 import Card from "../Card/Card.js";
+
+import FaceIcon from '@material-ui/icons/Face';
+import { blueGrey } from '@material-ui/core/colors';
 
 // CSS
 import '../UserPage/UserPage.css'
@@ -196,166 +200,274 @@ class UserPage extends Component {
         return (
 
             <div>
-                <AddUserModal />
-                <EditPasswordModal />
-                <TableContainer component={Paper} className="container">
-                    <Table size="small">
-                        <TableHead className="table-head">
-                            <TableRow className="table-row">
-                                <TableCell></TableCell>
-                                <TableCell>First Name</TableCell>
-                                <TableCell>Last Name</TableCell>
-                                <TableCell>Phone Number</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Security Level</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
-                                <TableRow key={index}>
-                                    <TableCell align="right">
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    checked={this.state.checkbox === item.id}
-                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
-                                                    color="primary"
-                                                />
-                                            }
-                                        />
-                                    </TableCell>
-                                    <TableCell>{item.firstName}</TableCell>
-                                    <TableCell>{item.lastName}</TableCell>
-                                    <TableCell>{item.phoneNumber}</TableCell>
-                                    <TableCell>{item.email}</TableCell>
-                                    <TableCell>{item.securityLevel}</TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                <div className="edit-button">
+                <GridContainer
+                    justify='center'
+                    container
+                    spacing={3}
+                    direction="row"
+                    alignItems="center">
+                    <GridItem xs={12} sm={12} md={10}>
+                        <Card>
+                            <Paper
+                                elevation={5}
+                                style={{
+                                    backgroundColor: '#86949f',
+                                    color: '#1a262a',
+                                    padding: '30px'
+                                }}
+                            >
+                                <CardContent>
+                                    <h2>Users</h2>
+                                </CardContent>
+                                <TableContainer component={Paper}>
+                                    <Table>
+                                        <TableHead
+                                            style={{ backgroundColor: '#384954', color: '#b6c1cb' }}
+                                        >
+                                            <TableRow>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>First Name</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>Last Name</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>Phone Number</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>Email</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }}>
+                                                    <strong>Security Level</strong>
+                                                </TableCell>
+                                                <TableCell style={{ color: '#b6c1cb' }} align="right">
+                                                    <strong>Select User</strong>
+                                                </TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {this.props.store.userCredentials.userCredentials.map((item, index) =>
+                                                <TableRow key={index}>
+                                                    <TableCell>{item.firstName}</TableCell>
+                                                    <TableCell>{item.lastName}</TableCell>
+                                                    <TableCell>{item.phoneNumber}</TableCell>
+                                                    <TableCell>{item.email}</TableCell>
+                                                    <TableCell>{item.securityLevel}</TableCell>
+                                                    <TableCell align="right">
+                                                        <FormControlLabel
+                                                            control={
+                                                                <Checkbox
+                                                                    checked={this.state.checkbox === item.id}
+                                                                    onChange={(event) => this.handleCheckboxChange(event, item.id)}
+                                                                    color="primary"
+                                                                />
+                                                            }
+                                                        />
+                                                    </TableCell>
+                                                </TableRow>
+                                            )}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            </Paper>
+                        </Card>
+                    </GridItem>
+                    <Grid item xs={4} align="center">
+                        <EditPasswordModal />
+                    </Grid>
+
+                    <Grid item xs={4}>
+                        <AddUserModal />
+                    </Grid>
                     <Button
                         variant="contained"
-                        color="default"
+                        color="primary"
                         onClick={this.openEditUser}
+                        align="right"
                     >
-                        Edit
-                </Button>
-                    <div className="event-modal">
-                        <Modal open={this.state.setOpen} onClose={this.closeEditUser} className="user-modal">
-                            <div className="modal-input">
-                                <div className="modal-header">
-                                    <h2>Update User</h2>
-                                </div>
-                                <div className="event-form">
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={6}>
-                                            <div className="text-input">
-                                                <TextField variant="outlined"
-                                                    type="text"
-                                                    label="First Name"
-                                                    value={this.state.firstName}
-                                                    onChange={this.handleInputChange('firstName')}
-                                                />
-                                                <TextField variant="outlined"
-                                                    type="text"
-                                                    label="Last Name"
-                                                    value={this.state.lastName}
-                                                    onChange={this.handleInputChange('lastName')}
-                                                />
-                                                <TextField variant="outlined"
-                                                    type="number"
-                                                    label="Phone Number"
-                                                    value={this.state.phoneNumber}
-                                                    onChange={this.handleInputChange('phoneNumber')}
-                                                />
-                                                <TextField variant="outlined"
-                                                    type="text"
-                                                    label="Email"
-                                                    value={this.state.email}
-                                                    onChange={this.handleInputChange('email')}
-                                                />
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <h3>Security Level</h3>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="1"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level1}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                            <br></br>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="2"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level2}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                            <br></br>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="3"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level3}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                            <br></br>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="4"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level4}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                            <br></br>
-                                            <FormControlLabel
-                                                control={<Radio color="primary" />}
-                                                label="5"
-                                                labelPlacement="end"
-                                                value={this.state.securityLevel.level5}
-                                                onChange={this.handleInputChange('securityLevel')}
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                    <div className="form-button">
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={this.handleStatusChange}
-                                        >
-                                            Delete
+                        Edit User
+                                    </Button>
+                </GridContainer>
+                <Modal
+                    style={{
+                        position: 'absolute',
+                        width: '60%',
+                        color: '#1a262a',
+                        border: '2px solid #f0ad43',
+                        top: '50%',
+                        left: '50%',
+                        height: '60%',
+                        transform: 'translate(-50%, -50%)'
+                    }}
+                    aria-labelledby='simple-modal-title'
+                    aria-describedby='simple-modal-description'
+                    open={this.state.setOpen} onClose={this.closeEditUser}
+                >
+                    <div
+                        className="modal-content"
+                        style={{ outline: 'none', height: '100%' }}
+                    >
+                        <h4 id='simple-modal-title'>Update User</h4>
+
+
+                        <Grid container
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="flex-start"
+                            spacing={2}>
+
+                            <Grid item xs={3} sm={6}>
+
+                                <TextField
+                                    onChange={this.handleInputChange('firstName')}
+                                    label="First Name"
+                                    variant='outlined'
+                                    style={{ margin: '3px' }}
+                                    defaultValue={this.state.firstName}
+                                ></TextField>
+
+                                <TextField
+                                    variant='outlined'
+                                    style={{ margin: '3px' }}
+                                    type="text"
+                                    label="Last Name"
+                                    value={this.state.lastName}
+                                    onChange={this.handleInputChange('lastName')}
+                                />
+                                <TextField
+                                    variant='outlined'
+                                    style={{ margin: '3px' }}
+                                    type="number"
+                                    label="Phone Number"
+                                    value={this.state.phoneNumber}
+                                    onChange={this.handleInputChange('phoneNumber')}
+                                />
+                                <TextField
+                                    variant='outlined'
+                                    style={{ margin: '3px' }}
+                                    type="text"
+                                    label="Email"
+                                    value={this.state.email}
+                                    onChange={this.handleInputChange('email')}
+                                />
+                            </Grid>
+
+
+                            <Grid item xs={3} sm={6}>
+                                <FaceIcon
+                                    style={{
+                                        fontSize: 128,
+                                        color: blueGrey[900]
+                                    }}
+                                />
+
+                                <h3>Security Level</h3>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="1"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level1}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                                <br></br>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="2"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level2}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                                <br></br>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="3"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level3}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                                <br></br>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="4"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level4}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                                <br></br>
+                                <FormControlLabel
+                                    control={<Radio color="primary" />}
+                                    label="5"
+                                    labelPlacement="end"
+                                    value={this.state.securityLevel.level5}
+                                    onChange={this.handleInputChange('securityLevel')}
+                                />
+                            </Grid>
+
+                            <Grid container
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="flex-start"
+                                spacing={3}></Grid>
+
+                            <Grid item xs={3} sm={6}>
+                                <Button
+                                    size='small'
+                                    style={{
+                                        backgroundColor: '#f0ad43',
+                                        color: 'black',
+                                        marginLeft: '14px',
+
+
+                                    }}
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.closeEditUser}
+                                >
+                                    Cancel
                                         </Button>
-                                    </div>
-                                    <div className="cancel-button">
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={this.closeEditUser}
-                                        >
-                                            Cancel
+                            </Grid>
+                            <Grid item xs={3} sm={6}>
+
+                                <Button
+                                    size='small'
+                                    style={{
+                                        backgroundColor: '#f0ad43',
+                                        color: 'black',
+                                        marginLeft: '14px',
+
+                                    }}
+                                    variant="contained"
+                                    color="default"
+                                    onClick={this.handleUserUpdate}
+                                >
+                                    Update
                                         </Button>
-                                    </div>
-                                    <div className="update-button">
-                                        <Button
-                                            variant="contained"
-                                            color="default"
-                                            onClick={this.handleUserUpdate}
-                                        >
-                                            Update
+                            </Grid>
+                            <Grid item xs={3} sm={6}>
+                                <Button
+                                    size='small'
+                                    style={{
+                                        backgroundColor: '#f0ad43',
+                                        color: 'black',
+                                        marginLeft: '14px',
+
+                                    }}
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.handleStatusChange}
+                                >
+                                    Delete
                                         </Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Modal>
+
+                            </Grid>
+                        </Grid>
+
                     </div>
-                    <div>
-                    </div>
-                </div>
-            </div>
+                </Modal>
+            </div >
+
         );
     }
 }

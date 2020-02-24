@@ -1,5 +1,5 @@
 body {
-  background-color: #b6c1cb;
+  background-color: #767676;
   color: #1a262a;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
@@ -12,7 +12,7 @@ body {
 }
 
 form {
-  background-color: #dbd5d5;
+  background-color: #767676;
   width: 30%;
   height: 250px;
   margin: 20px auto;
@@ -114,11 +114,10 @@ input {
   padding: 25px 20px 25px;
   font-size: 2rem;
   color: #1a262a;
-
 }
 
 .modalTitle:before {
-  content: " ";
+  content: ' ';
   position: absolute;
   bottom: 0;
   border-top: 2px solid #1a262a;
@@ -130,7 +129,7 @@ input {
   width: 40%;
   top: 50%;
   left: 50%;
-  background-color: rgb(232, 101, 19);
+  background-color: #fefefe;
   border: 2px solid #000;
   padding: 5px;
   transform: translate(-50%, -50%);
@@ -141,15 +140,16 @@ input {
   width: 40%;
   top: 50%;
   left: 50%;
-  background-color: rgb(232, 101, 19);
+  background-color: #fefefe;
   border: 2px solid #000;
   padding: 5px;
   transform: translate(-50%, -50%);
 }
 
 .modal-content {
+  /* transform: translate(-50%, -50%); */
   padding: 20px;
-  background-color: #767676;
+  background-color: #fefefe;
 }
 
 .delete-icon-event {

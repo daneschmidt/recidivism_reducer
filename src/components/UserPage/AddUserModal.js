@@ -94,7 +94,7 @@ class AddUserModal extends Component {
                 <div className="modal-button">
                     <Button
                         variant="contained"
-                        color="default"
+                        color="primary"
                         onClick={this.openAddUser}
                     >
                         Add User

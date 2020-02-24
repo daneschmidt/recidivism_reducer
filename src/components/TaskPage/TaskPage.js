@@ -80,18 +80,18 @@ class TaskPage extends Component {
     const checkbox = inputKey;
     const completedOn = moment(Date()).format();
     Swal.fire({
-      title: 'Change Completion Status?',
-      text: "Are you sure you want to change this task's completion status",
+      title: 'Mark as Completed?',
+      text: "Are you sure you want to mark this task as completed?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Change It!'
+      confirmButtonText: 'Completed!'
     }).then(result => {
       if (result.value) {
         Swal.fire(
-          'Status Changed!',
-          'Completion Status has been changed!',
+          'Completed!',
+          'Task has been marked as completed!',
           'success'
         );
         this.props.dispatch({
@@ -122,18 +122,18 @@ class TaskPage extends Component {
     const checkbox = inputKey;
     const completedOn = moment(Date()).format();
     Swal.fire({
-      title: 'Change Completion Status?',
-      text: "Are you sure you want to change this task's completion status",
+      title: 'Mark as Completed?',
+      text: "Are you sure you want to mark this task as completed?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Change It!'
+      confirmButtonText: 'Completed!'
     }).then(result => {
       if (result.value) {
         Swal.fire(
-          'Status Changed!',
-          'Completion Status has been changed!',
+          'Completed!',
+          'Task has been marked as completed!',
           'success'
         );
         this.props.dispatch({
@@ -175,7 +175,7 @@ class TaskPage extends Component {
     const taskListByAll = this.props.store.getAllTasksReducer.map(
       (item, index) => {
         return (
-          <TableRow className='table-row' key={index}>
+          <TableRow hover className='table-row' key={index}>
             <TableCell>{item.task}</TableCell>
             {/* <TableCell>Task:</TableCell> */}
             <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
@@ -185,7 +185,7 @@ class TaskPage extends Component {
             {/* <TableCell>Added By:</TableCell> */}
             <TableCell>{item.clientsFirstName}</TableCell>
             {/* <TableCell>Client:</TableCell> */}
-            <TableCell>{item.clientsFirstName}</TableCell>
+            <TableCell>{item.clientsLastName}</TableCell>
             <Checkbox
               type='checkbox'
               checked={item.complete}
@@ -204,7 +204,7 @@ class TaskPage extends Component {
     const taskListByUser = this.props.store.getUserTasksReducer.map(
       (item, index) => {
         return (
-          <TableRow className='table-row' key={index}>
+          <TableRow hover className='table-row' key={index}>
             <TableCell>{item.task}</TableCell>
             {/* <TableCell>Task:</TableCell> */}
             <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
@@ -214,7 +214,7 @@ class TaskPage extends Component {
             {/* <TableCell>Added By:</TableCell> */}
             <TableCell>{item.clientsFirstName}</TableCell>
             {/* <TableCell>Client:</TableCell> */}
-            <TableCell>{item.clientsFirstName}</TableCell>
+            <TableCell>{item.clientsLastName}</TableCell>
             <Checkbox
               type='checkbox'
               checked={item.complete}
@@ -233,7 +233,7 @@ class TaskPage extends Component {
     const taskListByClient = this.props.store.getClientTasksReducer.map(
       (item, index) => {
         return (
-          <TableRow className='table-row' key={index}>
+          <TableRow hover className='table-row' key={index}>
             <TableCell>{item.task}</TableCell>
             {/* <TableCell>Task:</TableCell> */}
             <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
