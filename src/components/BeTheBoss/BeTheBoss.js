@@ -95,7 +95,7 @@ class BeTheBoss extends Component {
                   }}
                 />
                 <h1 className='beTheBoss' style={{ padding: '10px' }}>
-                  Welcome to Be the Boss Workshop!
+                  Welcome to Be the Boss!
                 </h1>
                 <h2>
                   Please Enter Your Info
