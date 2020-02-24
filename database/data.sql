@@ -171,10 +171,26 @@ VALUES
 INSERT INTO "events"
     ("eventDate", "endDate", "eventTitle", "notes", "location")
 VALUES
-    ( '2020-02-17 9:00:00', '2020-02-17 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
-    ( '2020-02-17 10:00:00', '2020-02-17 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
-    ( '2020-02-17 11:00:00', '2020-02-17 15:00:00', 'Back to Business', 'notes', 'location'),
-    ( '2020-02-17 13:00:00', '2020-02-17 19:00:00', 'Brainstorm next competition', 'notes', 'location');
+    ( '2020-02-24 9:00:00', '2020-02-24 10:00:00', 'Weekly Kickoff', 'Plan next competition', 'Current office'),
+    ( '2020-02-24 10:00:00', '2020-02-24 12:00:00', 'Meet with Kauffman Center', 'Park on the street', 'Kauffman Center'),
+    ( '2020-02-24 11:00:00', '2020-02-24 15:00:00', 'Back to Business', 'We have 25 people scheudled to attend', 'Jackson County Corrections'),
+    ( '2020-02-24 13:00:00', '2020-02-24 19:00:00', 'Brainstorm next competition', 'We need to start planning next competition', 'Current office'),
+    ( '2020-02-25 8:30:00', '2020-02-25 10:30:00', 'Coffee with Doug', 'Needs LLC', 'Messenger'),
+    ( '2020-02-25 10:00:00', '2020-02-25 12:00:00', 'Entreprenuer Seminar', 'Network with local entreprenuers in the area', 'Novel Building'),
+    ( '2020-02-25 14:00:00', '2020-02-25 17:00:00', 'One-on-one with Sean', 'Help for business idea', 'The Roasterie'),
+    ( '2020-02-25 13:00:00', '2020-02-25 19:00:00', 'Confrence call', 'Working more closely with Kauffman Center', 'Current office'),
+    ( '2020-02-26 7:00:00', '2020-02-26 9:00:00', 'Mid week meeting', 'check-in to see what got done this week', 'Current office'),
+    ( '2020-02-26 9:30:00', '2020-02-26 12:00:00', 'Be the Boss', '30 people attending. Be there an hour before to setup', 'Halfway House'),
+    ( '2020-02-26 11:00:00', '2020-02-26 15:00:00', 'Office outing', 'Taking the staff out for some fun', 'Bowling'),
+    ( '2020-02-26 15:00:00', '2020-02-26 19:00:00', 'One-on-one with Josh', 'Needs help with LLC', 'The Roasterie'),
+    ( '2020-02-27 9:00:00', '2020-02-27 10:00:00', 'One-on-one with Theresa Williams', 'Sign contracts', 'Halfway House'),
+    ( '2020-02-27 10:00:00', '2020-02-27 12:00:00', 'Meeting with potential Investors', 'Have data ready to show', 'Kauffman Center'),
+    ( '2020-02-27 13:00:00', '2020-02-27 18:00:00', 'Competition Tracker', 'Make sure we have everything ready to go ', 'Current office'),
+    ( '2020-02-27 12:00:00', '2020-02-27 15:00:00', 'Plan compeition event', 'Decide on where to hold the finals for competition', 'Current office'),
+    ( '2020-02-28 8:00:00', '2020-02-28 10:30:00', 'Ted Talk', 'Present Determination Inc', 'Rockhill'),
+    ( '2020-02-28 10:00:00', '2020-02-28 12:30:00', 'One-on-one with Time Philips', 'Help him start the process', 'Current office'),
+    ( '2020-02-28 9:00:00', '2020-02-28 10:00:00', 'One-on-one with Jennifer Edwards', 'She has some question on how to apply for LLC', 'Current office'),
+    ( '2020-02-28 11:00:00', '2020-02-28 15:00:00', 'Team Building', 'plan event for staff to hangout', 'Top Golf');
 
 INSERT INTO "survey"
     ("clients_id", "businessStarted", "revenue", "date")
