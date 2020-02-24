@@ -50,6 +50,10 @@ VALUES
     ('Pat', 'Bowie', 'Other', 8163455678, 'p.bowie@gmail.com', True, 'Felony', True, '5 years',
         '2018-04-11' , '42', 'Missouri', True, 'Tom Jones', 8085699856, True, 'Connections',
         'Art Studio', 'Starting', 'Hope to gain info', 'info', 'JoshBW.png',
+        '2020-02-10 04:05:06', True),
+    ('Josh', 'Ganote', 'Male', 8165215678, 'j.ganote@gmail.com', True, 'Felony', True, '5 years',
+        '2018-04-11' , '28', 'Missouri', True, 'Tom Jones', 8085699856, True, 'Musicians Together',
+        'Music Studio', 'Gaining Info', 'Hope to gain info', 'info', 'JoshBW.png',
         '2020-02-10 04:05:06', True);
 INSERT INTO "address"
     ("clients_id", "street", "city", "state", "zip", "business", "home", "current")
@@ -111,38 +115,45 @@ VALUES
 INSERT INTO "tasks"
     ("users_id", "clients_id", "task", "complete", "assignedOn", "dueBy")
 VALUES
-    ( 1, 1, 'Needs to work on a business name', False, '2020-07-16
+    ( 1, 1, 'Needs to work on a business name', False, '2019-07-16
 04:05:06', '2020-02-27 05:05:05'),
-    ( 1, 3, 'Needs to get taxes up to date', False, '2020-04-18
+    ( 1, 3, 'Needs to get taxes up to date', False, '2019-04-18
 04:05:06', '2020-02-28 05:05:05'),
-    ( 1, 4, 'Needs to get a LLC', False, '2020-05-03
+    ( 1, 4, 'Needs to get a LLC', False, '2019-05-03
 04:05:06', '2020-02-29 05:05:05'),
-    ( 2, 2, 'Speak with parole officer about starting business', False, '2020-09-13
+    ( 2, 2, 'Speak with parole officer about starting business', False, '2019-09-13
 04:05:06', '2020-02-27 05:05:05'),
-    ( 2, 5, 'Make sure to get insurance', False, '2020-04-05
+    ( 2, 5, 'Make sure to get insurance', False, '2019-04-05
 04:05:06', '2020-02-28 05:05:05'),
-    ( 1, 6, 'Make sure to complete workman comp paperwork', False, '2020-06-29
+    ( 1, 6, 'Make sure to complete workman comp paperwork', False, '2019-06-29
 04:05:06', '2020-02-29 05:05:05'),
-    ( 1, 7, 'Make sure to set up business account', False, '2020-03-03
+    ( 1, 7, 'Make sure to set up business account', False, '2019-03-03
 04:05:06', '2020-02-27 05:05:05'),
-    ( 2, 8, 'Write reference letter', False, '2020-02-24
+    ( 2, 8, 'Write reference letter', False, '2019-02-24
 04:05:06', '2020-02-28 05:05:05'),
-    ( 4, 10, 'Needs to work on a business name', False, '2020-07-16
+    ( 4, 10, 'Needs to work on a business name', False, '2019-07-16
 04:05:06', '2020-02-27 05:05:05'),
-    ( 4, 9, 'Needs to get taxes up to date', False, '2020-04-18
+    ( 4, 9, 'Needs to get taxes up to date', False, '2019-04-18
 04:05:06', '2020-02-28 05:05:05'),
-    ( 4, 2, 'Needs to get a LLC', False, '2020-05-03
+    ( 4, 2, 'Needs to get a LLC', False, '2019-05-03
 04:05:06', '2020-02-29 05:05:05'),
-    ( 4, 1, 'Speak with parole officer about starting business', False, '2020-09-13
+    ( 4, 1, 'Speak with parole officer about starting business', False, '2019-09-13
 04:05:06', '2020-02-27 05:05:05'),
-    ( 4, 4, 'Make sure to get insurance', False, '2020-04-05
+    ( 4, 4, 'Make sure to get insurance', False, '2019-04-05
 04:05:06', '2020-02-28 05:05:05'),
-    ( 4, 5, 'Make sure to complete workman comp paperwork', False, '2020-06-29
+    ( 4, 5, 'Make sure to complete workman comp paperwork', False, '2019-06-29
 04:05:06', '2020-02-29 05:05:05'),
-    ( 4, 8, 'Make sure to set up business account', False, '2020-03-03
+    ( 4, 8, 'Make sure to set up business account', False, '2019-03-03
 04:05:06', '2020-02-27 05:05:05'),
-    ( 4, 7, 'Write reference letter', False, '2020-02-24
+    ( 4, 7, 'Write reference letter', False, '2019-02-24
+04:05:06', '2020-02-28 05:05:05'),
+    ( 4, 11, 'Meet with parole officer re starting a business', False, '2020-02-03
+04:05:06', '2020-02-27 05:05:05'),
+    ( 4, 11, 'Look into a small business loan', False, '2020-02-03
+04:05:06', '2020-02-27 05:05:05'),
+    ( 4, 11, 'Make sure to set up business account', False, '2019-02-03
 04:05:06', '2020-02-28 05:05:05');
+;
 
 INSERT INTO "notes"
     ("clients_id", "users_id", "note", "timeStamp")
@@ -166,15 +177,37 @@ VALUES
     (9, 1, 'Needs to set up business account', '2020-02-11
 04:05:06'),
     (10, 1, 'Meet with parole officer to speak about thier company', '2020-02-11
-04:05:06');
+04:05:06'),
+    (11, 4, 'Needs to work on a business name.', '2020-02-11
+04:05:06'),;
 
 INSERT INTO "events"
     ("eventDate", "endDate", "eventTitle", "notes", "location")
 VALUES
-    ( '2020-02-17 9:00:00', '2020-02-17 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
-    ( '2020-02-17 10:00:00', '2020-02-17 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
-    ( '2020-02-17 11:00:00', '2020-02-17 15:00:00', 'Back to Business', 'notes', 'location'),
-    ( '2020-02-17 13:00:00', '2020-02-17 19:00:00', 'Brainstorm next competition', 'notes', 'location');
+    ( '2020-02-24 9:00:00', '2020-02-24 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-24 10:00:00', '2020-02-24 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-24 11:00:00', '2020-02-24 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-24 13:00:00', '2020-02-24 19:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-25 8:30:00', '2020-02-25 10:30:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-25 10:00:00', '2020-02-25 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-25 14:00:00', '2020-02-25 17:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-25 13:00:00', '2020-02-25 19:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-26 7:00:00', '2020-02-26 9:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-26 9:30:00', '2020-02-26 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-26 11:00:00', '2020-02-26 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-26 15:00:00', '2020-02-26 19:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-27 9:00:00', '2020-02-27 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-27 10:00:00', '2020-02-27 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-27 13:00:00', '2020-02-27 18:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-27 12:00:00', '2020-02-27 15:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-28 8:00:00', '2020-02-28 10:30:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-28 10:00:00', '2020-02-28 12:30:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-28 6:00:00', '2020-02-28 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-28 8:00:00', '2020-02-28 13:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-29 9:00:00', '2020-02-29 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-29 10:00:00', '2020-02-29 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-29 12:00:00', '2020-02-29 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-29 13:00:00', '2020-02-29 19:00:00', 'Brainstorm next competition', 'notes', 'location');
 
 INSERT INTO "survey"
     ("clients_id", "businessStarted", "revenue", "date")

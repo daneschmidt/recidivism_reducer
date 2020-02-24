@@ -281,7 +281,7 @@ class UserPage extends Component {
                     </Grid>
                     <Button
                         variant="contained"
-                        color="default"
+                        color="primary"
                         onClick={this.openEditUser}
                         align="right"
                     >
