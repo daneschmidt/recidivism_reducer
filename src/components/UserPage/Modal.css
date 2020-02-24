@@ -81,3 +81,11 @@
 .add-event {
   text-align: right;
 }
+
+.add-event-button {
+  padding: 20px;
+}
+
+.event-form {
+  margin: 20px;
+}
