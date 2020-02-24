@@ -147,9 +147,9 @@ VALUES
 04:05:06', '2020-02-27 05:05:05'),
     ( 4, 7, 'Write reference letter', False, '2019-02-24
 04:05:06', '2020-02-28 05:05:05'),
-( 4, 11, 'Meet with parole officer re starting a business', False, '2020-02-03
+    ( 4, 11, 'Meet with parole officer re starting a business', False, '2020-02-03
 04:05:06', '2020-02-27 05:05:05'),
-( 4, 11, 'Look into a small business loan', False, '2020-02-03
+    ( 4, 11, 'Look into a small business loan', False, '2020-02-03
 04:05:06', '2020-02-27 05:05:05'),
     ( 4, 11, 'Make sure to set up business account', False, '2019-02-03
 04:05:06', '2020-02-28 05:05:05');
