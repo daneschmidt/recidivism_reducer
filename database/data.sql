@@ -19,7 +19,7 @@ VALUES
         '2020-02-10' , '22', 'Missouri', True, 'Tom Jones', 8085699856, True, 'Connections',
         'Doug & Sean Jones Coffee Shop', 'Starting Stage', 'Hope to gain info', 'info', 'JoshBW.png',
         '2020-02-10 04:05:06', True),
-    ('Theresa', 'Williams', 'Female', 81623458678, 't.williams@gmail.com', True, 'Felony', True, '2 years',
+    ('Theresa', 'Williams', 'Female', 8162345867, 't.williams@gmail.com', True, 'Felony', True, '2 years',
         '2020-01-10' , '32', 'Missouri', True, 'Tom Jones', 8085699854, True, 'Connections',
         'Window cleaning business', 'Working on a Loan', 'Hope to gain info', 'info', 'JoshBW.png',
         '2020-02-10 04:05:06', True),
