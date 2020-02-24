@@ -9,6 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 
+import './Task.css';
+
 class Task extends React.Component {
   state = {
     id: '',
@@ -44,16 +46,12 @@ class Task extends React.Component {
 
     return (
       <Card
+        className='stacker'
         ref={innerRef}
         {...provided.draggableProps}
         {...provided.dragHandleProps}
       >
-        <CardContent
-          style={{
-            padding: '3px',
-            marginBottom: '3px'
-          }}
-        >
+        <CardContent>
           <ContentEditable
             style={{
               borderBottom: '1px solid rgb(56, 73, 84, 0.4)',
