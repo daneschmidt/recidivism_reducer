@@ -5,90 +5,135 @@ import React from 'react';
 import ChartistGraph from 'react-chartist';
 // import PropTypes from "prop-types";
 // @material-ui/core components
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 // @material-ui/icons
 import AddAlert from '@material-ui/icons/AddAlert';
-// core components
-import GridItem from '../Grid/GridItem.js';
-import GridContainer from '../Grid/GridContainer.js';
-// import Button from "../CustomButtons/Button.js";
-// import SnackbarContent from "../Snackbar/SnackbarContent";
-// import Snackbar from "../Snackbar/Snackbar";
-// import Card from "../Card/Card.js";
-// import CardContent from '@material-ui/core/CardContent';
-// import CardHeader from "../Card/CardHeader.js";
-// import CardBody from "../Card/CardBody.js";
-// import CardFooter from "../Card/CardFooter.js";
-// import Tasks from "../../components/Tasks/Tasks";
-// import Table from "../../components/Table/Table.js";
-// import AccessTime from "@material-ui/icons/AccessTime";
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import GroupIcon from '@material-ui/icons/Group';
+import FaceIcon from '@material-ui/icons/Face';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 
-// import Code from "@material-ui/icons/Code";
-// import Cloud from "@material-ui/icons/Cloud";
 
-// import CustomTabs from "../CustomTabs/CustomTabs";
-// import BugReport from "@material-ui/icons/BugReport";
-// import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
-import TaskPage from '../TaskPage/TaskPage';
+// colors
+import { blueGrey } from '@material-ui/core/colors';
 
-// import { bugs, website, server } from "../../../src/variables/general";
+//routing
+import { Link } from 'react-router-dom';
 
-import {
-  dailySalesChart,
-  emailsSubscriptionChart,
-  completedTasksChart
-} from '../../variables/charts';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
-import styles from '../../assets/jss/material-dashboard-react/views/dashboardStyle';
-import Calendar from '../Calendar/CalendarHome/Calendar.js';
-import ClientPage from '../ClientPage/ClientPage.js';
-import CompetitionPage from '../CompetitionPage/CompetitionPage';
 
-const useStyles = makeStyles(styles);
+import Grid from '@material-ui/core/Grid';
+
+
+
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    minWidth: 275,
+    maxWidth: 800
+  },
+  root2: {
+    minWidth: 275,
+    maxWidth: 800,
+    maxHeight: 400,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    backgroundColor: blueGrey[200],
+  },
+}));
 
 export default function DashboardPage() {
   const classes = useStyles();
   return (
-    <GridContainer style={{ display: 'flex' }} justify='center'>
-      <GridItem style={{ flex: '1' }} xs={12} sm={12} md={2}>
-        <ClientPage />
-      </GridItem>
+    <div align="center">
+      <Card className={classes.root} align="center">
+        <CardContent>
+          <Grid
+            container
+            spacing={3}
+            direction="row"
+            alignItems="center">
+            <Grid item xs={12} sm={4}>
+              <Link to='/calendar'>
+                <DateRangeIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[600],
 
-      <GridItem style={{ flex: '2' }} xs={12} sm={12} md={6}>
-        <TaskPage />
-      </GridItem>
-
-      <GridItem style={{ flex: '2' }} xs={12} sm={12} md={4}>
-        <Calendar />
-      </GridItem>
-
-      <GridItem xs={12} sm={12} md={8}>
-        <CompetitionPage />
-      </GridItem>
-
-      {/* <GridItem xs={12} sm={12} md={4}>
-                <Card chart>
-                    <CardHeader color="secondary">
-                        <ChartistGraph
-                            className="ct-chart"
-                            data={completedTasksChart.data}
-                            type="Line"
-                            options={completedTasksChart.options}
-                            listener={completedTasksChart.animation}
-                        />
-                    </CardHeader>
-                    <CardBody>
-                        <h4 className={classes.cardTitle}>Completed Tasks</h4>
-                        <p className={classes.cardCategory}>Last Campaign Performance</p>
-                    </CardBody>
-                    <CardFooter chart>
-                        <div className={classes.stats}>
-                            <AccessTime /> campaign sent 2 days ago
-              </div>
-                    </CardFooter>
-                </Card>
-            </GridItem> */}
-    </GridContainer>
+                  }}
+                />
+              </Link>
+              <h3 align="center">Calendar</h3>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Link to='/taskpage'>
+                <DoneAllIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[600]
+                  }}
+                />
+              </Link>
+              <h3 align="center">Tasks</h3>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Link to='/userpage'>
+                <FaceIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[600]
+                  }}
+                />
+              </Link>
+              <h3 align="center">Users</h3>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Link to='/clientpage'>
+                <GroupIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[600]
+                  }}
+                />
+              </Link>
+              <h3 align="center">Clients</h3>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Link to='/betheboss'>
+                <EmojiPeopleIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[600]
+                  }}
+                />
+              </Link>
+              <h3 align="center">Be The Boss</h3>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Link to='/competition'>
+                <AssessmentIcon
+                  style={{
+                    fontSize: 150,
+                    color: blueGrey[600],
+                    '&:hover': {
+                      color: blueGrey[500],
+                    },
+                  }}
+                />
+              </Link>
+              <h3 align="center">Competition Tracker</h3>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+    </div >
   );
 }

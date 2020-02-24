@@ -1,7 +1,7 @@
 body {
-  background-color: #b6c1cb;
+  background-color: #767676;
   color: #1a262a;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   background-color: rgb(182 193 203);
 }
@@ -12,7 +12,7 @@ body {
 }
 
 form {
-  background-color: #dbd5d5;
+  background-color: #767676;
   width: 30%;
   height: 250px;
   margin: 20px auto;
@@ -92,44 +92,66 @@ input {
 
 .modal {
   position: absolute;
-  height: 55%;
-  width: 40%;
+  width: 60%;
   top: 50%;
   left: 50%;
-  background-color: #dbd5d5;
+  background-color: #767676;
   border: 2px solid #000;
   padding: 5px;
-  margin-right: -50%;
+  box-sizing: border-box;
+  /* margin-right: -50%; */
   transform: translate(-50%, -50%);
+  outline: none;
+}
+
+.modal:focus {
+  outline: none;
+}
+
+.modalTitle {
+  position: relative;
+  margin: 0;
+  padding: 25px 20px 25px;
+  font-size: 2rem;
+  color: #1a262a;
+}
+
+.modalTitle:before {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  border-top: 2px solid #1a262a;
+  width: 60%;
 }
 
 .modal-input {
   position: absolute;
-  height: 50%;
   width: 40%;
   top: 50%;
   left: 50%;
   background-color: rgb(232, 101, 19);
   border: 2px solid #000;
   padding: 5px;
-  margin-right: -50%;
   transform: translate(-50%, -50%);
 }
 
 .modal_main {
   position: absolute;
-  height: 50%;
   width: 40%;
   top: 50%;
   left: 50%;
   background-color: rgb(232, 101, 19);
   border: 2px solid #000;
   padding: 5px;
-  margin-right: -50%;
   transform: translate(-50%, -50%);
 }
 
 .modal-content {
   padding: 20px;
   background-color: #767676;
+}
+
+.delete-icon-event {
+  color: #f0ad43;
+  align-items: right;
 }

@@ -95,7 +95,7 @@ class EditPasswordModal extends Component {
                     <Modal
                         open={this.state.setOpen}
                         onClose={this.closeEditPassword}>
-                        <div className="modal">
+                        <div className="modalOrigin">
                             <h2>Edit Password</h2>
                             <div className="text-input">
                                 <TextField variant="outlined"
