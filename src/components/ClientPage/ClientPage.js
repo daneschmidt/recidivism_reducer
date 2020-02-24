@@ -75,7 +75,7 @@ class ClientPage extends Component {
   render() {
     const clientList = this.props.store.client.map((item, index) => {
       return (
-        <TableRow key={index} hover style={{ backgroundColor: '#fefefe' }}>
+        <TableRow hover key={index} style={{ backgroundColor: '#fefefe' }}>
           <TableCell onClick={event => this.goToProfile(event, item.id)}>
             {item.firstName} {item.lastName}
           </TableCell>
@@ -142,7 +142,7 @@ class ClientPage extends Component {
                   <TableHead
                     style={{ backgroundColor: '#384954', color: '#b6c1cb' }}
                   >
-                    <TableRow>
+                    <TableRow hover>
                       <TableCell style={{ color: '#b6c1cb' }}>
                         <strong>Name</strong>
                       </TableCell>

@@ -175,7 +175,7 @@ class TaskPage extends Component {
     const taskListByAll = this.props.store.getAllTasksReducer.map(
       (item, index) => {
         return (
-          <TableRow className='table-row' key={index}>
+          <TableRow hover className='table-row' key={index}>
             <TableCell>{item.task}</TableCell>
             {/* <TableCell>Task:</TableCell> */}
             <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
@@ -204,7 +204,7 @@ class TaskPage extends Component {
     const taskListByUser = this.props.store.getUserTasksReducer.map(
       (item, index) => {
         return (
-          <TableRow className='table-row' key={index}>
+          <TableRow hover className='table-row' key={index}>
             <TableCell>{item.task}</TableCell>
             {/* <TableCell>Task:</TableCell> */}
             <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
@@ -233,7 +233,7 @@ class TaskPage extends Component {
     const taskListByClient = this.props.store.getClientTasksReducer.map(
       (item, index) => {
         return (
-          <TableRow className='table-row' key={index}>
+          <TableRow hover className='table-row' key={index}>
             <TableCell>{item.task}</TableCell>
             {/* <TableCell>Task:</TableCell> */}
             <TableCell>{moment(item.assignedOn).format('LL')}</TableCell>
