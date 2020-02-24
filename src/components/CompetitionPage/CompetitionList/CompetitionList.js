@@ -348,7 +348,7 @@ class CompetitionList extends Component {
               border: '2px solid #f0ad43',
               top: '50%',
               left: '50%',
-              height: '40%',
+              height: '45%',
               transform: 'translate(-50%, -50%)'
             }}
             aria-labelledby='simple-modal-title'
@@ -357,7 +357,7 @@ class CompetitionList extends Component {
           >
             <div
               className='modal-content'
-              style={{ outline: 'none', height: '100%' }}
+              style={{ outline: 'none', height: '90%' }}
             >
               <h4 id='simple-modal-title'>Add Result</h4>
               <div style={{ display: 'flex' }}>

@@ -4,6 +4,7 @@
   display: inline-block;
   color: #b6c1cb;
   padding-left: 10px;
+  float: left;
   padding-right: 700px;
   text-align: left;
 }
@@ -18,7 +19,7 @@
   float: left;
   color: #b6c1cb;
   background-color: #384954;
-  text-align: center;
+  text-align: left;
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
@@ -39,5 +40,5 @@
 }
 
 .nav-left {
-  float: left;
+  display: inline-block;
 }

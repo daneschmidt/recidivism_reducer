@@ -71,7 +71,7 @@ VALUES
 INSERT INTO "competition_status"
     ("step1", "step2", "step3", "step4", "step5", "step6")
 VALUES
-    ('1', '2', '3', '4', '5', '6');
+    ('starting point', 'business idea', 'identify tasks', 'risk analysis', 'completing tasks', 'competition ready');
 
 INSERT INTO "competitions"
     ("dateOf", "name", "winnerName", "amountGranted", "businessName", "notes")
