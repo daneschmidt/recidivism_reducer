@@ -185,7 +185,7 @@ class TaskPage extends Component {
             {/* <TableCell>Added By:</TableCell> */}
             <TableCell>{item.clientsFirstName}</TableCell>
             {/* <TableCell>Client:</TableCell> */}
-            <TableCell>{item.clientsFirstName}</TableCell>
+            <TableCell>{item.clientsLastName}</TableCell>
             <Checkbox
               type='checkbox'
               checked={item.complete}
@@ -214,7 +214,7 @@ class TaskPage extends Component {
             {/* <TableCell>Added By:</TableCell> */}
             <TableCell>{item.clientsFirstName}</TableCell>
             {/* <TableCell>Client:</TableCell> */}
-            <TableCell>{item.clientsFirstName}</TableCell>
+            <TableCell>{item.clientsLastName}</TableCell>
             <Checkbox
               type='checkbox'
               checked={item.complete}
