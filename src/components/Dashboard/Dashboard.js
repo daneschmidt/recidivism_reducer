@@ -16,24 +16,19 @@ import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 
 
-// core components
-import GridItem from '../Grid/GridItem.js';
-import GridContainer from '../Grid/GridContainer.js';
+
 // colors
 import { blueGrey } from '@material-ui/core/colors';
 
 //routing
 import { Link } from 'react-router-dom';
-//styles
-import styles from '../../assets/jss/material-dashboard-react/views/dashboardStyle';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
-import Paper from '@material-ui/core/Paper';
+
 import Grid from '@material-ui/core/Grid';
 
-import ClientPage from '../ClientPage/ClientPage'
 
 
 
@@ -66,9 +61,7 @@ export default function DashboardPage() {
             spacing={3}
             direction="row"
             alignItems="center">
-
             <Grid item xs={12} sm={4}>
-
               <Link to='/calendar'>
                 <DateRangeIcon
                   style={{
@@ -80,7 +73,6 @@ export default function DashboardPage() {
               </Link>
               <h3 align="center">Calendar</h3>
             </Grid>
-
             <Grid item xs={12} sm={4}>
               <Link to='/taskpage'>
                 <DoneAllIcon
@@ -92,7 +84,6 @@ export default function DashboardPage() {
               </Link>
               <h3 align="center">Tasks</h3>
             </Grid>
-
             <Grid item xs={12} sm={4}>
               <Link to='/userpage'>
                 <FaceIcon
@@ -104,7 +95,6 @@ export default function DashboardPage() {
               </Link>
               <h3 align="center">Users</h3>
             </Grid>
-
             <Grid item xs={12} sm={4}>
               <Link to='/clientpage'>
                 <GroupIcon
@@ -116,7 +106,6 @@ export default function DashboardPage() {
               </Link>
               <h3 align="center">Clients</h3>
             </Grid>
-
             <Grid item xs={12} sm={4}>
               <Link to='/betheboss'>
                 <EmojiPeopleIcon
@@ -128,7 +117,6 @@ export default function DashboardPage() {
               </Link>
               <h3 align="center">Be The Boss</h3>
             </Grid>
-
             <Grid item xs={12} sm={4}>
               <Link to='/competition'>
                 <AssessmentIcon
@@ -143,31 +131,9 @@ export default function DashboardPage() {
               </Link>
               <h3 align="center">Competition Tracker</h3>
             </Grid>
-
           </Grid>
-
-
-
         </CardContent>
       </Card>
-
-
-      {/* <Card className={classes.root2} align="left">
-        <CardContent>
-          <Grid
-            container
-            spacing={12}
-            direction="row"
-            alignItems="center">
-
-            <Grid item xs={12} sm={12}>
-
-              <ClientPage />
-
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card> */}
     </div >
   );
 }
