@@ -50,6 +50,10 @@ VALUES
     ('Pat', 'Bowie', 'Other', 8163455678, 'p.bowie@gmail.com', True, 'Felony', True, '5 years',
         '2018-04-11' , '42', 'Missouri', True, 'Tom Jones', 8085699856, True, 'Connections',
         'Art Studio', 'Starting', 'Hope to gain info', 'info', 'JoshBW.png',
+        '2020-02-10 04:05:06', True),
+    ('Josh', 'Ganote', 'Male', 8165215678, 'j.ganote@gmail.com', True, 'Felony', True, '5 years',
+        '2018-04-11' , '28', 'Missouri', True, 'Tom Jones', 8085699856, True, 'Musicians Together',
+        'Music Studio', 'Gaining Info', 'Hope to gain info', 'info', 'JoshBW.png',
         '2020-02-10 04:05:06', True);
 INSERT INTO "address"
     ("clients_id", "street", "city", "state", "zip", "business", "home", "current")
@@ -111,38 +115,45 @@ VALUES
 INSERT INTO "tasks"
     ("users_id", "clients_id", "task", "complete", "assignedOn", "dueBy")
 VALUES
-    ( 1, 1, 'Needs to work on a business name', False, '2020-07-16
+    ( 1, 1, 'Needs to work on a business name', False, '2019-07-16
 04:05:06', '2020-02-27 05:05:05'),
-    ( 1, 3, 'Needs to get taxes up to date', False, '2020-04-18
+    ( 1, 3, 'Needs to get taxes up to date', False, '2019-04-18
 04:05:06', '2020-02-28 05:05:05'),
-    ( 1, 4, 'Needs to get a LLC', False, '2020-05-03
+    ( 1, 4, 'Needs to get a LLC', False, '2019-05-03
 04:05:06', '2020-02-29 05:05:05'),
-    ( 2, 2, 'Speak with parole officer about starting business', False, '2020-09-13
+    ( 2, 2, 'Speak with parole officer about starting business', False, '2019-09-13
 04:05:06', '2020-02-27 05:05:05'),
-    ( 2, 5, 'Make sure to get insurance', False, '2020-04-05
+    ( 2, 5, 'Make sure to get insurance', False, '2019-04-05
 04:05:06', '2020-02-28 05:05:05'),
-    ( 1, 6, 'Make sure to complete workman comp paperwork', False, '2020-06-29
+    ( 1, 6, 'Make sure to complete workman comp paperwork', False, '2019-06-29
 04:05:06', '2020-02-29 05:05:05'),
-    ( 1, 7, 'Make sure to set up business account', False, '2020-03-03
+    ( 1, 7, 'Make sure to set up business account', False, '2019-03-03
 04:05:06', '2020-02-27 05:05:05'),
-    ( 2, 8, 'Write reference letter', False, '2020-02-24
+    ( 2, 8, 'Write reference letter', False, '2019-02-24
 04:05:06', '2020-02-28 05:05:05'),
-    ( 4, 10, 'Needs to work on a business name', False, '2020-07-16
+    ( 4, 10, 'Needs to work on a business name', False, '2019-07-16
 04:05:06', '2020-02-27 05:05:05'),
-    ( 4, 9, 'Needs to get taxes up to date', False, '2020-04-18
+    ( 4, 9, 'Needs to get taxes up to date', False, '2019-04-18
 04:05:06', '2020-02-28 05:05:05'),
-    ( 4, 2, 'Needs to get a LLC', False, '2020-05-03
+    ( 4, 2, 'Needs to get a LLC', False, '2019-05-03
 04:05:06', '2020-02-29 05:05:05'),
-    ( 4, 1, 'Speak with parole officer about starting business', False, '2020-09-13
+    ( 4, 1, 'Speak with parole officer about starting business', False, '2019-09-13
 04:05:06', '2020-02-27 05:05:05'),
-    ( 4, 4, 'Make sure to get insurance', False, '2020-04-05
+    ( 4, 4, 'Make sure to get insurance', False, '2019-04-05
 04:05:06', '2020-02-28 05:05:05'),
-    ( 4, 5, 'Make sure to complete workman comp paperwork', False, '2020-06-29
+    ( 4, 5, 'Make sure to complete workman comp paperwork', False, '2019-06-29
 04:05:06', '2020-02-29 05:05:05'),
-    ( 4, 8, 'Make sure to set up business account', False, '2020-03-03
+    ( 4, 8, 'Make sure to set up business account', False, '2019-03-03
 04:05:06', '2020-02-27 05:05:05'),
-    ( 4, 7, 'Write reference letter', False, '2020-02-24
+    ( 4, 7, 'Write reference letter', False, '2019-02-24
+04:05:06', '2020-02-28 05:05:05'),
+( 4, 11, 'Meet with parole officer re starting a business', False, '2020-02-03
+04:05:06', '2020-02-27 05:05:05'),
+( 4, 11, 'Look into a small business loan', False, '2020-02-03
+04:05:06', '2020-02-27 05:05:05'),
+    ( 4, 11, 'Make sure to set up business account', False, '2019-02-03
 04:05:06', '2020-02-28 05:05:05');
+;
 
 INSERT INTO "notes"
     ("clients_id", "users_id", "note", "timeStamp")

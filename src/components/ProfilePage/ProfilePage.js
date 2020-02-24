@@ -24,24 +24,24 @@ class profilePage extends Component {
 				return (
 					<div key={index}>
 						<h1>{item.firstName} {item.lastName}</h1>
-						<p>{item.gender}</p>
+						<p>Gender: {item.gender}</p>
 						<p>Phone Number: {item.phoneNumber}</p>
 						<p>Email: {item.email}</p>
-						<p>Criminal Record: {item.criminalRecord}</p>
-						<p>Currently Incarcerated: {item.currentlyIncar}</p>
+						{/* <p>Criminal Record: {item.criminalRecord}</p> */}
+						{/* <p>Currently Incarcerated: {item.incarceratedYorN}</p> */}
 						<p>Incarceration Length: {item.incarcerationLength}</p>
 						<p>Release Date: {moment(item.releaseDate).format('LL')}</p>
 						<p>D.O.C Number: {item.docNumber}</p>
 						<p>State of Incarceration: {item.stateIncarcerated}</p>
-						<p>Currently On Parole: {item.paroleOnRelease}</p>
+						{/* <p>Currently On Parole: {item.paroleOnRelease}</p> */}
 						<p>Parole Officer: {item.agentName}</p>
 						<p>Parole Officer Phone Number: {item.agentPhone}</p>
-						<p>Connections With Reentry Programs: {item.connections}</p>
+						<p>Connections With Reentry Programs: {item.ifYesConnections}</p>
 						<p>Type Of Business: {item.business}</p>
 						<p>Business Stage: {item.businessStage}</p>
 						<p>Why Did You Attend "Be The Boss": {item.whyAtBeTheBoss}</p>
 						<p>What Do You Hope To Gain By Attending: {item.whatHopeToGain}</p>
-						<p>Active: {item.isActive}</p>
+						{/* <p>Active: {item.isActive}</p> */}
 					</div>
 				);
 			}
