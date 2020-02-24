@@ -182,10 +182,30 @@ VALUES
 INSERT INTO "events"
     ("eventDate", "endDate", "eventTitle", "notes", "location")
 VALUES
-    ( '2020-02-17 9:00:00', '2020-02-17 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
-    ( '2020-02-17 10:00:00', '2020-02-17 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
-    ( '2020-02-17 11:00:00', '2020-02-17 15:00:00', 'Back to Business', 'notes', 'location'),
-    ( '2020-02-17 13:00:00', '2020-02-17 19:00:00', 'Brainstorm next competition', 'notes', 'location');
+    ( '2020-02-24 9:00:00', '2020-02-24 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-24 10:00:00', '2020-02-24 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-24 11:00:00', '2020-02-24 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-24 13:00:00', '2020-02-24 19:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-25 8:30:00', '2020-02-25 10:30:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-25 10:00:00', '2020-02-25 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-25 14:00:00', '2020-02-25 17:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-25 13:00:00', '2020-02-25 19:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-26 7:00:00', '2020-02-26 9:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-26 9:30:00', '2020-02-26 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-26 11:00:00', '2020-02-26 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-26 15:00:00', '2020-02-26 19:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-27 9:00:00', '2020-02-27 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-27 10:00:00', '2020-02-27 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-27 13:00:00', '2020-02-27 18:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-27 12:00:00', '2020-02-27 15:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-28 8:00:00', '2020-02-28 10:30:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-28 10:00:00', '2020-02-28 12:30:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-28 6:00:00', '2020-02-28 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-28 8:00:00', '2020-02-28 13:00:00', 'Brainstorm next competition', 'notes', 'location'),
+    ( '2020-02-29 9:00:00', '2020-02-29 10:00:00', 'Weekly Kickoff', 'notes', 'location'),
+    ( '2020-02-29 10:00:00', '2020-02-29 12:00:00', 'Meet with Kauffman Center', 'notes', 'location'),
+    ( '2020-02-29 12:00:00', '2020-02-29 15:00:00', 'Back to Business', 'notes', 'location'),
+    ( '2020-02-29 13:00:00', '2020-02-29 19:00:00', 'Brainstorm next competition', 'notes', 'location');
 
 INSERT INTO "survey"
     ("clients_id", "businessStarted", "revenue", "date")
