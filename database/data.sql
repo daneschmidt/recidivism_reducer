@@ -179,7 +179,7 @@ VALUES
     (10, 1, 'Meet with parole officer to speak about thier company', '2020-02-11
 04:05:06'),
     (11, 4, 'Needs to work on a business name.', '2020-02-11
-04:05:06'),;
+04:05:06');
 
 INSERT INTO "events"
     ("eventDate", "endDate", "eventTitle", "notes", "location")

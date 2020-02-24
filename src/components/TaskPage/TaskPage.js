@@ -81,7 +81,7 @@ class TaskPage extends Component {
     const completedOn = moment(Date()).format();
     Swal.fire({
       title: 'Mark as Completed?',
-      text: "Are you sure you want to mark this task as completed?",
+      text: 'Are you sure you want to mark this task as completed?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -123,7 +123,7 @@ class TaskPage extends Component {
     const completedOn = moment(Date()).format();
     Swal.fire({
       title: 'Mark as Completed?',
-      text: "Are you sure you want to mark this task as completed?",
+      text: 'Are you sure you want to mark this task as completed?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -265,7 +265,11 @@ class TaskPage extends Component {
       <TableContainer
         component={Paper}
         className='container'
-        style={{ marginTop: '30px', marginRight: '300px' }}
+        style={{
+          marginTop: '30px',
+          marginRight: '300px',
+          boxSizing: 'border-box'
+        }}
       >
         <Table size='small'>
           <TableHead
@@ -300,7 +304,7 @@ class TaskPage extends Component {
       <TableContainer
         component={Paper}
         className='container'
-        style={{ marginTop: '30px' }}
+        style={{ marginTop: '30px', boxSizing: 'border-box' }}
       >
         <Table size='small'>
           <TableHead
@@ -335,7 +339,7 @@ class TaskPage extends Component {
       <TableContainer
         component={Paper}
         className='container'
-        style={{ marginTop: '30px' }}
+        style={{ marginTop: '30px', boxSizing: 'border-box' }}
       >
         <Table size='small'>
           <TableHead
