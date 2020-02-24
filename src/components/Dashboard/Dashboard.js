@@ -73,7 +73,8 @@ export default function DashboardPage() {
                 <DateRangeIcon
                   style={{
                     fontSize: 150,
-                    color: blueGrey[900],
+                    color: blueGrey[600],
+
                   }}
                 />
               </Link>
@@ -85,7 +86,7 @@ export default function DashboardPage() {
                 <DoneAllIcon
                   style={{
                     fontSize: 150,
-                    color: blueGrey[900]
+                    color: blueGrey[600]
                   }}
                 />
               </Link>
@@ -97,7 +98,7 @@ export default function DashboardPage() {
                 <FaceIcon
                   style={{
                     fontSize: 150,
-                    color: blueGrey[900]
+                    color: blueGrey[600]
                   }}
                 />
               </Link>
@@ -109,7 +110,7 @@ export default function DashboardPage() {
                 <GroupIcon
                   style={{
                     fontSize: 150,
-                    color: blueGrey[900]
+                    color: blueGrey[600]
                   }}
                 />
               </Link>
@@ -121,7 +122,7 @@ export default function DashboardPage() {
                 <EmojiPeopleIcon
                   style={{
                     fontSize: 150,
-                    color: blueGrey[900]
+                    color: blueGrey[600]
                   }}
                 />
               </Link>
@@ -133,7 +134,10 @@ export default function DashboardPage() {
                 <AssessmentIcon
                   style={{
                     fontSize: 150,
-                    color: blueGrey[900]
+                    color: blueGrey[600],
+                    '&:hover': {
+                      color: blueGrey[500],
+                    },
                   }}
                 />
               </Link>
