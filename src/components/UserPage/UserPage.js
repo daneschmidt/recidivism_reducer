@@ -200,8 +200,13 @@ class UserPage extends Component {
         return (
 
             <div>
-                <GridContainer justify='center'>
-                    <GridItem xs={12} sm={12} md={11}>
+                <GridContainer
+                    justify='center'
+                    container
+                    spacing={3}
+                    direction="row"
+                    alignItems="center">
+                    <GridItem xs={12} sm={12} md={10}>
                         <Card>
                             <Paper
                                 elevation={5}
@@ -212,14 +217,7 @@ class UserPage extends Component {
                                 }}
                             >
                                 <CardContent>
-                                    <Button
-                                        variant="contained"
-                                        color="default"
-                                        onClick={this.openEditUser}
-                                    >
-                                        Edit User
-                         </Button>
-
+                                    <h2>Users</h2>
                                 </CardContent>
                                 <TableContainer component={Paper}>
                                     <Table>
@@ -274,31 +272,31 @@ class UserPage extends Component {
                             </Paper>
                         </Card>
                     </GridItem>
-                </GridContainer>
-
-
-                <Grid container
-                    spacing={3}
-                    align="center">
-
-                    <Grid item xs={4}>
+                    <Grid item xs={4} align="center">
                         <EditPasswordModal />
                     </Grid>
 
                     <Grid item xs={4}>
                         <AddUserModal />
                     </Grid>
-
-                </Grid >
+                    <Button
+                        variant="contained"
+                        color="default"
+                        onClick={this.openEditUser}
+                        align="right"
+                    >
+                        Edit User
+                                    </Button>
+                </GridContainer>
                 <Modal
                     style={{
                         position: 'absolute',
-                        width: '70%',
+                        width: '60%',
                         color: '#1a262a',
                         border: '2px solid #f0ad43',
                         top: '50%',
                         left: '50%',
-                        height: '70%',
+                        height: '60%',
                         transform: 'translate(-50%, -50%)'
                     }}
                     aria-labelledby='simple-modal-title'
