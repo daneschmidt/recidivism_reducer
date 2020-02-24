@@ -1,13 +1,39 @@
-h1 {
-    font-size: 50px;
+.wrapper {
+    padding: 0 20px;
+}
+
+.primeHdg {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #384954;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.profIcon {
+    display: inline-block;
+    padding: 6px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #384954;
+    border-radius: 100%;
+    color: rgb(182 193 203);
+}
+
+.profIcon .MuiSvgIcon-root {
+    width: 10rem;
+    height: 10rem;
+}
+
+.paperStack {
+    padding: 15px;
+    margin-bottom: 20px;
 }
 
 .clientInfo {
-    margin: 40px;
-    padding-left: 50px;
+    margin-bottom: 40px;
 }
 
 .clientNotes {
-    margin: 40px;
-    padding-left: 50px;
+    margin-bottom: 40px;
 }
