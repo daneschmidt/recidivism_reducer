@@ -22,6 +22,8 @@ import GridItem from "../Grid/GridItem.js";
 import GridContainer from "../Grid/GridContainer.js";
 import Card from "../Card/Card.js";
 
+import '../../components/App/App.css';
+
 class EditUser extends Component {
 
     state = {
@@ -45,7 +47,7 @@ class EditUser extends Component {
         }
 
         return (
-            <GridContainer>
+            <div className="modal">
                 <Grid>
                     <Paper>
                         <TableRow>
@@ -68,7 +70,8 @@ class EditUser extends Component {
                         </TableRow>
                     </Paper>
                 </Grid>
-            </GridContainer>
+            </div>
+
 
             // <div className="edit-button">
             //         <Button

@@ -304,7 +304,7 @@ class UserPage extends Component {
                     open={this.state.setOpen} onClose={this.closeEditUser}
                 >
                     <div
-                        className="modal-content"
+                        className="modal"
                         style={{ outline: 'none', height: '100%' }}
                     >
                         <h4 id='simple-modal-title'>Update User</h4>

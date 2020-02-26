@@ -69,7 +69,7 @@ class AddUserModal extends Component {
                 icon: 'success',
                 title: 'User has been Added!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
             }).then(() => {
                 this.setState({
                     checkbox: null,

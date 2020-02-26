@@ -1,10 +1,12 @@
-import cookieSession from 'cookie-session';
-import { badSecret, exampleBadSecret } from '../constants/warnings';
+import cookieSession from "cookie-session";
+import { badSecret, exampleBadSecret } from "../constants/warnings";
 
 const serverSessionSecret = (): string | undefined => {
-  if (!process.env.SERVER_SESSION_SECRET ||
-      process.env.SERVER_SESSION_SECRET.length < 8 ||
-      process.env.SERVER_SESSION_SECRET === exampleBadSecret) {
+  if (
+    !process.env.SERVER_SESSION_SECRET ||
+    process.env.SERVER_SESSION_SECRET.length < 8 ||
+    process.env.SERVER_SESSION_SECRET === exampleBadSecret
+  ) {
     console.log(badSecret);
   }
 
@@ -12,10 +14,10 @@ const serverSessionSecret = (): string | undefined => {
 };
 
 export default cookieSession({
-  secret: serverSessionSecret() || 'secret', // please set this in your .env file
-  keys: ['user'],
-  maxAge: 60 * 60 * 1000, // Set to 1 hour - 60 min/hour * 60 s/min * 1000 ms/s
-  secure: false,
+  secret: serverSessionSecret() || "secret", // please set this in your .env file
+  keys: ["user"],
+  maxAge: 60 * 60 * 60 * 60 * 1000, // Set to 1 hour - 60 min/hour * 60 s/min * 1000 ms/s
+  secure: false
 
   // ADDITIONAL OPTIONS OUTSIDE OF 'secret', 'keys', and 'name':
   // maxAge: a number representing the milliseconds from Date.now() for expiry
