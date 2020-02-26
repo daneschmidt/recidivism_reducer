@@ -31,6 +31,7 @@ router.put(
 	'/put/:id',
 	(req: Request, res: Response, next: express.NextFunction): void => {
 		const profileId = req.params.id;
+		const userId: number | null = <number>req.body.userId;
 		const editFirstName: string | null = <string>req.body.firstName;
 		const editLastName: string | null = <string>req.body.lastName;
 		const editGender: string | null = <string>req.body.gender;
@@ -52,9 +53,10 @@ router.put(
 		const editBusinessStage: string | null = <string>req.body.businessStage;
 		const editWhyAtBeTheBoss: string | null = <string>req.body.whyAtBeTheBoss;
 		const editWhatHopeToGain: string | null = <string>req.body.whatHopeToGain;
-		const editProfilePic = req.body.profilePic;
+		const editProfilePic: string | null = <string>req.body.profilePic;
 		const editTimeStamp: number | null = <number>req.body.timeStamp;
 		const editIsActive: string | null = <string>req.body.isActive;
+		const note: string | null = <string>req.body.note;
 
 		const queryText: string = `UPDATE "clients" SET 
         "firstName" = $2, "lastName" = $3, "gender" = $4, "phoneNumber" = $5, "email" = $6,  "criminalRecord" = $7, "misdemOrFel" = $8, 
@@ -90,8 +92,19 @@ router.put(
 			editTimeStamp,
 			editIsActive,
 		])
-			.then(response => {
-				res.sendStatus(201);
+			.then(responseForPut => {
+				// res.sendStatus(201);
+				const queryString: string = `INSERT INTO "notes"
+				("clients_id", "users_id", "note", "timeStamp")
+				VALUES($1, $2, $3, $4);`;
+				pool.query(queryString, [profileId, userId, note, editTimeStamp])
+				.then(responseForPost => {
+					res.sendStatus(201);
+				})
+				.catch(err => {
+					console.log(err);
+					res.sendStatus(500);
+				})
 			})
 			.catch(err => {
 				console.log(err);
