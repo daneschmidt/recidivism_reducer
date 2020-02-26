@@ -24,11 +24,11 @@ function* editProfile(action) {
 	try {
 		const response = yield axios({
 			method: 'PUT',
-			url: '/api/profile/edit/put/',
+			url: '/api/edit/profile/put/' + id,
 			data: action.payload
 		});
 		yield put({
-			type: 'SET_EDIT_PROFILE'
+			type: 'GET_PROFILE'
 		});
 	} catch (err) {
 		console.log('error with edit profile', err);

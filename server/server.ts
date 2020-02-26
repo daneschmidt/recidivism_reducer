@@ -39,7 +39,7 @@ app.use('/api/tasks', tasks);
 app.use('/api/events', eventRouter);
 app.use('/api/competitions', competitions);
 app.use('/api/profile', profile);
-app.use('/api/profile/edit', editProfile);
+app.use('/api/edit/profile', editProfile);
 app.use('/api/status', status);
 app.use('/api/participants', participants);
 app.use('/api/user-credentials', userCredentials)

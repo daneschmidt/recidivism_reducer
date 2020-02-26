@@ -24,11 +24,11 @@ function* editNotes(action) {
     try {
         const response = yield axios({
             method: 'PUT',
-            url: '/api/notes/edit/',
+            url: '/api/notes/edit/' + id,
             data: action.payload
         });
         yield put({
-            type: 'SET_EDIT_NOTES'
+            type: 'SET_NOTES'
         });
     } catch (err) {
         console.log('error with edit notes', err);
