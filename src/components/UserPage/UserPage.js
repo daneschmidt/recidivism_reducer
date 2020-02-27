@@ -290,14 +290,14 @@ class UserPage extends Component {
                 </GridContainer>
                 <Modal
                     style={{
-                        position: 'absolute',
+                        position: 'center',
                         width: '60%',
-                        color: '#1a262a',
-                        border: '2px solid #f0ad43',
                         top: '50%',
                         left: '50%',
-                        height: '60%',
-                        transform: 'translate(-50%, -50%)'
+                        background: '#fefefe',
+                        border: '2px', solid: '#000',
+                        padding: '5px',
+
                     }}
                     aria-labelledby='simple-modal-title'
                     aria-describedby='simple-modal-description'
