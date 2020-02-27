@@ -53,9 +53,7 @@ function* deleteEvent(action) {
       method: 'DELETE',
       url: '/api/events/' + id
     });
-    put({
-      type: 'GET_EVENTS'
-    })
+    yield put({ type: 'GET_EVENTS' })
   } catch (err) {
     console.log('error deleting event', err);
   }

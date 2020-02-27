@@ -27,6 +27,7 @@ const calendarEvent = (state = [], action) => {
           //let jun = moment("2014-06-01T12:00:00Z")
           return {
             ...calendarEventItem,
+            id: calendarEventItem.id,
             title: calendarEventItem.eventTitle,
             start: calendarEventItem.startTime,
             end: moment(calendarEventItem.endDate).utcOffset(0, false).format("YYYY-MM-DD"),
