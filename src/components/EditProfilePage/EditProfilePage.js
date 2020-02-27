@@ -69,7 +69,6 @@ class EditProfilePage extends Component {
 	}
 
 	openEditClient = (event, item, id) => {
-		console.log(this.state);
 		this.setState({
 			profile: {
 				...this.props.store.getProfileReducer[0]
@@ -129,7 +128,6 @@ class EditProfilePage extends Component {
 	}
 
 	render() {
-		// console.log(this.props.store.getProfileReducer[0].id)
 		const editClientProfile = this.props.store.getProfileReducer.map(
 			(item, index) => {
 				return (

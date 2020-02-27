@@ -2,7 +2,6 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 // Post call to add new user
 function* postUser(action) {
-    console.log(`In postUserSaga`);
     try {
         const response = yield axios({
             method: 'POST',
@@ -14,7 +13,7 @@ function* postUser(action) {
             type: 'GET_USER_CREDENTIALS',
             payload: response.data
         });
-    } catch(err) {
+    } catch (err) {
         console.log('error adding user', err);
     }
 }

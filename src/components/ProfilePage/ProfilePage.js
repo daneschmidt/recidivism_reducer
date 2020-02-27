@@ -11,17 +11,6 @@ import {
 import { Person } from '@material-ui/icons';
 
 class profilePage extends Component {
-	state = {
-		// heading: "Class Component",
-	};
-
-	componentDidMount() {
-		this.props.dispatch({
-			type: 'GET_NOTES',
-		});
-	}
-
-	//Dispatches selected profile id to editProfile.saga
 
 	render() {
 		const clientInfo = this.props.store.getProfileReducer[0] != null ? this.props.store.getProfileReducer[0] : {};
@@ -45,10 +34,10 @@ class profilePage extends Component {
 							<h3>Incarceration Details</h3>
 							<Grid container spacing={3}>
 								<Grid item xs={6}>
-									<p>Criminal Record: {item.criminalRecord === true ? 'Yes' : 'No'}</p>
-									<p>Currently Incarcerated: {item.currentlyIncar === true ? 'Yes' : 'No'}</p>
+									<p>Criminal Record: {item.criminalRecord == true ? 'Yes' : 'No'}</p>
+									<p>Currently Incarcerated: {item.currentlyIncar == true ? 'Yes' : 'No'}</p>
 									<p>Incarceration Length: {item.incarcerationLength}</p>
-									<p>Currently On Parole: {item.paroleOnRelease === true ? 'Yes' : 'No'}</p>
+									<p>Currently On Parole: {item.paroleOnRelease == true ? 'Yes' : 'No'}</p>
 									<p>Parole Officer: {item.agentName}</p>
 								</Grid>
 								<Grid item xs={6}>
@@ -63,14 +52,14 @@ class profilePage extends Component {
 							<h3>Program Status</h3>
 							<Grid container spacing={3}>
 								<Grid item xs={6}>
-									<p>Connections With Reentry Programs: {item.connections === true ? 'Yes' : 'No'}</p>
+									<p>Connections With Reentry Programs: {item.connections == true ? 'Yes' : 'No'}</p>
 									<p>Type Of Business: {item.business}</p>
 									<p>Business Stage: {item.businessStage}</p>
 								</Grid>
 								<Grid item xs={6}>
 									<p>Why Did You Attend "Be The Boss": {item.whyAtBeTheBoss}</p>
 									<p>What Do You Hope To Gain By Attending: {item.whatHopeToGain}</p>
-									<p>Active: {item.isActive === true ? 'Yes' : 'No'}</p>
+									<p>Active: {item.isActive == true ? 'Yes' : 'No'}</p>
 								</Grid>
 							</Grid>
 						</Paper>

@@ -2,8 +2,6 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* editProfile(action) {
-    console.log('rawr', action.payload.infoKey);
-    console.log('meow', action.payload);
     const id = action.payload.infoKey;
     try {
         const response = yield axios({

@@ -2,10 +2,8 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 // Put call for tasks
 function* putClientTask(action) {
-    console.log(`In put client task`);
-    const id= action.payload.id;
-    const clients_id= action.payload.clients_id
-    console.log(clients_id)
+    const id = action.payload.id;
+    const clients_id = action.payload.clients_id
     try {
         const response = yield axios({
             method: 'PUT',
@@ -18,9 +16,9 @@ function* putClientTask(action) {
                 sortBy: 'byClients',
                 clients_id,
                 trueOrFalse: 'False',
-                }
-            });
-    } catch(err) {
+            }
+        });
+    } catch (err) {
         console.log('error putting task', err);
     }
 }

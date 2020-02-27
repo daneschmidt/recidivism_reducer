@@ -5,8 +5,7 @@ import axios from 'axios';
 function* getAllUserCredentials() {
     try {
         const response = yield axios.get('/api/user-credentials/');
-        console.log(response);
-        yield put ({
+        yield put({
             type: 'SET_USER_CREDENTIALS',
             payload: response.data
         })
@@ -21,10 +20,10 @@ function* editUserCredential(action) {
     try {
         yield axios({
             method: 'PUT',
-            url: '/api/user-credentials/edit-user/'+id,
+            url: '/api/user-credentials/edit-user/' + id,
             data: action.payload
         });
-        yield put ({
+        yield put({
             type: 'GET_USER_CREDENTIALS',
         })
     } catch (err) {
@@ -34,36 +33,26 @@ function* editUserCredential(action) {
 
 // changes isActive status in database to false
 function* changeUserStatus(action) {
-    // const id = action.payload.id;
-    // try {
-    //     const response = yield axios.put('/api/user-credentials/user-status/', + id);
-    //     console.log(response);
-    //     yield put ({
-    //         type: 'GET_USER_CREDENTIALS',
-    //     })
-    // } catch (err) {
-    //     console.log(`Couldn't update user status`, err)
-    // };
-        const id = action.payload.id;
-        try {
-            yield axios({
-                method: 'PUT',
-                url: '/api/user-credentials/user-status/'+id,
-                data: action.payload
-            });
-            yield put ({
-                type: 'GET_USER_CREDENTIALS',
-            })
-        } catch (err) {
-            console.log(`Couldn't update user status`, err)
-        };
+    const id = action.payload.id;
+    try {
+        yield axios({
+            method: 'PUT',
+            url: '/api/user-credentials/user-status/' + id,
+            data: action.payload
+        });
+        yield put({
+            type: 'GET_USER_CREDENTIALS',
+        })
+    } catch (err) {
+        console.log(`Couldn't update user status`, err)
+    };
 };
 
 function* userCredentials() {
     yield takeLatest('GET_USER_CREDENTIALS', getAllUserCredentials);
     yield takeLatest('EDIT_USER_CREDENTIALS', editUserCredential);
     yield takeLatest('EDIT_USER_STATUS', changeUserStatus);
-    
-  }
-  
-  export default userCredentials;
+
+}
+
+export default userCredentials;

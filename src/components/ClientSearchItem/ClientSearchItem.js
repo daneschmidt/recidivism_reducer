@@ -28,30 +28,26 @@ class ClientSearchItem extends Component {
     }
 
     goToProfile = (event, id) => {
-        console.log(id);
         this.props.dispatch({
-          type: 'GET_PROFILE',
-          payload: { id }
+            type: 'GET_PROFILE',
+            payload: { id }
         });
         //Navigates to profile page, will give all information on selected client
         this.props.history.push('/profilepage');
-      };
+    };
 
     onChange = key => event => {
-		this.setState(
-			{
-				...this.state,
-				[key]: event.target.value
-			},
-			() => {
-				console.log(this.state);
-			}
-		);
-	};
+        this.setState(
+            {
+                ...this.state,
+                [key]: event.target.value
+            }
+        );
+    };
 
     render() {
 
-        return(
+        return (
             <TableRow hover style={{ backgroundColor: '#fefefe' }}>
                 <TableCell onClick={event => this.goToProfile(event, client.id)}>
                     {this.props.client.firstName} {this.props.client.lastName}
@@ -60,18 +56,18 @@ class ClientSearchItem extends Component {
                 <TableCell>{this.props.client.email}</TableCell>
                 <TableCell>
                     <IconButton
-                    aria-label='info'
-                    size='small'
-                    // style={{ backgroundColor: '#f0ad43', color: '#384954' }}
-                    color='primary'
-                    onClick={event => this.goToProfile(event, client.id)}
+                        aria-label='info'
+                        size='small'
+                        // style={{ backgroundColor: '#f0ad43', color: '#384954' }}
+                        color='primary'
+                        onClick={event => this.goToProfile(event, client.id)}
                     >
-                    <InfoIcon
-                    //  fontSize='small'
-                    />
+                        <InfoIcon
+                        //  fontSize='small'
+                        />
                     </IconButton>
                 </TableCell>
-                </TableRow>
+            </TableRow>
         )
     }
 }

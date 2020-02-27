@@ -2,7 +2,6 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 // Get call for list of all clients
 function* getAllClientsList() {
-    console.log(`In getAllClientsList`);
     try {
         const response = yield axios({
             method: 'GET',
@@ -13,7 +12,7 @@ function* getAllClientsList() {
             type: 'SET_CLIENTS_LIST',
             payload: response.data
         });
-    } catch(err) {
+    } catch (err) {
         console.log('error fetching clients list', err);
     }
 }

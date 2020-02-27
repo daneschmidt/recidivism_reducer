@@ -2,9 +2,6 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* getProfile(action) {
-	// console.log(action.payload.id)
-	// const clientsId = action.payload.id;
-	// console.log(id);
 	try {
 		const response = yield axios({
 			method: 'GET',
