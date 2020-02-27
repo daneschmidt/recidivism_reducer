@@ -28,10 +28,10 @@ router.get(
  * Put routes for updating selected individual client profile
  */
 router.put(
-	'/put/:id',
+	'/:id',
 	(req: Request, res: Response, next: express.NextFunction): void => {
-		const profileId = req.params.id;
 		const userId: number | null = <number>req.body.userId;
+		const id: number | null = <number>parseInt(req.params.id);
 		const editFirstName: string | null = <string>req.body.firstName;
 		const editLastName: string | null = <string>req.body.lastName;
 		const editGender: string | null = <string>req.body.gender;
@@ -66,7 +66,7 @@ router.put(
 		WHERE "id" = $1;`;
 
 		pool.query(queryText, [
-			profileId,
+			id,
 			editFirstName,
 			editLastName,
 			editGender,
@@ -97,7 +97,7 @@ router.put(
 				const queryString: string = `INSERT INTO "notes"
 				("clients_id", "users_id", "note", "timeStamp")
 				VALUES($1, $2, $3, $4);`;
-				pool.query(queryString, [profileId, userId, note, editTimeStamp])
+				pool.query(queryString, [id, userId, note, editTimeStamp])
 				.then(responseForPost => {
 					res.sendStatus(201);
 				})
