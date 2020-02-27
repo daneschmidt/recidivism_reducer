@@ -3,7 +3,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 // Put call for tasks
 function* deleteParticipant(action) {
   const id = action.payload;
-  console.log(id);
   try {
     yield axios({
       method: 'DELETE',

@@ -4,7 +4,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* getAllEvents() {
   try {
     const response = yield axios.get('/api/events/');
-    console.log(response);
     yield put({
       type: 'SET_CALENDAR',
       payload: response.data
@@ -18,18 +17,6 @@ function* getAllEvents() {
   };
 };
 
-// function* getSingleEvent(action) {
-//   try {
-//     const response = yield axios.get('/api/events/', action.payload);
-//     console.log(response);
-//     yield put({
-//       type: 'SET_CALENDAR',
-//       payload: response.data
-//     })
-//   } catch (err) {
-//     console.log(`Couldn't get all events`, err)
-//   };
-// };
 
 function* addNewEvent(action) {
   try {
@@ -37,7 +24,6 @@ function* addNewEvent(action) {
     yield put({ type: 'CLEAR_ADD_EVENT_ERROR' });
 
     const response = yield axios.post('/api/events', action.payload);
-    console.log(response);
     yield put({ type: 'GET_EVENTS' });
 
   } catch (error) {

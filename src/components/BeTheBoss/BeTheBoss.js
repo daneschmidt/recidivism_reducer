@@ -67,7 +67,6 @@ class BeTheBoss extends Component {
         email: ''
       });
     } else {
-      console.log('whoops');
       Swal.fire('Oops!', 'Please enter all of your info!', 'error');
       // if (!this.state.firstName) alert("Must enter first name.");
       // else if (!this.state.lastName) alert("Must enter last name.");

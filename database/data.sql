@@ -83,10 +83,10 @@ VALUES
     ('2018-03-05', 'Fifth Competition', 'Emily Gagnon', '10000', 'RiverView Painting', 'great business model'),
     ('2018-09-14', 'Sixth Competition', 'Richard Jones', '10000', 'React Roofing', 'knows all the steps needed to be sucessful');
 
-INSERT INTO "clients_competitions"
-    ("clients_id", "competitions_id", "status", "award", "grantAmount", "notes")
-VALUES
-    (1, 1, '', 'Congrats', 10000, 'You are awesome!');
+-- INSERT INTO "clients_competitions"
+--     ("clients_id", "competitions_id", "status", "award", "grantAmount", "notes")
+-- VALUES
+--     (1, 1, '', 'Congrats', 10000, 'You are awesome!');
 
 INSERT INTO "participants"
     ("id", "parName", "status")

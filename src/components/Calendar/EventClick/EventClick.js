@@ -64,7 +64,6 @@ class EventClick extends Component {
   };
 
   handleEventClick = (calEvent, id) => {
-    console.log(id);
     this.setState({
       setOpen: true,
       id,
@@ -79,8 +78,6 @@ class EventClick extends Component {
   };
 
   deleteEvent = (event, id) => {
-    console.log(event, id);
-    console.log(this.props.store.calendar.calendarEventItem);
     this.closeModal();
     Swal.fire({
       title: 'Are you sure?',
@@ -114,9 +111,6 @@ class EventClick extends Component {
   }
 
   handleEventClick = ({ event, el, id }) => {
-    console.log('>>>>>>>>>>>>', event);
-    console.log(event._def.extendedProps);
-    console.log(id);
     this.setState({
       calendarEvents: {
         ...this.state.calendarEvents,
@@ -128,8 +122,6 @@ class EventClick extends Component {
       },
       setOpen: true,
       id: event._def.extendedProps.scotts_id
-    }, () => {
-      console.log('********** ', this.state);
     });
     this.props.dispatch({
       type: 'SET_EVENT_DETAILS',
@@ -138,15 +130,10 @@ class EventClick extends Component {
   };
 
   render() {
-    console.log(this.state.calendarEvents)
-    //console.log(this.state.deleteEvent);
-    //console.log('*******', this.props.store.calendar.calendarEvent);
 
     const eventArray = this.props.store.calendar.calendarEvent.map((item, index) => {
       const convertedStartTime = item.eventDate.slice(0, -1);
       const convertedEndTime = item.endDate.slice(0, -1);
-      console.log('------------ : ', item);
-      //console.log(convertedStartTime);
       return {
         textColor: '#1a262a',
         title: item.eventTitle,

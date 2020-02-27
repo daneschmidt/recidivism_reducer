@@ -23,7 +23,6 @@ const calendarEvent = (state = [], action) => {
     switch (action.type) {
       case 'SET_CALENDAR':
         return action.payload.map((calendarEventItem) => {
-          console.log(calendarEventItem)
           //let jun = moment("2014-06-01T12:00:00Z")
           return {
             ...calendarEventItem,
@@ -41,29 +40,15 @@ const calendarEvent = (state = [], action) => {
     
   };
 
-  const calendarDetails = (state = null, action) => {
-    // switch (action.type) {
-    //   case 'SET_EVENT_DETAILS':
-    //     return action.payload.map((calendarEventDetails) => {
-    //       console.log(calendarEventDetails)
-    //       return {
-    //         ...calendarEventDetails,
-    //         eventTitle: calendarEventDetails.eventTitle,
-    //         notes: calendarEventDetails.notes,
-    //         location: calendarEventDetails.location,
-    //       }
-    //     });
-    //     default:
-    //     return state;
-    // }
-    switch (action.type) {
-      case 'SET_EVENT_DETAILS':
-        return action.payload;
-      default:
-          return state;
-    }
+const calendarDetails = (state = null, action) => {
+  switch (action.type) {
+    case 'SET_EVENT_DETAILS':
+      return action.payload;
+    default:
+      return state;
   }
-  export default combineReducers({
-    calendarEvent,
-    calendarDetails,
+}
+export default combineReducers({
+  calendarEvent,
+  calendarDetails,
 });

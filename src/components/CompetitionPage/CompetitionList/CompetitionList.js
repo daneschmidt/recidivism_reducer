@@ -167,7 +167,6 @@ class CompetitionList extends Component {
       businessName: item.businessName,
       notes: item.notes
     });
-    console.log(this.state);
     this.handleOpen();
   };
 

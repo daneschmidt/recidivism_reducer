@@ -16,7 +16,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import BeTheBoss from '../BeTheBoss/BeTheBoss';
 import UserPage from '../UserPage/UserPage';
 import Calendar from '../Calendar/CalendarHome/Calendar';
-import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 // import RegisterPage from '../';
 import Dashboard from '../Dashboard/Dashboard';
@@ -67,7 +66,7 @@ class App extends Component {
                 path='/clientresults'
                 component={ClientResults}
               />
-              <ProtectedRoute exact path='/home' component={LandingPage} />
+              <ProtectedRoute exact path='/home' component={Dashboard} />
               {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

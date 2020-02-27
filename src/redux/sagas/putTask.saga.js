@@ -2,8 +2,7 @@ import axios from 'axios';
 import { put, all, takeLatest } from 'redux-saga/effects';
 // Put call for tasks
 function* putTask(action) {
-    console.log(`In put task`);
-    const id= action.payload.id;
+    const id = action.payload.id;
     try {
         const response = yield axios({
             method: 'PUT',
@@ -12,10 +11,10 @@ function* putTask(action) {
         });
         yield all([
             put({
-            type: 'GET_TASKS_BY_ALL',
-            payload: {
-                sortBy: 'byAll',
-                trueOrFalse: 'False',
+                type: 'GET_TASKS_BY_ALL',
+                payload: {
+                    sortBy: 'byAll',
+                    trueOrFalse: 'False',
                 }
             }),
             put({
@@ -24,10 +23,10 @@ function* putTask(action) {
                     sortBy: 'byUser',
                     trueOrFalse: 'False',
                     id,
-                    }
-                })
-    ]);
-    } catch(err) {
+                }
+            })
+        ]);
+    } catch (err) {
         console.log('error putting task', err);
     }
 }

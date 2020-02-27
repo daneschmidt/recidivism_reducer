@@ -38,9 +38,6 @@ class ClientPage extends Component {
         ...this.state,
         [key]: event.target.value
       },
-      () => {
-        console.log(this.state);
-      }
     );
   };
 
@@ -63,7 +60,6 @@ class ClientPage extends Component {
 
   //Dispatches selected client id to profile.saga
   goToProfile = (event, id) => {
-    console.log(id);
     this.props.dispatch({
       type: 'GET_PROFILE',
       payload: { id }

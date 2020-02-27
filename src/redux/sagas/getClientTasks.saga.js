@@ -2,11 +2,9 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 // Get call for tasks
 function* getClientTasks(action) {
-    console.log(`In get client tasks`);
     const sortBy = action.payload.sortBy;
     const id = action.payload.clients_id;
     const trueOrFalse = action.payload.trueOrFalse;
-    console.log(id)
     try {
         const response = yield axios({
             method: 'GET',
@@ -16,7 +14,7 @@ function* getClientTasks(action) {
             type: 'SET_CLIENT_TASKS',
             payload: response.data
         });
-    } catch(err) {
+    } catch (err) {
         console.log('error fetching tasks', err);
     }
 }
