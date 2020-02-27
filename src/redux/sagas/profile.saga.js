@@ -19,25 +19,10 @@ function* getProfile(action) {
 	}
 }
 
-function* editProfile(action) {
-	const id = action.payload.id
-	try {
-		const response = yield axios({
-			method: 'PUT',
-			url: '/api/edit/profile/put/' + id,
-			data: action.payload
-		});
-		yield put({
-			type: 'GET_PROFILE'
-		});
-	} catch (err) {
-		console.log('error with edit profile', err);
-	}
-}
 
 function* getProfileSaga() {
 	yield takeLatest('GET_PROFILE', getProfile);
-	yield takeLatest('EDIT_PROFILE', editProfile);
+
 }
 
 export default getProfileSaga;

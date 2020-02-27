@@ -27,7 +27,7 @@ import deleteRecentCompSaga from './deleteRecentComp.saga';
 import editRecentCompSaga from './editRecentComp.saga';
 import postUserSaga from './postUser.saga';
 import putPasswordSaga from './putPassword.saga';
-
+import editProfileSaga from './edit.profile.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -56,6 +56,7 @@ export default function* rootSaga() {
     editParticipantSaga(),
     addParticipantSaga(),
     getProfileSaga(),
+    editProfileSaga(),
     putClientTaskSaga(),
     userCredentials(),
     searchClientSaga(),

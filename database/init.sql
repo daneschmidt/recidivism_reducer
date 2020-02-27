@@ -2,7 +2,8 @@
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
-CREATE TABLE "user" (
+CREATE TABLE "user"
+(
   "id" SERIAL PRIMARY KEY,
   "firstName" varchar NOT NULL,
   "lastName" varchar NOT NULL,
@@ -15,7 +16,8 @@ CREATE TABLE "user" (
   "isActive" boolean default True
 );
 
-CREATE TABLE "clients" (
+CREATE TABLE "clients"
+(
   "id" SERIAL PRIMARY KEY,
   "firstName" varchar NOT NULL,
   "lastName" varchar NOT NULL,
@@ -43,7 +45,8 @@ CREATE TABLE "clients" (
   "isActive" boolean default True
 );
 
-CREATE TABLE "address" (
+CREATE TABLE "address"
+(
   "id" SERIAL PRIMARY KEY,
   "clients_id" int REFERENCES "clients",
   "street" varchar,
@@ -56,7 +59,8 @@ CREATE TABLE "address" (
 );
 
 
-CREATE TABLE "competitions" (
+CREATE TABLE "competitions"
+(
   "id" SERIAL PRIMARY KEY,
   "dateOf" varchar,
   "name" varchar,
@@ -64,10 +68,11 @@ CREATE TABLE "competitions" (
   "amountGranted" varchar,
   "businessName" varchar,
   "notes" varchar
-  
+
 );
 
-CREATE TABLE "clients_competitions" (
+CREATE TABLE "clients_competitions"
+(
   "id" SERIAL PRIMARY KEY,
   "clients_id" int REFERENCES "clients",
   "competitions_id" int REFERENCES "competitions",
@@ -77,7 +82,8 @@ CREATE TABLE "clients_competitions" (
   "notes" varchar
 );
 
-CREATE TABLE "competition_status" (
+CREATE TABLE "competition_status"
+(
   "id" SERIAL PRIMARY KEY,
   "step1" varchar,
   "step2" varchar,
@@ -87,19 +93,22 @@ CREATE TABLE "competition_status" (
   "step6" varchar
 );
 
-CREATE TABLE "links" (
+CREATE TABLE "links"
+(
   "id" SERIAL PRIMARY KEY,
   "clients_id" int REFERENCES "clients",
   "url" varchar
 );
 
-  CREATE TABLE "participants" (
+CREATE TABLE "participants"
+(
   "id" varchar,
   "parName" varchar,
   "status" varchar
 );
 
-CREATE TABLE "tasks" (
+CREATE TABLE "tasks"
+(
   "id" SERIAL PRIMARY KEY,
   "users_id" int REFERENCES "user",
   "clients_id" int REFERENCES "clients",
@@ -110,7 +119,8 @@ CREATE TABLE "tasks" (
   "completedOn" timestamp
 );
 
-CREATE TABLE "notes" (
+CREATE TABLE "notes"
+(
   "id" SERIAL PRIMARY KEY,
   "clients_id" int REFERENCES "clients",
   "users_id" int REFERENCES "user",
@@ -118,7 +128,8 @@ CREATE TABLE "notes" (
   "timeStamp" timestamp
 );
 
-CREATE TABLE "events" (
+CREATE TABLE "events"
+(
   "id" SERIAL PRIMARY KEY,
   "eventDate" timestamp,
   "endDate" timestamp,
@@ -127,7 +138,8 @@ CREATE TABLE "events" (
   "location" varchar
 );
 
-CREATE TABLE "messages" (
+CREATE TABLE "messages"
+(
   "id" SERIAL PRIMARY KEY,
   "threadID" int,
   "users_id" int REFERENCES "user",
@@ -136,13 +148,15 @@ CREATE TABLE "messages" (
   "body" varchar
 );
 
-CREATE TABLE "messages_clients" (
+CREATE TABLE "messages_clients"
+(
   "id" SERIAL PRIMARY KEY,
   "messages_id" int REFERENCES "messages",
   "clients_id" int REFERENCES "clients"
 );
 
-CREATE TABLE "survey" (
+CREATE TABLE "survey"
+(
   "id" SERIAL PRIMARY KEY,
   "clients_id" int REFERENCES "clients",
   "businessStarted" boolean,
@@ -150,7 +164,8 @@ CREATE TABLE "survey" (
   "date" date
 );
 
-CREATE TABLE "events_clients" (
+CREATE TABLE "events_clients"
+(
   "id" SERIAL PRIMARY KEY,
   "clients_id" int REFERENCES "clients",
   "events_id" int REFERENCES "events"

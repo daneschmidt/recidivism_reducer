@@ -16,22 +16,22 @@ class EditProfilePage extends Component {
 	state = {
 		setOpen: false,
 		profile: {
-			id: '',
+			id: null,
 			firstName: '',
 			lastName: '',
 			gender: '',
-			phoneNumber: '',
+			phoneNumber: null,
 			email: '',
 			criminalRecord: '',
 			midemOrFel: '',
 			incarceratedYorN: '',
 			incarcerationLength: '',
 			releaseDate: '',
-			docNumber: '',
+			docNumber: null,
 			stateIncarcerated: '',
 			paroleOnRelease: '',
 			agentName: '',
-			agentPhone: '',
+			agentPhone: null,
 			connections: '',
 			ifYesConnections: '',
 			business: '',
@@ -45,17 +45,62 @@ class EditProfilePage extends Component {
 		}
 	};
 
+	// componentDidMount() {
+	// 	// const newArr = this.props.store.getProfileReducer.map((item, index) => {
+	// 	// 	return item.id
+	// 	// });
+
+	// 	this.setState({
+	// 		profile: {
+	// 			...this.props.store.getProfileReducer[0]
+	// 		}
+	// 	})
+	// }
+
 	handleInputField = infoKey => (event) => {
 		const inputedVal = event.target != null ? event.target.value : event;
 		this.setState({
-			[infoKey]: inputedVal,
+			profile: {
+				...this.state.profile,
+				[infoKey]: inputedVal,
+			}
 		});
 	}
 
-	openEditClient = (event) => {
+	openEditClient = (event, item, id) => {
+		console.log(this.state);
 		this.setState({
-			id: this.props.id,
+			profile: {
+				...this.props.store.getProfileReducer[0]
+			},
 			setOpen: true,
+			// id: this.props.store.getProfileReducer[0].id,
+			// firstName: this.props.store.getProfileReducer[0].id,
+			// lastName: this.props.store.getProfileReducer[0].id,
+			// gender: this.props.store.getProfileReducer[0].id,
+			// phoneNumber: null,
+			// email: '',
+			// criminalRecord: '', // bool
+			// midemOrFel: '',
+			// incarceratedYorN: '', // bool
+			// incarcerationLength: '',
+			// releaseDate: '',
+			// docNumber: null,
+			// stateIncarcerated: '',
+			// paroleOnRelease: '', // bool
+			// agentName: '',
+			// agentPhone: null,
+			// connections: '', // bool
+			// ifYesConnections: '',
+			// business: '',
+			// businessStage: '',
+			// whyAtBeTheBoss: '',
+			// whatHopeToGain: '',
+			// profilePic: '',
+			// timeStamp: '',
+			// isActive: '', // bool
+			// note: '',
+
 		})
 	}
 
@@ -69,19 +114,21 @@ class EditProfilePage extends Component {
 		this.props.dispatch({
 			type: 'EDIT_PROFILE',
 			payload: {
-				...this.state.profile
+				...this.state.profile,
+				infoKey
 			}
 		})
-		this.props.dispatch({
-			type: 'EDIT_NOTES',
-			payload: {
-				...this.state.profile
-			}
-		})
+		// // this.props.dispatch({
+		// // 	type: 'EDIT_NOTES',
+		// // 	payload: {
+		// // 		...this.state.profile
+		// // 	}
+		// })
 		this.closeEditClient();
 	}
 
 	render() {
+		// console.log(this.props.store.getProfileReducer[0].id)
 		const editClientProfile = this.props.store.getProfileReducer.map(
 			(item, index) => {
 				return (
@@ -232,7 +279,7 @@ class EditProfilePage extends Component {
 						<Button
 							variant="contained"
 							color="primary"
-							onClick={this.handleSubmit}
+							onClick={(event) => this.handleSubmit(event, item.id)}
 						>
 							SAVE
 								</Button>
