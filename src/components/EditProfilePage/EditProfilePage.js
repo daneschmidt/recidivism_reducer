@@ -16,6 +16,7 @@ class EditProfilePage extends Component {
 	state = {
 		setOpen: false,
 		profile: {
+			userId: this.props.store.user.id,
 			id: null,
 			firstName: '',
 			lastName: '',

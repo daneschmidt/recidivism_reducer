@@ -6,13 +6,16 @@ function* editProfile(action) {
     console.log('meow', action.payload);
     const id = action.payload.infoKey;
     try {
-        yield axios({
+        const response = yield axios({
             method: 'PUT',
             url: '/api/editprofile/' + id,
             data: action.payload
         });
-        put({
-            type: 'GET_PROFILE'
+        yield put({
+            type: 'GET_PROFILE',
+            payload: {
+                id: id
+            }
         });
     } catch (err) {
         console.log('error with edit profile', err);

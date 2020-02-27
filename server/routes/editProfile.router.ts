@@ -30,6 +30,7 @@ router.get(
 router.put(
 	'/:id',
 	(req: Request, res: Response, next: express.NextFunction): void => {
+		const userId: number | null = <number>req.body.userId;
 		const id: number | null = <number>parseInt(req.params.id);
 		const editFirstName: string | null = <string>req.body.firstName;
 		const editLastName: string | null = <string>req.body.lastName;
@@ -55,6 +56,7 @@ router.put(
 		const editProfilePic: string | null = <string>req.body.profilePic;
 		const editTimeStamp: number | null = <number>req.body.timeStamp;
 		const editIsActive: string | null = <string>req.body.isActive;
+		const note: string | null = <string>req.body.note;
 
 		const queryText: string = `UPDATE "clients" SET 
         "firstName" = $2, "lastName" = $3, "gender" = $4, "phoneNumber" = $5, "email" = $6,  "criminalRecord" = $7, "misdemOrFel" = $8, 
@@ -90,8 +92,19 @@ router.put(
 			editTimeStamp,
 			editIsActive,
 		])
-			.then(response => {
-				res.sendStatus(201);
+			.then(responseForPut => {
+				// res.sendStatus(201);
+				const queryString: string = `UPDATE "notes" SET
+				"users_id" =$2, "note" =$3, "timeStamp" =$4
+				WHERE "clients_id" = $1;`;
+				pool.query(queryString, [id, userId, note, editTimeStamp])
+				.then(responseForPut2 => {
+					res.sendStatus(201);
+				})
+				.catch(err => {
+					console.log(err);
+					res.sendStatus(500);
+				})
 			})
 			.catch(err => {
 				console.log(err);
