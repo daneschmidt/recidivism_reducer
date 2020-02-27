@@ -94,11 +94,11 @@ router.put(
 		])
 			.then(responseForPut => {
 				// res.sendStatus(201);
-				const queryString: string = `INSERT INTO "notes"
-				("clients_id", "users_id", "note", "timeStamp")
-				VALUES($1, $2, $3, $4);`;
+				const queryString: string = `UPDATE "notes" SET
+				"users_id" =$2, "note" =$3, "timeStamp" =$4
+				WHERE "clients_id" = $1;`;
 				pool.query(queryString, [id, userId, note, editTimeStamp])
-				.then(responseForPost => {
+				.then(responseForPut2 => {
 					res.sendStatus(201);
 				})
 				.catch(err => {
