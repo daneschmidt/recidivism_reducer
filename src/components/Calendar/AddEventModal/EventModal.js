@@ -66,7 +66,7 @@ class EventModal extends Component {
         this.setState({
             setOpen: false,
             eventDate: '',
-            startTime: '',
+            endDate: '',
             endTime: '',
             endEventDate: '',
             eventTitle: '',
@@ -97,7 +97,7 @@ class EventModal extends Component {
             this.closeNewEvent();
             Swal.fire({
                 position: 'Center',
-                iicon: 'success',
+                icon: 'success',
                 title: 'Event has been added',
                 showConfirmButton: false,
                 timer: 1500

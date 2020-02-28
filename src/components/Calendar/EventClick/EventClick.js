@@ -20,7 +20,15 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 
+// Sweet Alert
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+// CSS
+import '../../App/App.css';
+
+
 import moment from 'moment';
+import { whenTransitionDone } from '@fullcalendar/core';
 
 const styles = (theme => createStyles({
   root: {
@@ -46,6 +54,7 @@ class EventClick extends Component {
     calendarWeekends: true,
     calendarEvents: [
       {
+        id: '',
         title: '',
         start: new Date(),
         notes: '',
@@ -57,11 +66,10 @@ class EventClick extends Component {
   handleEventClick = (calEvent, id) => {
     this.setState({
       setOpen: true,
-      id
+      id,
       //selectedEvent: calEvent.event,
     });
   };
-
 
   closeModal = event => {
     this.setState({
@@ -70,15 +78,50 @@ class EventClick extends Component {
   };
 
   deleteEvent = (event, id) => {
-    this.props.dispatch({
-      type: 'DELETE_EVENT',
-      payload: id,
+    this.closeModal();
+    Swal.fire({
+      title: 'Are you sure?',
+      //text: "You won't be able to revert this!",
+      //icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Delete'
     })
+      .then((result) => {
+        if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          Swal.fire(
+            //'Cancelled',
+            'Event still active',
+            //'error'
+          )
+        } else if (result.value) {
+          Swal.fire("Event has been deleted", {
+            icon: "success",
+          });
+          this.props.dispatch({
+            type: 'DELETE_EVENT',
+            payload: this.state.id,
+          })
+        }
+      });
   }
 
   handleEventClick = ({ event, el, id }) => {
     this.setState({
-      setOpen: true
+      calendarEvents: {
+        ...this.state.calendarEvents,
+        id: this.state.calendarEvents.id,
+        title: this.state.calendarEvents.title,
+        start: new Date(),
+        notes: this.state.calendarEvents.notes,
+        location: this.state.calendarEvents.location,
+      },
+      setOpen: true,
+      id: event._def.extendedProps.scotts_id
     });
     this.props.dispatch({
       type: 'SET_EVENT_DETAILS',
@@ -100,6 +143,7 @@ class EventClick extends Component {
         notes: item.notes,
         location: item.location,
         eventTitle: item.eventTitle,
+        scotts_id: item.id
       };
     }
     );
@@ -122,6 +166,7 @@ class EventClick extends Component {
               //dateClick={this.handleDateClick}
               events={eventArray}
               eventClick={this.handleEventClick}
+              
             />
           </Container>
           <div>
